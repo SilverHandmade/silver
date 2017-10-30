@@ -62,43 +62,42 @@
 
 <div class="all">
 	<div class="container-fluid">
-		<div class="row">
+		<div class="row" id="row-main">
 			<!-- サイドカラム -->
-			<div class="col-xs-2 floating" id="sidebar">
+			<div class="col-xs-2" id="sidebar">
 				<div class="row">
-					<table class="table table-hover">
-						<tr class="success"><td onclick="location.reload();"><a href="">更新</a></td></tr>
-						<tr><td><a href="">Top</a></td></tr>
-						<tr><td><a href="">依頼</a></td></tr>
-						<tr><td><a href="">ワークショップ</a></td></tr>
-						<tr><td><a href="">知恵袋</a></td></tr>
-						<tr><td><a href="">動画</a></td></tr>
+					<ul>
+						<li class="success" onclick="location.reload();"><a href="">更新</a></li>
+						<li><a href="">Top</a></li>
+						<li><a href="">依頼</a></li>
+						<li><a href="">ワークショップ</a></li>
+						<li><a href="">知恵袋</a></li>
+						<li><a href="">動画</a></li>
 						<?= $this->fetch('sidebar')?>
-						<tr class="danger"><td><a href="/apcom/logout">ログアウト</a></td></tr>
-					</table>
+						<li class="danger"><a href="/silver/logout">ログアウト</a></li>
+					</ul>
 				</div>
 			</div>
 
 			<!-- メインカラム -->
-			<div class="col-xs-8 col-xs-offset-2" id="col-main">
+			<div class="col-xs-8" id="col-main">
 				<?= $this->fetch('content') ?>
 			</div>
 
 			<!-- 右サイドカラム -->
-			<div class="col-xs-offset-1 col-xs-1">
+			<div class="col-xs-2">
 				<!-- 必要に応じて -->
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="footer" >
-	<footer class="row">
-		<div class="col-xs-offset-2 col-xs-10 center">
-			Copyright &copy; 2017 Taguchi Corporation All rights reserved.
-		</div>
-	</footer>
-</div>
+
+<footer class="row">
+	<div class="center">
+		<p>Copyright &copy; 2017 Taguchi Corporation All rights reserved.</p>
+	</div>
+</footer>
 
 </body>
 </html>
