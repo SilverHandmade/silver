@@ -1,0 +1,166 @@
+/*サイドバー*/
+#sidebar {
+	/*display: none;*/
+}
+
+#sidebar {
+	width: calc(100% / 12 * 2);
+	height: auto;
+	background-color: transparent;
+}
+#sidebar div table tr td a {
+	padding: 10px 0 10px 10px;
+}
+@media (max-width: 900px) {
+	#sidebar {
+		width: 100vw;
+		height: auto;
+		background-color: ghostwhite;
+	}
+	#sidebar div table tr td a {
+		padding: 2px 0 2px 10px;
+	}
+	#sidebar div table {
+		margin: 0;
+	}
+}
+#sidebar div table tr td a {
+	cursor:pointer;
+	display: block;
+}
+#list {
+	display: block;
+}
+
+.btn-hm {
+	color: #424448;
+	font-size: 25px;
+	padding: 17px 20px 10px 20px;
+	background-color: transparent;
+}
+.btn-hm:hover,
+.btn-hm:focus {
+	outline: none;
+	color: #d82732;
+}
+/*サイドバー終わり*/
+
+/*ヘッダーナビゲーション*/
+.nabvar-img {
+	height: 100%;
+	width: auto;
+}
+.dropdown-img {
+	height: 25px;
+	width: 25px;
+	border-radius: 3px;
+}
+.navbar-text {
+	margin-left: 5px
+}
+
+/*ヘッダーナビゲーション終わり*/
+
+/*その他*/
+.center{
+	text-align: center;
+}
+.right {
+	text-align: right;
+}
+.full {
+	width: 100%;
+}
+.floating {
+	position: fixed;
+	z-index: 1;
+}
+.all {
+	padding-top: 53px;
+}
+
+#reloadbutton {
+	margin-top: 10px;
+}
+
+a {
+	cursor: pointer;
+}
+/*その他*/
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+}
+
+/*flash用CSS*/
+div.message {
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    font-weight: normal;
+    padding: 0 1.5rem 0 1.5rem;
+    transition: height 300ms ease-out 0s;
+    background-color: #a0d3e8;
+    color: #626262;
+    top: 15px;
+    right: 15px;
+    z-index: 999;
+    overflow: hidden;
+    height: 50px;
+    line-height: 2.5em;
+    box-radius: 5px;
+}
+
+div.message:before {
+    line-height: 0;
+    font-size: 20px;
+    height: 12px;
+    width: 12px;
+    border-radius: 15px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    left: -11px;
+    background-color: #FFF;
+    padding: 12px 14px 12px 10px;
+    content: "i";
+    color: #a0d3e8;
+}
+
+div.message.error {
+    background-color: #f7bc1a;
+    color: #444;
+}
+
+div.message.error:before {
+    padding: 11px 16px 14px 7px;
+    color: #444;
+    content: "x";
+}
+div.message.hidden {
+    height: 0;
+}
+
+.container-fluid {
+	/*padding-left:0;*/
+	/*padding-right:0;*/
+}
+
+#activity-div{
+	background-color: #424448;
+	overflow: hidden;
+	white-space: nowrap;
+}
+#activity-text {
+	font-size:14px;
+	color: #fcfefe;
+	height: 21px;
+	overflow: hidden;
+	font-weight: normal;
+	white-space: nowrap;
+	/*margin: 0;*/
+}
+#welcome-user{
+	margin-right: 0;
+}

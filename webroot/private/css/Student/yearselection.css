@@ -1,0 +1,37 @@
+/* 年度タイトル */
+.exam-title{
+    font-size: 50px;
+    border-bottom: 1px solid #148d75;
+}
+
+/* タイトル下の文章調整 */
+.message{
+    margin-bottom: 20px;
+}
+
+/* テーブルの調整 */
+.year-box{
+    border: solid;
+    margin: 2px 50px 0px 10px;
+}
+
+/* テーブル行の色調整 */
+.year-box tr:nth-child(odd)  {
+    background-color: #EAF6FD;
+}
+
+/* テーブル項目の調整 */
+.tableTitle{
+    background-color: #fdf9f9;
+    text-align: center;
+}
+
+/* テーブル下部の空白調整 */
+.table-bordered{
+    margin-bottom:  0px;
+}
+
+/* 年度選択ボタンの文字色を変更する */
+.year-btn a{
+    color: #e7e7e7;
+}
