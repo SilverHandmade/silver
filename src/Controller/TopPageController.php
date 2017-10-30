@@ -17,8 +17,6 @@ class TopPageController extends AppController
     }
     public function index()
     {
-		$hello = 'Hello';
-		$world = 'Word!';
-		$this->set(compact('hello', 'world'));
+		
     }
 }
