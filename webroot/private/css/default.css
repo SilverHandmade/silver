@@ -26,21 +26,6 @@
 	cursor:pointer;
 	display: block;
 }
-#list {
-	display: block;
-}
-
-.btn-hm {
-	color: #424448;
-	font-size: 25px;
-	padding: 17px 20px 10px 20px;
-	background-color: transparent;
-}
-.btn-hm:hover,
-.btn-hm:focus {
-	outline: none;
-	color: #d82732;
-}
 /*サイドバー終わり*/
 
 /*ヘッダーナビゲーション*/
@@ -58,6 +43,9 @@
 }
 .navbar-text {
 	margin-left: 5px
+}
+.navbar-right {
+	padding-right: 50px;
 }
 
 /*ヘッダーナビゲーション終わり*/
