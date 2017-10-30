@@ -25,8 +25,6 @@
 	<?= $this->Html->script('prettify.js') ?>
 
 	<!-- 自作JS -->
-	<?= $this->Html->script('/private/js/index.js') ?>
-	<?= $this->Html->script('/private/js/selectInput.js') ?>
 
 	<?= $this->fetch('script') ?>
 
