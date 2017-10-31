@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $this->fetch('title')?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><?= $this->fetch('title')?></title>
 
 	<?= $this->Html->meta('icon') ?>
 
@@ -28,77 +28,81 @@
 
 	<!-- 自作JS -->
 	<?= $this->fetch('script') ?>
+	<?= $this->Html->script('/private/js/move_top.js') ?>
 
 </head>
 <body>
 <nav class="navbar navbar navbar-fixed-top" id="navbar">
 	<div class="row">
 		<div class="col-xs-12">
-	        <div class="navbar-header  navbar-left">
-	            <a class="navbar-brand" href="/SilverHandmade">
-	                <img src="<?= $this->request->getAttribute("webroot") ?>img/logo.png" class="nabvar-img">
-	            </a>
-	        </div>
-	        <div class="navbar-collapse collapse">
-	            <div class="nav navbar-nav navbar-right" id="welcome-user">
-	                <li class="dropdown navbar-buttton ">
-	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" style="font-weight: 500">
-	                        <img src="" class="dropdown-img">
-	                        ようこそ、nameさん
-	                        <span class="caret"></span>
-	                    </a>
-	                    <ul class="dropdown-menu" role="menu">
-	                        <li><a href="/apcom/logout">ログアウト</a></li>
-	                    </ul>
-	                </li>
-	            </div>
-	        </div>
-	    </div>
+			<div class="navbar-header  navbar-left">
+				<a class="navbar-brand" href="/SilverHandmade">
+					<img src="<?= $this->request->getAttribute("webroot") ?>img/logo.png" class="nabvar-img">
+				</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<div class="nav navbar-nav navbar-right" id="welcome-user">
+					<li class="dropdown navbar-buttton">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" style="font-weight: 500">
+							<img src="" class="dropdown-img">
+							ようこそ、nameさん
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/apcom/logout">ログアウト</a></li>
+						</ul>
+					</li>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="row">
-		<div id="navbar-accent"></div>
+		<div id="menubar">
+			<ul class="center">
+				<li><a href="">依頼</a></li>
+				<li><a href="">ワークショップ</a></li>
+				<li><a href="">動画</a></li>
+			</ul>
+		</div>
 	</div>
 </nav>
 
-<div class="all">
-    <div class="container-fluid">
-        <div class="row">
-            <!-- サイドカラム -->
-            <div class="col-xs-2 floating" id="sidebar">
-                <div class="row">
-                    <table class="table table-hover">
-						<tr class="success"><td onclick="location.reload();"><a href="">更新</a></td></tr>
-						<tr><td><a href="">Top</a></td></tr>
-						<tr><td><a href="">依頼</a></td></tr>
-						<tr><td><a href="">ワークショップ</a></td></tr>
-						<tr><td><a href="">知恵袋</a></td></tr>
-						<tr><td><a href="">動画</a></td></tr>
-						<?= $this->fetch('sidebar')?>
-                        <tr class="danger"><td><a href="/apcom/logout">ログアウト</a></td></tr>
-                    </table>
-                </div>
-            </div>
+<div class="container-fluid" id="all">
+	<div class="row">
+		<!-- サイドカラム -->
+		<div class="col-xs-2" id="sidebar">
+			<div class="row">
+				<ul>
+					<li class="success" onclick="location.reload();"><a>更新</a></li>
+					<li><a href="">依頼</a></li>
+					<li><a href="">ワークショップ</a></li>
+					<li><a href="">動画</a></li>
+					<?= $this->fetch('sidebar')?>
+					<li class="danger"><a href="/silver/logout">ログアウト</a></li>
+				</ul>
+			</div>
+		</div>
 
-            <!-- メインカラム -->
-            <div class="col-xs-8 col-xs-offset-2" id="col-main">
-				<?= $this->fetch('content') ?>
-            </div>
+		<!-- メインカラム -->
+		<div class="col-xs-offset-2 col-xs-8" id="col-main">
+			<?= $this->fetch('content') ?>
+		</div>
 
-            <!-- 右サイドカラム -->
-            <div class="col-xs-offset-1 col-xs-1">
-				<!-- 必要に応じて -->
-            </div>
-        </div>
-    </div>
+		<!-- 右サイドカラム -->
+		<div class="col-xs-2">
+			<p id="page-top"><a href="#wrap">PAGE TOP</a></p>
+		</div>
+	</div>
 </div>
 
-<div class="footer" >
-	<footer class="row">
-		<div class="col-xs-offset-2 col-xs-10">
+<!-- フッター -->
+<footer class="container-fluid">
+	<div class="row">
+		<div class="center">
 			Copyright &copy; 2017 Taguchi Corporation All rights reserved.
 		</div>
-	</footer>
-</div>
+	</div>
+</footer>
 
 </body>
 </html>
