@@ -28,6 +28,7 @@
 
 	<!-- 自作JS -->
 	<?= $this->fetch('script') ?>
+	<?= $this->Html->script('/private/js/move_top.js') ?>
 
 </head>
 <body>
@@ -56,46 +57,50 @@
 		</div>
 	</div>
 	<div class="row">
-		<div id="navbar-accent"></div>
+		<div id="menubar">
+			<ul class="center">
+				<li><a href="">依頼</a></li>
+				<li><a href="">ワークショップ</a></li>
+				<li><a href="">動画</a></li>
+			</ul>
+		</div>
 	</div>
 </nav>
 
-<div class="all">
-	<div class="container-fluid">
-		<div class="row" id="row-main">
-			<!-- サイドカラム -->
-			<div class="col-xs-2" id="sidebar">
-				<div class="row">
-					<ul>
-						<li class="success" onclick="location.reload();"><a href="">更新</a></li>
-						<li><a href="">Top</a></li>
-						<li><a href="">依頼</a></li>
-						<li><a href="">ワークショップ</a></li>
-						<li><a href="">知恵袋</a></li>
-						<li><a href="">動画</a></li>
-						<?= $this->fetch('sidebar')?>
-						<li class="danger"><a href="/silver/logout">ログアウト</a></li>
-					</ul>
-				</div>
+<div class="container-fluid" id="all">
+	<div class="row">
+		<!-- サイドカラム -->
+		<div class="col-xs-2" id="sidebar">
+			<div class="row">
+				<ul>
+					<li class="success" onclick="location.reload();"><a>更新</a></li>
+					<li><a href="">依頼</a></li>
+					<li><a href="">ワークショップ</a></li>
+					<li><a href="">動画</a></li>
+					<?= $this->fetch('sidebar')?>
+					<li class="danger"><a href="/silver/logout">ログアウト</a></li>
+				</ul>
 			</div>
+		</div>
 
-			<!-- メインカラム -->
-			<div class="col-xs-8" id="col-main">
-				<?= $this->fetch('content') ?>
-			</div>
+		<!-- メインカラム -->
+		<div class="col-xs-offset-2 col-xs-8" id="col-main">
+			<?= $this->fetch('content') ?>
+		</div>
 
-			<!-- 右サイドカラム -->
-			<div class="col-xs-2">
-				<!-- 必要に応じて -->
-			</div>
+		<!-- 右サイドカラム -->
+		<div class="col-xs-2">
+			<p id="page-top"><a href="#wrap">PAGE TOP</a></p>
 		</div>
 	</div>
 </div>
 
-
-<footer class="row">
-	<div class="center">
-		<p>Copyright &copy; 2017 Taguchi Corporation All rights reserved.</p>
+<!-- フッター -->
+<footer class="container-fluid">
+	<div class="row">
+		<div class="center">
+			Copyright &copy; 2017 Taguchi Corporation All rights reserved.
+		</div>
 	</div>
 </footer>
 
