@@ -29,6 +29,7 @@
 	<!-- 自作JS -->
 	<?= $this->fetch('script') ?>
 	<?= $this->Html->script('/private/js/move_top.js') ?>
+	<?= $this->Html->script('/private/js/index.js') ?>
 
 </head>
 <body>
@@ -56,9 +57,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		
-		<div id="menubar">
+	<div class="row" id="menubar">
+		<button class="btn btn-hm fui-list" id="list"></button>
+		<div id="menu">
+			<button class="btn btn-hm fui-cross" id="cross"></button>
 			<div class="col-md-offset-1 col-md-10">
 				<ul class="center">
 					<li><a href="">依頼</a></li>
