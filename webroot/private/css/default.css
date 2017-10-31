@@ -24,7 +24,7 @@ li.danger {
 li.success {
 	background-color: #dff0d8;
 }
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 	#sidebar {
 		width: 100vw;
 		min-height: auto;
@@ -39,53 +39,13 @@ li.success {
 	.navbar-right {
 		display: none;
 	}
+	#menubar * {
+		display: none;
+	}
 }
 /*サイドバー終わり*/
 
-#menubar {
-	height: 50px;
-	min-height: 50px;
-	max-height: 50px;
-	background-color: #c5b66d;
-}
-#menubar ul {
-	display: table;
-	height: inherit;
-	padding:0;
-	margin-left: calc(100vw / 12);
-	margin-right: calc(100vw / 12);
-}
-
-#menubar ul li {
-	height: inherit;
-	display: table-cell;
-	line-height: 50px;
-	vertical-align: middle;
-	width: calc((100vw - 100vw / 6) / 3);
-	font-size:20px;
-	border-right: solid  1px #ddd;
-}
-#menubar ul li:first-child {
-	border-left: solid  1px #ddd;
-}
-#menubar ul li a {
-	height: inherit;
-}
-#menubar ul li a:hover {
-	opacity: 0.65;
-}
-a {
-	display: block;
-}
-#menubar * {
-	color: #FFFFFF;
-}
-
-
 /*ヘッダーナビゲーション*/
-.navbar {
-	height: 105px;
-}
 .nabvar-img {
 	height: 100%;
 	width: auto;
@@ -99,9 +59,43 @@ a {
 	margin-left: 5px
 }
 .navbar-right {
-	padding-right: 12px;
+	padding-right: 21px;
 }
 
+#menubar {
+	height: 51px;
+	min-height: 51px;
+	max-height: 51px;
+	background-color: #c5b66d;
+	border-top: solid 1px black;
+}
+#menubar ul {
+	display: table;
+	height: inherit;
+	padding:0;
+	margin: 0;
+}
+#menubar ul li {
+	height: inherit;
+	display: table-cell;
+	line-height: 50px;
+	vertical-align: middle;
+	width: calc(100vw / 3);
+	font-size:20px;
+	border-right: solid  1px #ddd;
+}
+#menubar ul li:first-child {
+	border-left: solid  1px #ddd;
+}
+#menubar ul li a {
+	height: inherit;
+}
+#menubar ul li a:hover {
+	opacity: 0.65;
+}
+#menubar * {
+	color: #FFFFFF;
+}
 /*ヘッダーナビゲーション終わり*/
 
 /*footer*/
@@ -163,26 +157,18 @@ footer {
 
 a {
 	cursor: pointer;
+	display: block;
 }
 a:hover {
 	text-decoration: none;
 }
 a:focus {
 	outline:none;
+	border: none;
 }
 /*その他終わり*/
 
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
 	min-height: 100%;
-}
-
-#navbar-accent {
-	height: 21px;
-	background-color: #c5b66d;
-	border-top: solid 1px black;
-}
-
-a :focus {
-	border: none;
 }
