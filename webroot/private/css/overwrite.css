@@ -53,6 +53,9 @@ a.navbar-brand {
 	 border-bottom-color: initial;
 }
 
-.navbar-inverse {
+.navbar {
   background-color: #497937;
+}
+.navbar-fixed-top {
+	border-width: 0 0 0px
 }
