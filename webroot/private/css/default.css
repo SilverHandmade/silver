@@ -1,4 +1,7 @@
 /*サイドバー*/
+/*{
+	border: solid 1px black
+	}*/
 #sidebar {
 	background-color: #f8f4d6;
 	height: 100%;
