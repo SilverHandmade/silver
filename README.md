@@ -50,4 +50,7 @@ The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) CSS
 framework by default. You can, however, replace it with any other library or
 custom styles.
 "# cake_sample"
+<<<<<<< HEAD
 小山龍ノ介　卍解！！
+=======
+>>>>>>> b96d96de6f18b7294be580dfd21e27bc052b35f6
