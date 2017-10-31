@@ -69,27 +69,13 @@
 
 <div class="container-fluid" id="all">
 	<div class="row">
-		<!-- サイドカラム -->
-		<div class="col-xs-2" id="sidebar">
-			<div class="row">
-				<ul>
-					<li class="success" onclick="location.reload();"><a>更新</a></li>
-					<li><a href="">依頼</a></li>
-					<li><a href="">ワークショップ</a></li>
-					<li><a href="">動画</a></li>
-					<?= $this->fetch('sidebar')?>
-					<li class="danger"><a href="/silver/logout">ログアウト</a></li>
-				</ul>
-			</div>
-		</div>
-
 		<!-- メインカラム -->
-		<div class="col-xs-offset-2 col-xs-8" id="col-main">
+		<div class="col-xs-offset-1 col-xs-10" id="col-main">
 			<?= $this->fetch('content') ?>
 		</div>
 
 		<!-- 右サイドカラム -->
-		<div class="col-xs-2">
+		<div class="col-xs-1">
 			<p id="page-top"><a href="#wrap">PAGE TOP</a></p>
 		</div>
 	</div>
