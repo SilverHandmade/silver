@@ -66,9 +66,12 @@ li.success {
 	border-left: solid  1px #ddd;
 }
 #munubar ul li a {
-	color: #fff;
+	color: #FFFFFF;
 	display: block;
 	position: absolute;
+}
+#munubar ul li a:link {
+	color: #FFFFFF;
 }
 
 /*ヘッダーナビゲーション*/
@@ -88,7 +91,7 @@ li.success {
 	margin-left: 5px
 }
 .navbar-right {
-	padding-right: 50px;
+	padding-right: 12px;
 }
 
 /*ヘッダーナビゲーション終わり*/

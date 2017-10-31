@@ -34,7 +34,7 @@
 <body>
 <nav class="navbar navbar navbar-fixed-top" id="navbar">
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-xs-offset-1 col-xs-10">
 			<div class="navbar-header  navbar-left">
 				<a class="navbar-brand" href="/SilverHandmade">
 					<img src="<?= $this->request->getAttribute("webroot") ?>img/logo.png" class="nabvar-img">
