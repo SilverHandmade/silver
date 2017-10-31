@@ -27,10 +27,6 @@
 	<?= $this->Html->script('prettify.js') ?>
 
 	<!-- 自作JS -->
-<<<<<<< HEAD
-
-=======
->>>>>>> d8b563f3c0097d8f7f08f449f02c0eeaa5798f54
 	<?= $this->fetch('script') ?>
 
 </head>
