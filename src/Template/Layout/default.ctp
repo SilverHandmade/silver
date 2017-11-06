@@ -29,12 +29,13 @@
 	<!-- 自作JS -->
 	<?= $this->fetch('script') ?>
 	<?= $this->Html->script('/private/js/move_top.js') ?>
+	<?= $this->Html->script('/private/js/index.js') ?>
 
 </head>
 <body>
 <nav class="navbar navbar navbar-fixed-top" id="navbar">
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-md-offset-1 col-md-10">
 			<div class="navbar-header  navbar-left">
 				<a class="navbar-brand" href="/SilverHandmade">
 					<img src="<?= $this->request->getAttribute("webroot") ?>img/logo.png" class="nabvar-img">
@@ -56,40 +57,42 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div id="menubar">
-			<ul class="center">
-				<li><a href="">依頼</a></li>
-				<li><a href="">ワークショップ</a></li>
-				<li><a href="">動画</a></li>
-			</ul>
+	<div class="row" id="menubar">
+		<div class="pc">
+			<div class="col-md-offset-1 col-md-10">
+				<ul class="center">
+					<li><a href="">依頼</a></li>
+					<li><a href="">ワークショップ</a></li>
+					<li><a href="">動画</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mob">
+			<button class="btn btn-hm fui-list" id="list"></button>
+			<div id="menu">
+				<button class="btn btn-hm fui-cross" id="cross"></button>
+				<div class="col-md-offset-1 col-md-10">
+					<ul class="center">
+						<li><a href="">依頼</a></li>
+						<li><a href="">ワークショップ</a></li>
+						<li><a href="">動画</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </nav>
 
 <div class="container-fluid" id="all">
 	<div class="row">
-		<!-- サイドカラム -->
-		<div class="col-xs-2" id="sidebar">
-			<div class="row">
-				<ul>
-					<li class="success" onclick="location.reload();"><a>更新</a></li>
-					<li><a href="">依頼</a></li>
-					<li><a href="">ワークショップ</a></li>
-					<li><a href="">動画</a></li>
-					<?= $this->fetch('sidebar')?>
-					<li class="danger"><a href="/silver/logout">ログアウト</a></li>
-				</ul>
-			</div>
-		</div>
-
 		<!-- メインカラム -->
-		<div class="col-xs-offset-2 col-xs-8" id="col-main">
+		<div class="col-md-offset-1 col-md-10" id="col-main">
+			<?= $this->Flash->render() ?>
 			<?= $this->fetch('content') ?>
 		</div>
 
 		<!-- 右サイドカラム -->
-		<div class="col-xs-2">
+		<div class="col-md-1">
 			<p id="page-top"><a href="#wrap">PAGE TOP</a></p>
 		</div>
 	</div>
