@@ -20,7 +20,21 @@ class LoginController extends AppController
     public function initialize()
     {
         parent::initialize();
-
+		//認証
+		$this->loadComponent('Auth',[
+			'authenticate' => [
+				'Form' => [
+					'fields' => [
+						'username' => 'email',
+						'password' => 'password'
+					]
+				]
+			],
+			'loginAction' => [
+				'controller' => 'Login',
+				'action' => 'index'
+			]
+		]);
 
     }
     public function index()
