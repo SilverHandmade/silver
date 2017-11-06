@@ -85,6 +85,7 @@
 
 		<!-- メインカラム -->
 		<div class="col-xs-offset-2 col-xs-8" id="col-main">
+			<?= $this->Flash->render() ?>
 			<?= $this->fetch('content') ?>
 		</div>
 

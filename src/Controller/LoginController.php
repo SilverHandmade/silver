@@ -13,23 +13,6 @@ class LoginController extends AppController
     public function initialize()
     {
       parent::initialize();
-$this->loadComponent('Flash');
-//認証
-$this->loadComponent('Auth',[
-'authenticate' => [
-'Form' => [
-  'fields' => [
-    'username' => 'email',
-    'password' => 'password'
-  ]
-]
-],
-'loginAction' => [
-'controller' => 'Users',
-'action' => 'login'
-]
-]);
-
     }
     public function index()
     {
