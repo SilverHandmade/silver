@@ -7,7 +7,7 @@
     </tr>
     <tr>
       <th>パスワード</th>
-      <input type="text" name="password" value=""><br>
+      <input type="password" name="password" value=""><br>
     </tr>
   <br>
   <button type="button" name="regista">登録</button>
