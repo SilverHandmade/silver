@@ -1,80 +1,4 @@
-/*サイドバー*/
-#sidebar {
-	background-color: #f8f4d6;
-	height: 100%;
-	position: fixed;
-	z-index: 1;
-}
-#sidebar div ul {
-	list-style: none;
-	margin: 0px;
-	padding: 0px;
-}
-#sidebar div ul li {
-	padding: 10px 0 10px 10px;
-	border-bottom: solid 1px #ddd;
-}
-#sidebar div ul li *{
-	padding: 10px 0 10px 10px;
-	display: block;
-}
-li.danger {
-	background-color: #f2dede;
-}
-li.success {
-	background-color: #dff0d8;
-}
-@media (max-width: 900px) {
-	#sidebar {
-		width: 100vw;
-		min-height: auto;
-		position: relative;
-	}
-	#sidebar div ul li *{
-		padding: 2px 0 2px 10px;
-	}
-	#sidebar div ul {
-		margin: 0;
-	}
-	.navbar-right {
-		display: none;
-	}
-}
-/*サイドバー終わり*/
-
-#menubar {
-	height: 30px;
-	min-height: 30px;
-	max-height: 30px;
-	background-color: #c5b66d;
-}
-#menubar ul {
-	list-style: none;
-	padding:0;
-	font-size:0px;
-	margin-left: calc(100vw / 12);
-	margin-right: calc(100vw / 12);
-}
-
-#menubar ul li {
-	display: inline-block;
-	width: calc((100vw - 100vw / 6) / 3);
-	font-size:20px;
-	border-right: solid  1px #ddd;
-}
-#menubar ul li:first-child {
-	border-left: solid  1px #ddd;
-}
-#munubar ul li a {
-	color: #fff;
-	display: block;
-	position: absolute;
-}
-
 /*ヘッダーナビゲーション*/
-.navbar {
-	height: 74px;
-}
 .nabvar-img {
 	height: 100%;
 	width: auto;
@@ -88,9 +12,94 @@ li.success {
 	margin-left: 5px
 }
 .navbar-right {
-	padding-right: 50px;
+	padding-right: 21px;
+}
+.mob, .btn-hm {
+	display: none;
 }
 
+#menubar {
+	height: 51px;
+	min-height: 51px;
+	max-height: 51px;
+	background-color: #c5b66d;
+	border-top: solid 1px black;
+}
+#menubar ul {
+	background-color: inherit;
+	display: table;
+	height: inherit;
+	padding:0;
+	margin: 0;
+}
+#menubar ul li {
+	background-color: inherit;
+	height: inherit;
+	display: table-cell;
+	line-height: 50px;
+	vertical-align: middle;
+	width: calc(100vw / 3);
+	border-right: solid  1px #ddd;
+}
+#menubar ul li:first-child {
+	border-left: solid  1px #ddd;
+}
+#menubar ul li a {
+	height: inherit;
+}
+#menubar ul li a:hover {
+	opacity: 0.65;
+}
+#menubar * {
+	font-size:20px;
+	color: #FFFFFF;
+	padding: 0;
+}
+
+@media (max-width: 992px) {
+	.navbar-right {
+		display: none;
+	}
+
+	.mob {
+		display: block;
+	}
+	.pc {
+		display: none;
+	}
+	.btn-hm {
+		display: block;
+		height: 51px;
+		margin-left: 25px;
+		vertical-align: middle;
+		color: #FFFFFF;
+		font-size: 25px;
+		background-color: transparent;
+		text-align: left;
+	}
+	.btn-hm:hover,
+	.btn-hm:focus {
+		outline: none;
+		opacity: 0.65;
+	}
+	#menu ul {
+		background-color: inherit;
+		display: block;
+		width: inherit;
+	}
+	#menu ul li {
+		display: block;
+		width: 100%;
+		border-top: solid 1px #ddd;
+	}
+	#menu {
+		width: 100%;
+		text-align: right;
+		background-color: #c5b66d;
+		border: none;
+		display: none;
+	}
+}
 /*ヘッダーナビゲーション終わり*/
 
 /*footer*/
@@ -116,7 +125,7 @@ footer {
     background: #666;
     text-decoration: none;
     color: #fff;
-    width: 100px;
+    width: 100%;
     padding: 30px 0;
     text-align: center;
     display: block;
@@ -124,7 +133,7 @@ footer {
 }
 #page-top a:hover {
     text-decoration: none;
-    background: #999;
+	opacity: 0.65;
 }
 
 /*その他*/
@@ -142,9 +151,8 @@ footer {
 	z-index: 1;
 }
 #all {
-	margin-top: 97px;
-	min-height: calc(100vh - 77px);
-	max-height: 100%;
+	margin-top: 105px;
+	min-height: calc(100vh - 105px);
 }
 
 #reloadbutton {
@@ -153,26 +161,18 @@ footer {
 
 a {
 	cursor: pointer;
+	display: block;
 }
 a:hover {
 	text-decoration: none;
 }
 a:focus {
 	outline:none;
+	border: none;
 }
 /*その他終わり*/
 
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
 	min-height: 100%;
-}
-
-#navbar-accent {
-	height: 21px;
-	background-color: #c5b66d;
-	border-top: solid 1px black;
-}
-
-a :focus {
-	border: none;
 }

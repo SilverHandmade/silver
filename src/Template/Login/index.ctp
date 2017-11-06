@@ -1,17 +1,19 @@
 <div class="">
-  <table>
-    <tr>
-    <th>メールアドレス</th>
-    <td><input type="text" name="mail" value=""></td><br>
-    </tr>
-    <tr>
-      <th>パスワード</th>
-      <td><input type="text" name="pass" value=""></td>
-    </tr>
-
-  </table>
-<input type="submit" name="login" value="ログイン">
-
-
-
+	<h1>ログイン</h1>
+<table>
+  <tr>
+    <th>E-Mail</th>
+    <td><input type="text" name="" value=""></td>
+  </tr>
+  <tr>
+    <th>PassWord</th>
+    <td><input type="password" name="" value=""></td>
+  </tr>
+  <tr style="text-align:right;">
+    <td colspan="2">
+      <input type="submit" name="" value="登録">
+      <input type="submit" name="" value="ログイン">
+    </td>
+  </tr>
+</table>
 </div>
