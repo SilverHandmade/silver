@@ -85,14 +85,18 @@
 
 <div class="container-fluid" id="all">
 	<div class="row">
+		<!-- サイドカラム -->
+		<div class="col-md-1" id="side">
+		</div>
+		
 		<!-- メインカラム -->
-		<div class="col-md-offset-1 col-md-10" id="col-main">
+		<div class="col-md-10" id="col-main">
 			<?= $this->Flash->render() ?>
 			<?= $this->fetch('content') ?>
 		</div>
 
 		<!-- 右サイドカラム -->
-		<div class="col-md-1">
+		<div class="col-md-1" id="side">
 			<p id="page-top"><a href="#wrap">PAGE TOP</a></p>
 		</div>
 	</div>
