@@ -6,4 +6,6 @@
   border: solid 3px #497937;/*線の色*/
   border-radius: 10px;/*角の丸み*/
   width: 30%;/*幅の調節*/
+  display: block;
+  text-align: center;
 }
