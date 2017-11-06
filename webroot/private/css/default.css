@@ -14,9 +14,10 @@
 .navbar-right {
 	padding-right: 21px;
 }
-.btn-hm {
+.mob, .btn-hm {
 	display: none;
 }
+
 #menubar {
 	height: 51px;
 	min-height: 51px;
@@ -25,12 +26,14 @@
 	border-top: solid 1px black;
 }
 #menubar ul {
+	background-color: inherit;
 	display: table;
 	height: inherit;
 	padding:0;
 	margin: 0;
 }
 #menubar ul li {
+	background-color: inherit;
 	height: inherit;
 	display: table-cell;
 	line-height: 50px;
@@ -57,6 +60,13 @@
 	.navbar-right {
 		display: none;
 	}
+
+	.mob {
+		display: block;
+	}
+	.pc {
+		display: none;
+	}
 	.btn-hm {
 		display: block;
 		height: 51px;
@@ -73,19 +83,19 @@
 		opacity: 0.65;
 	}
 	#menu ul {
+		background-color: inherit;
 		display: block;
 		width: inherit;
 	}
 	#menu ul li {
 		display: block;
 		width: 100%;
-		background-color: inherit;
 		border-top: solid 1px #ddd;
 	}
 	#menu {
 		width: 100%;
 		text-align: right;
-		background-color: inherit;
+		background-color: #c5b66d;
 		border: none;
 		display: none;
 	}

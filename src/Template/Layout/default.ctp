@@ -58,15 +58,26 @@
 		</div>
 	</div>
 	<div class="row" id="menubar">
-		<button class="btn btn-hm fui-list" id="list"></button>
-		<div id="menu">
-			<button class="btn btn-hm fui-cross" id="cross"></button>
+		<div class="pc">
 			<div class="col-md-offset-1 col-md-10">
 				<ul class="center">
 					<li><a href="">依頼</a></li>
 					<li><a href="">ワークショップ</a></li>
 					<li><a href="">動画</a></li>
 				</ul>
+			</div>
+		</div>
+		<div class="mob">
+			<button class="btn btn-hm fui-list" id="list"></button>
+			<div id="menu">
+				<button class="btn btn-hm fui-cross" id="cross"></button>
+				<div class="col-md-offset-1 col-md-10">
+					<ul class="center">
+						<li><a href="">依頼</a></li>
+						<li><a href="">ワークショップ</a></li>
+						<li><a href="">動画</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
