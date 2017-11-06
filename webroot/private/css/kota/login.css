@@ -1,0 +1,9 @@
+.login {
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+  margin: 2em auto;
+  background: #FFF;
+  border: solid 3px #497937;/*線の色*/
+  border-radius: 10px;/*角の丸み*/
+  width: 30%;/*幅の調節*/
+}
