@@ -1,14 +1,5 @@
-<div>
-  <h1>ログイン</h1>
-
-    <tr>
-      <th>メールアドレス</th>
-      <input type="text" name="mailadress" value=""><br><br>
-    </tr>
-    <tr>
-      <th>パスワード</th>
-      <input type="password" name="password" value=""><br>
-    </tr>
-  <br>
-  <button type="button" name="regista">登録</button>
-</div>
+<form action="/regist" method="post" >
+    <div>Email: <input type="text" name="email"></div>
+    <div>Password: <input type="text" name="password"></div>
+    <input type="submit" value="登録する">
+</form>

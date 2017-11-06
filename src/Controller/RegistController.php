@@ -12,11 +12,15 @@ class RegistController extends AppController
 
     public function initialize()
     {
-        parent::initialize();
-
+        $this->viewBuilder()->layout('base');
     }
+
     public function index()
     {
-
+        if ($this->request->is('post')) {
+            $this->render('regist');
+        } else {
+            $this->render('index');
+        }
     }
 }

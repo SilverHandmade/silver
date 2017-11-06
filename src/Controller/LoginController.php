@@ -25,7 +25,7 @@ class LoginController extends AppController
 			'authenticate' => [
 				'Form' => [
 					'fields' => [
-						'username' => 'email',
+						'username' => 'id',
 						'password' => 'password'
 					]
 				]
@@ -33,10 +33,15 @@ class LoginController extends AppController
 			'loginAction' => [
 				'controller' => 'Login',
 				'action' => 'index'
-			]
+			],
+      'Registaction' => [
+        'controller' => 'Regist',
+        'action' => 'index'
+      ]
 		]);
 
     }
+    // ログイン
     public function index()
     {
 			if ($this->request->is('post')) {
@@ -49,6 +54,5 @@ class LoginController extends AppController
 				}
 		}
 
-        // ログイン
      }
 }
