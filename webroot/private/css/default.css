@@ -151,8 +151,14 @@ footer {
 	z-index: 1;
 }
 #all {
+<<<<<<< HEAD
 	margin-top: 105px;
 	min-height: calc(100vh - 105px);
+=======
+	margin-top: 87px;
+	min-height: calc(100vh - 77px);
+	max-height: 100%;
+>>>>>>> c672213be224b9a327114796f465a830e8773548
 }
 
 #reloadbutton {
