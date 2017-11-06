@@ -37,7 +37,7 @@
 	<div class="row">
 		<div class="col-md-offset-1 col-md-10">
 			<div class="navbar-header  navbar-left">
-				<a class="navbar-brand" href="/SilverHandmade">
+				<a class="navbar-brand" href="/silver">
 					<img src="<?= $this->request->getAttribute("webroot") ?>img/logo.png" class="nabvar-img">
 				</a>
 			</div>
@@ -88,7 +88,7 @@
 		<!-- サイドカラム -->
 		<div class="col-md-1" id="side">
 		</div>
-		
+
 		<!-- メインカラム -->
 		<div class="col-md-10" id="col-main">
 			<?= $this->Flash->render() ?>
