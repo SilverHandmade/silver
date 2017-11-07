@@ -7,21 +7,22 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Users Model
+ * Facilities Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Facilities
- * @property |\Cake\ORM\Association\BelongsTo $FacilityClasses
- * @property |\Cake\ORM\Association\HasMany $WitsMessages
+ * @property \App\Model\Table\FacilityClassesTable|\Cake\ORM\Association\BelongsTo $FacilityClasses
+ * @property \App\Model\Table\MoviesTable|\Cake\ORM\Association\HasMany $Movies
+ * @property \App\Model\Table\ProductsTable|\Cake\ORM\Association\HasMany $Products
+ * @property \App\Model\Table\WitsesTable|\Cake\ORM\Association\HasMany $Witses
  *
- * @method \App\Model\Entity\User get($primaryKey, $options = [])
- * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Facility get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Facility newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Facility[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Facility|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Facility patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Facility[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Facility findOrCreate($search, callable $callback = null, $options = [])
  */
-class UsersTable extends Table
+class FacilitiesTable extends Table
 {
 
     /**
@@ -34,20 +35,22 @@ class UsersTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('users');
-        $this->setDisplayField('id');
+        $this->setTable('facilities');
+        $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Facilities', [
-            'foreignKey' => 'facilities_id',
-            'joinType' => 'INNER'
-        ]);
         $this->belongsTo('FacilityClasses', [
             'foreignKey' => 'facility_classes_id',
             'joinType' => 'INNER'
         ]);
-        $this->hasMany('WitsMessages', [
-            'foreignKey' => 'user_id'
+        $this->hasMany('Movies', [
+            'foreignKey' => 'facility_id'
+        ]);
+        $this->hasMany('Products', [
+            'foreignKey' => 'facility_id'
+        ]);
+        $this->hasMany('Witses', [
+            'foreignKey' => 'facility_id'
         ]);
     }
 
@@ -64,24 +67,19 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
-
-        $validator
             ->scalar('name')
             ->requirePresence('name', 'create')
             ->notEmpty('name');
 
         $validator
-            ->scalar('hurigana')
-            ->requirePresence('hurigana', 'create')
-            ->notEmpty('hurigana');
+            ->integer('Post')
+            ->requirePresence('Post', 'create')
+            ->notEmpty('Post');
 
         $validator
-            ->scalar('password')
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->scalar('address')
+            ->requirePresence('address', 'create')
+            ->notEmpty('address');
 
         $validator
             ->integer('Del_flg')
@@ -100,8 +98,6 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
-        $rules->add($rules->existsIn(['facilities_id'], 'Facilities'));
         $rules->add($rules->existsIn(['facility_classes_id'], 'FacilityClasses'));
 
         return $rules;
