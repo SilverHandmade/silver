@@ -35,18 +35,25 @@ class LoginController extends AppController
 				'action' => 'index'
 			]
 		]);
-
     }
     public function index()
     {
 		if ($this->request->is('post')) {
 			$user = $this->Auth->identify();
 			if ($user) {
-					$this->Auth->setUser($user);
-					return $this->redirect(['controller' => 'TopPage', 'action' => 'index']);
-			} else {
-					$this->Flash->error(__('Username or password is incorrect'));
+				$this->Auth->setUser($user);
+				$session->write([
+					'username' => $user['name'],
+					'userID' => $user['email']
+				]);
+				return $this->redirect(['controller' => 'TopPage', 'action' => 'index']);
 			}
+			$this->Flash->error(__('Invalid username or password, try again'));
 		}
-     }
+    }
+
+
+	public function logout() {
+		return $this->redirect($this->Auth->logout());
+	}
 }
