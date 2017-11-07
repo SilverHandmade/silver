@@ -14,20 +14,18 @@ class RequestController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->loadmodel('facilities');
+        //$this->loadmodel('Facilities');
 
     }
     public function index()
     {
-      $connection = ConnectionManager::get('default');
-      $query = $this->Facilities->find();
-      $results =
-          $query->select('*')
-          ->from('facilities')
-          ->execute();
+      
+      		//$query = $this->Facilities->find()
+          //->select(['name', 'post','address'])
+          //->where(['facility_classes_id =' => 2]);
+      		//$results = $query->all()->toArray();
 
-
-          $this->set('results', $results->toArray());
+      //$this->set(compact('results'));
 
 
 
