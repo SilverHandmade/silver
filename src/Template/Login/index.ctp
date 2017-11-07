@@ -2,6 +2,6 @@
 <?= $this->Form->create() ?>
 <?= $this->Form->input('email') ?>
 <?= $this->Form->input('password') ?>
-<?= $this->Form->button('Regist')?>
+<a class="btn btn-info" href="/silver/regist">regist</a>
 <?= $this->Form->button('Login') ?>
 <?= $this->Form->end() ?>
