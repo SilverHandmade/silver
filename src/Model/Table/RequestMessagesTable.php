@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * RequestMessages Model
  *
+ * @property |\Cake\ORM\Association\BelongsTo $Users
+ *
  * @method \App\Model\Entity\RequestMessage get($primaryKey, $options = [])
  * @method \App\Model\Entity\RequestMessage newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\RequestMessage[] newEntities(array $data, array $options = [])
@@ -33,6 +35,11 @@ class RequestMessagesTable extends Table
         $this->setTable('request_messages');
         $this->setDisplayField('id');
         $this->setPrimaryKey(['id', 'ren']);
+
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
@@ -67,5 +74,19 @@ class RequestMessagesTable extends Table
             ->notEmpty('Del_flg');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
+
+        return $rules;
     }
 }
