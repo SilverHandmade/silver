@@ -7,7 +7,6 @@ use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
-    // $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
 	$routes->connect('/logout', ['controller' => 'Login', 'action' => 'logout']);
 
