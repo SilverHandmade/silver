@@ -6,25 +6,30 @@ use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
-use Cake\ORM\TableRegistry;
+use Cake\Datasource\ConnectionManager;
+
 class RequestController extends AppController
 {
 
     public function initialize()
     {
         parent::initialize();
+        $this->loadmodel('facilities');
+
     }
     public function index()
     {
-      {
+      $connection = ConnectionManager::get('default');
+      $query = $this->Facilities->find();
+      $results =
+          $query->select('*')
+          ->from('facilities')
+          ->execute();
 
-        // Table
-        $facilities = TableRegistry::get('facilities'); // 呼び出したいテーブル名を指定
-        $query = $facilities->find(); // 検索クエリです。
-        foreach($query as $row){
-          $facility .= $row['name']; // データをまとめて
-        }
-        $this->set('facility',$facility); // ここでセットしてテンプレートViewに渡します
-      }
+
+          $this->set('results', $results->toArray());
+
+
+
     }
 }
