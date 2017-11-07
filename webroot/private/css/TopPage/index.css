@@ -1,0 +1,5 @@
+#panels div {
+	background-color: blue;
+	min-height: 20vh;
+	border: 1px solid #ddd;
+}
