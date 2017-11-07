@@ -9,6 +9,10 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property |\Cake\ORM\Association\BelongsTo $Facilities
+ * @property |\Cake\ORM\Association\BelongsTo $FacilityClasses
+ * @property |\Cake\ORM\Association\HasMany $WitsMessages
+ *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
@@ -16,8 +20,6 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class UsersTable extends Table
 {
@@ -36,7 +38,17 @@ class UsersTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
+        $this->belongsTo('Facilities', [
+            'foreignKey' => 'facilities_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('FacilityClasses', [
+            'foreignKey' => 'facility_classes_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->hasMany('WitsMessages', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**
@@ -57,9 +69,24 @@ class UsersTable extends Table
             ->notEmpty('email');
 
         $validator
+            ->scalar('name')
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
+
+        $validator
+            ->scalar('hurigana')
+            ->requirePresence('hurigana', 'create')
+            ->notEmpty('hurigana');
+
+        $validator
             ->scalar('password')
             ->requirePresence('password', 'create')
             ->notEmpty('password');
+
+        $validator
+            ->integer('Del_flg')
+            ->requirePresence('Del_flg', 'create')
+            ->notEmpty('Del_flg');
 
         return $validator;
     }
@@ -74,6 +101,8 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->existsIn(['facilities_id'], 'Facilities'));
+        $rules->add($rules->existsIn(['facility_classes_id'], 'FacilityClasses'));
 
         return $rules;
     }
