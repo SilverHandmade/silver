@@ -26,9 +26,7 @@ class MoviesTableTest extends TestCase
     public $fixtures = [
         'app.movies',
         'app.facilities',
-        'app.facility_classes',
-        'app.products',
-        'app.witses'
+        'app.facility_classes'
     ];
 
     /**

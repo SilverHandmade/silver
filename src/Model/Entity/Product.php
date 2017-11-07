@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $explain
  * @property \Cake\I18n\FrozenTime $Postdate
- * @property int $facility_id
+ * @property int $user_id
  * @property int $access
  * @property int $Del_flg
  *

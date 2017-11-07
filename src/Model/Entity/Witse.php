@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $title
  * @property string $content
- * @property int $facility_id
+ * @property int $user_id
  * @property \Cake\I18n\FrozenTime $Postdate
  * @property int $kan_flg
  * @property int $Del_flg

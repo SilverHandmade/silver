@@ -27,9 +27,10 @@ class ProductsTableTest extends TestCase
         'app.products',
         'app.facilities',
         'app.facility_classes',
-        'app.movies',
-        'app.witses',
-        'app.requests'
+        'app.requests',
+        'app.f_motos',
+        'app.f_sakis',
+        'app.request_detailses'
     ];
 
     /**

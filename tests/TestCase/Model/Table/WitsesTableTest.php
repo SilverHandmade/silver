@@ -26,13 +26,7 @@ class WitsesTableTest extends TestCase
     public $fixtures = [
         'app.witses',
         'app.facilities',
-        'app.facility_classes',
-        'app.movies',
-        'app.products',
-        'app.requests',
-        'app.f_motos',
-        'app.f_sakis',
-        'app.request_detailses'
+        'app.facility_classes'
     ];
 
     /**

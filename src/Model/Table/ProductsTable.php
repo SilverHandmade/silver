@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Products Model
  *
- * @property \App\Model\Table\FacilitiesTable|\Cake\ORM\Association\BelongsTo $Facilities
+ * @property |\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\RequestsTable|\Cake\ORM\Association\HasMany $Requests
  *
  * @method \App\Model\Entity\Product get($primaryKey, $options = [])
@@ -37,8 +37,8 @@ class ProductsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Facilities', [
-            'foreignKey' => 'facility_id',
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
         $this->hasMany('Requests', [
@@ -94,7 +94,7 @@ class ProductsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['facility_id'], 'Facilities'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
     }

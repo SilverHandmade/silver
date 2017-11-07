@@ -10,9 +10,6 @@ use Cake\Validation\Validator;
  * Facilities Model
  *
  * @property \App\Model\Table\FacilityClassesTable|\Cake\ORM\Association\BelongsTo $FacilityClasses
- * @property \App\Model\Table\MoviesTable|\Cake\ORM\Association\HasMany $Movies
- * @property \App\Model\Table\ProductsTable|\Cake\ORM\Association\HasMany $Products
- * @property \App\Model\Table\WitsesTable|\Cake\ORM\Association\HasMany $Witses
  *
  * @method \App\Model\Entity\Facility get($primaryKey, $options = [])
  * @method \App\Model\Entity\Facility newEntity($data = null, array $options = [])
@@ -42,15 +39,6 @@ class FacilitiesTable extends Table
         $this->belongsTo('FacilityClasses', [
             'foreignKey' => 'facility_classes_id',
             'joinType' => 'INNER'
-        ]);
-        $this->hasMany('Movies', [
-            'foreignKey' => 'facility_id'
-        ]);
-        $this->hasMany('Products', [
-            'foreignKey' => 'facility_id'
-        ]);
-        $this->hasMany('Witses', [
-            'foreignKey' => 'facility_id'
         ]);
     }
 

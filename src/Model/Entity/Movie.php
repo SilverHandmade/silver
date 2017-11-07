@@ -11,7 +11,7 @@ use Cake\ORM\Entity;
  * @property string $explain
  * @property \Cake\I18n\FrozenTime $contribution
  * @property string $movie_url
- * @property int $facility_id
+ * @property int $user_id
  * @property int $Del_flg
  *
  * @property \App\Model\Entity\Facility $facility

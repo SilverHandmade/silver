@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Movies Model
  *
- * @property \App\Model\Table\FacilitiesTable|\Cake\ORM\Association\BelongsTo $Facilities
+ * @property |\Cake\ORM\Association\BelongsTo $Users
  *
  * @method \App\Model\Entity\Movie get($primaryKey, $options = [])
  * @method \App\Model\Entity\Movie newEntity($data = null, array $options = [])
@@ -36,8 +36,8 @@ class MoviesTable extends Table
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Facilities', [
-            'foreignKey' => 'facility_id',
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -90,7 +90,7 @@ class MoviesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['facility_id'], 'Facilities'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
     }
