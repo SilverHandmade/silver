@@ -1,14 +1,45 @@
-<div>
-  <h1>ログイン</h1>
+<?= $this->Html->css('/private/css/kota/regist.css') ?>
+<?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
+<?= $this->Html->css('regist.css') ?>
 
-    <tr>
-      <th>メールアドレス</th>
-      <input type="text" name="mailadress" value=""><br><br>
-    </tr>
-    <tr>
-      <th>パスワード</th>
-      <input type="password" name="password" value=""><br>
-    </tr>
-  <br>
-  <button type="button" name="regista">登録</button>
+<div class="col-md-offset-2 col-md-8 center" id="form">
+
+  <p class="form-title">新規登録</p>
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+  <form action="#">
+    <p class="font-color">名前</p>
+    <p class=".username">
+      <input type="text" name="username" value="">
+    </p>
+    <p class="font-color">フリガナ</p>
+    <p class="furigana">
+      <input type="text" name="furigana" value="">
+    </p>
+    <p class="font-color">施設名</p>
+    <p class="facilityname">
+      <input type="text" name="facilityname" value="">
+    </p>
+    <p class="font-color">メールアドレス</p>
+    <p class="mailadress">
+      <input type="text" name="mailadress" value="">
+    </p>
+    <br>
+    <p class="mailadress">
+      <input type="text" name="remailadress" value="">
+    </p>
+    <p class="font-color">パスワード</p>
+    <p class="password">
+      <input type="password" name="password" value="">
+    </p>
+    <br>
+    <p>
+      <input type="password" name="repassword" value="">
+    </p>
+    <p class="submit">
+      <button type="submit" name="regista" class="submit">登録</button>
+    </p>
+  </form>
+</div>
+</div>
 </div>

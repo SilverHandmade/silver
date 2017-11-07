@@ -1,24 +1,22 @@
- <?= $this->start('css'); ?>
- 	<?= $this->Html->css('/private/css/kota/login.css') ?>
-  <?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
- <?= $this->end(); ?>
+
+ <?= $this->Html->css('/private/css/kota/login.css') ?>
+ <?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
  <?= $this->Html->css('login.css') ?>
- <form id="login">
- <div class="row">
-   <div class="center-block">
- 	   <div class="form-title"><h1>Login</h1></div>
-         <div class="userid">
-           <label>E-Mail</label>
-           <input type="text" name="loginID" value="" size="30"><br>
-         </div>
-         <div class="password">
-           <label>PassWord</label>
-           <input type="password" name="password" value="" size="30"><br>
-         </div>
-         <div class="submit">
-           <button type="submit" name="login">Login</button>
-           <button name="new" onClick="location.href=''">New</button>
-         </div>
-   </div>
-</div>
-</form>
+ <div id="form">
+   <p class="form-title">ログイン</p>
+   <form action="#">
+       <p class="font-color">メールアドレス</p>
+       <p class="userid">
+         <input type="text" name="userID" value="">
+       </p>
+       <p class="font-color">パスワード</p>
+       <p class="password">
+         <input type="password" name="password" value="">
+       </p>
+       <p class="submit">
+         <button type="submit" name="login" class="submit">ログイン</button><br>
+       </p>
+       <p><a href="src/Template/Regist/index.ctp">初めての方はこちら</a></p>
+       <p><a href="#">パスワードを忘れた場合はこちら</a></p>
+     </form>
+  </div>
