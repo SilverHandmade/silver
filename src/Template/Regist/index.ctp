@@ -18,7 +18,11 @@
     </p>
     <p class="font-color">施設名</p>
     <p class="facilityname">
-      <input type="text" name="facilityname" value="">
+      <select class="" name="facilityname">
+        <?php if (){?>
+          <option value=""><?php  ?></option>
+        <?php } ?>
+      </select>
     </p>
     <p class="font-color">メールアドレス</p>
     <p class="mailadress">
@@ -26,7 +30,7 @@
     </p>
     <br>
     <p class="mailadress">
-      <input type="text" name="remailadress" value="">
+      <input type="text" name="remailadress" value="" placeholder="再入力">
     </p>
     <p class="font-color">パスワード</p>
     <p class="password">
@@ -34,7 +38,7 @@
     </p>
     <br>
     <p>
-      <input type="password" name="repassword" value="">
+      <input type="password" name="repassword" value="" placeholder="再入力">
     </p>
     <p class="submit">
       <button type="submit" name="regista" class="submit">登録</button>
