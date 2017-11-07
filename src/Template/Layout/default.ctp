@@ -76,6 +76,7 @@
 						<li><a href="">依頼</a></li>
 						<li><a href="">ワークショップ</a></li>
 						<li><a href="">動画</a></li>
+						<li><a href="">動画</a></li>
 					</ul>
 				</div>
 			</div>
@@ -91,8 +92,12 @@
 
 		<!-- メインカラム -->
 		<div class="col-md-10" id="col-main">
-			<?= $this->Flash->render() ?>
-			<?= $this->fetch('content') ?>
+			<div class="row">
+				<?= $this->Flash->render() ?>
+			</div>
+			<div class="row">
+				<?= $this->fetch('content') ?>
+			</div>
 		</div>
 
 		<!-- 右サイドカラム -->
@@ -107,6 +112,7 @@
 	<div class="row">
 		<div class="center">
 			Copyright &copy; 2017 Taguchi Corporation All rights reserved.
+			　ご意見・ご質問は<a class="btn btn-link" href="/silver/mail">こちら</a>から
 		</div>
 	</div>
 </footer>
