@@ -18,7 +18,8 @@ class WorkShopController extends AppController
     }
     public function index()
     {
-			$Products_datailsesTable = TableRegistry::get('Products_datailses');
-
-    }
+			if ($this->request->is('post') || $this->request->is('put')) {
+				
+			}
+		}
 }

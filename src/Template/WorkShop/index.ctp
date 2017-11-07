@@ -1,13 +1,11 @@
 <div>
 	<h1>ワークショップ作成</h1>
-	<?= $this->Form->input('投稿日時') ?>
-	<?= $this->Form->input('　施設名') ?>
-	<?= $this->Form->textarea("Model/field", array("cols"=>50, "rows"=>10, "value"=>"")); ?>
-	<?= $this->Form->Button('送信')?>
+	<?= $this->Form->create() ?>
+	<?= $this->Form->input('Day') ?>
+	<?= $this->Form->input('Facility') ?>
+	<?= $this->Form->create('Post', array('type'=>'file', 'enctype' => 'multipart/form-data')); ?>
+  <?=$this->Form->input('Post.image', array('label' => false, 'type' => 'file', 'multiple')); ?>
+	<?= $this->Form->textarea("Model/field", array("cols"=>40, "rows"=>5, "value"=>"")); ?>
+	<?= $this->Form->submit('Transmission')?>
 	<?= $this->Form->end() ?>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
