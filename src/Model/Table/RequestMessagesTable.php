@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * RequestMessages Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
  *
  * @method \App\Model\Entity\RequestMessage get($primaryKey, $options = [])
  * @method \App\Model\Entity\RequestMessage newEntity($data = null, array $options = [])

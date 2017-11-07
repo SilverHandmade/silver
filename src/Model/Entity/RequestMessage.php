@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $ren
+ * @property int $user_id
  * @property string $message
  * @property \Cake\I18n\FrozenTime $transmit
  * @property int $Del_flg
