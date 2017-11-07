@@ -14,9 +14,16 @@ class TopPageController extends AppController
     {
         parent::initialize();
 
+		$this->loadComponent('SetUsername');
+		$user = $this->SetUsername->setname();
+		$this->set('username', $user['name']);
+		$this->set('url', $user['url']);
+		$this->set('tranceName', $user['tranceName']);
+
     }
-    public function index()
-    {
-		
+
+
+    public function index() {
+
     }
 }

@@ -20,6 +20,12 @@ class LoginController extends AppController
     public function initialize()
     {
         parent::initialize();
+		$this->loadComponent('SetUsername');
+		$user = $this->SetUsername->setname();
+		$this->set('username', $user['name']);
+		$this->set('url', $user['url']);
+		$this->set('tranceName', $user['tranceName']);
+
 		//認証
 		$this->loadComponent('Auth',[
 			'authenticate' => [
@@ -33,6 +39,10 @@ class LoginController extends AppController
 			'loginAction' => [
 				'controller' => 'Login',
 				'action' => 'index'
+			],
+			'logoutAction' => [
+				'controller' => 'Login',
+				'action' => 'logout'
 			],
 			'loginRedirect' => [ // ログイン後に遷移するアクションを指定
                 'controller' => 'TopPage',
