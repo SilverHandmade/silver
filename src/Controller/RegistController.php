@@ -17,10 +17,10 @@ class RegistController extends AppController
 
     public function index()
     {
-        if ($this->request->is('post')) {
+//        if ($this->request->is('post')) {
             $this->render('regist');
-        } else {
+//        } else {
             $this->render('index');
-        }
+//        }
     }
 }
