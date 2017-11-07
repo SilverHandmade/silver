@@ -33,12 +33,21 @@ class LoginController extends AppController
 			'loginAction' => [
 				'controller' => 'Login',
 				'action' => 'index'
-			]
+			],
+			'loginRedirect' => [ // ログイン後に遷移するアクションを指定
+                'controller' => 'TopPage',
+                'action' => 'index'
+            ],
+			'logoutRedirect' => [ // ログアウト後に遷移するアクションを指定
+                'controller' => 'TopPage',
+                'action' => 'index',
+            ]
 		]);
     }
     public function index()
     {
 		if ($this->request->is('post')) {
+			$session = $this->request->session();
 			$user = $this->Auth->identify();
 			if ($user) {
 				$this->Auth->setUser($user);
@@ -46,14 +55,18 @@ class LoginController extends AppController
 					'username' => $user['name'],
 					'userID' => $user['email']
 				]);
-				return $this->redirect(['controller' => 'TopPage', 'action' => 'index']);
+				return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Flash->error(__('Invalid username or password, try again'));
 		}
     }
 
-
 	public function logout() {
+		$session = $this->request->session();
+		if(empty($session->read('username') ) || empty($session->read('userID'))){
+			$this->redirect($this->Auth->redirectUrl());
+		}
+		$session->destroy();
 		return $this->redirect($this->Auth->logout());
 	}
 }
