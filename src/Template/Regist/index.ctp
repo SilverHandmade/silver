@@ -18,11 +18,7 @@
     </p>
     <p class="font-color">施設名</p>
     <p class="facilityname">
-      <select class="" name="facilityname">
-        <?php if (){?>
-          <option value=""><?php  ?></option>
-        <?php } ?>
-      </select>
+      <input type="text" name="mailadress" value="">
     </p>
     <p class="font-color">メールアドレス</p>
     <p class="mailadress">
