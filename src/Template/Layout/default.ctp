@@ -91,8 +91,12 @@
 
 		<!-- メインカラム -->
 		<div class="col-md-10" id="col-main">
-			<?= $this->Flash->render() ?>
-			<?= $this->fetch('content') ?>
+			<div class="row">
+				<?= $this->Flash->render() ?>
+			</div>
+			<div class="row">
+				<?= $this->fetch('content') ?>
+			</div>
 		</div>
 
 		<!-- 右サイドカラム -->
