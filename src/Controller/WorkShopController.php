@@ -14,7 +14,7 @@ class WorkShopController extends AppController
     public function initialize()
     {
         parent::initialize();
-				$this->loadmodel('ProductDetailses');
+				$this->loadmodel('Product');
 
     }
     public function index()
@@ -25,11 +25,11 @@ class WorkShopController extends AppController
 				$Facilitys = $this->request->getData('Facility');
 				$Model = $this->request->getData('Model/field');
 				// $this->set(compact('Model'));
-				$query = $this->ProductDetailses->query();
+				$query = $this->Product->query();
 				$query->insert(['product_id', 'ren', 'description'])
     			->values([
-						'product_id' -> $Days
-						'ren' -> $Facilitys
+						'product_id' -> $Days,
+						'ren' -> $Facilitys,
         		'description' -> $Model
 		    ])
     ->execute();
