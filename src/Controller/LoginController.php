@@ -20,6 +20,7 @@ class LoginController extends AppController
     public function initialize()
     {
         parent::initialize();
+
 		//認証
 		$this->loadComponent('Auth',[
 			'authenticate' => [
@@ -34,24 +35,40 @@ class LoginController extends AppController
 				'controller' => 'Login',
 				'action' => 'index'
 			],
-      'registAction' => [
-        'controller' => 'Regist',
-        'action' => 'index'
-      ]
+			'loginRedirect' => [ // ログイン後に遷移するアクションを指定
+                'controller' => 'TopPage',
+                'action' => 'index'
+            ],
+			'logoutRedirect' => [ // ログアウト後に遷移するアクションを指定
+                'controller' => 'TopPage',
+                'action' => 'index',
+            ]
 		]);
-
     }
     // ログイン
     public function index()
     {
-  		if ($this->request->is('post')) {
-  			$user = $this->Auth->identify();
-  			if ($user) {
-  					$this->Auth->setUser($user);
-  					return $this->redirect(['controller' => 'TopPage', 'action' => 'index']);
-  			} else {
-  					$this->Flash->error(__('Username or password is incorrect'));
-  			}
-  		}
+		if ($this->request->is('post')) {
+			$session = $this->request->session();
+			$user = $this->Auth->identify();
+			if ($user) {
+				$this->Auth->setUser($user);
+				$session->write([
+					'username' => $user['name'],
+					'userID' => $user['email']
+				]);
+				return $this->redirect($this->Auth->redirectUrl());
+			}
+			$this->Flash->error(__('Invalid username or password, try again'));
+		}
     }
+
+	public function logout() {
+		$session = $this->request->session();
+		if(empty($session->read('username') ) || empty($session->read('userID'))){
+			$this->redirect($this->Auth->redirectUrl());
+		}
+		$session->destroy();
+		return $this->redirect($this->Auth->logout());
+	}
 }

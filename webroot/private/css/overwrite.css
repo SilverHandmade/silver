@@ -1,61 +1,45 @@
-/*flat-ui 上書き用CSS*/
+/*上書き用CSS*/
 .navbar-collapse .navbar-nav.navbar-right:last-child > .dropdown:last-child > a {
-    border-radius: 0;
-	padding-left:10px;
-	padding-right:10px;
-}
-
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-	background-color:#f1f1f1;
+	border-radius: 0;
+	/*padding-left:10px;
+	padding-right:10px;*/
 }
 a.navbar-brand {
-    padding: 0px 0  0px 0;
-}
-/*div.container-fluid {*/
-    /*padding-left:0;*/
-/*}*/
-
-.navbar-inverse .navbar-nav > .open > a:focus {
-	color: #d82732;
-	background-color: #fcfefe;
-}
-.navbar-inverse .navbar-nav > .open > .dropdown-menu > li > a{
-	color: #fcfefe;
-	border-radius: 0;
-	padding-top:9px;
-	padding-bottom:9px;
-
-}
-.navbar-inverse .navbar-nav > .open > .dropdown-menu {
-	background-color: #424448;
-	padding:0;
-}
-.navbar-inverse .navbar-nav > .open > .dropdown-menu > li > a:hover {
-	background-color: #d82732;
-	color: #fcfefe;
-}
-
-.navbar-inverse .navbar-nav > li > a,
-.navbar-inverse .navbar-nav > li > a:focus {
-	color: #fcfefe;
-}
-.navbar-inverse .navbar-nav > li > a:hover {
-	color: #bdc3c7;
+	padding: 0;
 }
 .navbar-nav > li > .dropdown-menu {
-	margin-top:0;
+	margin-top: 0;
 	border-radius: 0;
 }
-.navbar-inverse .navbar-nav > .dropdown > a .caret,
-.navbar-inverse .navbar-nav > .dropdown > a:hover .caret, .navbar-inverse .navbar-nav > .dropdown > a:focus .caret{
-	 border-top-color: initial;
-	 border-bottom-color: initial;
-}
-
 .navbar {
-  background-color: #497937;
+	background-color: #497937;
 }
 .navbar-fixed-top {
-	border-width: 0 0 0px
+	border-width: 0;
 }
+.navbar-collapse .navbar-nav.navbar-right:last-child {
+	margin-right: -15px;
+}
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color: #6aa512;
+}
+.dropdown-menu {
+    background-color: #497937;
+}
+.dropdown-menu > li > a {
+    color: #FFF;
+}
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+	color: #ffd203;
+    background-color: #6aa512;
+}
+.navbar-nav > .open > .dropdown-toggle:focus {
+    background-color: #6aa512;
+}
+
+
+/*.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+	background-color:#f1f1f1;
+}*/

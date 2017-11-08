@@ -1,0 +1,6 @@
+#panel {
+	min-height: 20vh;
+	border: 1px solid #ddd;
+	margin: 5px;
+	box-shadow: 5px 5px #ddd;
+}
