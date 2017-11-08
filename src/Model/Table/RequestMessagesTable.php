@@ -9,6 +9,7 @@ use Cake\Validation\Validator;
 /**
  * RequestMessages Model
  *
+ * @property |\Cake\ORM\Association\BelongsTo $Requests
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
  *
  * @method \App\Model\Entity\RequestMessage get($primaryKey, $options = [])
@@ -36,6 +37,10 @@ class RequestMessagesTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey(['id', 'ren']);
 
+        $this->belongsTo('Requests', [
+            'foreignKey' => 'request_id',
+            'joinType' => 'INNER'
+        ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
@@ -50,10 +55,6 @@ class RequestMessagesTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
         $validator
             ->integer('ren')
             ->allowEmpty('ren', 'create');
@@ -85,6 +86,7 @@ class RequestMessagesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->existsIn(['request_id'], 'Requests'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;

@@ -9,7 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Products Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
+ * @property |\Cake\ORM\Association\HasMany $ProductDetailses
  * @property \App\Model\Table\RequestsTable|\Cake\ORM\Association\HasMany $Requests
  *
  * @method \App\Model\Entity\Product get($primaryKey, $options = [])
@@ -40,6 +41,9 @@ class ProductsTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('ProductDetailses', [
+            'foreignKey' => 'product_id'
         ]);
         $this->hasMany('Requests', [
             'foreignKey' => 'product_id'

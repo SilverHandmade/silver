@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\FSakisTable|\Cake\ORM\Association\BelongsTo $FSakis
  * @property \App\Model\Table\ProductsTable|\Cake\ORM\Association\BelongsTo $Products
  * @property \App\Model\Table\RequestDetailsesTable|\Cake\ORM\Association\HasMany $RequestDetailses
+ * @property |\Cake\ORM\Association\HasMany $RequestMessages
  *
  * @method \App\Model\Entity\Request get($primaryKey, $options = [])
  * @method \App\Model\Entity\Request newEntity($data = null, array $options = [])
@@ -51,6 +52,9 @@ class RequestsTable extends Table
             'foreignKey' => 'product_id'
         ]);
         $this->hasMany('RequestDetailses', [
+            'foreignKey' => 'request_id'
+        ]);
+        $this->hasMany('RequestMessages', [
             'foreignKey' => 'request_id'
         ]);
     }

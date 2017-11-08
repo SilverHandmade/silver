@@ -14,7 +14,7 @@ use Cake\ORM\Entity;
  * @property int $user_id
  * @property int $Del_flg
  *
- * @property \App\Model\Entity\Facility $facility
+ * @property \App\Model\Entity\User $user
  */
 class Movie extends Entity
 {

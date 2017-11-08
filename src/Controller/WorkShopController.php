@@ -14,12 +14,26 @@ class WorkShopController extends AppController
     public function initialize()
     {
         parent::initialize();
+				$this->loadmodel('ProductDetailses');
 
     }
     public function index()
     {
-			if ($this->request->is('post') || $this->request->is('put')) {
-				
+			//Table登録
+			if ($this->request->is('post')) {
+				$Days = $this->request->getData('Day');
+				$Facilitys = $this->request->getData('Facility');
+				$Model = $this->request->getData('Model/field');
+				// $this->set(compact('Model'));
+				$query = $this->ProductDetailses->query();
+				$query->insert(['product_id', 'ren', 'description'])
+    			->values([
+						'product_id' -> $Days
+						'ren' -> $Facilitys
+        		'description' -> $Model
+		    ])
+    ->execute();
+
 			}
 		}
 }

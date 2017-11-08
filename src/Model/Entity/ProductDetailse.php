@@ -6,7 +6,7 @@ use Cake\ORM\Entity;
 /**
  * ProductDetailse Entity
  *
- * @property int $id
+ * @property int $product_id
  * @property int $ren
  * @property string $explain
  * @property string $photo_url
