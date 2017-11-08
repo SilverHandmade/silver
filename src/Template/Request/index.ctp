@@ -12,7 +12,7 @@
 	<p>締切日
 	<input type="date" name="requestD" autocomplete="on"></p>
 
-	<input type="submit" name="createReq" value="送信"><br>
+	<button type="submit" name="createReq">次へ</button><br>
 <button type="button" onclick="history.back()">戻る</button>
 	</form>
 
@@ -21,7 +21,7 @@
 
 		<?php
 
-echo $results[1];
+
 		if ($input_title = $_POST['requestT'] and $input_num = $_POST['requestN'] and $input_date = $_POST['requestD']) {
 			$input_ws = $_POST['wsID'];
 
@@ -29,7 +29,19 @@ echo $results[1];
 				echo ("<input type='text' size='8' name='name2' value='$input_num'>");
 				echo ("<input type='text' size='8' name='name3' value='$input_date'>");
 				if ($input_ws != "") {
-					checkWsid();
+					foreach ($results as $value) {
+						$value = preg_replace('/[^0-9]/', '', $value);
+							if ($input_ws === $value) {
+								echo ("<input type='text' size='8' name='name4' value='$input_ws'>");
+								break;
+							}
+							if(!next($results)){
+								echo "ワークショップIDが間違っています。"; // 一致しなかった場合
+							}
+					}
+
+
+
 				}else {
 					echo ("<input type='text' size='8' name='name4' value='ないお'>");
 				}
@@ -42,13 +54,19 @@ echo $results[1];
 
 		function checkWsid()
 		{
+
 			$input_ws = $_POST['wsID'];
-		  if (array_search ($input_ws, $results) == false) {
-		    	echo ("<input type='text' size='8' name='name4' value='$input_ws'>");
-		    }else {
-		    	echo "ないです";
-		    }
-		    return 0;
+			foreach ($results as $value) {
+			    if ($input_ws == $value) {
+			    	echo ("<input type='text' size='8' name='name4' value='$input_ws'>");
+						die();
+			    }
+			}
+
+
+		  echo "ないです";
+
+		  return 0;
 		}
 
 
