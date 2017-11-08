@@ -14,18 +14,17 @@ class RequestController extends AppController
     public function initialize()
     {
         parent::initialize();
-        //$this->loadmodel('Facilities');
+        $this->loadmodel('Products');
 
     }
     public function index()
     {
-      
-      		//$query = $this->Facilities->find()
-          //->select(['name', 'post','address'])
-          //->where(['facility_classes_id =' => 2]);
-      		//$results = $query->all()->toArray();
 
-      //$this->set(compact('results'));
+      		$query = $this->Products->find()
+          ->select(['id']);
+      		$results = $query->all()->toArray();
+
+      $this->set(compact('results'));
 
 
 
