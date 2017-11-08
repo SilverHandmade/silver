@@ -51,12 +51,17 @@ class RequestsFixture extends TestFixture
             'product_id' => 1,
             'title' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 <<<<<<< HEAD
+<<<<<<< HEAD
             'From_date' => '2017-11-06 06:16:49',
             'To_date' => '2017-11-06 06:16:49',
 =======
             'From_date' => '2017-11-07 00:33:41',
             'To_date' => '2017-11-07 00:33:41',
 >>>>>>> 66aa313173741bc6d78f077ce791c09e8865993c
+=======
+            'From_date' => '2017-11-08 02:40:50',
+            'To_date' => '2017-11-08 02:40:50',
+>>>>>>> e6ceb1048a14179e0721f35b51291fa36f3df79d
             'su' => 1,
             'ju_flg' => 1,
             'kan_flg' => 1,

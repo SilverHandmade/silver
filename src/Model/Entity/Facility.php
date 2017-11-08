@@ -14,9 +14,6 @@ use Cake\ORM\Entity;
  * @property int $Del_flg
  *
  * @property \App\Model\Entity\FacilityClass $facility_class
- * @property \App\Model\Entity\Movie[] $movies
- * @property \App\Model\Entity\Product[] $products
- * @property \App\Model\Entity\Witse[] $witses
  */
 class Facility extends Entity
 {

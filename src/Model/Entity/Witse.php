@@ -14,7 +14,7 @@ use Cake\ORM\Entity;
  * @property int $kan_flg
  * @property int $Del_flg
  *
- * @property \App\Model\Entity\Facility $facility
+ * @property \App\Model\Entity\User $user
  */
 class Witse extends Entity
 {

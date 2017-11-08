@@ -14,6 +14,10 @@ use Cake\ORM\Entity;
  * @property string $hurigana
  * @property string $password
  * @property int $Del_flg
+ *
+ * @property \App\Model\Entity\Facility $facility
+ * @property \App\Model\Entity\FacilityClass $facility_class
+ * @property \App\Model\Entity\WitsMessage[] $wits_messages
  */
 class User extends Entity
 {

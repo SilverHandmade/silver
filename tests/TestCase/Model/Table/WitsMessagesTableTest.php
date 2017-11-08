@@ -27,6 +27,7 @@ class WitsMessagesTableTest extends TestCase
         'app.wits_messages',
         'app.wits',
 <<<<<<< HEAD
+<<<<<<< HEAD
         'app.users',
         'app.facilities',
         'app.facility_classes',
@@ -40,6 +41,11 @@ class WitsMessagesTableTest extends TestCase
 =======
         'app.users'
 >>>>>>> 66aa313173741bc6d78f077ce791c09e8865993c
+=======
+        'app.users',
+        'app.facilities',
+        'app.facility_classes'
+>>>>>>> e6ceb1048a14179e0721f35b51291fa36f3df79d
     ];
 
     /**

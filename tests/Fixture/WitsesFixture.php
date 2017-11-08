@@ -53,8 +53,12 @@ class WitsesFixture extends TestFixture
             'Postdate' => '2017-11-06 06:16:52',
 =======
             'user_id' => 1,
+<<<<<<< HEAD
             'Postdate' => '2017-11-07 01:13:10',
 >>>>>>> 66aa313173741bc6d78f077ce791c09e8865993c
+=======
+            'Postdate' => '2017-11-08 02:40:54',
+>>>>>>> e6ceb1048a14179e0721f35b51291fa36f3df79d
             'kan_flg' => 1,
             'Del_flg' => 1
         ],

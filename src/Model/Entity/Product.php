@@ -8,13 +8,13 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $name
- * @property string $explain
+ * @property string $description
  * @property \Cake\I18n\FrozenTime $Postdate
  * @property int $user_id
  * @property int $access
  * @property int $Del_flg
  *
- * @property \App\Model\Entity\Facility $facility
+ * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Request[] $requests
  */
 class Product extends Entity
