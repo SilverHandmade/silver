@@ -1,4 +1,8 @@
-<?= $this->Html->css('/private/css/TopPage/index.css'); ?>
+<?php
+	$this->start('css');
+	echo $this->Html->css('/private/css/TopPage/index.css');
+	$this->end();
+?>
 
 <h3>〆切マジか</h3>
 <div id="Carousel" class="carousel slide" data-ride="carousel">
