@@ -9,7 +9,7 @@
 	<p>ワークショップID
 	<input type="text" name="wsID" value=""></p>
 	<p>締切日
-	<input type="date" name="requestN" autocomplete="on"></p>
+	<input type="date" name="requestD" autocomplete="on"></p>
 
 	<input type="submit" name="createReq" value="送信"><br>
 <button type="button" onclick="history.back()">戻る</button>
@@ -19,11 +19,22 @@
 
 
 		<?php
-		   $input_data = $_POST['requestN'];
-		if ($input_data = $_POST['requestN']) {
-		    echo ("<input type='text' size='8' name='name1' value='$input_data'>");
+
+
+		if ($input_title = $_POST['requestT'] and $input_num = $_POST['requestN'] and $input_date = $_POST['requestD']) {
+			$input_ws = $_POST['wsID'];
+
+		    echo ("<input type='text' size='8' name='name1' value='$input_title'>");
+				echo ("<input type='text' size='8' name='name2' value='$input_num'>");
+				echo ("<input type='text' size='8' name='name3' value='$input_date'>");
+				if ($input_ws == "") {
+					echo ("<input type='text' size='8' name='name4' value='ないお'>");
+				}else {
+					echo ("<input type='text' size='8' name='name4' value='$input_ws'>");
+				}
 		}else{
 		    echo ("<input type='text' size='8' name='name1' value='未入力'>");
+				echo ("必須項目が入力されていません");
 		}
 
 	?>
