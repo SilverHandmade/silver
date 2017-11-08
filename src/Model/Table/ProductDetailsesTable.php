@@ -9,6 +9,8 @@ use Cake\Validation\Validator;
 /**
  * ProductDetailses Model
  *
+ * @property |\Cake\ORM\Association\BelongsTo $Products
+ *
  * @method \App\Model\Entity\ProductDetailse get($primaryKey, $options = [])
  * @method \App\Model\Entity\ProductDetailse newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\ProductDetailse[] newEntities(array $data, array $options = [])
@@ -33,6 +35,11 @@ class ProductDetailsesTable extends Table
         $this->setTable('product_detailses');
         $this->setDisplayField('id');
         $this->setPrimaryKey(['id', 'ren']);
+
+        $this->belongsTo('Products', [
+            'foreignKey' => 'product_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
@@ -43,10 +50,6 @@ class ProductDetailsesTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
         $validator
             ->integer('ren')
             ->allowEmpty('ren', 'create');
@@ -60,5 +63,19 @@ class ProductDetailsesTable extends Table
             ->allowEmpty('photo_url');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['product_id'], 'Products'));
+
+        return $rules;
     }
 }

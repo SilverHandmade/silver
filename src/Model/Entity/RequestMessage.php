@@ -6,12 +6,14 @@ use Cake\ORM\Entity;
 /**
  * RequestMessage Entity
  *
- * @property int $id
+ * @property int $request_id
  * @property int $ren
  * @property int $user_id
  * @property string $message
  * @property \Cake\I18n\FrozenTime $transmit
  * @property int $Del_flg
+ *
+ * @property \App\Model\Entity\User $user
  */
 class RequestMessage extends Entity
 {

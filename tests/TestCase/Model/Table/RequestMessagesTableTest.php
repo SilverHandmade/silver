@@ -24,7 +24,12 @@ class RequestMessagesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.request_messages'
+        'app.request_messages',
+        'app.users',
+        'app.facilities',
+        'app.facility_classes',
+        'app.wits_messages',
+        'app.wits'
     ];
 
     /**
@@ -67,6 +72,16 @@ class RequestMessagesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
