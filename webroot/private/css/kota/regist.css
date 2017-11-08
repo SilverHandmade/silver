@@ -1,7 +1,6 @@
 body,p,form,input{margin: 0}
 #form {
-  width: 400px;
-  margin: 30px auto;
+  margin-top: 30px;
   padding: 20px;
   border: 1px solid #555;
 }
@@ -15,7 +14,8 @@ form p{
 }
 
 
-.userid,.password {
+.mailadress,.password,.username,
+.furigana,.facilityname,{
   margin-bottom:20px;
 }
 
@@ -27,12 +27,17 @@ form p{
 
 input[type="text"],
 input[type="password"] {
-  width: 300px;
-  padding: 4px;
+  width: 100%;
+  padding: 3px;
   font-size: 14px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
  }
 
 
+.font-color {
+  text-align: left;
+}
 /*font*/
 
 #form p{

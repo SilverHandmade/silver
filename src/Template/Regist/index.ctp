@@ -1,14 +1,27 @@
-<div>
-  <h1>ログイン</h1>
+<form action="/regist" method="post" >
+    <div class="">
+      氏名:<input type="text" name="name" value="">
+    </div>
+    <div class="">
+      フリガナ:<input type="text" name="hurigana" value="">
+    </div>
+    <div class="pulldown">
+      施設名: <select class="" name="">
 
-    <tr>
-      <th>メールアドレス</th>
-      <input type="text" name="mailadress" value=""><br><br>
-    </tr>
-    <tr>
-      <th>パスワード</th>
-      <input type="password" name="password" value=""><br>
-    </tr>
-  <br>
-  <button type="button" name="regista">登録</button>
-</div>
+      </select>
+    </div>
+    <div class="">
+      メールアドレス:<input type="text" name="email" value="">
+    </div>
+    <div class="">
+      再入力:<input type="text" name="email" id="reemail">
+    </div>
+    <div class="">
+      パスワード:<input type="text" name="password" value="">
+    </div>
+    <div class="">
+      再入力:<input type="text" name="password" id="repassword">
+    </div>
+    <input type="button" value="送信">
+    <?= $results['facilities_id'];  ?>
+</form>

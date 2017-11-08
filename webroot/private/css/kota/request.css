@@ -1,0 +1,23 @@
+/*layout*/
+.font-p {
+  text-align: left;
+  color: #497937;
+}
+
+.font-title {
+  color: #497937;
+  font-size:30px;
+}
+
+.button {
+  text-align: right;
+}
+
+input[type="text"],
+input[type="date"]{
+  width: 100%;
+  padding: 3px;
+  font-size: 14px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}

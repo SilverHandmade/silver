@@ -1,22 +1,22 @@
 /*ヘッダーナビゲーション*/
 .nabvar-img {
 	height: 100%;
-	width: auto;
 }
-.dropdown-img {
+/*.dropdown-img {
 	height: 25px;
 	width: 25px;
 	border-radius: 3px;
-}
-.navbar-text {
-	margin-left: 5px
-}
-.navbar-right {
-	padding-right: 21px;
-}
+}*/
 .mob, .btn-hm {
 	display: none;
 }
+.navbar * {
+	color: #FFF;
+}
+.navbar *:hover, .navbar *:focus {
+	color: #ffd203;
+}
+
 
 #menubar {
 	height: 51px;
@@ -39,6 +39,7 @@
 	line-height: 50px;
 	vertical-align: middle;
 	width: calc(100vw / 3);
+	min-width: 200px;
 	border-right: solid  1px #ddd;
 }
 #menubar ul li:first-child {
@@ -46,6 +47,7 @@
 }
 #menubar ul li a {
 	height: inherit;
+	display: block;
 }
 #menubar ul li a:hover {
 	opacity: 0.65;
@@ -57,16 +59,13 @@
 }
 
 @media (max-width: 992px) {
-	.navbar-right {
+	.navbar-right, .pc {
 		display: none;
 	}
-
 	.mob {
 		display: block;
 	}
-	.pc {
-		display: none;
-	}
+
 	.btn-hm {
 		display: block;
 		height: 51px;
@@ -82,6 +81,7 @@
 		outline: none;
 		opacity: 0.65;
 	}
+
 	#menu ul {
 		background-color: inherit;
 		display: block;
@@ -99,6 +99,7 @@
 		border: none;
 		display: none;
 	}
+
 }
 /*ヘッダーナビゲーション終わり*/
 
@@ -106,15 +107,26 @@
 footer {
 	bottom: 0;
 	width: 100%;
-    height: 20px;
+    /*height: 30px;*/
     position: fixed;
-	color: #777;
-	background-color: #f5f5f5;
+	background-color: #497937;
 	z-index: 2;
-
+}
+footer * {
+	color: #FFF;
+}
+footer .btn-link, footer .btn-link:hover {
+	color: #ffee00;
+}
+@media (max-width: 992px) {
+	footer {
+	    position: relative;
+	}
 }
 /*footer終わり*/
 
+
+/*PAGE TOPボタン*/
 #page-top {
     position: fixed;
     bottom: 20px;
@@ -126,15 +138,16 @@ footer {
     text-decoration: none;
     color: #fff;
     width: 100%;
-    padding: 30px 0;
+    padding: 20px 10px;
     text-align: center;
     display: block;
     border-radius: 5px;
 }
-#page-top a:hover {
+#page-top a:hover, #page-top a:focus {
     text-decoration: none;
 	opacity: 0.65;
 }
+/*PAGE TOPボタン終わり*/
 
 /*その他*/
 .center{
@@ -146,22 +159,14 @@ footer {
 .full {
 	width: 100%;
 }
-.floating {
-	position: fixed;
-	z-index: 1;
-}
 #all {
-	margin-top: 105px;
-	min-height: calc(100vh - 105px);
-}
-
-#reloadbutton {
-	margin-top: 10px;
+	margin-top: 115px;
+	margin-bottom: 30px;
+	/*min-height: calc(100vh - 115px);*/
 }
 
 a {
 	cursor: pointer;
-	display: block;
 }
 a:hover {
 	text-decoration: none;
@@ -174,5 +179,4 @@ a:focus {
 
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
-	min-height: 100%;
 }

@@ -15,8 +15,9 @@ class TopPageController extends AppController
         parent::initialize();
 
     }
-    public function index()
-    {
-		
+
+
+    public function index() {
+
     }
 }
