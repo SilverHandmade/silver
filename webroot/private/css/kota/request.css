@@ -11,6 +11,8 @@
 
 .button {
   text-align: right;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
 }
 
 input[type="text"],

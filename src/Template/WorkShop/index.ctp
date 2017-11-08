@@ -1,13 +1,10 @@
-<div>
-	<h1>ワークショップ作成</h1>
-	<?= $this->Form->input('投稿日時') ?>
-	<?= $this->Form->input('　施設名') ?>
-	<?= $this->Form->textarea("Model/field", array("cols"=>50, "rows"=>10, "value"=>"")); ?>
-	<?= $this->Form->Button('送信')?>
-	<?= $this->Form->end() ?>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</div>
+<?php $this->start('css'); ?>
+  <?= $this->Html->css('/private/css/kota/workshop.css') ?>
+  <?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
+  <?= $this->Html->css('workshop.css') ?>
+	<?= $this->Html->js('/private/js/kota/workshop.js') ?>
+<?php $this->end(); ?>
+
+<div id="dropArea">画像をここへドラッグ＆ドロップ</div>
+<input id="fileInput" type="file" accept="image/*" multiple>
+<div id="output"></div>
