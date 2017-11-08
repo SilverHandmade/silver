@@ -1,6 +1,8 @@
-<?= $this->Html->css('/private/css/kota/regist.css') ?>
-<?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
-<?= $this->Html->css('regist.css') ?>
+<?php $this->start('css'); ?>
+  <?= $this->Html->css('/private/css/kota/regist.css') ?>
+  <?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
+  <?= $this->Html->css('regist.css') ?>
+<?php $this->end(); ?>
 
 <div class="col-md-offset-2 col-md-8 center" id="form">
 
