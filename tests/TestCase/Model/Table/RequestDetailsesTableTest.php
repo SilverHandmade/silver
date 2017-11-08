@@ -25,7 +25,15 @@ class RequestDetailsesTableTest extends TestCase
      */
     public $fixtures = [
         'app.request_detailses',
-        'app.requests'
+        'app.requests',
+        'app.f_motos',
+        'app.f_sakis',
+        'app.products',
+        'app.users',
+        'app.facilities',
+        'app.facility_classes',
+        'app.wits_messages',
+        'app.wits'
     ];
 
     /**

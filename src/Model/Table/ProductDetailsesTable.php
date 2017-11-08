@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * ProductDetailses Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Products
+ * @property \App\Model\Table\ProductsTable|\Cake\ORM\Association\BelongsTo $Products
  *
  * @method \App\Model\Entity\ProductDetailse get($primaryKey, $options = [])
  * @method \App\Model\Entity\ProductDetailse newEntity($data = null, array $options = [])
@@ -55,8 +55,8 @@ class ProductDetailsesTable extends Table
             ->allowEmpty('ren', 'create');
 
         $validator
-            ->scalar('explain')
-            ->allowEmpty('explain');
+            ->scalar('description')
+            ->allowEmpty('description');
 
         $validator
             ->scalar('photo_url')

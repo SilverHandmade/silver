@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $request_id
  * @property int $ren
- * @property string $explain
+ * @property string $description
  * @property string $photo_url
  *
  * @property \App\Model\Entity\Request $request

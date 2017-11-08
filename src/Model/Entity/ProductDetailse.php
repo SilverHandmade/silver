@@ -8,8 +8,10 @@ use Cake\ORM\Entity;
  *
  * @property int $product_id
  * @property int $ren
- * @property string $explain
+ * @property string $description
  * @property string $photo_url
+ *
+ * @property \App\Model\Entity\Product $product
  */
 class ProductDetailse extends Entity
 {

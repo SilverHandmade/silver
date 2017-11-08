@@ -24,7 +24,11 @@ class UsersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.users'
+        'app.users',
+        'app.facilities',
+        'app.facility_classes',
+        'app.wits_messages',
+        'app.wits'
     ];
 
     /**

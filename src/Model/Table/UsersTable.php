@@ -9,9 +9,13 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Facilities
- * @property |\Cake\ORM\Association\BelongsTo $FacilityClasses
- * @property |\Cake\ORM\Association\HasMany $WitsMessages
+ * @property \App\Model\Table\FacilitiesTable|\Cake\ORM\Association\BelongsTo $Facilities
+ * @property \App\Model\Table\FacilityClassesTable|\Cake\ORM\Association\BelongsTo $FacilityClasses
+ * @property |\Cake\ORM\Association\HasMany $Movies
+ * @property |\Cake\ORM\Association\HasMany $Products
+ * @property |\Cake\ORM\Association\HasMany $RequestMessages
+ * @property \App\Model\Table\WitsMessagesTable|\Cake\ORM\Association\HasMany $WitsMessages
+ * @property |\Cake\ORM\Association\HasMany $Witses
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -46,7 +50,19 @@ class UsersTable extends Table
             'foreignKey' => 'facility_classes_id',
             'joinType' => 'INNER'
         ]);
+        $this->hasMany('Movies', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Products', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('RequestMessages', [
+            'foreignKey' => 'user_id'
+        ]);
         $this->hasMany('WitsMessages', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Witses', [
             'foreignKey' => 'user_id'
         ]);
     }

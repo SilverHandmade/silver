@@ -24,7 +24,17 @@ class ProductDetailsesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.product_detailses'
+        'app.product_detailses',
+        'app.products',
+        'app.users',
+        'app.facilities',
+        'app.facility_classes',
+        'app.wits_messages',
+        'app.wits',
+        'app.requests',
+        'app.f_motos',
+        'app.f_sakis',
+        'app.request_detailses'
     ];
 
     /**
@@ -67,6 +77,16 @@ class ProductDetailsesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

@@ -8,13 +8,13 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $title
- * @property string $explain
+ * @property string $description
  * @property \Cake\I18n\FrozenTime $contribution
  * @property string $movie_url
  * @property int $user_id
  * @property int $Del_flg
  *
- * @property \App\Model\Entity\Facility $facility
+ * @property \App\Model\Entity\User $user
  */
 class Movie extends Entity
 {

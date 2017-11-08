@@ -26,7 +26,9 @@ class WitsMessagesTableTest extends TestCase
     public $fixtures = [
         'app.wits_messages',
         'app.wits',
-        'app.users'
+        'app.users',
+        'app.facilities',
+        'app.facility_classes'
     ];
 
     /**

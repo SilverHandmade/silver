@@ -13,6 +13,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $transmit
  * @property int $Del_flg
  *
+ * @property \App\Model\Entity\Request $request
  * @property \App\Model\Entity\User $user
  */
 class RequestMessage extends Entity

@@ -55,8 +55,8 @@ class RequestDetailsesTable extends Table
             ->allowEmpty('ren', 'create');
 
         $validator
-            ->scalar('explain')
-            ->allowEmpty('explain');
+            ->scalar('description')
+            ->allowEmpty('description');
 
         $validator
             ->scalar('photo_url')
