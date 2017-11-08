@@ -20,19 +20,10 @@ class RegistController extends AppController
     public function index()
     {
 
-      $user = $this->users->find()
-      ->select(['facilities_id']);
+      $user = $this->facilities->find()
+      ->select(['name']);
       $results = $user->toArray();
-      $results = reset($results);
       $this->set(compact('results'));
-
-      $facilitie = $this->facilities->find()
-      ->select(['id'])
-      ->where(['id' => 'results.facilities_id']);
-      $id = $facilitie->toArray();
-      $id = reset($id);
-      $this->set(compact('id'));
-
 
     }
 }

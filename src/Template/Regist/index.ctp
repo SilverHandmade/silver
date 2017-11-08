@@ -6,8 +6,10 @@
       フリガナ:<input type="text" name="hurigana" value="">
     </div>
     <div class="pulldown">
-      施設名: <select class="" name="">
-
+      施設名: <select class="" name="" value="">
+        <?php foreach ($results->name as $key=>$value){
+          echo "$value";
+        } ?>
       </select>
     </div>
     <div class="">
@@ -23,5 +25,5 @@
       再入力:<input type="text" name="password" id="repassword">
     </div>
     <input type="button" value="送信">
-    <?= $results['facilities_id'];  ?>
-</form>
+    <?= $results[0]->name ?>
+    </form>
