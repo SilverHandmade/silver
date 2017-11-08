@@ -65,8 +65,8 @@
 			<div class="col-md-offset-1 col-md-10">
 				<ul class="center">
 					<li><?= $this->Html->link("依頼",['controller' => 'request', "action" => "index"]);?></li>
-					<li><a href="">ワークショップ</a></li>
-					<li><a href="">動画</a></li>
+					<li><?= $this->Html->link("ワークショップ",['controller' => 'workshop', "action" => "index"]);?></li>
+					<li><?= $this->Html->link("動画",['controller' => 'video', "action" => "index"]);?></li>
 					<!-- <li><a href="">知恵袋</a></li> -->
 				</ul>
 			</div>
@@ -77,9 +77,9 @@
 				<button class="btn btn-hm glyphicon glyphicon-remove" id="cross"></button>
 				<div class="col-md-offset-1 col-md-10">
 					<ul class="center">
-						<li><?= $this->Html->link("依頼",['controller' => 'requesy', "action" => "index"]);?></li>
-						<li><a href="">ワークショップ</a></li>
-						<li><a href="">動画</a></li>
+						<li><?= $this->Html->link("依頼",['controller' => 'request', "action" => "index"]);?></li>
+						<li><?= $this->Html->link("ワークショップ",['controller' => 'workshop', "action" => "index"]);?></li>
+						<li><?= $this->Html->link("動画",['controller' => 'video', "action" => "index"]);?></li>
 						<!-- <li><a href="">知恵袋</a></li> -->
 					</ul>
 				</div>

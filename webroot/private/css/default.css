@@ -107,7 +107,7 @@
 footer {
 	bottom: 0;
 	width: 100%;
-    /*height: 30px;*/
+    height: 30px;
     position: fixed;
 	background-color: #497937;
 	z-index: 2;
@@ -120,6 +120,7 @@ footer .btn-link, footer .btn-link:hover {
 }
 @media (max-width: 992px) {
 	footer {
+		height: auto;
 	    position: relative;
 	}
 }
@@ -162,10 +163,11 @@ footer .btn-link, footer .btn-link:hover {
 #all {
 	margin-top: 115px;
 	margin-bottom: 30px;
-	/*min-height: calc(100vh - 115px);*/
+	min-height: calc(100vh - 115px);
 }
 
 a {
+	text-decoration: none;
 	cursor: pointer;
 }
 a:hover {
