@@ -7,7 +7,7 @@
     </div>
     <div class="pulldown">
       施設名: <select class="" name="">
-        <?= print_r($results); ?>
+
       </select>
     </div>
     <div class="">
@@ -23,4 +23,5 @@
       再入力:<input type="text" name="password" id="repassword">
     </div>
     <input type="button" value="送信">
+    <?= $results['facilities_id'];  ?>
 </form>

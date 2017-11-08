@@ -13,15 +13,23 @@ class RegistController extends AppController
     public function initialize()
     {
       parent::initialize();
-      $this ->loadmodel('User');
+      $this ->loadmodel('users');
+      $this ->loadmodel('facilities');
     }
 
     public function index()
     {
-      $user = $this->User->find()
+
+      $user = $this->users->find()
       ->select(['facilities_id']);
-      $results = $query->toArray();
+      $results = $user->toArray();
+      $results = reset($results);
       $this->set(compact('results'));
+
+      $facilitie = $this->facilities->find()
+      ->contain(['facilities'])
+      ->select(['id','name'])
+      ->where(['id'=>$results[0]]);
 
       /*
       $id = $this->request->data('users.id');
