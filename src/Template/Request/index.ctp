@@ -1,39 +1,3 @@
-<<<<<<< HEAD
-<?php $this->start('css'); ?>
-  <?= $this->Html->css('/private/css/kota/request.css') ?>
-  <?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
-  <?= $this->Html->css('request.css') ?>
-<?php $this->end(); ?>
-<div class="col-md-offset-2 col-md-8 center">
-	<p class="font-title">依頼</p>
-	<div class="row">
-		<div class="col-md-offset-3 col-md-6">
-			<form class="" action="" method="post">
-				<p class="font-p">制作物タイトル</p>
-				<p>
-					<input type="text" name="" value="">
-				</p>
-				<p class="font-p">制作個数</p>
-				<p>
-					<input type="text" name="" value="" size="3">
-				</p>
-				<p class="font-p">ワークショップID</p>
-				<p>
-					<input type="text" name="" value="" size="3">
-				</p>
-				<p class="font-p">締切日</p>
-				<p>
-					<input type="date" name="" value="">
-				</p>
-				<p class="button">
-					<button type="button" name="back">戻る</button>
-					<button type="submit" name="next">次へ</button>
-				</p>
-			</form>
-		</div>
-	</div>
-</div>
-=======
 
 	<h1>依頼</h1>
 
@@ -93,4 +57,3 @@ echo $results[1];
 
 
 	?>
->>>>>>> d83023bf78a0c0f80419374a1d078bae38c0cf2a
