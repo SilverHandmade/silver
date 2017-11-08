@@ -27,12 +27,19 @@ class RegistController extends AppController
       $this->set(compact('results'));
 
       $facilitie = $this->facilities->find()
-      ->select(['id'])
-      ->where(['id' => 'results.facilities_id']);
-      $id = $facilitie->toArray();
-      $id = reset($id);
-      $this->set(compact('id'));
+      ->contain(['facilities'])
+      ->select(['id','name'])
+      ->where(['id'=>$results[0]]);
 
-
+      /*
+      $id = $this->request->data('users.id');
+      $email = $this->request->data('users.email');
+      $name = $this->request->data('users.name');
+      $f_id = $this->request->data('users.facilities_id');
+      $fclass_id = $this->request->data('users.facility_classes_id');
+      $hurigana = $this->request->data('users.hurigana');
+      $pass = $this->request->data('users.password');
+      $user = $this->request->data('users');
+      */
     }
 }
