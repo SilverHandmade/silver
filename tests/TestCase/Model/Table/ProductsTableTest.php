@@ -25,6 +25,7 @@ class ProductsTableTest extends TestCase
      */
     public $fixtures = [
         'app.products',
+<<<<<<< HEAD
         'app.users',
         'app.facilities',
         'app.facility_classes',
@@ -32,6 +33,10 @@ class ProductsTableTest extends TestCase
         'app.wits_messages',
         'app.wits',
         'app.witses',
+=======
+        'app.facilities',
+        'app.facility_classes',
+>>>>>>> 66aa313173741bc6d78f077ce791c09e8865993c
         'app.requests',
         'app.f_motos',
         'app.f_sakis',

@@ -25,6 +25,7 @@ class RequestDetailsesTableTest extends TestCase
      */
     public $fixtures = [
         'app.request_detailses',
+<<<<<<< HEAD
         'app.requests',
         'app.f_motos',
         'app.f_sakis',
@@ -36,6 +37,9 @@ class RequestDetailsesTableTest extends TestCase
         'app.wits_messages',
         'app.wits',
         'app.witses'
+=======
+        'app.requests'
+>>>>>>> 66aa313173741bc6d78f077ce791c09e8865993c
     ];
 
     /**

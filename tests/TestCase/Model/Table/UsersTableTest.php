@@ -24,6 +24,7 @@ class UsersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
+<<<<<<< HEAD
         'app.users',
         'app.facilities',
         'app.facility_classes',
@@ -36,6 +37,9 @@ class UsersTableTest extends TestCase
         'app.witses',
         'app.wits_messages',
         'app.wits'
+=======
+        'app.users'
+>>>>>>> 66aa313173741bc6d78f077ce791c09e8865993c
     ];
 
     /**

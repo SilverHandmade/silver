@@ -22,7 +22,7 @@ class MoviesFixture extends TestFixture
         'explain' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '説明', 'precision' => null],
         'contribution' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '投稿日', 'precision' => null],
         'movie_url' => ['type' => 'text', 'length' => null, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '動画URL', 'precision' => null],
-        'facility_id' => ['type' => 'integer', 'length' => 6, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '投稿者ID', 'precision' => null, 'autoIncrement' => null],
+        'user_id' => ['type' => 'integer', 'length' => 20, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '投稿者ID', 'precision' => null, 'autoIncrement' => null],
         'Del_flg' => ['type' => 'integer', 'length' => 1, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '削除フラグ', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
@@ -44,9 +44,9 @@ class MoviesFixture extends TestFixture
             'id' => 1,
             'title' => 'Lorem ipsum dolor sit amet',
             'explain' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-            'contribution' => '2017-11-06 06:16:43',
+            'contribution' => '2017-11-07 01:13:34',
             'movie_url' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-            'facility_id' => 1,
+            'user_id' => 1,
             'Del_flg' => 1
         ],
     ];

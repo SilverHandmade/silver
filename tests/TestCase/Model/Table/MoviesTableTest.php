@@ -25,6 +25,7 @@ class MoviesTableTest extends TestCase
      */
     public $fixtures = [
         'app.movies',
+<<<<<<< HEAD
         'app.users',
         'app.facilities',
         'app.facility_classes',
@@ -36,6 +37,10 @@ class MoviesTableTest extends TestCase
         'app.wits_messages',
         'app.wits',
         'app.witses'
+=======
+        'app.facilities',
+        'app.facility_classes'
+>>>>>>> 66aa313173741bc6d78f077ce791c09e8865993c
     ];
 
     /**
