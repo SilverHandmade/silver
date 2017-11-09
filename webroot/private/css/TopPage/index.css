@@ -7,3 +7,8 @@
 #linkTo {
 	margin: 5px 0 10px 0;
 }
+#details {
+	position: absolute;
+	right: 25px;
+	bottom: 5px;
+}

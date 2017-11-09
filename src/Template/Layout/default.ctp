@@ -51,9 +51,9 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="<?= $user['url']; ?>">
-								<?= $user['tranceName']; ?>
-							</a></li>
+							<li>
+								<?= $this->Html->link($user['tranceName'] ,['controller' => 'login', "action" => $user['action']]);?>
+							</li>
 							<?php if($user['registFlg']):?>
 								<li><a href="">
 									新規登録
@@ -69,9 +69,9 @@
 		<div class="pc">
 			<div class="col-md-offset-1 col-md-10">
 				<ul class="center">
-					<li><?= $this->Html->link("依頼",['controller' => 'request', "action" => "index"]);?></li>
-					<li><?= $this->Html->link("ワークショップ",['controller' => 'workshop', "action" => "index"]);?></li>
-					<li><?= $this->Html->link("動画",['controller' => 'video', "action" => "index"]);?></li>
+					<li><?= $this->Html->link("依頼",['controller' => 'Request', "action" => "index"]);?></li>
+					<li><?= $this->Html->link("ワークショップ",['controller' => 'WorkShop', "action" => "index"]);?></li>
+					<li><?= $this->Html->link("動画",['controller' => 'Video', "action" => "index"]);?></li>
 					<!-- <li><a href="">知恵袋</a></li> -->
 				</ul>
 			</div>
