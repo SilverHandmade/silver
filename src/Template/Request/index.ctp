@@ -1,5 +1,14 @@
 
+<?php
+	$this->start('script');
+	echo $this->Html->script('/private/js/request/request.js');
+	$this->end();
+?>
+
+
+
 	<h1>依頼</h1>
+
 
 
 <form method="POST" action="">
@@ -12,15 +21,16 @@
 	<p>締切日
 	<input type="date" name="requestD" autocomplete="on"></p>
 
-	<button type="submit" name="createReq">次へ</button><br>
-<button type="button" onclick="history.back()">戻る</button>
+	<button type="submit" name="createReq" onclick="next();">次へ</button><br>
+	<button type="button" onclick="aaa();">戻る</button>
 	</form>
 
 
 
 
-		<?php
 
+		<?php
+$input_title = $_POST['requestT'];
 
 		if ($input_title = $_POST['requestT'] and $input_num = $_POST['requestN'] and $input_date = $_POST['requestD']) {
 			$input_ws = $_POST['wsID'];
@@ -50,24 +60,6 @@
 				echo ("必須項目が入力されていません");
 		}
 
-
-
-		function checkWsid()
-		{
-
-			$input_ws = $_POST['wsID'];
-			foreach ($results as $value) {
-			    if ($input_ws == $value) {
-			    	echo ("<input type='text' size='8' name='name4' value='$input_ws'>");
-						die();
-			    }
-			}
-
-
-		  echo "ないです";
-
-		  return 0;
-		}
 
 
 

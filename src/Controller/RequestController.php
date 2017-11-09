@@ -22,11 +22,13 @@ class RequestController extends AppController
 
       		$query = $this->Products->find()
           ->select(['id']);
-      		$results = $query->all()->toArray();
+      		$results = $query->all()->ToArray();
 
       $this->set(compact('results'));
 
 
 
     }
+
+
 }
