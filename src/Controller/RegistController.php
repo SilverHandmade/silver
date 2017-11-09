@@ -25,5 +25,7 @@ class RegistController extends AppController
       $results = $user->toArray();
       $this->set(compact('results'));
 
+      
+
     }
 }
