@@ -7,6 +7,7 @@ use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\ORM\Table;
 
 class WorkShopController extends AppController
 {
@@ -14,23 +15,31 @@ class WorkShopController extends AppController
     public function initialize()
     {
         parent::initialize();
-				$this->loadmodel('Product');
+				$this->loadmodel('Products');
 
     }
     public function index()
     {
 			//Table登録
 			if ($this->request->is('post')) {
-				$Days = $this->request->getData('Day');
-				$Facilitys = $this->request->getData('Facility');
+				$Days = $this->request->getData('id');
+				$Facilitys = $this->request->getData('name');
 				$Model = $this->request->getData('Model/field');
+				$images = $this->request->getData('image');
+				$Postdate = $this->request->getData('Postdate');
+				$user = $this->request->getData('user');
 				// $this->set(compact('Model'));
-				$query = $this->Product->query();
-				$query->insert(['product_id', 'ren', 'description'])
+
+				// echo "<br><br><br><br><br><br>" . $Days;
+				$query = $this->Products->query();
+				$query->insert(['id', 'name', 'description','midasi_url','Postdate','user_id'])
     			->values([
-						'product_id' -> $Days,
-						'ren' -> $Facilitys,
-        		'description' -> $Model
+						'id' => $Days,
+						'name' => $Facilitys,
+        		'description' => $Model,
+						'midasi_url'=> $images,
+						'Postdate' => $Postdate,
+						'user_id' => $user
 		    ])
     ->execute();
 
