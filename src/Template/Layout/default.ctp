@@ -47,13 +47,18 @@
 					<li class="dropdown navbar-buttton">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" style="font-weight: 500">
 							<!-- <img src="" class="dropdown-img"> -->
-							ようこそ、<?= $username; ?>さん
+							ようこそ、<?= $user['name']; ?>さん
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="<?= $url; ?>">
-								<?= $tranceName; ?>
+							<li><a href="<?= $user['url']; ?>">
+								<?= $user['tranceName']; ?>
 							</a></li>
+							<?php if($user['registFlg']):?>
+								<li><a href="">
+									新規登録
+								</a></li>
+							<?php endif; ?>
 						</ul>
 					</li>
 				</div>

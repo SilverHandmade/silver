@@ -43,12 +43,15 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-		
+
 		$this->loadComponent('SetUsername');
 		$user = $this->SetUsername->setname();
-		$this->set('username', $user['name']);
-		$this->set('url', $user['url']);
-		$this->set('tranceName', $user['tranceName']);
+		if ($user['tranceName'] == 'ログイン') {
+			$user['registFlg'] = True;
+		} else {
+			$user['registFlg'] = False;
+		}
+		$this->set(compact('user'));
 
         /*
          * Enable the following components for recommended CakePHP security settings.

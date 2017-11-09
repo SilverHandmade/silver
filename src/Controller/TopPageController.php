@@ -13,11 +13,18 @@ class TopPageController extends AppController
     public function initialize()
     {
         parent::initialize();
-
+		$this->loadmodel('Requests');
     }
 
 
     public function index() {
+		$queryRequest = $this->Requests->find()
+		/*->where(['imicode' => $reqestimicode])*/->all();
+		$request = $queryRequest->toArray();
+		$requestCount = $queryRequest->count();
+		$this->set(compact('request'));
+		$this->set(compact('requestCount'));
+
 
     }
 }

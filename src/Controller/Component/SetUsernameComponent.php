@@ -12,13 +12,15 @@ class SetUsernameComponent extends Component {
 			$user = array(
 				'name' => $session->read('username'),
 				'url' => '/silver/logout',
-				'tranceName' => 'ログアウト'
+				'tranceName' => 'ログアウト',
+				'registFlg' => NULL
 			);
 		} else {
 			$user = array(
 				'name' => 'ゲスト',
 				'url' => '/silver/login',
-				'tranceName' => 'ログイン'
+				'tranceName' => 'ログイン',
+				'registFlg' => NULL
 			);
 		}
 		return $user;
