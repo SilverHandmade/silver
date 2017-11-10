@@ -38,7 +38,7 @@
 	<div class="row">
 		<div class="col-md-offset-1 col-md-10">
 			<div class="navbar-header  navbar-left">
-				<a class="navbar-brand" href="/silver">
+				<a class="navbar-brand" href="<?= $this->request->getAttribute("webroot") ?>">
 					<img src="<?= $this->request->getAttribute("webroot") ?>img/logo.png" class="nabvar-img">
 				</a>
 			</div>
@@ -47,13 +47,18 @@
 					<li class="dropdown navbar-buttton">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" style="font-weight: 500">
 							<!-- <img src="" class="dropdown-img"> -->
-							ようこそ、<?= $username; ?>さん
+							ようこそ、<?= $user['name']; ?>さん
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="<?= $url; ?>">
-								<?= $tranceName; ?>
-							</a></li>
+							<li>
+								<?= $this->Html->link($user['tranceName'] ,['controller' => 'login', "action" => $user['action']]);?>
+							</li>
+							<?php if($user['registFlg']):?>
+								<li><a href="">
+									新規登録
+								</a></li>
+							<?php endif; ?>
 						</ul>
 					</li>
 				</div>
@@ -64,9 +69,9 @@
 		<div class="pc">
 			<div class="col-md-offset-1 col-md-10">
 				<ul class="center">
-					<li><?= $this->Html->link("依頼",['controller' => 'request', "action" => "index"]);?></li>
-					<li><a href="">ワークショップ</a></li>
-					<li><a href="">動画</a></li>
+					<li><?= $this->Html->link("依頼",['controller' => 'Request', "action" => "index"]);?></li>
+					<li><?= $this->Html->link("ワークショップ",['controller' => 'WorkShop', "action" => "index"]);?></li>
+					<li><?= $this->Html->link("動画",['controller' => 'Video', "action" => "index"]);?></li>
 					<!-- <li><a href="">知恵袋</a></li> -->
 				</ul>
 			</div>
@@ -77,9 +82,9 @@
 				<button class="btn btn-hm glyphicon glyphicon-remove" id="cross"></button>
 				<div class="col-md-offset-1 col-md-10">
 					<ul class="center">
-						<li><?= $this->Html->link("依頼",['controller' => 'requesy', "action" => "index"]);?></li>
-						<li><a href="">ワークショップ</a></li>
-						<li><a href="">動画</a></li>
+						<li><?= $this->Html->link("依頼",['controller' => 'request', "action" => "index"]);?></li>
+						<li><?= $this->Html->link("ワークショップ",['controller' => 'workshop', "action" => "index"]);?></li>
+						<li><?= $this->Html->link("動画",['controller' => 'video', "action" => "index"]);?></li>
 						<!-- <li><a href="">知恵袋</a></li> -->
 					</ul>
 				</div>
@@ -116,7 +121,7 @@
 	<div class="row">
 		<div class="center">
 			Copyright &copy; 2017 Taguchi Corporation All rights reserved.
-			　ご意見・ご質問は<a class="btn btn-link" href="/silver/mail">こちら</a>から
+			　ご意見・ご質問は<a class="btn btn-link" href="<?= $this->request->getAttribute("webroot") ?>mail">こちら</a>から
 		</div>
 	</div>
 </footer>
