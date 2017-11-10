@@ -9,26 +9,28 @@
 	<?php else: ?>
 		<?php foreach ($request as $key): ?>
 			<div class="col-md-4">
-				<div id="panel">
-					<table>
-						<tr>
-							<td>制作物ID</td>
-							<td><?= $key['product_id'];?></td>
-						</tr>
-						<tr>
-							<td>タイトル</td>
-							<td><?= $key['title'];?></td>
-						</tr>
-						<tr>
-							<td>締切日</td>
-							<td><?= $key['To_date'];?></td>
-						</tr>
-					</table>
+				<a href="/silver">
+					<div id="panel">
+						<table class="table">
+							<tr>
+								<td>制作物ID</td>
+								<td><?= $key['product_id'];?></td>
+							</tr>
+							<tr>
+								<td>タイトル</td>
+								<td><?= $key['title'];?></td>
+							</tr>
+							<tr>
+								<td>締切日</td>
+								<td><?= $key['To_date'];?></td>
+							</tr>
+						</table>
 
-					<div id="details">
-						<a href="/silver">詳細 >></a>
+						<div id="details">
+							<a>詳細 >></a>
+						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 		<?php endforeach; ?>
 	<?php endif; ?>
