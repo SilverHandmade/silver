@@ -25,7 +25,16 @@ class ProductDetailsesTableTest extends TestCase
      */
     public $fixtures = [
         'app.product_detailses',
-        'app.products'
+        'app.products',
+        'app.users',
+        'app.facilities',
+        'app.facility_classes',
+        'app.movies',
+        'app.request_messages',
+        'app.requests',
+        'app.f_motos',
+        'app.f_sakis',
+        'app.request_detailses'
     ];
 
     /**

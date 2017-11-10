@@ -29,9 +29,12 @@ class RequestsTableTest extends TestCase
         'app.f_sakis',
         'app.products',
         'app.users',
+        'app.facilities',
+        'app.facility_classes',
+        'app.movies',
+        'app.request_messages',
         'app.product_detailses',
-        'app.request_detailses',
-        'app.request_messages'
+        'app.request_detailses'
     ];
 
     /**

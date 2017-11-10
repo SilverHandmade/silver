@@ -26,7 +26,15 @@ class RequestMessagesTableTest extends TestCase
     public $fixtures = [
         'app.request_messages',
         'app.requests',
-        'app.users'
+        'app.f_motos',
+        'app.f_sakis',
+        'app.products',
+        'app.users',
+        'app.facilities',
+        'app.facility_classes',
+        'app.movies',
+        'app.product_detailses',
+        'app.request_detailses'
     ];
 
     /**
