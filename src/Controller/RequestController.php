@@ -27,7 +27,6 @@ class RequestController extends AppController
       $this->set(compact('results'));
 
 
-
     }
 
 
