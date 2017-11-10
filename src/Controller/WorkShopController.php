@@ -43,7 +43,6 @@ class WorkShopController extends AppController
 		    ])
     ->execute();
 
-				$this->set(compact('check'));
 			}
 		}
 }
