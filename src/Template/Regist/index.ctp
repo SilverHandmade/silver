@@ -9,7 +9,7 @@
 
 ?>
 <!-- -->
-<form action="regist" method="post" >
+<form action="regist" method="get" >
     <div class="">
       <!-- $postname-->
       氏名:<input type="text" name="name" value="">
@@ -22,7 +22,7 @@
 
     <div class="pulldown" name="facilities">
       <!-- $postfacilitie-->
-      施設名: <select><?php $i=0; ?>
+      施設名: <select name="facilities"><?php $i=0; ?>
         <?php foreach ($results as $value)
           { ?>
             <option value="name"><?= $results[$i]->name ?></option>
@@ -55,12 +55,12 @@
     <button type="submit" onclick="test();"  value="">送信</button>
 
     <?php
-			$postname = $_POST['name'];
-			$posthurigana  = $_POST['hurigana'];
-			$postmail  = $_POST['email'];
-			$postremail  = $_POST['reemail'];
-			$postpass  = $_POST['password'];
-			$postrepass  = $_POST['repassword'];
+			$postname = $this->request->getData('name');
+			$posthurigana  = $this->request->getData('hurigana');
+			$postmail  = $this->request->getData('email');
+			$postremail  = $this->request->getData('reemail');
+			$postpass  = $this->request->getData('password');
+			$postrepass  = $this->request->getData('repassword');
       echo "<input type='text' name='' value='$postname'>";
       echo "<input type='text' name='' value='$posthurigana'>";
       echo "<input type='text' name='' value='$postmail'>";
@@ -69,7 +69,7 @@
       echo "<input type='text' name='' value='$postrepass'>";
 
 			if ($postname !="") {
-				$name = $_POST['name'];
+				$name = $this->request->getData('name');
 				echo $name;
 			}else {
 				echo "nameなっしんぐ";
