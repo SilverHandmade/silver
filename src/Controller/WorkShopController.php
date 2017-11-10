@@ -7,6 +7,7 @@ use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\ORM\Table;
 
 class WorkShopController extends AppController
 {
@@ -14,11 +15,35 @@ class WorkShopController extends AppController
     public function initialize()
     {
         parent::initialize();
+				$this->loadmodel('Products');
 
     }
     public function index()
     {
-			$Products_datailsesTable = TableRegistry::get('Products_datailses');
+			//Table登録
+			if ($this->request->is('post')) {
+				$id = $this->request->getData('id');
+				$createname= $this->request->getData('name');
+				$Model = $this->request->getData('Model/field');
+				$images = $this->request->getData('image');
+				$Postdate = $this->request->getData('Postdate');
+				$user = $this->request->getData('user');
+				// $this->set(compact('Model'));
 
-    }
+				// echo "<br><br><br><br><br><br>" . $Days;
+				$query = $this->Products->query();
+				$query->insert(['id', 'name', 'description','midasi_url','Postdate','user_id'])
+    			->values([
+						'id' => $id,
+						'name' => $createname,
+        		'description' => $Model,
+						'midasi_url'=> $images,
+						'Postdate' => $Postdate,
+						'user_id' => $user
+		    ])
+    ->execute();
+
+				$this->set(compact('check'));
+			}
+		}
 }
