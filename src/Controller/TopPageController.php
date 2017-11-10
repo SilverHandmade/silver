@@ -19,12 +19,10 @@ class TopPageController extends AppController
 
     public function index() {
 		$queryRequest = $this->Requests->find()
-		/*->where(['imicode' => $reqestimicode])*/->all();
+		->order(['To_date' => 'DESC'])
+		->limit(3)
+		->all();
 		$request = $queryRequest->toArray();
-		$requestCount = $queryRequest->count();
 		$this->set(compact('request'));
-		$this->set(compact('requestCount'));
-
-
     }
 }

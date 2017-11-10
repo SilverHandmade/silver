@@ -20,6 +20,7 @@
 	color: #ffd203;
 }
 
+
 #menubar {
 	height: 41px;
 	min-height: 41px;
@@ -164,7 +165,7 @@ footer .btn-link, footer .btn-link:hover {
 }
 #all {
 	margin-top: 105px;
-	margin-bottom: 30px;
+	margin-bottom: calc(10vh + 30px);
 	min-height: calc(100vh - 135px);
 }
 

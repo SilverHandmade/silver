@@ -46,7 +46,6 @@
 				<div class="nav navbar-nav navbar-right" id="welcome-user">
 					<li class="dropdown navbar-buttton">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" style="font-weight: 500">
-							<!-- <img src="" class="dropdown-img"> -->
 							ようこそ、<?= $user['name']; ?>さん
 							<span class="caret"></span>
 						</a>
@@ -72,7 +71,7 @@
 					<li><?= $this->Html->link("依頼",['controller' => 'Request', "action" => "index"]);?></li>
 					<li><?= $this->Html->link("ワークショップ",['controller' => 'WorkShop', "action" => "index"]);?></li>
 					<li><?= $this->Html->link("動画",['controller' => 'Video', "action" => "index"]);?></li>
-					<!-- <li><a href="">知恵袋</a></li> -->
+					<li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li>
 				</ul>
 			</div>
 		</div>
@@ -85,8 +84,7 @@
 						<li><?= $this->Html->link("依頼",['controller' => 'request', "action" => "index"]);?></li>
 						<li><?= $this->Html->link("ワークショップ",['controller' => 'workshop', "action" => "index"]);?></li>
 						<li><?= $this->Html->link("動画",['controller' => 'video', "action" => "index"]);?></li>
-						<!-- <li><a href="">知恵袋</a></li> -->
-					</ul>
+						<li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li>					</ul>
 				</div>
 			</div>
 		</div>
