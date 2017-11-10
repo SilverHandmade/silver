@@ -1,8 +1,12 @@
 
 <?php
 	$this->start('script');
-	echo $this->Html->script('/private/js/フォルダ名/ファイル名.js');
+	echo $this->Html->script('/private/js/regist/regist.js');
 	$this->end();
+
+
+
+
 ?>
 <!-- -->
 <form action="regist" method="post" >
@@ -29,45 +33,48 @@
 
     <div class="">
       <!-- $postmail-->
-      メールアドレス:<input type="email" name="email" value="">
+      メールアドレス:<input type="email" id="regM" name="email" value="">
     </div>
 
     <div class="">
       <!-- $postremail-->
-      再入力:<input type="email" name="reemail">
+      再入力:<input type="email" id="regRM" name="reemail">
     </div>
 
     <div class="">
       <!-- $postpass-->
-      パスワード:<input type="text" name="password" value="">
+      パスワード:<input type="text" id="regP" name="password" value="">
     </div>
 
     <div class="">
       <!-- $postrepass-->
-      再入力:<input type="text" name="repassword">
+      再入力:<input type="text" id="regRP" name="repassword">
     </div>
 
     <!-- -->
-    <button type="submit"　name="" value="">送信</button>
-<input type="text" name="" value="">
+    <button type="submit" onclick="test();"  value="">送信</button>
+
     <?php
-      $postname = $_POST['name'];
-      $posthurigana  = $_POST['hurigana'];
-      $postmail  = $_POST['email'];
-      $postremail  = $_POST['reemail'];
-      $postpass  = $_POST['password'];
-      $postrepass  = $_POST['repassword'];
-      echo "<input type="text" name="" value="">";
-      echo "$posthurigana";
-      nl2br("\n");
-      echo "$postmail";
-      nl2br("\n");
-      echo "$postremail";
-      nl2br("\n");
-      echo "$postpass";
-      nl2br("\n");
-      echo "$postrepass";
-      nl2br("\n");
+			$postname = $_POST['name'];
+			$posthurigana  = $_POST['hurigana'];
+			$postmail  = $_POST['email'];
+			$postremail  = $_POST['reemail'];
+			$postpass  = $_POST['password'];
+			$postrepass  = $_POST['repassword'];
+      echo "<input type='text' name='' value='$postname'>";
+      echo "<input type='text' name='' value='$posthurigana'>";
+      echo "<input type='text' name='' value='$postmail'>";
+      echo "<input type='text' name='' value='$postremail'>";
+      echo "<input type='text' name='' value='$postpass'>";
+      echo "<input type='text' name='' value='$postrepass'>";
+
+			if ($postname !="") {
+				$name = $_POST['name'];
+				echo $name;
+			}else {
+				echo "nameなっしんぐ";
+			}
+
     ?>
 
 
