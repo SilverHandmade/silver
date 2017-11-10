@@ -25,10 +25,8 @@ class RequestDetailsesTableTest extends TestCase
      */
     public $fixtures = [
         'app.request_detailses',
-<<<<<<< HEAD
-<<<<<<< HEAD
 =======
->>>>>>> 74bd0a728d4dacc0031ac720b3b9cf46448a9231
+>>>>>>> 01338f7df9c099a63e581f9e33d1ba3bcbd5fb44
         'app.requests',
         'app.f_motos',
         'app.f_sakis',
@@ -41,13 +39,12 @@ class RequestDetailsesTableTest extends TestCase
         'app.wits_messages',
         'app.wits',
         'app.witses'
-=======
-        'app.requests'
-=======
-        'app.wits_messages',
-        'app.wits'
->>>>>>> e6ceb1048a14179e0721f35b51291fa36f3df79d
 >>>>>>> 74bd0a728d4dacc0031ac720b3b9cf46448a9231
+=======
+        'app.movies',
+        'app.request_messages',
+        'app.product_detailses'
+>>>>>>> 01338f7df9c099a63e581f9e33d1ba3bcbd5fb44
     ];
 
     /**

@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\UsersTable;
+use App\Model\Table\ProductDetailsesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\UsersTable Test Case
+ * App\Model\Table\ProductDetailsesTable Test Case
  */
-class UsersTableTest extends TestCase
+class ProductDetailsesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\UsersTable
+     * @var \App\Model\Table\ProductDetailsesTable
      */
-    public $Users;
+    public $ProductDetailses;
 
     /**
      * Fixtures
@@ -24,27 +24,17 @@ class UsersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
+        'app.product_detailses',
+        'app.products',
         'app.users',
         'app.facilities',
         'app.facility_classes',
         'app.movies',
-        'app.products',
-        'app.product_detailses',
+        'app.request_messages',
         'app.requests',
         'app.f_motos',
         'app.f_sakis',
-        'app.request_detailses',
-        'app.users'
-=======
-        'app.users',
-        'app.facilities',
-        'app.facility_classes',
-        'app.wits_messages',
-        'app.wits'
->>>>>>> 74bd0a728d4dacc0031ac720b3b9cf46448a9231
-=======
-        'app.request_messages'
->>>>>>> 01338f7df9c099a63e581f9e33d1ba3bcbd5fb44
+        'app.request_detailses'
     ];
 
     /**
@@ -55,8 +45,8 @@ class UsersTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Users') ? [] : ['className' => UsersTable::class];
-        $this->Users = TableRegistry::get('Users', $config);
+        $config = TableRegistry::exists('ProductDetailses') ? [] : ['className' => ProductDetailsesTable::class];
+        $this->ProductDetailses = TableRegistry::get('ProductDetailses', $config);
     }
 
     /**
@@ -66,7 +56,7 @@ class UsersTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Users);
+        unset($this->ProductDetailses);
 
         parent::tearDown();
     }

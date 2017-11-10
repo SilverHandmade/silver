@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\MoviesTable;
+use App\Model\Table\FacilityClassesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\MoviesTable Test Case
+ * App\Model\Table\FacilityClassesTable Test Case
  */
-class MoviesTableTest extends TestCase
+class FacilityClassesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\MoviesTable
+     * @var \App\Model\Table\FacilityClassesTable
      */
-    public $Movies;
+    public $FacilityClasses;
 
     /**
      * Fixtures
@@ -24,17 +24,7 @@ class MoviesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.movies',
-        'app.users',
-        'app.facilities',
-        'app.facility_classes',
-        'app.products',
-        'app.product_detailses',
-        'app.requests',
-        'app.f_motos',
-        'app.f_sakis',
-        'app.request_detailses',
-        'app.request_messages'
+        'app.facility_classes'
     ];
 
     /**
@@ -45,8 +35,8 @@ class MoviesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Movies') ? [] : ['className' => MoviesTable::class];
-        $this->Movies = TableRegistry::get('Movies', $config);
+        $config = TableRegistry::exists('FacilityClasses') ? [] : ['className' => FacilityClassesTable::class];
+        $this->FacilityClasses = TableRegistry::get('FacilityClasses', $config);
     }
 
     /**
@@ -56,7 +46,7 @@ class MoviesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Movies);
+        unset($this->FacilityClasses);
 
         parent::tearDown();
     }
@@ -77,16 +67,6 @@ class MoviesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
