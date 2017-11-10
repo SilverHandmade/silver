@@ -11,10 +11,13 @@
 }
 
 .button {
-  text-align: right;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
 }
+.div-bottom {
+  margin-bottom: 20px;
+}
+
 
 input[type="text"] {
   width: 100%;
@@ -22,4 +25,8 @@ input[type="text"] {
   font-size: 14px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
+}
+
+#add {
+	
 }
