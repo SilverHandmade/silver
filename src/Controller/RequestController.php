@@ -23,7 +23,7 @@ class RequestController extends AppController
       		$query = $this->Products->find()
           ->select(['id']);
       		$results = $query->all()->ToArray();
-
+          $jsonResults = json_encode($results);
       $this->set(compact('results'));
 
 

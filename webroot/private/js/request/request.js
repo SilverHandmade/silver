@@ -9,15 +9,32 @@ var rnum = document.getElementById( "reqN" ).value;
 var wsid = document.getElementById( "wsID" ).value;
 var rdate = document.getElementById( "reqD" ).value;
 
+var nowdate = new Date();
+var year = nowdate.getFullYear();     // 年(4桁の西暦)
+var mon  = nowdate.getMonth() + 1;    // 月(1～12)
+var date = nowdate.getDate();         // 日(1～31)
 
-alert(test);
+
+alert(nowdate);
 
 
 
+//タイトル前後の空白をトリム
+document.getElementById( "reqT" ).value = rtitle.replace(/^\s+|\s+$/g, "");
+
+//タイトル文字数チェック
+if (rtitle.length > 40) {
+	alert("タイトルが40字を超えています。");
+	return false;
+}
+//個数チェック
 if (rnum <= 0) {
 	alert("個数に0以下の数値は指定できません。");
 	return false;
 }
+
+//日付チェック
+
 
 
 }

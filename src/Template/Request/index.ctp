@@ -1,7 +1,7 @@
 
 
 <script>
-var test = <?php echo $results[0]; ?>;
+var test = <?php echo $results; ?>;
 </script>
 
 <?php
@@ -18,13 +18,13 @@ var test = <?php echo $results[0]; ?>;
 
 <form method="POST" action="">
 	<p>製作物タイトル
-	<input  type="text" id="reqT" name="requestT" value=""></p>
+	<input  type="text" id="reqT" name="requestT" value=""  maxlength="40" required></p>
 	<p>製作個数
-	<input type="number" id="reqN" name="requestN" value= ""></p>
+	<input type="number" id="reqN" name="requestN" value= "" required></p>
 	<p>ワークショップID
 	<input type="text" id="wsID" name="wsID" value=""></p>
 	<p>締切日
-	<input type="date" id="reqD" name="requestD" autocomplete="on"></p>
+	<input type="date" id="reqD" name="requestD" autocomplete="on" required></p>
 
 	<button type="submit" name="createReq" onclick="return nextpage();">次へ</button><br>
 	<button type="button" onclick="aaa();">戻る</button>
