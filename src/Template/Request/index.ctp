@@ -1,27 +1,43 @@
 
+
+<script>
+var test = <?php echo $results[0]; ?>;
+</script>
+
+<?php
+	$this->start('script');
+	echo $this->Html->script('/private/js/request/request.js');
+	$this->end();
+?>
+
+
+
 	<h1>依頼</h1>
+
 
 
 <form method="POST" action="">
 	<p>製作物タイトル
-	<input type="text" name="requestT" value=""></p>
+	<input  type="text" id="reqT" name="requestT" value=""></p>
 	<p>製作個数
-	<input type="text" name="requestN" value= ""></p>
+	<input type="number" id="reqN" name="requestN" value= ""></p>
 	<p>ワークショップID
-	<input type="text" name="wsID" value=""></p>
+	<input type="text" id="wsID" name="wsID" value=""></p>
 	<p>締切日
-	<input type="date" name="requestD" autocomplete="on"></p>
+	<input type="date" id="reqD" name="requestD" autocomplete="on"></p>
 
-	<input type="submit" name="createReq" value="送信"><br>
-<button type="button" onclick="history.back()">戻る</button>
+	<button type="submit" name="createReq" onclick="return nextpage();">次へ</button><br>
+	<button type="button" onclick="aaa();">戻る</button>
 	</form>
 
 
 
 
-		<?php
 
-echo $results[1];
+		<?php
+		echo $results[0];
+$input_title = $_POST['requestT'];
+
 		if ($input_title = $_POST['requestT'] and $input_num = $_POST['requestN'] and $input_date = $_POST['requestD']) {
 			$input_ws = $_POST['wsID'];
 
@@ -29,7 +45,19 @@ echo $results[1];
 				echo ("<input type='text' size='8' name='name2' value='$input_num'>");
 				echo ("<input type='text' size='8' name='name3' value='$input_date'>");
 				if ($input_ws != "") {
-					checkWsid();
+					foreach ($results as $value) {
+						$value = preg_replace('/[^0-9]/', '', $value);
+							if ($input_ws === $value) {
+								echo ("<input type='text' size='8' name='name4' value='$input_ws'>");
+								break;
+							}
+							if(!next($results)){
+								echo "ワークショップIDが間違っています。"; // 一致しなかった場合
+							}
+					}
+
+
+
 				}else {
 					echo ("<input type='text' size='8' name='name4' value='ないお'>");
 				}
@@ -38,18 +66,6 @@ echo $results[1];
 				echo ("必須項目が入力されていません");
 		}
 
-
-
-		function checkWsid()
-		{
-			$input_ws = $_POST['wsID'];
-		  if (array_search ($input_ws, $results) == false) {
-		    	echo ("<input type='text' size='8' name='name4' value='$input_ws'>");
-		    }else {
-		    	echo "ないです";
-		    }
-		    return 0;
-		}
 
 
 
