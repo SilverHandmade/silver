@@ -22,8 +22,8 @@ class WorkShopController extends AppController
     {
 			//Table登録
 			if ($this->request->is('post')) {
-				$Days = $this->request->getData('id');
-				$Facilitys = $this->request->getData('name');
+				$id = $this->request->getData('id');
+				$createname= $this->request->getData('name');
 				$Model = $this->request->getData('Model/field');
 				$images = $this->request->getData('image');
 				$Postdate = $this->request->getData('Postdate');
@@ -34,8 +34,8 @@ class WorkShopController extends AppController
 				$query = $this->Products->query();
 				$query->insert(['id', 'name', 'description','midasi_url','Postdate','user_id'])
     			->values([
-						'id' => $Days,
-						'name' => $Facilitys,
+						'id' => $id,
+						'name' => $createname,
         		'description' => $Model,
 						'midasi_url'=> $images,
 						'Postdate' => $Postdate,
@@ -43,6 +43,7 @@ class WorkShopController extends AppController
 		    ])
     ->execute();
 
+				$this->set(compact('check'));
 			}
 		}
 }
