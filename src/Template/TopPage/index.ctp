@@ -3,7 +3,7 @@
 <?php $this->end() ?>
 
 <?php if (!$user['registFlg']):?>
-	<h3>〆切マジか</h3>
+	<h2 class="danger" >〆切マジか</h2>
 	<div class="row">
 		<?php foreach ($request as $key): ?>
 			<?= $this->element('DeadlineRequest', ["key" => $key]);?>
@@ -16,8 +16,7 @@
 	</div>
 <?php endif; ?>
 
-
-<h3>新着ワークショップ</h3>
+<h2>新着ワークショップ</h2>
 <div class="row">
 	<?php foreach ($request as $key): ?>
 		<?= $this->element('DeadlineRequest', ["key" => $key]);?>

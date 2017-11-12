@@ -1,3 +1,26 @@
+h2 {
+	position: relative;
+	padding: 0.5em;
+	background: #e3fabe;
+}
+
+h2:after {
+	position: absolute;
+	content: '';
+	top: 100%;
+	left: 30px;
+	border: 15px solid transparent;
+	border-top: 15px solid #e3fabe;
+	width: 0;
+	height: 0;
+}
+h2.danger {
+	background: #f5aab4;
+	color: #FFF;
+}
+h2.danger:after {
+	border-top: 15px solid #f5aab4;
+}
 #panel {
 	/*min-height: 20vh;*/
 	border: 1px solid #ddd;

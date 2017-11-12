@@ -38,6 +38,7 @@
 	<div class="row">
 		<div class="col-md-offset-1 col-md-10">
 			<div class="navbar-header  navbar-left">
+				<h1>SilverHandmade</h1>
 				<a class="navbar-brand" href="<?= $this->request->getAttribute("webroot") ?>">
 					<img src="<?= $this->request->getAttribute("webroot") ?>img/logo.png" class="nabvar-img">
 				</a>
