@@ -37,6 +37,9 @@ a.navbar-brand {
 .navbar-nav > .open > .dropdown-toggle:focus {
     background-color: #6aa512;
 }
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
 
 
 /*.table-striped>tbody>tr:nth-child(odd)>td,

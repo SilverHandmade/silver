@@ -14,15 +14,25 @@ class TopPageController extends AppController
     {
         parent::initialize();
 		$this->loadmodel('Requests');
+		$this->loadmodel('Facilities');
+		$this->loadmodel('Products');
     }
 
 
     public function index() {
-		$queryRequest = $this->Requests->find()
-		->order(['To_date' => 'DESC'])
-		->limit(3)
-		->all();
+		$queryRequest = $this->Requests->find()->contain('Facilities')
+		->select(['Requests.title', 'Requests.To_date', 'Facilities.name'])
+		->order(['Requests.To_date' => 'DESC'])
+		->limit(3);
 		$request = $queryRequest->toArray();
 		$this->set(compact('request'));
+
+
+		$queryWorkShop = $this->Products->find()
+		->order(['Postdate' => 'DESC'])
+		->limit(3)->all();
+		$workshop = $queryWorkShop->toArray();
+		$this->set(compact('workshop'));
+
     }
 }

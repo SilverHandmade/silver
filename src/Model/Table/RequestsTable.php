@@ -57,6 +57,7 @@ class RequestsTable extends Table
         $this->hasMany('RequestMessages', [
             'foreignKey' => 'request_id'
         ]);
+		$this->belongsTo('Facilities')->setForeignKey('F_moto_id');
     }
 
     /**

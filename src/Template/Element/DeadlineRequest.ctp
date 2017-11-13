@@ -1,20 +1,9 @@
 <div class="col-md-4">
 	<div id="panel">
 		<a href="/silver">
-			<table class="table">
-				<tr>
-					<td>制作物ID</td>
-					<td><?= $key['product_id'];?></td>
-				</tr>
-				<tr>
-					<td>タイトル</td>
-					<td><?= $key['title'];?></td>
-				</tr>
-				<tr>
-					<td>締切日</td>
-					<td><?= $key['To_date'];?></td>
-				</tr>
-			</table>
+			<h3><?= $key['title'];?></h3>
+			<div><?= $key->facility['name'];?></div>
+			<div><?= $key['To_date'];?>〆切!</div>
 
 			<div class="row">
 				<div class="col-md-12 right">
