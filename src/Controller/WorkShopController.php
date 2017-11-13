@@ -23,7 +23,7 @@ class WorkShopController extends AppController
 			//Table登録
 			if ($this->request->is('post')) {
 				$id = $this->request->getData('id');
-				$createname= $this->request->getData('name');
+				$createname= $this->request->getData('title');
 				$Model = $this->request->getData('Model/field');
 				$images = $this->request->getData('image');
 				$Postdate = $this->request->getData('Postdate');
@@ -40,8 +40,8 @@ class WorkShopController extends AppController
 						'midasi_url'=> $images,
 						'Postdate' => $Postdate,
 						'user_id' => $user
-		    ])
-    ->execute();
+		    ]);
+    // ->execute();
 
 				$this->set(compact('check'));
 			}
