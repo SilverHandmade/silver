@@ -14,14 +14,13 @@
 	// 	// parent_object.appendChild(div_element);
     //
 	// }
+
 	$(function(){
+		$().ready(function(){
+			var addhtml = document.getElementById("plus").innerHTML;
+		});
 		$('#add').click(function() {
-			// $('#plus').after(
-			// 	$('#plus').clone()
-			// );
-			$('#plus').last().after(
-				$('#plus').last().clone()
-			)
+			$('#plus').clone(true).insertBefore($('#submit'));
 		});
 	});
 </script>
@@ -43,10 +42,10 @@
 				</div>
 				<div class="col-md-8">
 					<p class="font-p">コメント</p>
-					<input type="text" name="Model/field">
+					<input type="text" name="Model/field" id="text">
 				</div>
 			</div>
-			<button type="submit" name="" class="button">送信</button>
+			<button type="submit" name="" class="button" id="submit">送信</button>
 		</form>
 		<div class="row">
 		</div>
