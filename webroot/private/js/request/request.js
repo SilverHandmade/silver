@@ -9,13 +9,14 @@ var rnum = document.getElementById( "reqN" ).value;
 var wsid = document.getElementById( "wsID" ).value;
 var rdate = document.getElementById( "reqD" ).value;
 
-var nowdate = new Date();
-var year = nowdate.getFullYear();     // 年(4桁の西暦)
-var mon  = nowdate.getMonth() + 1;    // 月(1～12)
-var date = nowdate.getDate();         // 日(1～31)
+//現在の日付を取得
+var now = new Date();
+var deadline = new Date(rdate.split('-')[0], rdate.split('-')[1] - 1, rdate.split('-')[2]);
 
 
-alert(nowdate);
+
+
+alert(deadline);
 
 
 
@@ -34,6 +35,9 @@ if (rnum <= 0) {
 }
 
 //日付チェック
+
+var d = deadline.getTime() - now.getTime();
+alert(d);
 
 
 
