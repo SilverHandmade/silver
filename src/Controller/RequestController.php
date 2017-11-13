@@ -19,7 +19,7 @@ class RequestController extends AppController
     }
     public function index()
     {
-
+if ($this->request->is('post')){
       		$query = $this->Products->find()
           ->select(['id']);
       		$results = $query->all()->ToArray();
@@ -42,9 +42,9 @@ class RequestController extends AppController
       }
     }
     }
-
+}
     public function search(){
-      
+
     }
 
 
