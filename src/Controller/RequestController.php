@@ -27,16 +27,20 @@ if ($this->request->is('post')){
       $this->set(compact('results'));
 
       if ($input_ws = $_POST['wsID']) {
+        $input_title = $_POST['requestT'];
+        $input_num = $_POST['requestN'];
+        $input_date = $_POST['requestD'];
         if ($input_ws != "") {
           foreach ($results as $value) {
             $value = preg_replace('/[^0-9]/', '', $value);
               if ($input_ws === $value) {
-                echo ("<input type='text' size='8' name='name4' value='$input_ws'>");
                 break;
               }
               if(!next($results)){
                 // 一致しなかった場合
+
                 $this->Flash->error(__('ワークショップIDが間違っています。'));
+
               }
           }
       }

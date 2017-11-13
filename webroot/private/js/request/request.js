@@ -23,7 +23,6 @@ var dms = 1000 * 60 * 60 * 24;
 
 //タイトル前後の空白をトリム
 document.getElementById( "reqT" ).value = rtitle.replace(/^\s+|\s+$/g, "");
-
 //タイトル文字数チェック
 if (rtitle.length > 40) {
 	alert("タイトルが40字を超えています。");
