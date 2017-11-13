@@ -23,7 +23,7 @@ class WorkShopController extends AppController
 			//Table登録
 			if ($this->request->is('post')) {
 				$id = $this->request->getData('id');
-				$createname= $this->request->getData('name');
+				$name= $this->request->getData('name');
 				$Model = $this->request->getData('Model/field');
 				$images = $this->request->getData('image');
 				$Postdate = $this->request->getData('Postdate');
@@ -35,13 +35,13 @@ class WorkShopController extends AppController
 				$query->insert(['id', 'name', 'description','midasi_url','Postdate','user_id'])
     			->values([
 						'id' => $id,
-						'name' => $createname,
+						'name' => $name,
         		'description' => $Model,
 						'midasi_url'=> $images,
 						'Postdate' => $Postdate,
 						'user_id' => $user
-		    ])
-    ->execute();
+		    ]);
+    //->execute();
 
 			}
 		}

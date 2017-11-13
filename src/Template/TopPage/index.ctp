@@ -31,7 +31,7 @@
 						</div>
 					</div>
 				</a>
-			</div>
+			</div>zz
 		<?php endforeach; ?>
 	<?php endif; ?>
 </div>
