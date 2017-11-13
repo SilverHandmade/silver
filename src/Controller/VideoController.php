@@ -10,13 +10,17 @@ use Cake\View\Exception\MissingTemplateException;
 class VideoController extends AppController
 {
 
-    public function initialize()
-    {
-        parent::initialize();
+	public function initialize()
+	{
+		parent::initialize();
 
-    }
-    public function index()
-    {
+	}
+	public function index()
+	{
 
-    }
+	}
+	public function view()
+	{
+
+	}
 }
