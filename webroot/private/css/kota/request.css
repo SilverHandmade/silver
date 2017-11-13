@@ -10,13 +10,15 @@
 }
 
 .button {
+	margin-top: 5px;
   text-align: right;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
 }
 
 input[type="text"],
-input[type="date"]{
+input[type="date"],
+input[type="number"] {
   width: 100%;
   padding: 3px;
   font-size: 14px;
