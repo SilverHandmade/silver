@@ -13,10 +13,11 @@ var rdate = document.getElementById( "reqD" ).value;
 var now = new Date();
 var deadline = new Date(rdate.split('-')[0], rdate.split('-')[1] - 1, rdate.split('-')[2]);
 
+//残り日数計算に使用される変数
+var dms = 1000 * 60 * 60 * 24;
 
 
 
-alert(deadline);
 
 
 
@@ -31,13 +32,17 @@ if (rtitle.length > 40) {
 //個数チェック
 if (rnum <= 0) {
 	alert("個数に0以下の数値は指定できません。");
+	document.getElementById( "reqN" ).value = 1;
+	return false;
+}
+//日付チェック
+var d = deadline.getTime() - now.getTime();
+d = Math.floor(d / dms);
+if (d < 7) {
+	alert("締め切りが七日を切っています。");
 	return false;
 }
 
-//日付チェック
-
-var d = deadline.getTime() - now.getTime();
-alert(d);
 
 
 
