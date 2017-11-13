@@ -21,6 +21,10 @@ h2.danger {
 h2.danger:after {
 	border-top: 15px solid #f5aab4;
 }
+h3 {
+	font-size: 20px;
+	color: inherit;
+}
 #panel {
 	/*min-height: 20vh;*/
 	border: 1px solid #ddd;
@@ -38,7 +42,15 @@ h2.danger:after {
 	width: 100%;
 	height: 100%;
 	padding: 0;
+	color: inherit;
 }
 #panel:hover {
 	opacity: 0.65;
+}
+#panel img {
+	width: 100%;
+	height: auto;
+}
+#linkTo {
+	margin-top: 10px;
 }
