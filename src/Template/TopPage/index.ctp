@@ -19,7 +19,7 @@
 <h2>新着ワークショップ</h2>
 <div class="row">
 	<?php foreach ($workshop as $key): ?>
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<div id="panel">
 				<a href="/silver">
 					<img src="<?= $this->request->getAttribute("webroot") ?>img/<?= file_exists($key['midasi_url'])?$key['midasi_url']:"no_image.png";?>">

@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-3">
 	<div id="panel">
 		<a href="/silver">
 			<h3><?= $key['title'];?></h3>
@@ -7,7 +7,7 @@
 
 			<div class="row">
 				<div class="col-md-12 right">
-					<button class="btn btn-link" type="button" >詳細 >></button>
+					<button class="btn btn-link" type="button">詳細 >></button>
 				</div>
 			</div>
 		</a>
