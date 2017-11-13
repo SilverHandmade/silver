@@ -17,6 +17,6 @@ class VideoController extends AppController
     }
     public function index()
     {
-
+		
     }
 }
