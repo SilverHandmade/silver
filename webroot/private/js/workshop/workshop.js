@@ -1,19 +1,41 @@
+//WorkShop作成画面　送信ボタン
 $(function(){
 	$('#Trans').click(function (){
-		alert("test");
+		var Nseisaku = document.getElementById( "nameS" ).value;
+		var Igamen = document.getElementById( "imageG" ).value;
+		var Msetumei = document.getElementById( "modelS" ).value;
+
+		//制作物名エラーメッセージ
+		if (Nseisaku == "") {
+			alert("制作物名の入力がされていません");
+			return false;
+		}else if (Nseisaku.length > 25) {
+			alert("制作物名は25文字以内で入力してください");
+			return false;
+		}
+
+		if (document.getElementById( "imageG" ).value == "") {
+			alert("画像ファイルが設定されていません")
+		}
+		//説明欄エラーメッセージ
+		if(Msetumei == ""){
+			alert("説明欄の入力がされていません");
+			return false;
+		}
+
+		//登録チェック
+		if (window.confirm("以下の内容で登録します。よろしいですか？")) {
+			alert("登録しました");
+			return true;
+		}else {
+			alert("キャンセルされました")
+			return false;
+		}
 	});
 });
 
-function check(){
-	var Pdate = document.getElementById( "postD" ).value;
-	var Useisaku = document.getElementById( "useS" ).value;
-	var Iseisaku = document.getElementById( "idS" ).value;
-	var Nseisaku = document.getElementById( "nameS" ).value;
-	var Igamen = document.getElementById( "imageG" ).value;
-	var Msetumei = document.getElementById( "modelS" ).value;
-
-	if (Msetumei == "") {
-		alert("oioioi");
-		return false;
-	}
-}
+$(function(){
+	$('#searchS').click(function (){
+		alert("osi");
+	});
+});
