@@ -9,25 +9,40 @@
 
 ?>
 <!-- -->
-<form action="regist" method="get" >
+<form action="regist" method="post" >
     <div class="">
       <!-- $postname-->
-      氏名:<input type="text" name="name" value="">
+      氏名:<input type="text" id="username" name="name" value="">
     </div>
 
     <div class="">
       <!-- $posthurigana-->
-      フリガナ:<input type="text" name="hurigana" value="">
+      フリガナ:<input type="text" id="hurigana" name="hurigana" value="">
     </div>
 
-    <div class="pulldown" name="facilities">
+		<div class="">
+
+			<?php foreach ($fClassArray as $key =>$value)
+				{ ?>
+					
+					<input type="radio" name="fClassId" value="" <?php if ($key == 0){
+						?>checked<?php
+					} ?>><?= $value['name'] ?>
+					<?php
+
+				}
+				?>
+		</div>
+
+	<div class="pulldown">
       <!-- $postfacilitie-->
-      施設名: <select name="facilities"><?php $i=0; ?>
+      施設名: <select name="facilities">
         <?php foreach ($results as $value)
           { ?>
-            <option value="name"><?= $results[$i]->name ?></option>
-          <?php $i = $i + 1;
-          } ?>
+            <option value="<?= $value['id'] ?> "><?= $value['name'] ?></option>
+          <?php
+          }
+					?>
       </select>
     </div>
 
@@ -53,29 +68,6 @@
 
     <!-- -->
     <button type="submit" onclick="test();"  value="">送信</button>
-
-    <?php
-			$postname = $this->request->getData('name');
-			$posthurigana  = $this->request->getData('hurigana');
-			$postmail  = $this->request->getData('email');
-			$postremail  = $this->request->getData('reemail');
-			$postpass  = $this->request->getData('password');
-			$postrepass  = $this->request->getData('repassword');
-      echo "<input type='text' name='' value='$postname'>";
-      echo "<input type='text' name='' value='$posthurigana'>";
-      echo "<input type='text' name='' value='$postmail'>";
-      echo "<input type='text' name='' value='$postremail'>";
-      echo "<input type='text' name='' value='$postpass'>";
-      echo "<input type='text' name='' value='$postrepass'>";
-
-			if ($postname !="") {
-				$name = $this->request->getData('name');
-				echo $name;
-			}else {
-				echo "nameなっしんぐ";
-			}
-
-    ?>
 
 
     </form>
