@@ -30,9 +30,9 @@
 						</div>
 					</div>
 				</a>
-			</div>
-		</div>
-	<?php endforeach; ?>
+			</div>zz
+		<?php endforeach; ?>
+	<?php endif; ?>
 </div>
 <div class="row right" id="linkTo">
 	<div class="col-md-12">

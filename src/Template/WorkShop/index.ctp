@@ -1,54 +1,26 @@
-<?php $this->start('css'); ?>
-	<?= $this->Html->css('/private/css/kota/workshop.css') ?>
-	<?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
-	<?= $this->Html->css('workshop.css') ?>
-	<?= $this->Html->script('/private/js/kota/workshop.js') ?>
-<?php $this->end(); ?>
+<div>
+	<h1>ワークショップ作成</h1>
+	<form action="" method="post">
+		<?= $this->Form->create('') ?>
+		<?= $this->Form->input('投稿日', array('name' =>'Postdate','id'=>'postD')); ?>
+		<?= $this->Form->input('作成者ID', array('name'=>'user','id'=>'useS')); ?>
+		<?= $this->Form->input('制作物ID', array('name' =>'id','id'=>'idS')); ?>
+		<?= $this->Form->input('制作物名', array('name' =>'name','id'=>'nameS')); ?>
+		<?= $this->Form->input('画像', array('label' => false, 'type' => 'file', 'name'=>'image','id'=>'imageG')); ?>
+		<?= $this->Form->textarea('作成手順', array("cols"=>40, "rows"=>5, "value"=>"",'name'=>'Model/field','id'=>'modelS')); ?>
+		<?= $this->Form->submit('送信',array('name'=>'Transmission','id'=>'Trans'));?>
+		<?= $this->Form->end() ?>
+	</form>
 
-<script>
-	// function add()
-	// {
-	// 	// var div_element = document.createElement("div");
-	// 	// div_element.innerHTML = '';
-	// 	// var parent_object = document.getElementById("aa");
-	// 	// parent_object.appendChild(div_element);
-    //
-	// }
+	<?php
+	 	$this->start('script');
+		echo $this->Html->script('/private/js/workshop/workshop.js');
+		$this->end();
+	 ?>
 
-	$(function(){
-		$().ready(function(){
-			var addhtml = document.getElementById("plus").innerHTML;
-		});
-		$('#add').click(function() {
-			$('#plus').clone(true).insertBefore($('#submit'));
-		});
-	});
-</script>
+	 <div class="" id="linkTo">
+	 	<?= $this->Html->link(">>検索画面へ",['controller' => 'workshop', "action" => "search"]);?>
+	 </div>
 
-<div class="center">
-	<p class="font-title">ワークショップ</p>
-		<form class="" action="" method="post" id="form">
-			<div class="row div-bottom">
-				<div class="col-md-5">
-					<p class="font-p">タイトル</p>
-					<input type="text" name="title" value="">
-				</div>
-			</div>
-			<div class="row div-bottom" id="plus">
-				<div class="col-md-2">
-					<p class="font-p">イメージ</p>
-					<input type="file" name="" id="file" style="display:none;" onchange="$('#fake_input_file').val($(this).val())">
-					<input type="button" value="写真" onClick="$('#file').click();" class="button">
-				</div>
-				<div class="col-md-8">
-					<p class="font-p">コメント</p>
-					<input type="text" name="Model/field" id="text">
-				</div>
-			</div>
-			<button type="submit" name="" class="button" id="submit">送信</button>
-		</form>
-		<div class="row">
-		</div>
-		<div class="glyphicon glyphicon-plus-sign" id="add"></div>
-	</div>
+
 </div>

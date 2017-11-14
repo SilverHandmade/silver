@@ -19,31 +19,36 @@ class WorkShopController extends AppController
 
     }
     public function index()
-    {
-			//Table登録
-			if ($this->request->is('post')) {
-				$id = $this->request->getData('id');
-				$createname= $this->request->getData('title');
-				$Model = $this->request->getData('Model/field');
-				$images = $this->request->getData('image');
-				$Postdate = $this->request->getData('Postdate');
-				$user = $this->request->getData('user');
-				// $this->set(compact('Model'));
+	{
+		//Table登録
+		if ($this->request->is('post')) {
+			$id = $this->request->getData('id');
+			$name= $this->request->getData('name');
+			$Model = $this->request->getData('Model/field');
+			$images = $this->request->getData('image');
+			$Postdate = $this->request->getData('Postdate');
+			$user = $this->request->getData('user');
+			// $this->set(compact('Model'));
 
-				// echo "<br><br><br><br><br><br>" . $Days;
-				$query = $this->Products->query();
-				$query->insert(['id', 'name', 'description','midasi_url','Postdate','user_id'])
-    			->values([
-						'id' => $id,
-						'name' => $createname,
-        		'description' => $Model,
-						'midasi_url'=> $images,
-						'Postdate' => $Postdate,
-						'user_id' => $user
-		    ]);
-    // ->execute();
+			// echo "<br><br><br><br><br><br>" . $Days;
+			$query = $this->Products->query();
+			$query->insert(['id', 'name', 'description','midasi_url','Postdate','user_id'])
+			->values([
+				'id' => $id,
+				'name' => $name,
+				'description' => $Model,
+				'midasi_url'=> $images,
+				'Postdate' => $Postdate,
+				'user_id' => $user
+	    	]);
+		//->execute();
 
-				$this->set(compact('check'));
-			}
+
+
 		}
+	}
+	public function search()
+	{
+
+	}
 }
