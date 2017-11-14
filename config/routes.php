@@ -6,15 +6,21 @@ use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
+Router::scope("/video", function ( RouteBuilder $routes ) {
+	$routes->connect(
+		'/:id',
+		['controller' => 'video', 'action'=> 'view'],
+//		 9桁の数字に制限、0始まりに対応
+		['id' => '\d{9}']
+	);
+});
+Router::scope('/Silver', function (RouteBuilder $routes) {
+	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
+});
 Router::scope('/', function (RouteBuilder $routes) {
 	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
 
     $routes->fallbacks(DashedRoute::class);
 });
-Router::scope('/Silver', function (RouteBuilder $routes) {
-	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
-});
-
-
 
 Plugin::routes();

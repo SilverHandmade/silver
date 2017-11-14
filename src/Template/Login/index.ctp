@@ -4,7 +4,7 @@
 
 <div id="form">
 	<p class="form-title">ログイン</p>
-	<form action="/silver/login" method="post">
+	<form action="" method="post">
 		<p class="font-color">メールアドレス</p>
 		<p class="userid">
 			<input type="text" name="email" value="">
