@@ -65,6 +65,7 @@
 			<a href="<?= $this->Url->build('/video/'.$key['id'], true);?>">
 				<div class="row panel">
 					<div class="col-md-4">
+						投稿日:<?=$key['contribution']?>
 						<img src="<?= $this->Url->image(file_exists($key['movie_url'])?$key['movie_url']:"no_image.png");?>">
 					</div>
 					<div class="col-md-8">
