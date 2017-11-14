@@ -14,9 +14,9 @@ Router::scope("/video", function ( RouteBuilder $routes ) {
 		['id' => '\d{9}']
 	);
 });
-// Router::scope('/Silver', function (RouteBuilder $routes) {
-// 	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
-// });
+Router::scope('/Silver', function (RouteBuilder $routes) {
+	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
+});
 Router::scope('/', function (RouteBuilder $routes) {
 	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
 
