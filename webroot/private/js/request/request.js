@@ -49,11 +49,30 @@ if (d < 7) {
 
 
 
+function setAndSubmit(id){
+
+}
+
+
+function facilitySearch(){
+
+}
 
 
 
-
-
+$(function(){
+	$('#button').bind("click",function(){
+		var re = new RegExp($('#fsearch').val());
+		$('#facitable tbody tr').each(function(){
+			var txt = $(this).find("td:eq(0)").html();
+			if(txt.match(re) != null){
+				$(this).show();
+			}else{
+				$(this).hide();
+			}
+		});
+	});
+});
 
 
 
