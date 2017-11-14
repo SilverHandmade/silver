@@ -12,22 +12,37 @@
 <form action="regist" method="post" >
     <div class="">
       <!-- $postname-->
-      氏名:<input type="text" name="name" value="">
+      氏名:<input type="text" id="username" name="name" value="">
     </div>
 
     <div class="">
       <!-- $posthurigana-->
-      フリガナ:<input type="text" name="hurigana" value="">
+      フリガナ:<input type="text" id="hurigana" name="hurigana" value="">
     </div>
 
-    <div class="pulldown" name="facilities">
+		<div class="">
+
+			<?php foreach ($fClassArray as $key =>$value)
+				{ ?>
+					
+					<input type="radio" name="fClassId" value="" <?php if ($key == 0){
+						?>checked<?php
+					} ?>><?= $value['name'] ?>
+					<?php
+
+				}
+				?>
+		</div>
+
+	<div class="pulldown">
       <!-- $postfacilitie-->
-      施設名: <select><?php $i=0; ?>
+      施設名: <select name="facilities">
         <?php foreach ($results as $value)
           { ?>
-            <option value="name"><?= $results[$i]->name ?></option>
-          <?php $i = $i + 1;
-          } ?>
+            <option value="<?= $value['id'] ?> "><?= $value['name'] ?></option>
+          <?php
+          }
+					?>
       </select>
     </div>
 
@@ -53,29 +68,6 @@
 
     <!-- -->
     <button type="submit" onclick="test();"  value="">送信</button>
-
-    <?php
-			$postname = $_POST['name'];
-			$posthurigana  = $_POST['hurigana'];
-			$postmail  = $_POST['email'];
-			$postremail  = $_POST['reemail'];
-			$postpass  = $_POST['password'];
-			$postrepass  = $_POST['repassword'];
-      echo "<input type='text' name='' value='$postname'>";
-      echo "<input type='text' name='' value='$posthurigana'>";
-      echo "<input type='text' name='' value='$postmail'>";
-      echo "<input type='text' name='' value='$postremail'>";
-      echo "<input type='text' name='' value='$postpass'>";
-      echo "<input type='text' name='' value='$postrepass'>";
-
-			if ($postname !="") {
-				$name = $_POST['name'];
-				echo $name;
-			}else {
-				echo "nameなっしんぐ";
-			}
-
-    ?>
 
 
     </form>
