@@ -13,24 +13,42 @@ class VideoController extends AppController
     public function initialize()
     {
         parent::initialize();
-		$this->loadmodel('Movies');
+		$session = $this->request->session();
+		if (!$session->read('loginFlg')) {
+			$this->redirect(['controller' => 'login']);
+		}
 
+		$this->loadmodel('Movies');
     }
     public function index()
     {
+		$queryMov = $this->Movies->find();
 		if ($this->request->is('POST')) {
-			$queryMov = $this->Movies->find()->select('title');
-			$queryMov->where(['title LIKE' => '%' . $this->request->getData('title') . '%']);
-			// $queryAvg->where(['id' => $this->request->getData('videoId')]);
-			// $queryAvg->where(['user_id' => $this->request->getData('uploader')]);
-			// $queryAvg->where(['description' => '%' . $this->request->getData('kyeWord') . '%']);
+			$queryMov->contain();
+			// ->select('title');
+
+			if (!empty($this->request->getData('title'))) {
+				$queryMov->where(['title LIKE' => '%' . $this->request->getData('title') . '%']);
+			}
+			if (!empty($this->request->getData('videoId'))) {
+				$queryMov->where(['id' => $this->request->getData('videoId')]);
+			}
+			if (!empty($this->request->getData('uploader'))) {
+				$queryMov->where(['user_id' => $this->request->getData('uploader')]);
+			}
+			if (!empty($this->request->getData('kyeWord'))) {
+				$queryMov->where(['description like' => '%' . $this->request->getData('kyeWord') . '%']);
+			}
 
 			$this->set('results', $queryMov->toArray());
+		} else {
+			$this->set('results', $queryMov->limit(10)->all()->toArray());
 		}
 
 	}
 	public function view()
 	{
+
 
 	}
 }

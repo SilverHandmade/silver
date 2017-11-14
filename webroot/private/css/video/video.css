@@ -1,7 +1,43 @@
+/*search*/
 #details {
 	display: none;
 }
-
 button span {
 	color: inherit;
 }
+img {
+	width: 100%;
+	height: auto;
+}
+#videoList *{
+	/*border: solid 1px red;*/
+}
+#videoList .row {
+	margin-top: 15px;
+}
+.panel > a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	color: inherit;
+}
+.panel {
+	border: 1px solid #ddd;
+	margin: 5px;
+	padding: 10px;
+	box-shadow: 5px 5px #ddd;
+	cursor: pointer;
+}
+h3 {
+	margin: 0
+}
+/*search終わり*/
+/*view*/
+video {
+	/*width: 50vw;
+	min-width: 50vw;
+	height: auto;*/
+	width: 100%;
+}
+/*view終わり*/

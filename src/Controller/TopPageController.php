@@ -23,14 +23,14 @@ class TopPageController extends AppController
 		$queryRequest = $this->Requests->find()->contain('Facilities')
 		->select(['Requests.title', 'Requests.To_date', 'Facilities.name'])
 		->order(['Requests.To_date' => 'DESC'])
-		->limit(3);
+		->limit(4);
 		$request = $queryRequest->toArray();
 		$this->set(compact('request'));
 
 
 		$queryWorkShop = $this->Products->find()
 		->order(['Postdate' => 'DESC'])
-		->limit(3)->all();
+		->limit(4)->all();
 		$workshop = $queryWorkShop->toArray();
 		$this->set(compact('workshop'));
 

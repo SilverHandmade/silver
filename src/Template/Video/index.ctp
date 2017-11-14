@@ -31,7 +31,13 @@
 					<label for="update">投稿日</label>
 				</td>
 				<td class="col-md-4">
-					<input class="form-control" type="date" name="update" id="update"/>
+					<select class="form-control">
+						<option>指定なし</option>
+						<option>1日以内</option>
+						<option>1週間以内</option>
+						<option>1か月以内</option>
+						<option>1年以内</option>
+					</select>
 				</td>
 			</tr>
 			<tr>
@@ -53,4 +59,33 @@
 		</table>
 		<button class="btn btn-success" type="submit" name="button">検索</button>
 	</form>
+
+	<div id="videoList">
+		<?php foreach ($results as $key): ?>
+			<a href="">
+				<div class="row panel">
+					<div class="col-md-4">
+						<img src="<?= $this->request->getAttribute("webroot")?>img/<?= file_exists($key['movie_url'])?$key['movie_url']:"no_image.png";?>">
+					</div>
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-md-12">
+								<h3><?= $key['title']; ?></h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<p>
+									<?= $key['description']; ?>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		<?php endforeach; ?>
+	</div>
+
+
+
 </div>

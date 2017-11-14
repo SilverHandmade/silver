@@ -23,14 +23,17 @@ a.navbar-brand {
 .nav > li > a:focus, .nav > li > a:hover {
     background-color: #6aa512;
 }
-.dropdown-menu {
+.nav .open > a {
+	background-color: inherit;
+}
+.nav .dropdown-menu {
     background-color: #497937;
 }
-.dropdown-menu > li > a {
+.nav .dropdown-menu > li > a {
     color: #FFF;
 }
-.dropdown-menu > li > a:focus,
-.dropdown-menu > li > a:hover {
+.nav .dropdown-menu > li > a:focus,
+.nav .dropdown-menu > li > a:hover {
 	color: #ffd203;
     background-color: #6aa512;
 }

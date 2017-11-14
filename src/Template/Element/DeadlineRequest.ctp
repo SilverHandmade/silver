@@ -1,5 +1,5 @@
 <div class="col-md-3">
-	<div id="panel">
+	<div class="panel">
 		<a href="/silver">
 			<h3><?= $key['title'];?></h3>
 			<div><?= $key->facility['name'];?></div>

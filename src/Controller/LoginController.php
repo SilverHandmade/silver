@@ -55,7 +55,8 @@ class LoginController extends AppController
 				$this->Auth->setUser($user);
 				$session->write([
 					'username' => $user['name'],
-					'userID' => $user['email']
+					'userID' => $user['email'],
+					'loginFlg' => True
 				]);
 				return $this->redirect($this->Auth->redirectUrl());
 			}

@@ -20,7 +20,7 @@
 <div class="row">
 	<?php foreach ($workshop as $key): ?>
 		<div class="col-md-3">
-			<div id="panel">
+			<div class="panel">
 				<a href="/silver">
 					<img src="<?= $this->request->getAttribute("webroot") ?>img/<?= file_exists($key['midasi_url'])?$key['midasi_url']:"no_image.png";?>">
 					<h3><?= $key['name'];?></h3>
