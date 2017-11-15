@@ -1,1 +1,1 @@
-<input type="text" value=<?php echo $a;?> ></input>
+<!--<input type="text" value=<?php echo $a;?> ></input>-->

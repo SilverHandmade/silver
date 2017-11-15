@@ -18,8 +18,10 @@ class IdTestController extends AppController
     }
 
     public function index() {
-		$abd=$this->MakeId9->id9('use');
-		$this->set("a", $abd);
+		$abd=$this->MakeId9->id9('pro');
+		echo '<br><br><br><br><br><br>';
+		echo $this->MakeId9->id9('pro');
+		//$this->set("a", $abd);
       	return;
     }
 
