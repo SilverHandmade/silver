@@ -23,10 +23,11 @@ class RequestController extends AppController
     }
     public function create()
     {
-	  $faci_name = $_GET['facility_name'];
-	  $faci_address = $_GET['facility_address'];
-	  $faci_id = $_GET['facility_id'];
-
+	  if ($this->request->is('post')){
+	  $faci_name = $_POST['facility_name'];
+	  $faci_address = $_POST['facility_address'];
+	  $faci_id = $_POST['facility_id'];
+  	}
     }
     public function index(){
       $query = $this->Facilities->find()
