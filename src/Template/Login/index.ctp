@@ -17,10 +17,11 @@
 			<button type="submit" name="login" class="submit">ログイン</button><br>
 		</p>
 		<p>
-			<a href="src/Template/Regist/index.ctp">初めての方はこちら</a>
+			<?= $this->Html->link("初めての方はこちら" ,['controller' => 'regist', "action" => 'index']);?>
 		</p>
 		<p>
 			<a href="#">パスワードを忘れた場合はこちら</a>
+			
 		</p>
 	</form>
 </div>

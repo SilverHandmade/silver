@@ -14,6 +14,22 @@ Router::scope("/video", function ( RouteBuilder $routes ) {
 		['id' => '\d{9}']
 	);
 });
+// Router::scope("/request", function ( RouteBuilder $routes ) {
+// 	$routes->connect(
+// 		'/:id',
+// 		['controller' => 'request', 'action'=> 'create'],
+// //		 10桁の数字に制限、0始まりに対応
+// 		['id' => '\d{10}']
+// 	);
+// });
+// Router::scope("/workshop", function ( RouteBuilder $routes ) {
+// 	$routes->connect(
+// 		'/:id',
+// 		['controller' => 'WorkShop', 'action'=> ''],
+// //		 10桁の数字に制限、0始まりに対応
+// 		['id' => '\d{9}']
+// 	);
+// });
 Router::scope('/Silver', function (RouteBuilder $routes) {
 	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
 });
