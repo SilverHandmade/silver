@@ -15,10 +15,11 @@ class VideoController extends AppController
         parent::initialize();
 		$session = $this->request->session();
 		if (!$session->read('loginFlg')) {
-			$this->redirect(['controller' => 'login']);
+			$this->redirect(['controller' => 'login', 'action' => 'index']);
 		}
 
 		$this->loadmodel('Movies');
+
     }
     public function index()
     {
