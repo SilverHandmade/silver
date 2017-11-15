@@ -15,17 +15,12 @@ function test(){
 	if (hurigana.length >= 31) {
 		alert("フリガナは30文字以内です");
 		return false;
-
-	}else if (str.match(/^[\u30A0-\u30FF]+$/)) {
-	    alert("すべて全角カタカナである");
-		return false;
-	} else {
-	    alert("全角カタカナでない文字がある");
-		return false;
+	}else {
+		isZenKatakana(hurigana);
 	}
 
 
-}
+
 
 
 	if (regM.length >= 256) {
@@ -42,4 +37,13 @@ function test(){
 		alert("パスワードに入力された内容が間違っています");
 		return false;
 	}
+}
+function isZenKatakana(str){
+  str = (str==null)?"":str;
+  if(str.match(/^[ァ-ヶー　]*$/)){    //"ー"の後ろの文字は全角スペースです。
+    return true;
+  }else{
+	  alert("全角カタカナではない文字が含まれています");
+    return false;
+  }
 }

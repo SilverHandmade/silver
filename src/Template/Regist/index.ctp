@@ -9,23 +9,23 @@
 
 ?>
 <!-- -->
-<form action="regist" method="post" >
+<form action="confirm" method="post" onsubmit="test();" >
     <div class="">
       <!-- $postname-->
-      氏名:<input type="text" id="username" name="name" value="">
+      氏名:<input type="text" id="username" name="name" value="" maxlength="6">
     </div>
 
     <div class="">
       <!-- $posthurigana-->
-      フリガナ:<input type="text" id="hurigana" name="hurigana" value="">
+      フリガナ:<input type="text" id="hurigana" name="hurigana" value="" maxlength="30">
     </div>
 
 		<div class="">
 
 			<?php foreach ($fClassArray as $key =>$value)
 				{ ?>
-					
-					<input type="radio" name="fClassId" value="" <?php if ($key == 0){
+
+					<input type="radio" name="fClassId" value="<?= $value['id'] ?>" <?php if ($key == 0){
 						?>checked<?php
 					} ?>><?= $value['name'] ?>
 					<?php
@@ -48,26 +48,26 @@
 
     <div class="">
       <!-- $postmail-->
-      メールアドレス:<input type="email" id="regM" name="email" value="">
+      メールアドレス:<input type="email" id="regM" name="email" maxlength="255">
     </div>
 
     <div class="">
       <!-- $postremail-->
-      再入力:<input type="email" id="regRM" name="reemail">
+      再入力:<input type="email" id="regRM" name="reemail" maxlength="255">
     </div>
 
     <div class="">
       <!-- $postpass-->
-      パスワード:<input type="text" id="regP" name="password" value="">
+      パスワード:<input type="password" id="regP" name="password" maxlength="255">
     </div>
 
     <div class="">
       <!-- $postrepass-->
-      再入力:<input type="text" id="regRP" name="repassword">
+      再入力:<input type="password" id="regRP" name="repassword" maxlength="255">
     </div>
 
     <!-- -->
-    <button type="submit" onclick="test();"  value="">送信</button>
+    <button type="submit">送信</button>
 
 
     </form>
