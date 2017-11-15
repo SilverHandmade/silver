@@ -6,76 +6,63 @@
 
 $(function(){
 	$('#cc').click(function() {
-		$('#Cc').show();
+		$('#Cc').toggle();
 	});
 });
 
 $(function(){
 	$('#bcc').click(function() {
-		$('#Bcc').show();
+		$('#Bcc').toggle();
 	});
 });
 
 </script>
 <div class="col-md-offset-2 col-md-8">
 	<div class="row">
-		<table>
-			<tbody>
+		<form class="" action="index.html" method="post">
+			<table class="table">
 				<tr>
 					<td>
-						<form class="" action="index.html" method="post">
-							<table class="table">
-								<tr>
-									<td width="20%">
-										<span aria-label="To" tabindex="1" role="link">To</span>
-									</td>
-									<td>
-										<input type="email" aria-hidden="true">
-									</td>
-								</tr>
-								<tr>
-									<td width="20%">
-										<div class="" id="cc">
-											<span aria-label="Cc" tabindex="1" role="link">Cc</span>
-										</div>
-									</td>
-									<td>
-										<input type="email" aria-hidden="true" style="display:none" id="Cc">
-									</td>
-								</tr>
-								<tr>
-									<td width="20%">
-										<div class="" id="bcc">
-											<span aria-label="Bcc" tabindex="1" role="link">Bcc</span>
-										</div>
-									</td>
-									<td>
-										<input type="email" aria-hidden="true" style="display:none" id="Bcc">
-									</td>
-								</tr>
-								<tr>
-
-									<td colspan="2">
-										<div class="">
-											<input type="text" name="subjectbox" value="" placeholder="件名">
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<textarea name="" rows="8" cols="80"></textarea>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<button type="submit" name="transmission">送信</button>
-									</td>
-								</tr>
-							</table>
-						</form>
+						<div>To</div>
+					</td>
+					<td>
+						<input type="email" aria-hidden="true">
 					</td>
 				</tr>
-			</tbody>
-		</table>
+				<tr>
+					<td>
+						<div id="cc">Cc</div>
+					</td>
+					<td>
+						<input type="email" aria-hidden="true" style="display:none" id="Cc">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="" id="bcc">Bcc</div>
+					</td>
+					<td>
+						<input type="email" aria-hidden="true" style="display:none" id="Bcc">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div>
+							<input type="text" name="subjectbox" value="" placeholder="件名" class="input-text">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<textarea name="" rows="8" cols="80"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button type="submit" name="transmission">送信</button>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 </div>

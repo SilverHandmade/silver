@@ -1,7 +1,5 @@
 <?php $this->start('css'); ?>
-  <?= $this->Html->css('/private/css/kota/request.css') ?>
-  <?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
-  <?= $this->Html->css('request.css') ?>
+	<?= $this->Html->css('/private/css/kota/create.css') ?>
 <?php $this->end(); ?>
 
 <script>

@@ -1,7 +1,11 @@
 
 <?php
 	$this->start('script');
-	echo $this->Html->script('/private/js/request/request.js');
+		echo $this->Html->script('/private/js/request/request.js');
+	$this->end();
+
+	$this->start('css');
+		echo $this->Html->css('/private/css/kota/request.css');
 	$this->end();
 ?>
 
@@ -13,8 +17,7 @@
 	<form class="" action="" method="GET" onsubmit="doSomething();return false;">
 		<div class="row center">
 			<input type="text" name="dummy" style="display:none;">
-		<h1>依頼先検索</h1>
-			<input type="text" id="fsearch" name="search" value=""/><button type="button" id="searchbutton" name="sbutton">検索</button>
+			<input type="text" id="fsearch" name="search" value=""/><button type="button" id="searchbutton" name="sbutton" class="submit-button">検索</button>
 		</form>
 		<h2>依頼先一覧<h2>
 			<table id="facitable" align="center" border="3" >
@@ -32,7 +35,7 @@
 							<input type=hidden name=facility_name value=<?php echo $facility['name']?>>
 							<input type=hidden name=facility_address value=<?php echo $facility['address']?>>
 						<td id="fname">
-									<button type="submit"><?php echo $facility['name']?></button>
+									<button type="submit" class="submit-button"><?php echo $facility['name']?></button>
 						</form>
 						</td>
 						<td id="faddress">

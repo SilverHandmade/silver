@@ -1,27 +1,4 @@
-/*layout*/
-.font-p {
-  text-align: left;
-  color: #497937;
-}
-
-.font-title {
-  color: #497937;
-  font-size:30px;
-}
-
-.button {
-	margin-top: 5px;
-  text-align: right;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-}
-
-input[type="text"],
-input[type="date"],
-input[type="number"] {
-  width: 100%;
-  padding: 3px;
-  font-size: 14px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
+.submit-button {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
 }
