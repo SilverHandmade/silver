@@ -1,6 +1,4 @@
-function aaa(){
-	alert( "表示テスト" );
-}
+
 function nextpage(){
 
 
@@ -15,10 +13,6 @@ var deadline = new Date(rdate.split('-')[0], rdate.split('-')[1] - 1, rdate.spli
 
 //残り日数計算に使用される変数
 var dms = 1000 * 60 * 60 * 24;
-
-
-
-
 
 
 //タイトル前後の空白をトリム
@@ -41,10 +35,6 @@ if (d < 7) {
 	alert("締め切りが七日を切っています。");
 	return false;
 }
-
-
-
-
 }
 
 
@@ -59,13 +49,16 @@ function facilitySearch(){
 }
 
 
-
+//依頼先一覧絞り込み
 $(function(){
-	$('#button').bind("click",function(){
+	$('#searchbutton').bind("click",function(){
 		var re = new RegExp($('#fsearch').val());
 		$('#facitable tbody tr').each(function(){
-			var txt = $(this).find("td:eq(0)").html();
-			if(txt.match(re) != null){
+			var Ntxt = $(this).find("#fname:eq(0)").html();
+			var Atxt = $(this).find("#faddress:eq(0)").html();
+			Ntxt = Ntxt.replace("<button type=\"submit\">","");
+			Ntxt = Ntxt.replace("</button>","");
+			if(Atxt.match(re) != null || Ntxt.match(re) != null){
 				$(this).show();
 			}else{
 				$(this).hide();
