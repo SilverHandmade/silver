@@ -3,7 +3,18 @@ td * {
 
 }
 
-input[type="email"] {
-	margin-left: 5px;
-	width: 100%;
+input[type="email"],
+input[type="text"] {
+	width: 450px;
+    padding: 4px;
+    font-size: 14px;
+}
+
+button {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+
+form {
+	margin: 0px;
 }
