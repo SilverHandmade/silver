@@ -9,7 +9,7 @@
 
 ?>
 <!-- -->
-<form action="regist" method="post" >
+<form action="confirm" method="post" >
 		<div class="">
 			<!-- $postname-->
 			氏名:<input type="text" id="username" name="name" value="">
@@ -58,12 +58,12 @@
 
 		<div class="">
 			<!-- $postpass-->
-			パスワード:<input type="text" id="regP" name="password" value="">
+			パスワード:<input type="password" id="regP" name="password" value="">
 		</div>
 
 		<div class="">
 			<!-- $postrepass-->
-			再入力:<input type="text" id="regRP" name="repassword">
+			再入力:<input type="password" id="regRP" name="repassword">
 		</div>
 
 		<!-- -->

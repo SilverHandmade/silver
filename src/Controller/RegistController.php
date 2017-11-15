@@ -81,7 +81,7 @@ class RegistController extends AppController
       $user = $this->users->find('all');
       $userarray = $user->toArray();
       $this->set(compact('userarray'));
-
+      // DBerror
 	  if ($this->request->is('post')) {
 		  $postname = $_POST['name'];
 		  $posthurigana  = $_POST['hurigana'];
@@ -99,7 +99,7 @@ class RegistController extends AppController
 	        $this->set(compact('fnamearray'));
 			//->execute();
 
-			
+
 
 	  }
 		  echo("南国");
