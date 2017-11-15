@@ -16,39 +16,41 @@ class WorkShopController extends AppController
     {
         parent::initialize();
 				$this->loadmodel('Products');
+				$this->loadComponent('MakeId9');
 
     }
-    public function index()
+    public function create()
 	{
 		//Table登録
 		if ($this->request->is('post')) {
-			$id = $this->request->getData('id');
+			$id = $this->MakeId9->id9('pro');
 			$name= $this->request->getData('name');
 			$Model = $this->request->getData('Model/field');
 			$images = $this->request->getData('image');
-			$Postdate = $this->request->getData('Postdate');
 			$user = $this->request->getData('user');
 			// $this->set(compact('Model'));
 
-			// echo "<br><br><br><br><br><br>" . $Days;
+			 //echo "<br><br><br><br><br><br>" . $this->MakeId9->id9('pro');
 			$query = $this->Products->query();
-			$query->insert(['id', 'name', 'description','midasi_url','Postdate','user_id'])
+			$query->insert(['id', 'name', 'description','midasi_url','user_id'])
 			->values([
 				'id' => $id,
 				'name' => $name,
 				'description' => $Model,
 				'midasi_url'=> $images,
-				'Postdate' => $Postdate,
 				'user_id' => $user
-	    	]);
-		//->execute();
+	    	])
+		->execute();
 
 
 
 		}
 	}
-	public function search()
+	public function index()
 	{
-
+		$query = $this->Products->query()
+		->limit(4)->all();
+		$workshop = $query->toArray();
+		$this->set(compact('workshop'));
 	}
 }
