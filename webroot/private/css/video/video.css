@@ -1,7 +1,4 @@
 /*search*/
-#details {
-	display: none;
-}
 button span {
 	color: inherit;
 }
@@ -12,9 +9,9 @@ button span {
 #videoList .row {
 	margin-top: 15px;
 }
-#videoPanel, #listMode{
+/*#videoPanel, #listMode{
 	display: none;
-}
+}*/
 /*search終わり*/
 
 /*view*/

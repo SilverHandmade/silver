@@ -1,6 +1,8 @@
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/video/video.css') ?>
 <?php $this->end() ?>
+
+
 <div class="col-md-offset-2 col-md-8">
 	<div>
 		<video controls loop poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg">

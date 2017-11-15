@@ -205,6 +205,9 @@ h3 {
 .full {
 	width: 100%;
 }
+.none {
+	display: none;
+}
 #all {
 	margin-top: 105px;
 	margin-bottom: calc(10vh + 30px);
