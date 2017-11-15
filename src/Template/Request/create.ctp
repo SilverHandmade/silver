@@ -18,7 +18,7 @@ var test = <?php echo $results; ?>;
 	<p class="font-title">代理人検索 </p>
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6">
-			<form action="/silver/request" method="post">
+			<form action="/silver/request/proof" method="post">
 				<p class="font-p">制作物タイトル</p>
 				<input type="text" id="reqT" name="requestT" value="" maxlength="40" required>
 				<p class="font-p">制作個数</p>
@@ -26,7 +26,7 @@ var test = <?php echo $results; ?>;
 					<input type="number" id="reqN" name="requestN" value="1" min="1" max="999" required>
 				</div>
 				<p class="font-p">ワークショップID</p>
-				<input type="text" id="wsID" name="wsID" value="" autocomplete="off" required>
+				<input type="text" id="wsID" name="wsID" value="" autocomplete="off">
 				<p class="font-p">締切日</p>
 				<input type="date" id="reqD" name="requestD" value="" autocomplete="on" required>
 				<div class="right">

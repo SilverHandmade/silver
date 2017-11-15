@@ -23,34 +23,10 @@ class RequestController extends AppController
     }
     public function create()
     {
-
-      $query = $this->Products->find()
-      ->select(['id']);
-      $results = $query->all()->ToArray();
-      $jsonResults = json_encode($results);
-      $this->set(compact('results'));
 	  $faci_name = $_GET['facility_name'];
 	  $faci_address = $_GET['facility_address'];
 	  $faci_id = $_GET['facility_id'];
-      if ($this->request->is('post')){
-        if ($input_ws = $_POST['wsID']) {
-          $input_title = $_POST['requestT'];
-          $input_num = $_POST['requestN'];
-          $input_date = $_POST['requestD'];
-          if ($input_ws != "") {
-            foreach ($results as $value) {
-              $value = preg_replace('/[^0-9]/', '', $value);
-                if ($input_ws === $value) {
-                  break;
-                }
-                if(!next($results)){
-                  // 一致しなかった場合
-                  $this->Flash->error(__('ワークショップIDが間違っています。'));
-                }
-            }
-          }
-        }
-      }
+
     }
     public function index(){
       $query = $this->Facilities->find()
@@ -61,6 +37,36 @@ class RequestController extends AppController
       $this->set(compact('facilities'));
 
     }
+
+	public function proof(){
+		$query = $this->Products->find()
+		->select(['id']);
+		$results = $query->all()->ToArray();
+		$jsonResults = json_encode($results);
+		$this->set(compact('results'));
+		if ($this->request->is('post')){
+			$input_title = $_POST['requestT'];
+			$input_num = $_POST['requestN'];
+			$input_date = $_POST['requestD'];
+		  if ($input_ws = $_POST['wsID']) {
+			if ($input_ws != "") {
+			  foreach ($results as $value) {
+				$value = preg_replace('/[^0-9]/', '', $value);
+				  if ($input_ws === $value) {
+					break;
+				  }
+				  if(!next($results)){
+					// 一致しなかった場合
+					$uri = $_SERVER['HTTP_REFERER'];
+					header("Location: ".$uri);
+					$this->Flash->error(__('ワークショップIDが間違っています。'));
+
+				  }
+			  }
+			}
+		  }
+		}
+	}
 
 
 }
