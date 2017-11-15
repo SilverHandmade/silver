@@ -165,7 +165,37 @@ footer .btn-link, footer .btn-link:hover {
 }
 /*PAGE TOPボタン終わり*/
 
+/*panlel*/
+.panel {
+	/*min-height: 20vh;*/
+	border: 1px solid #ddd;
+	margin: 5px;
+	padding: 10px;
+	box-shadow: 5px 5px #ddd;
+	cursor: pointer;
+}
+.panel > a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	color: inherit;
+}
+.panel:hover {
+	opacity: 0.65;
+}
+.panel img {
+	width: 100%;
+	height: auto;
+}
+/*panlel 終わり*/
+
 /*その他*/
+h3 {
+	font-size: 20px;
+	color: inherit;
+	margin: 0
+}
 .center{
 	text-align: center;
 }
