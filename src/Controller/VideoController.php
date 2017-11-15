@@ -42,7 +42,7 @@ class VideoController extends AppController
 
 			$this->set('results', $queryMov->toArray());
 		} else {
-			$this->set('results', $queryMov->limit(10)->all()->toArray());
+			$this->set('results', $queryMov->all(20)->toArray());
 		}
 
 	}

@@ -43,7 +43,9 @@ a.navbar-brand {
 .table > tbody > tr > td {
 	vertical-align: middle;
 }
-
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 0px;
+}
 
 /*.table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {

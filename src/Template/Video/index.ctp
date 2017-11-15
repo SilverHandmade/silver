@@ -3,6 +3,7 @@
 <?php $this->end() ?>
 <?php $this->start('script') ?>
 	<?= $this->Html->script('/private/js/video/open.js') ?>
+	<?= $this->Html->script('/private/js/video/modeToggle.js') ?>
 <?php $this->end() ?>
 
 <div class="col-md-offset-1 col-md-10">
@@ -58,6 +59,13 @@
 			</tr>
 		</table>
 		<button class="btn btn-success" type="submit" name="button">検索</button>
+		<button class="btn bbtn-default" type="button" id="listMode">
+			<span class="glyphicon glyphicon-th-large"></span>
+		</button>
+		<button class="btn bbtn-default" type="button" id="panelMode">
+			<span class="glyphicon glyphicon-th-list"></span>
+		</button>
+
 	</form>
 
 	<div id="videoList">
@@ -85,8 +93,19 @@
 				</div>
 			</a>
 		<?php endforeach; ?>
+
 	</div>
-
-
+	<div class="row" id="videoPanel">
+		<?php foreach ($results as $key): ?>
+			<div class="col-md-3">
+				<a href="<?= $this->Url->build('/video/'.$key['id'], true);?>">
+					<div class="panel">
+						<?=$key['contribution']?>
+						<img src="<?= $this->Url->image(file_exists($key['movie_url'])?$key['movie_url']:"no_image.png");?>">
+					</div>
+				</a>
+			</div>
+		<?php endforeach; ?>
+	</div>
 
 </div>
