@@ -21,7 +21,7 @@ class RequestController extends AppController
 			$this->redirect(['controller' => 'login']);
 		}*/
     }
-    public function index()
+    public function create()
     {
 
       $query = $this->Products->find()
@@ -31,10 +31,8 @@ class RequestController extends AppController
       $this->set(compact('results'));
 	  $faci_name = $_GET['facility_name'];
 	  $faci_address = $_GET['facility_address'];
-	  echo $faci_name;
-	  echo $faci_address;
+	  $faci_id = $_GET['facility_id'];
       if ($this->request->is('post')){
-
         if ($input_ws = $_POST['wsID']) {
           $input_title = $_POST['requestT'];
           $input_num = $_POST['requestN'];
@@ -54,9 +52,9 @@ class RequestController extends AppController
         }
       }
     }
-    public function search(){
+    public function index(){
       $query = $this->Facilities->find()
-      ->select(['name','address'])
+      ->select(['id','name','address'])
       ->where(['facility_classes_id ='=>2]);
       $facilities = $query->all()->ToArray();
       $jsonResults = json_encode($facilities);

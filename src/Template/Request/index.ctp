@@ -1,12 +1,3 @@
-<?php $this->start('css'); ?>
-  <?= $this->Html->css('/private/css/kota/request.css') ?>
-  <?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
-  <?= $this->Html->css('request.css') ?>
-<?php $this->end(); ?>
-
-<script>
-var test = <?php echo $results; ?>;
-</script>
 
 <?php
 	$this->start('script');
@@ -14,26 +5,46 @@ var test = <?php echo $results; ?>;
 	$this->end();
 ?>
 
-<div class="col-md-offset-2 col-md-8 center">
-	<p class="font-title">代理人検索 </p>
-	<div class="row">
-		<div class="col-md-offset-3 col-md-6">
-			<form action="/silver/request" method="post">
-				<p class="font-p">制作物タイトル</p>
-				<input type="text" id="reqT" name="requestT" value="" maxlength="40" required>
-				<p class="font-p">制作個数</p>
-				<div class="left">
-					<input type="number" id="reqN" name="requestN" value="1" min="1" max="999" required>
-				</div>
-				<p class="font-p">ワークショップID</p>
-				<input type="text" id="wsID" name="wsID" value="" autocomplete="off" required>
-				<p class="font-p">締切日</p>
-				<input type="date" id="reqD" name="requestD" value="" autocomplete="off" required>
-				<div class="right">
-					<button type="submit" class="button" name="createReq" onclick="return nextpage();">次へ</button>
-					<button type="button" class="button" onclick="aaa();">戻る</button>
-				</div>
-			</form>
+
+
+
+
+<div class="col-md-offset-2 col-md-8">
+	<form class="" action="" method="GET" onsubmit="doSomething();return false;">
+		<div class="row center">
+			<input type="text" name="dummy" style="display:none;">
+		<h1>依頼先検索</h1>
+			<input type="text" id="fsearch" name="search" value=""/><button type="button" id="searchbutton" name="sbutton">検索</button>
+		</form>
+		<h2>依頼先一覧<h2>
+			<table id="facitable" align="center" border="3" >
+				<thead>
+					<tr>
+						<th>施設名</th>
+						<th>所在地</th>
+					</tr>
+				</thead>
+				<?php foreach ($facilities as $facility) : ?>
+				<tbody>
+					<tr>
+						<form action="/silver/request/create" method="GET" >
+							<input type=hidden name=facility_id value=<?php echo $facility['id']?>>
+							<input type=hidden name=facility_name value=<?php echo $facility['name']?>>
+							<input type=hidden name=facility_address value=<?php echo $facility['address']?>>
+						<td id="fname">
+									<button type="submit"><?php echo $facility['name']?></button>
+						</form>
+						</td>
+						<td id="faddress">
+							<?php echo $facility['address']?>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
 		</div>
-	</div>
+		<div class="">
+
+		</div>
+
 </div>
