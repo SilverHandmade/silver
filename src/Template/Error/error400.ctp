@@ -12,6 +12,7 @@ if (Configure::read('debug')) :
 
     $this->start('file');
 ?>
+<h1>ERROR! 404 NOT FOUND</h1>
 <?php if (!empty($error->queryString)) : ?>
     <p class="notice">
         <strong>SQL Query: </strong>

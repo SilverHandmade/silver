@@ -5,7 +5,7 @@
 	<?= $this->Html->script('/private/js/video/open.js') ?>
 <?php $this->end() ?>
 
-<div class="col-md-offset-2 col-md-8">
+<div class="col-md-offset-1 col-md-10">
 	<form action="" method="post">
 		<table class="table table-bordered">
 			<tr>
@@ -62,12 +62,13 @@
 
 	<div id="videoList">
 		<?php foreach ($results as $key): ?>
-			<a href="">
+			<a href="<?= $this->Url->build('/video/'.$key['id'], true);?>">
 				<div class="row panel">
-					<div class="col-md-4">
-						<img src="<?= $this->request->getAttribute("webroot")?>img/<?= file_exists($key['movie_url'])?$key['movie_url']:"no_image.png";?>">
+					<div class="col-md-3">
+						投稿日:<?=$key['contribution']?>
+						<img src="<?= $this->Url->image(file_exists($key['movie_url'])?$key['movie_url']:"no_image.png");?>">
 					</div>
-					<div class="col-md-8">
+					<div class="col-md-9">
 						<div class="row">
 							<div class="col-md-12">
 								<h3><?= $key['title']; ?></h3>

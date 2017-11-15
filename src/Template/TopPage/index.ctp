@@ -21,8 +21,8 @@
 	<?php foreach ($workshop as $key): ?>
 		<div class="col-md-3">
 			<div class="panel">
-				<a href="/silver">
-					<img src="<?= $this->request->getAttribute("webroot") ?>img/<?= file_exists($key['midasi_url'])?$key['midasi_url']:"no_image.png";?>">
+				<a href="">
+					<img src="<?= $this->Url->image(file_exists($key['midasi_url'])?$key['midasi_url']:"no_image.png");?>">
 					<h3><?= $key['name'];?></h3>
 					<div class="row">
 						<div class="col-md-12 right">

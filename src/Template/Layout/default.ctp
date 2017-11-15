@@ -55,7 +55,7 @@
 								<?= $this->Html->link($user['tranceName'] ,['controller' => 'login', "action" => $user['action']]);?>
 							</li>
 							<?php if($user['registFlg']):?>
-								<li><a href="">
+								<li><a href="<?=$this->Url->build(["controller" => "regist", "action" => "index"]);?>">
 									新規登録
 								</a></li>
 							<?php endif; ?>

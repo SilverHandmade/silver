@@ -9,16 +9,16 @@
 
 ?>
 <!-- -->
-<form action="confirm" method="post" onsubmit="test();" >
-    <div class="">
-      <!-- $postname-->
-      氏名:<input type="text" id="username" name="name" value="" maxlength="6">
-    </div>
+<form action="regist" method="post" >
+		<div class="">
+			<!-- $postname-->
+			氏名:<input type="text" id="username" name="name" value="">
+		</div>
 
-    <div class="">
-      <!-- $posthurigana-->
-      フリガナ:<input type="text" id="hurigana" name="hurigana" value="" maxlength="30">
-    </div>
+		<div class="">
+			<!-- $posthurigana-->
+			フリガナ:<input type="text" id="hurigana" name="hurigana" value="">
+		</div>
 
 		<div class="">
 
@@ -35,39 +35,39 @@
 		</div>
 
 	<div class="pulldown">
-      <!-- $postfacilitie-->
-      施設名: <select name="facilities">
-        <?php foreach ($results as $value)
-          { ?>
-            <option value="<?= $value['id'] ?> "><?= $value['name'] ?></option>
-          <?php
-          }
+			<!-- $postfacilitie-->
+			施設名: <select name="facilities">
+				<?php foreach ($results as $value)
+					{ ?>
+						<option value="<?= $value['id'] ?> "><?= $value['name'] ?></option>
+					<?php
+					}
 					?>
-      </select>
-    </div>
+			</select>
+		</div>
 
-    <div class="">
-      <!-- $postmail-->
-      メールアドレス:<input type="email" id="regM" name="email" maxlength="255">
-    </div>
+		<div class="">
+			<!-- $postmail-->
+			メールアドレス:<input type="email" id="regM" name="email" value="">
+		</div>
 
-    <div class="">
-      <!-- $postremail-->
-      再入力:<input type="email" id="regRM" name="reemail" maxlength="255">
-    </div>
+		<div class="">
+			<!-- $postremail-->
+			再入力:<input type="email" id="regRM" name="reemail">
+		</div>
 
-    <div class="">
-      <!-- $postpass-->
-      パスワード:<input type="password" id="regP" name="password" maxlength="255">
-    </div>
+		<div class="">
+			<!-- $postpass-->
+			パスワード:<input type="text" id="regP" name="password" value="">
+		</div>
 
-    <div class="">
-      <!-- $postrepass-->
-      再入力:<input type="password" id="regRP" name="repassword" maxlength="255">
-    </div>
+		<div class="">
+			<!-- $postrepass-->
+			再入力:<input type="text" id="regRP" name="repassword">
+		</div>
 
-    <!-- -->
-    <button type="submit">送信</button>
+		<!-- -->
+		<button type="submit" onclick="test();"	value="">送信</button>
 
 
-    </form>
+		</form>
