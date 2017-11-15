@@ -1,3 +1,9 @@
-td *  {
-	margin-bottom: 10px;
+td * {
+	margin-bottom: 5px;
+
+}
+
+input[type="email"] {
+	margin-left: 5px;
+	width: 100%;
 }

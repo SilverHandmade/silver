@@ -19,7 +19,7 @@ $(function(){
 });
 
 </script>
-<div class="col-md-offset-2">
+<div class="col-md-offset-2 col-md-8">
 	<div class="row">
 		<table>
 			<tbody>
@@ -36,7 +36,7 @@ $(function(){
 												</div>
 											</td>
 											<td>
-												<input type="email" tabindex="-1" aria-hidden="true">
+												<input type="email" aria-hidden="true">
 											</td>
 										</tr>
 										<tr>
@@ -47,7 +47,7 @@ $(function(){
 											</td>
 											<td>
 												<div class="">
-													<input type="email" tabindex="-1" aria-hidden="true" style="display:none" id="Cc">
+													<input type="email" aria-hidden="true" style="display:none" id="Cc">
 												</div>
 											</td>
 										</tr>
@@ -57,7 +57,7 @@ $(function(){
 												</div>
 											</td>
 											<td>
-												<input type="email" tabindex="-1" aria-hidden="true" style="display:none" id="Bcc">
+												<input type="email" aria-hidden="true" style="display:none" id="Bcc">
 											</td>
 										</tr>
 									</tbody>
