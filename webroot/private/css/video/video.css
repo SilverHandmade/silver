@@ -12,6 +12,9 @@ img {
 #videoList .row {
 	margin-top: 15px;
 }
+#videoPanel, #listMode{
+	display: none;
+}
 /*search終わり*/
 
 /*view*/
