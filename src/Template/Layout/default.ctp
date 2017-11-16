@@ -85,7 +85,17 @@
 						<li><?= $this->Html->link("依頼",['controller' => 'request', "action" => "index"]);?></li>
 						<li><?= $this->Html->link("ワークショップ",['controller' => 'workshop', "action" => "index"]);?></li>
 						<li><?= $this->Html->link("動画",['controller' => 'video', "action" => "index"]);?></li>
-						<li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li>					</ul>
+						<li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li>
+						<li>
+							<?= $this->Html->link($user['tranceName'] ,['controller' => 'login', "action" => $user['action']]);?>
+						</li>
+						<?php if($user['registFlg']):?>
+							<li><a href="<?=$this->Url->build(["controller" => "regist", "action" => "index"]);?>">
+								新規登録
+							</a></li>
+						<?php endif; ?>
+					</ul>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -103,9 +113,7 @@
 			<div class="row">
 				<?= $this->Flash->render() ?>
 			</div>
-			<div class="row">
-				<?= $this->fetch('content') ?>
-			</div>
+			<?= $this->fetch('content') ?>
 		</div>
 
 		<!-- 右サイドカラム -->
