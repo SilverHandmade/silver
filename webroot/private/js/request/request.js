@@ -71,7 +71,7 @@ $(function(){
 
 
 //今日の日時を表示
-		window.onload = function () {
+function setDate() {
 				//今日の日時を表示
 				var date = new Date()
 				var year = date.getFullYear()
@@ -92,4 +92,6 @@ $(function(){
 				var ymd = yyyy + "-" + mm + "-" + dd;
 
 				document.getElementById("reqD").value = ymd;
+
+
 		}
