@@ -19,14 +19,14 @@
 }*/
 
 
-/*input[type="text"] {
-	width: 100%;
-	padding: 3px;
-	font-size: 14px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-}*/
-
+input[type="text"] {
+  width: 100%;
+  padding: 3px;
+  font-size: 14px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+*/
 #add {
 	width: 100%;
 }

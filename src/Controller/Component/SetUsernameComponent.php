@@ -10,6 +10,7 @@ class SetUsernameComponent extends Component {
 		// セッション情報取得
 		if (!empty($session->read('username'))) {
 			$user = array(
+				'id' => $session->read('id'),
 				'name' => $session->read('username'),
 				'action' => 'logout',
 				'tranceName' => 'ログアウト',
