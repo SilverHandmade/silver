@@ -36,6 +36,8 @@ $(function(){
 
 $(function(){
 	$('#searchS').click(function (){
-		alert("osi");
+		var Stext = document.getElementById( "searchtext1" ).value;
+
+		}
 	});
 });
