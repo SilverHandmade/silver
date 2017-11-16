@@ -2,16 +2,10 @@
 button span {
 	color: inherit;
 }
-.panel img {
-	width: 100%;
-	height: auto;
-}
 #videoList .row {
 	margin-top: 15px;
 }
-/*#videoPanel, #listMode{
-	display: none;
-}*/
+
 /*search終わり*/
 
 /*view*/

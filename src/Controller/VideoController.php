@@ -52,4 +52,9 @@ class VideoController extends AppController
 
 
 	}
+	public function workshop()
+	{
+
+
+	}
 }

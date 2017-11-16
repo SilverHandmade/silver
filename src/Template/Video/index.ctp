@@ -112,20 +112,25 @@
 				</div>
 			</a>
 		<?php endforeach; ?>
-
 	</div>
-	<div class="row" id="videoPanel">
-		<?php foreach ($results as $key): ?>
-			<div class="col-md-3">
-				<a href="<?= $this->Url->build('/video/'.$key['id'], true);?>">
-					<div class="panel">
-						<?=$key['contribution']?>
-						<img src="<?= $this->Url->image(file_exists($key['movie_url'])?$key['movie_url']:"no_image.png");?>">
-						<h3><?=$key['title']?></h3>
+
+	<div id="videoPanel">
+		<?php $i = 0; foreach ($results as $key): ?>
+			<?php if ($i++ % 4 == 0): ?>
+				<div class="row">
+			<?php endif; ?>
+					<div class="col-md-3">
+						<a href="<?= $this->Url->build('/video/'.$key['id'], true);?>">
+							<div class="panel">
+								<?=$key['contribution']?>
+								<img src="<?= $this->Url->image(file_exists($key['movie_url'])?$key['movie_url']:"no_image.png");?>">
+								<h3><?=$key['title']?></h3>
+							</div>
+						</a>
 					</div>
-				</a>
-			</div>
+			<?php if ($i % 4 == 0): ?>
+				</div>
+			<?php endif; ?>
 		<?php endforeach; ?>
 	</div>
-
 </div>
