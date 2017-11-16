@@ -52,7 +52,7 @@ class LoginController extends AppController
 			$session = $this->request->session();
 			$user = $this->Auth->identify();
 			if ($user) {
-				// $this->Auth->setUser($user);
+				$this->Auth->setUser($user);
 				$session->write([
 					'id' => $user['id'],
 					'username' => $user['name'],
