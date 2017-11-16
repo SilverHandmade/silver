@@ -18,6 +18,7 @@ $(function(){
 
 </script>
 <div class="col-md-offset-2 col-md-8">
+	<p class="title">お問い合わせ</p>
 	<div class="row">
 		<form class="" action="index.html" method="post">
 			<table class="table">
