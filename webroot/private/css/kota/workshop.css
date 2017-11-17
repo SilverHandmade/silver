@@ -17,18 +17,26 @@
 	margin-top: 5px;
 }
 
-/*.lable-btn {
+.div-btn {
+ 	position: relative;
 	display: inline-block;
-	padding: 8px 12px;
-	border-radius: 5px;
-	color: #ffffff;
+}
+/*#Upload {
 	background: #DDDDDD;
-	cursor: pointer;
+	border: none;
 }*/
 
-/*input[type="file"]{
+.input-file {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
 	display: none;
-}*/
+}
+
 input[type="text"] {
 		width: 100%;
 		padding: 3px;

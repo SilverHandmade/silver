@@ -14,7 +14,11 @@
 		<div class="form-group" id="plus">
 			<div class="row">
 				<div class="col-md-3">
-					<input type="file" name="Upload" id="file_upload">
+					<div class="div-btn">
+						<input type="file" id="file" style="display:none;" class="input-file" onchange="$('#fake_input_file').val($(this).val())">
+						<button type="button" name="button" id="Upload" onClick="$('#file').click();">画像選択</button>
+					</div>
+					<span id="fake_input_file">NOT FILE</span>
 				</div>
 				<div class="col-md-9">
 					<input class="form-control" type="text">

@@ -18,3 +18,10 @@ $(function(){
 		location.href = "http://localhost/silver/work-shop";
 	});
 });
+
+$(function() {
+	$('#file').on('change', function() {
+		var file_name = $(this).prop('files')[0].name;
+		$(this).parent().next().html(file_name);
+	});
+});
