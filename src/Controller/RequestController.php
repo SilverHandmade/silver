@@ -16,6 +16,8 @@ class RequestController extends AppController
         parent::initialize();
         $this->loadmodel('Products');
         $this->loadmodel('Facilities');
+		$this->loadmodel('Requests');
+		$this->loadComponent('MakeId9');
 		$session = $this->request->session();
 		if (!$session->read('loginFlg')) {
 			$this->redirect(['controller' => 'login']);
@@ -63,7 +65,9 @@ class RequestController extends AppController
 		$this->set(compact('results'));
 		$_SESSION['create_flg'] = 1;
 
-		if ($this->request->is('post')){
+
+
+		if (isset($_POST['requestT'])){
 			$_SESSION['request']['title'] = $_POST['requestT'];
 			$_SESSION['request']['number'] = $_POST['requestN'];
 			$_SESSION['request']['date'] = $_POST['requestD'];
@@ -79,12 +83,50 @@ class RequestController extends AppController
 					$uri = $_SERVER['HTTP_REFERER'];
 					//一つ前の画面へ遷移
 					header( "Location: ".$uri ) ;
-					$this->Flash->error(__('ワークショップIDが間違っています。'));					
+					$this->Flash->error(__('ワークショップIDが間違っています。'));
 					exit;
 				  }
 			  }
 			}
 		  }
+		}
+
+		//確定ボタンが押されたとき
+		if (isset($_POST['ok'])) {
+			//wsidが入力されているとき
+			if (isset($_POST['wsID_con'])) {
+				$wsid = $_POST['wsID_con'];
+			}else{
+				$wsid = null;
+			}
+
+
+			//ID連番
+			$req_id=$this->MakeId9->id9('req');
+
+			$moto_id = $_SESSION['Auth']['User']['facilities_id'];
+			$saki_id = $_SESSION['facility']['facility_id'];
+			$title = $_POST['requestT_con'];
+			$kosu = $_POST['requestN_con'];
+			$now_date = date("Y/m/d");
+			$to_date = $_POST['requestD_con'];
+			$query = $this->Requests->query();
+			$query->insert(['id','F_moto_id', 'F_saki_id','product_id','title','From_date','To_date','su'])
+			->values([
+				'id' => $req_id,
+				'F_moto_id' => $moto_id,
+				'F_saki_id' => $saki_id,
+				'product_id' => $wsid,
+				'title'=> $title,
+				'From_date' => $now_date,
+				'To_date' => $to_date,
+				'su' => $kosu
+			])
+		->execute();
+			echo "データが送信されました";
+			unset($_SESSION['facility']);
+			unset($_SESSION['request']);
+
 		}
 	}
 

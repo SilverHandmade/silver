@@ -49,7 +49,10 @@ if ($this->request->is('post')){
 
 <p>締切日</p>
 <input type="text" id="reqD_con" name="requestD_con" value=<?php echo $input_date?>>
+<br>
 
 <button type="button" class="button" onclick="location.href='/silver/request/create/'">修正</button>
+<button type="submit" class="button" name="ok" onclick="">確定</button>
+
 </div>
 </form>

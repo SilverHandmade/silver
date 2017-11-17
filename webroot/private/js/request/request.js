@@ -38,17 +38,6 @@ if (d < 7) {
 }
 
 
-
-function setAndSubmit(id){
-
-}
-
-
-function facilitySearch(){
-
-}
-
-
 //依頼先一覧絞り込み
 $(function(){
 	$('#searchbutton').bind("click",function(){
@@ -71,9 +60,9 @@ $(function(){
 
 
 //今日の日時を表示
-function setDate() {
+	/*	window.onload = function () {
 				//今日の日時を表示
-				var date = new Date()
+				/*var date = new Date()
 				var year = date.getFullYear()
 				var month = date.getMonth() + 1
 				var day = date.getDate()
@@ -91,7 +80,7 @@ function setDate() {
 				var dd = toTwoDigits(day, 2)
 				var ymd = yyyy + "-" + mm + "-" + dd;
 
-				document.getElementById("reqD").value = ymd;
-
-
-		}
+				document.getElementById("reqD").value = ymd;*/
+		// 		var a =0;
+        //
+		// }

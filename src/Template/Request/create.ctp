@@ -1,17 +1,18 @@
-<?php $this->start('css'); ?>
-	<?= $this->Html->css('/private/css/kota/create.css') ?>
-<?php $this->end(); ?>
-
-
 <?php
 	$this->start('script');
 	echo $this->Html->script('/private/js/request/request.js');
 	$this->end();
 ?>
 
-<?php
 
- ?>
+
+<?php $this->start('css'); ?>
+	<?= $this->Html->css('/private/css/kota/create.css') ?>
+<?php $this->end(); ?>
+
+
+
+
 
 <div class="col-md-offset-2 col-md-8 center">
 
@@ -35,11 +36,10 @@
 					echo $_SESSION['request']['wsid'];} ?>>
 				<p class="font-p">締切日</p>
 				<input type="date" id="reqD" name="requestD" required value=<?php if ($_SESSION['create_flg'] == 1) {
-					echo $_SESSION['request']['date'];}else{?>
-						"setDate();"
-				<?php } ?>>
+					echo $_SESSION['request']['date'];}?>>
+
 				<div class="right">
-					<button type="submit" class="button" name="createReq" onclick="return nextpage();">次へ</button>
+					<button type="submit" class="button" name="createReq" onclick="return nextpage()">次へ</button>
 					<button type="button" class="button" onclick="location.href='/silver/request'">戻る</button>
 
 				</div>
