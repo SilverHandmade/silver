@@ -23,40 +23,50 @@ $(function(){
 		<form class="" action="index.html" method="post">
 			<table class="table">
 				<tr>
-					<td>
-						<div>To</div>
-					</td>
-					<td>
-						<input type="email" aria-hidden="true">
-					</td>
+					<div class="form-group">
+						<td>
+							<div>To</div>
+						</td>
+						<td>
+							<input type="email" aria-hidden="true" class="form-control">
+						</td>
+					</div>
 				</tr>
 				<tr>
-					<td>
-						<div id="cc">Cc</div>
-					</td>
-					<td>
-						<input type="email" aria-hidden="true" style="display:none" id="Cc">
-					</td>
+					<div class="form-group">
+						<td>
+							<div id="cc">Cc</div>
+						</td>
+						<td>
+							<input type="email" aria-hidden="true" style="display:none" id="Cc" class="form-control">
+						</td>
+					</div>
 				</tr>
 				<tr>
-					<td>
-						<div class="" id="bcc">Bcc</div>
-					</td>
-					<td>
-						<input type="email" aria-hidden="true" style="display:none" id="Bcc">
-					</td>
+					<div class="form-group">
+						<td>
+							<div class="" id="bcc">Bcc</div>
+						</td>
+						<td>
+							<input type="email" aria-hidden="true" style="display:none" id="Bcc" class="form-control">
+						</td>
+					</div>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<div>
-							<input type="text" name="subjectbox" value="" placeholder="件名" class="input-text">
-						</div>
-					</td>
+					<div class="form-group">
+						<td colspan="2">
+							<div>
+								<input type="text" name="subjectbox" value="" placeholder="件名" class="input-text form-control">
+							</div>
+						</td>
+					</div>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<textarea name="" rows="8" cols="80"></textarea>
-					</td>
+					<div class="form-group">
+						<td colspan="2">
+							<textarea name="text" rows="8" cols="80" class="form-control"></textarea>
+						</td>
+					</div>
 				</tr>
 				<tr>
 					<td>

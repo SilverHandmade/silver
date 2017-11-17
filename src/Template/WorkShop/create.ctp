@@ -5,7 +5,6 @@
 	<?= $this->Html->script('/private/js/kota/workshop.js') ?>
 <?php $this->end(); ?>
 
-
 <div class="col-md-offset-1 col-md-10">
 	<form action="" method="post">
 		<div class="form-group">
@@ -15,7 +14,7 @@
 		<div class="form-group" id="plus">
 			<div class="row">
 				<div class="col-md-3">
-					<input type="file" name="">
+					<input type="file" name="Upload" id="file_upload">
 				</div>
 				<div class="col-md-9">
 					<input class="form-control" type="text">
@@ -29,6 +28,10 @@
 					<span class="glyphicon glyphicon-plus-sign"></span>
 				</button>
 			</div>
+		</div>
+		<div class="row">
+			<button type="submit" name="button">送信</button>
+			<button type="button" name="search-back" id="back">検索画面へ</button>
 		</div>
 	</form>
 </div>
