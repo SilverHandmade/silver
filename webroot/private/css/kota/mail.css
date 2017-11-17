@@ -1,7 +1,12 @@
 input[type="email"] {
 	width: 450px;
-    padding: 4px;
-    font-size: 14px;
+	padding: 4px;
+	font-size: 14px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border: solid #ddd 1px;
+	background: #fafafa;
 }
 
 button {
@@ -14,7 +19,24 @@ form {
 }
 
 .input-text {
-	width: 540px;
+	width: 535px;
 	font-size: 14px;
 	padding: 4px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border: solid #ddd 1px;
+	background: #fafafa;
+}
+
+textarea {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border: solid #ddd 1px;
+	background: #fafafa;
+	resize: none;
+}
+.title {
+	font-size: 45px;
 }
