@@ -9,15 +9,15 @@
 
 ?>
 <!-- -->
-<form action="confirm" method="post" >
+<form id="regform" name="" action="confirm" method="post">
 		<div class="">
 			<!-- $postname-->
-			氏名:<input type="text" id="username" name="name" value="">
+			氏名:<input type="text" id="username" name="name" value="" required>
 		</div>
 
 		<div class="">
 			<!-- $posthurigana-->
-			フリガナ:<input type="text" id="hurigana" name="hurigana" value="">
+			フリガナ:<input type="text" id="hurigana" name="hurigana" value="" required>
 		</div>
 
 		<div class="">
@@ -48,26 +48,25 @@
 
 		<div class="">
 			<!-- $postmail-->
-			メールアドレス:<input type="email" id="regM" name="email" value="">
+			メールアドレス:<input type="email" id="regM" name="email" value=""required>
 		</div>
 
 		<div class="">
 			<!-- $postremail-->
-			再入力:<input type="email" id="regRM" name="reemail">
+			再入力:<input type="email" id="regRM" name="reemail"required>
 		</div>
 
 		<div class="">
 			<!-- $postpass-->
-			パスワード:<input type="password" id="regP" name="password" value="">
+			パスワード:<input type="password" id="regP" name="password" value=""required>
 		</div>
 
 		<div class="">
 			<!-- $postrepass-->
-			再入力:<input type="password" id="regRP" name="repassword">
+			再入力:<input type="password" id="regRP" name="repassword"required>
 		</div>
 
 		<!-- -->
-		<button type="submit" onclick="test();"	value="">送信</button>
-
+		<button type="submit" value="" id="regbtn">送信</button>
 
 		</form>
