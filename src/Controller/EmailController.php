@@ -15,15 +15,15 @@ class EmailController extends AppController
     public function initialize()
     {
         parent::initialize();
-		$email = new Email('default');
-		$email->from(['me@example.com' => 'My Site'])
-		    ->to('oic.t.ueda@gmail.com')
-		    ->subject('About')
-		    ->send('My message');
+
     }
 
 
-    public function default() {
-
+    public function index() {
+		$email = new Email('default');
+		$email->from(['Taguchi.SilverHandmade@gmail.com' => 'OIC'])
+			->to('oic.t.ueda@gmail.com')
+			->subject('About')
+			->send('My message');
     }
 }
