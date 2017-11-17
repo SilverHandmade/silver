@@ -36,20 +36,26 @@ class ResetPassController extends AppController
 			$Pas = $this->request->getData('password');
 			$RPas = $this->request->getData('repassword');
 			$HHs = $this->PassHash->hash($this->request->getData('password'));
-			echo '<br><br><br><br>';
-			echo $Pas.'<br>'.$RPas.'<br>'.$Uid.'<br>'.$HHs;
-			if($Uid == 1){
+			echo '<br><br><br><br><br>';
+			echo '1_'.$Pas.'<br>'.'2_'.$RPas.'<br>'.'ID_'.$Uid.'<br>'.'hs_'.$HHs;
+
+			echo '<br>_'.mb_substr($Pas, -3).'<br>'.strlen($Pas);
+
 				if($Pas == $RPas){
 					echo '<br>'.'1';
 					$query = ConnectionManager::get('default');
 					$query->update('users',['password' => $HHs],['id' => $Uid]);
-					//->execute()
+
+					//debug($query);
 				}else {
 					echo '<br>'.'0';
 				}
-			}
-
-
+				// $validate = array(
+				// 	'password' => array(
+				// 		'rule'    => array('between', 8, 20),
+				// 		'message' => '8〜20文字でよろしく'
+				// 	)
+				// );
 
 		}
 
