@@ -4,7 +4,10 @@
 	echo $this->Html->script('/private/js/regist/regist.js');
 	$this->end();
 ?>
+
 <form id="regform" name="" action="confirm" method="post">
+
+		<h2>新規登録</h2>
 		<div class="">
 			<!-- $postname-->
 			氏名:<input type="text" id="username" name="name" maxlength="6" value="" required>
