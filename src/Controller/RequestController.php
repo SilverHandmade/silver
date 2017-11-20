@@ -121,7 +121,7 @@ class RequestController extends AppController
 				'From_date' => $now_date,
 				'To_date' => $to_date,
 				'su' => $kosu
-			]);
+			])
 		->execute();
 			echo "データが送信されました";
 			//本番稼働時には下記のURLをトップページのものへ変更する
