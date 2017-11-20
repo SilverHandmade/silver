@@ -124,10 +124,33 @@ class RequestController extends AppController
 			])
 		->execute();
 			echo "データが送信されました";
+			//本番稼働時には下記のURLをトップページのものへ変更する
+			header( "Location: http://localhost/silver/" ) ;
+			$this->Flash->error(__('依頼データが送信されました。'));
 			unset($_SESSION['facility']);
 			unset($_SESSION['request']);
+			unset($_SESSION['select_flg']);
+			unset($_SESSION['create_flg']);
+			exit();
 
 		}
+	}
+
+
+
+	public function list(){
+		$query = $this->Requests->find();
+		$reqs = $query->all()->ToArray();
+		$this->set(compact('reqs'));
+
+
+		$query = $this->Facilities->find()
+		->select(["id","name"]);
+		$Moto_nametable = $query->all()->ToArray();
+		$this->set(compact('Moto_nametable'));
+
+
+
 	}
 
 

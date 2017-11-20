@@ -56,6 +56,24 @@ $(function(){
 	});
 });
 
+//依頼一覧絞り込み
+$(function(){
+	$('#Reqsearchbutton').bind("click",function(){
+		var re = new RegExp($('#rsearch').val());
+		$('#reqtable tbody tr').each(function(){
+			var Ttxt = $(this).find("#rtitle:eq(0)").html();
+			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
+			Ttxt = Ttxt.replace("</button>","");
+			alert(Ttxt);
+			if(Ttxt.match(re) != null){
+				$(this).show();
+			}else{
+				$(this).hide();
+			}
+		});
+	});
+});
+
 
 
 
