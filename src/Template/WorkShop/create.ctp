@@ -10,15 +10,13 @@
 		<?= $this->Form->end() ?>
 	</form>
 
-	<?php
-	 	$this->start('script');
-		echo $this->Html->script('/private/js/workshop/workshop.js');
-		$this->end();
-	 ?>
-
 	 <div class="" id="linkTo">
 	 	<?= $this->Html->link(">>検索画面へ",['controller' => 'workshop', "action" => "index"]);?>
 	 </div>
 
-
+	 <?php
+ 	 	$this->start('script');
+ 		echo $this->Html->script('/private/js/workshop/workshop.js');
+ 		$this->end();
+ 	 ?>
 </div>

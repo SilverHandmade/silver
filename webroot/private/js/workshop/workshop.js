@@ -33,9 +33,3 @@ $(function(){
 		}
 	});
 });
-
-$(function(){
-	$('#searchS').click(function (){
-		alert("osi");
-	});
-});
