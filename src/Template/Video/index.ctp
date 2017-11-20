@@ -43,12 +43,12 @@
 									<label for="update">投稿日</label>
 								</td>
 								<td class="col-md-4">
-									<select class="form-control">
-										<option>指定なし</option>
-										<option>1日以内</option>
-										<option>1週間以内</option>
-										<option>1か月以内</option>
-										<option>1年以内</option>
+									<select class="form-control" name="term">
+										<option value="0">指定なし</option>
+										<option value="1">1日以内</option>
+										<option value="7">1週間以内</option>
+										<option value="90">1か月以内</option>
+										<option value="365">1年以内</option>
 									</select>
 								</td>
 							</tr>

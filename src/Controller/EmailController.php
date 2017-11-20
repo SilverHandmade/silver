@@ -7,16 +7,23 @@ use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 
+use Cake\Mailer\Email;
+
 class EmailController extends AppController
 {
 
     public function initialize()
     {
         parent::initialize();
+
     }
 
 
-    public function default() {
-
+    public function index() {
+		$email = new Email('default');
+		$email->from(['Taguchi.SilverHandmade@gmail.com' => 'OIC'])
+			->to('oic.t.ueda@gmail.com')
+			->subject('About')
+			->send('My message');
     }
 }
