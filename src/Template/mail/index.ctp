@@ -4,18 +4,6 @@
 
 <script>
 
-$(function(){
-	$('#cc').click(function() {
-		$('#Cc').toggle();
-	});
-});
-
-$(function(){
-	$('#bcc').click(function() {
-		$('#Bcc').toggle();
-	});
-});
-
 </script>
 <div class="col-md-offset-2 col-md-8">
 	<div class="row">
@@ -26,6 +14,11 @@ $(function(){
 						<td colspan="2">
 							<div>
 								<input type="text" name="subjectbox" value="" placeholder="件名" class="input-text form-control">
+								<nobr>
+									<span>
+										※(40文字以内)
+									</span>
+								</nobr>
 							</div>
 						</td>
 					</div>
