@@ -4,18 +4,6 @@
 
 <script>
 
-$(function(){
-	$('#cc').click(function() {
-		$('#Cc').toggle();
-	});
-});
-
-$(function(){
-	$('#bcc').click(function() {
-		$('#Bcc').toggle();
-	});
-});
-
 </script>
 <div class="col-md-offset-2 col-md-8">
 	<p class="title">お問い合わせ</p>
@@ -24,39 +12,14 @@ $(function(){
 			<table class="table">
 				<tr>
 					<div class="form-group">
-						<td>
-							<div>To</div>
-						</td>
-						<td>
-							<input type="email" aria-hidden="true" class="form-control">
-						</td>
-					</div>
-				</tr>
-				<tr>
-					<div class="form-group">
-						<td>
-							<div id="cc">Cc</div>
-						</td>
-						<td>
-							<input type="email" aria-hidden="true" style="display:none" id="Cc" class="form-control">
-						</td>
-					</div>
-				</tr>
-				<tr>
-					<div class="form-group">
-						<td>
-							<div class="" id="bcc">Bcc</div>
-						</td>
-						<td>
-							<input type="email" aria-hidden="true" style="display:none" id="Bcc" class="form-control">
-						</td>
-					</div>
-				</tr>
-				<tr>
-					<div class="form-group">
-						<td colspan="2">
+						<td colspan="3">
 							<div>
 								<input type="text" name="subjectbox" value="" placeholder="件名" class="input-text form-control">
+								<nobr>
+									<span>
+										※(40文字以内)
+									</span>
+								</nobr>
 							</div>
 						</td>
 					</div>

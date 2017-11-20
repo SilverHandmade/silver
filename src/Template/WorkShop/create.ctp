@@ -15,8 +15,8 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div class="div-btn">
-						<input type="file" id="file" style="display:none;" class="input-file" onchange="$('#fake_input_file').val($(this).val())">
-						<button type="button" name="button" id="Upload" onClick="$('#file').click();">画像選択</button>
+						<input type="file" class="input-file none file">
+						<button type="button" name="" id="upload">画像選択</button>
 					</div>
 					<span id="fake_input_file">NOT FILE</span>
 				</div>
@@ -33,7 +33,7 @@
 				</button>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row button">
 			<button type="submit" name="button">送信</button>
 			<button type="button" name="search-back" id="back">検索画面へ</button>
 		</div>

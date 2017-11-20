@@ -12,6 +12,8 @@
 .button	{
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
+	text-align: right;
+	margin-top: 5px;
 }
 .div-margin-top	{
 	margin-top: 5px;
