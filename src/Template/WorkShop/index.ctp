@@ -6,8 +6,8 @@
 <div>
 	<h1>ワークショップ検索画面</h1>
 	<form action="" method="Post">
-		<?= $this->Form->input('制作物名', array('name'=>'searchtext','id'=>'searchtext1')); ?>
-		<?= $this->Form->submit('検索',array('name'=>'search','id'=>'searchS'));?>
+		<input type="text" name="searchtext" id="searchtext1">
+		<input type="submit" name="search" id="searchS" value="検索">
 	</form>
 
 	<h2>検索結果</h2>
@@ -16,11 +16,11 @@
 				<div class="col-md-3">
 					<div class="panel">
 						<a href="">
-							<img src="<?= $this->Url->image(file_exists($key['midasi_url'])?$key['midasi_url']:"no_image.png");?>">
+							<img src="<?= $this->Url->image(file_exists($key['midasi_url'])?$key['midasi_url']:'no_image.png');?>">
 							<h3><?= $key['name'];?></h3>
 							<div class="row">
 								<div class="col-md-12 right">
-									<button class="btn btn-link" type="button" >詳細 >></button>
+									<button class="btn btn-link" type="button" name="syousaibtn" id="syousaibtn1" >詳細 >></button>
 								</div>
 							</div>
 						</a>
@@ -29,10 +29,14 @@
 			<?php endforeach; ?>
 		</div>
 
+		<div class="col-md-12">
+			<?= $this->Html->link(">>ワークショップ作成画面へ",['controller' => 'workshop', "action" => "create"]);?>
+		</div>
+
 
 <?php
 	$this->start('script');
 	echo $this->Html->script('/private/js/workshop/workshop.js');
 	$this->end();
- ?>
+?>
 <div>

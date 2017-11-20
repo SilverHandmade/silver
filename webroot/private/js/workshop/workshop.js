@@ -33,11 +33,3 @@ $(function(){
 		}
 	});
 });
-
-$(function(){
-	$('#searchS').click(function (){
-		var Stext = document.getElementById( "searchtext1" ).value;
-
-		}
-	});
-});

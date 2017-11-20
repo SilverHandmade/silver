@@ -40,7 +40,7 @@ class WorkShopController extends AppController
 				'midasi_url'=> $images,
 				'user_id' => $user
 	    	]);
-		//->execute();
+			//->execute();
 
 
 
@@ -48,17 +48,20 @@ class WorkShopController extends AppController
 	}
 	public function index()
 	{
+		$query = $this->Products->find();
 		if ($this->request->is('post')) {
-			$hen = $this->request->getData('searchtext');
-			//echo "<br><br><br><br><br>" . $this->request->getData('searchtext');
+			$query->contain();
 
-			$query = $this->Products->find()
-			->where(['name LIKE' => '%'. $hen . '%'])
-			->all()
-			->toArray();
+			if (!empty($this->request->getData('searchtext'))) {
+				$query->where(['name LIKE' => '%'. $this->request->getData('searchtext') . '%']);
+			}
+			$query->all();
+			$this->set('query', $query->all()->toArray());
 
-			$this -> set(compact('query'));
-		}
-
+			} else {
+			$query->all();
+			$this->set('query', $query->all()->toArray());
+			}
 	}
+
 }
