@@ -13,10 +13,43 @@ class MailController extends AppController
     public function initialize()
     {
         parent::initialize();
+
+		$this->loadComponent('MakeId9');
+
+		$this ->loadmodel('questions');
+		$this ->loadmodel('users');
+		$session = $this->request->session();
+		if (!$session->read('loginFlg')) {
+			$this->redirect(['controller' => 'login']);
+		}
     }
 
 
     public function index() {
+		$question = $this->questions->find('all');
+        $questionArray = $question->toArray();
+        $this->set(compact('$questionArray'));
+
+		if($this->request->is('post')) {
+			$postQId = $this->MakeId9->id9('que');
+	        $postSub = $_POST['subjectbox'];
+			$postText = $_POST['text'];
+			$postUId = $_POST['userid'];
+			$postQDate = $_POST['questiondate'];
+	  	}
+		//id 質問ID	title 件名	questcont 内容	user_id 質問者ID	transmit 質問日
+
+		$query = $this->questions->query();
+		$query->insert([
+			'id','title','questcont','user_id',
+		])
+		->values([
+			'id' => $postQId,
+			'title' => $postSub,
+			'questcont' => $postText,
+			'user_id' => $postUId,
+		])
+		->execute();
 
     }
 }

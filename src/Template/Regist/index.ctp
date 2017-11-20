@@ -3,33 +3,31 @@
 	$this->start('script');
 	echo $this->Html->script('/private/js/regist/regist.js');
 	$this->end();
-
-
-
-
 ?>
-<!-- -->
-<form action="regist" method="post" >
+
+<form id="regform" name="" action="confirm" method="post">
+
+		<h2>新規登録</h2>
 		<div class="">
 			<!-- $postname-->
-			氏名:<input type="text" id="username" name="name" value="">
+			氏名:<input type="text" id="username" name="name" maxlength="6" value="" required>
 		</div>
 
 		<div class="">
 			<!-- $posthurigana-->
-			フリガナ:<input type="text" id="hurigana" name="hurigana" value="">
+			フリガナ:<input type="text" id="hurigana" name="hurigana" maxlength="30" value="" required>
 		</div>
 
 		<div class="">
-
+			施設分類:
 			<?php foreach ($fClassArray as $key =>$value)
 				{ ?>
 
 					<input type="radio" name="fClassId" value="<?= $value['id'] ?>" <?php if ($key == 0){
 						?>checked<?php
 					} ?>><?= $value['name'] ?>
-					<?php
 
+					<?php
 				}
 				?>
 		</div>
@@ -48,26 +46,24 @@
 
 		<div class="">
 			<!-- $postmail-->
-			メールアドレス:<input type="email" id="regM" name="email" value="">
+			メールアドレス:<input type="email" id="regM" name="email" maxlength="255" value=""required>
 		</div>
 
 		<div class="">
 			<!-- $postremail-->
-			再入力:<input type="email" id="regRM" name="reemail">
+			再入力:<input type="email" id="regRM" maxlength="255" name="reemail"required>
 		</div>
 
 		<div class="">
 			<!-- $postpass-->
-			パスワード:<input type="text" id="regP" name="password" value="">
+			パスワード:<input type="password" id="regP" name="password" maxlength="255" value=""required>
 		</div>
 
 		<div class="">
 			<!-- $postrepass-->
-			再入力:<input type="text" id="regRP" name="repassword">
+			再入力:<input type="password" id="regRP" maxlength="255" name="repassword"required>
 		</div>
 
-		<!-- -->
-		<button type="submit" onclick="test();"	value="">送信</button>
-
+		<button type="submit" value="" id="regbtn">送信</button>
 
 		</form>

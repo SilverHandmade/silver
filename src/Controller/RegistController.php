@@ -35,7 +35,6 @@ class RegistController extends AppController
     {
       //facilities->nameの値を取得
       $facname = $this->facilities->find('all');
-      // ->select(['name']);
       $results = $facname->toArray();
       $this->set(compact('results'));
 
@@ -59,9 +58,6 @@ class RegistController extends AppController
         $postfacilitie = $_POST['facilities'];
 		$postfClassId = $_POST['fClassId'];
   		$postrepass  = $_POST['repassword'];
-        //echo "<br><br><br><br><br>" . $postfacilitie;
-
-
     }
   }
   public function confirm(){
@@ -86,22 +82,34 @@ class RegistController extends AppController
 		  $postname = $_POST['name'];
 		  $posthurigana  = $_POST['hurigana'];
 		  $postmail  = $_POST['email'];
-		  $postremail  = $_POST['reemail'];
 		  $postpass  = $this->PassHash->hash($_POST['password']);
 		  $postfacilitie = $_POST['facilities'];
 		  $postfClassId = $_POST['fClassId'];
-		  $postrepass  = $_POST['repassword'];
 
 		  $query = $this->facilities->query();
   			$query->select(['name'])
 			->where([' id'=>$postfacilitie]);
 			$fnamearray = $query->toArray();
 	        $this->set(compact('fnamearray'));
-			//->execute();
 
-			
-
+			if (!empty($_POST['flg'])) {
+				$query = $this->users->query();
+				$query->insert([
+					'id','email','name','facilities_id','facility_classes_id','hurigana','password'
+				])
+				->values([
+					'id' => '',
+					'email' => $postmail,
+					'name' => $postname,
+					'facilities_id' => $postfacilitie,
+					'facility_classes_id' => $postfClassId,
+					'hurigana' => $posthurigana,
+					'password' => $postpass
+				])
+				->execute();
+				$this->redirect(['controller' => 'login', 'action' => 'index']);
+			}
 	  }
-		  echo("南国");
   }
+
 }

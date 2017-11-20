@@ -19,38 +19,16 @@ $(function(){
 </script>
 <div class="col-md-offset-2 col-md-8">
 	<div class="row">
-		<form class="" action="index.html" method="post">
+		<form class="" action="mail" method="post">
 			<table class="table">
 				<tr>
-					<td>
-						<div>To</div>
-					</td>
-					<td>
-						<input type="email" aria-hidden="true">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div id="cc">Cc</div>
-					</td>
-					<td>
-						<input type="email" aria-hidden="true" style="display:none" id="Cc">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="" id="bcc">Bcc</div>
-					</td>
-					<td>
-						<input type="email" aria-hidden="true" style="display:none" id="Bcc">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div>
-							<input type="text" name="subjectbox" value="" placeholder="件名" class="input-text">
-						</div>
-					</td>
+					<div class="form-group">
+						<td colspan="2">
+							<div>
+								<input type="text" name="subjectbox" value="" placeholder="件名" class="input-text form-control">
+							</div>
+						</td>
+					</div>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -62,7 +40,10 @@ $(function(){
 						<button type="submit" name="transmission">送信</button>
 					</td>
 				</tr>
-			</table>
+			<!-- </table> -->
+			<input type="hidden" name="questionid" value="">
+			<input type="hidden" name="userid" value="">
+			<input type="hidden" name="questiondate" value="">
 		</form>
 	</div>
 </div>
