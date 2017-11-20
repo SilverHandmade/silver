@@ -38,17 +38,6 @@ if (d < 7) {
 }
 
 
-
-function setAndSubmit(id){
-
-}
-
-
-function facilitySearch(){
-
-}
-
-
 //依頼先一覧絞り込み
 $(function(){
 	$('#searchbutton').bind("click",function(){
@@ -67,13 +56,31 @@ $(function(){
 	});
 });
 
+//依頼一覧絞り込み
+$(function(){
+	$('#Reqsearchbutton').bind("click",function(){
+		var re = new RegExp($('#rsearch').val());
+		$('#reqtable tbody tr').each(function(){
+			var Ttxt = $(this).find("#rtitle:eq(0)").html();
+			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
+			Ttxt = Ttxt.replace("</button>","");
+			alert(Ttxt);
+			if(Ttxt.match(re) != null){
+				$(this).show();
+			}else{
+				$(this).hide();
+			}
+		});
+	});
+});
+
 
 
 
 //今日の日時を表示
-		window.onload = function () {
+	/*	window.onload = function () {
 				//今日の日時を表示
-				var date = new Date()
+				/*var date = new Date()
 				var year = date.getFullYear()
 				var month = date.getMonth() + 1
 				var day = date.getDate()
@@ -91,5 +98,7 @@ $(function(){
 				var dd = toTwoDigits(day, 2)
 				var ymd = yyyy + "-" + mm + "-" + dd;
 
-				document.getElementById("reqD").value = ymd;
-		}
+				document.getElementById("reqD").value = ymd;*/
+		// 		var a =0;
+        //
+		// }
