@@ -35,7 +35,6 @@ class RegistController extends AppController
     {
       //facilities->nameの値を取得
       $facname = $this->facilities->find('all');
-      // ->select(['name']);
       $results = $facname->toArray();
       $this->set(compact('results'));
 
@@ -113,9 +112,7 @@ class RegistController extends AppController
 				->execute();
 				$this->redirect(['controller' => 'login', 'action' => 'index']);
 			}
-
 	  }
-	  echo"<br><br><br><br><br>";
   }
 
 }
