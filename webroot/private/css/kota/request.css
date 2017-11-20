@@ -1,17 +1,4 @@
-button {
+button, button[type="submit"] {
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
-	margin-bottom: 20px;
-}
-
-.typesubmit {
-	background-color:transparent;
-	border-style:none;
-	text-decoration:underline;
-	width: 16em;
-	text-align: justify;
-}
-
-.search {
-	width: 300px;
 }

@@ -51,10 +51,13 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
+							<li>
+								<?= $this->Html->link($user['tranceName'] ,['controller' => 'login', "action" => $user['action']]);?>
+							</li>
 							<?php if($user['registFlg']):?>
-								<?= $this->element('RegistAndLogin');?>
-							<?php else: ?>
-								<?= $this->element('Logout');?>
+								<li><a href="<?=$this->Url->build(["controller" => "regist", "action" => "index"]);?>">
+									新規登録
+								</a></li>
 							<?php endif; ?>
 						</ul>
 					</li>
@@ -82,14 +85,7 @@
 						<li><?= $this->Html->link("依頼",['controller' => 'request', "action" => "index"]);?></li>
 						<li><?= $this->Html->link("ワークショップ",['controller' => 'workshop', "action" => "index"]);?></li>
 						<li><?= $this->Html->link("動画",['controller' => 'video', "action" => "index"]);?></li>
-						<li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li>
-						<?php if($user['registFlg']):?>
-							<?= $this->element('RegistAndLogin');?>
-						<?php else: ?>
-							<?= $this->element('Logout');?>
-						<?php endif; ?>
-					</ul>
-					</ul>
+						<li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li>					</ul>
 				</div>
 			</div>
 		</div>
@@ -107,7 +103,9 @@
 			<div class="row">
 				<?= $this->Flash->render() ?>
 			</div>
-			<?= $this->fetch('content') ?>
+			<div class="row">
+				<?= $this->fetch('content') ?>
+			</div>
 		</div>
 
 		<!-- 右サイドカラム -->

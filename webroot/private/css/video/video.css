@@ -1,9 +1,19 @@
 /*search*/
+#details {
+	display: none;
+}
 button span {
 	color: inherit;
 }
+img {
+	width: 100%;
+	height: auto;
+}
 #videoList .row {
 	margin-top: 15px;
+}
+#videoPanel, #listMode{
+	display: none;
 }
 /*search終わり*/
 

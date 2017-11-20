@@ -13,7 +13,7 @@ var test = <?php echo $results; ?>;
 ?>
 
 <div class="col-md-offset-2 col-md-8 center">
-	<p class="font-title">依頼作成</p>
+	<p class="font-title">代理人検索 </p>
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6">
 			<form action="/silver/request/proof" method="post">

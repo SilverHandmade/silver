@@ -16,11 +16,11 @@
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
 		<form class="" action="" method="GET" onsubmit="doSomething();return false;">
-			<input type="text" name="dummy" style="display:none;"/>
-			<input type="text" id="fsearch" name="search" value="" class="search"/><button type="button" id="searchbutton" name="sbutton" class="submit-button">検索</button>
+			<input type="text" name="dummy" style="display:none;">
+			<input type="text" id="fsearch" name="search" value=""/><button type="button" id="searchbutton" name="sbutton" class="submit-button">検索</button>
 		</form>
 		<h2>依頼先一覧<h2>
-		<table id="facitable" class="table">
+		<table id="facitable" align="" class="table">
 			<thead>
 				<tr>
 					<th>施設名</th>
@@ -35,10 +35,10 @@
 						<input type=hidden name=facility_name value=<?php echo $facility['name']?>>
 						<input type=hidden name=facility_address value=<?php echo $facility['address']?>>
 						<td id="fname">
-							<button type="submit" class="typesubmit"><?php echo $facility['name']?></button>
+							<button type="submit" class="submit-button"><?php echo $facility['name']?></button>
 						</td>
 					</form>
-					<td id="faddress" align="justify">
+					<td id="faddress">
 						<?php echo $facility['address']?>
 					</td>
 				</tr>

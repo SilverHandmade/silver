@@ -7,8 +7,6 @@ use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 
-use Cake\I18n\Time;
-
 class VideoController extends AppController
 {
 
@@ -17,11 +15,10 @@ class VideoController extends AppController
         parent::initialize();
 		$session = $this->request->session();
 		if (!$session->read('loginFlg')) {
-			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
+			$this->redirect(['controller' => 'login']);
 		}
 
 		$this->loadmodel('Movies');
-
     }
     public function index()
     {
@@ -42,19 +39,10 @@ class VideoController extends AppController
 			if (!empty($this->request->getData('kyeWord'))) {
 				$queryMov->where(['description like' => '%' . $this->request->getData('kyeWord') . '%']);
 			}
-			if (!empty($this->request->getData('term'))) {
-				$now = Time::now();
-				$queryMov->find()
-				    ->where(function ($exp, $q) {
-				        return $exp->between('contribution', $now, $now->subDays($this->request->getData('term')));
-	    			});
-
-			}
-
 
 			$this->set('results', $queryMov->toArray());
 		} else {
-			$this->set('results', $queryMov->limit(20)->toArray());
+			$this->set('results', $queryMov->all(20)->toArray());
 		}
 
 	}
