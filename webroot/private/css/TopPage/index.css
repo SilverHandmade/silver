@@ -1,24 +1,15 @@
 h2 {
-	position: relative;
-	padding: 0.5em;
-	background: #e3fabe;
-}
-h2:after {
-	position: absolute;
-	content: '';
-	top: 100%;
-	left: 30px;
-	border: 15px solid transparent;
-	border-top: 15px solid #e3fabe;
-	width: 0;
-	height: 0;
+	padding: 0.4em 0.4em;/*文字の上下 左右の余白*/
+	color: inherit;/*文字色*/
+	background: #e3fabe;/*背景色*/
+	border-left: solid 5px #497937;/*左線*/
+	border-bottom: solid 3px #b3c695;/*下線*/
 }
 h2.danger {
+	border-left: solid 5px #e2041b;/*左線*/
+	border-bottom: solid 3px #bc878e;
 	background: #f5aab4;
 	color: #FFF;
-}
-h2.danger:after {
-	border-top: 15px solid #f5aab4;
 }
 
 #linkTo {

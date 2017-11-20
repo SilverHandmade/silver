@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Controller;
-
 use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
-
 /**
  * Static content controller
  *
@@ -16,11 +13,14 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class LoginController extends AppController
 {
-
     public function initialize()
     {
         parent::initialize();
-
+		$session = $this->request->session();
+		// セッション情報取得
+		if ($session->read('loginFlg')) {
+			$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
+		}
 		//認証
 		$this->loadComponent('Auth',[
 			'authenticate' => [
@@ -37,7 +37,7 @@ class LoginController extends AppController
 			],
 			'loginRedirect' => [ // ログイン後に遷移するアクションを指定
                 'controller' => 'TopPage',
-                'action' => 'index'
+                'action' => 'index',
             ],
 			'logoutRedirect' => [ // ログアウト後に遷移するアクションを指定
                 'controller' => 'TopPage',
@@ -54,16 +54,16 @@ class LoginController extends AppController
 			if ($user) {
 				$this->Auth->setUser($user);
 				$session->write([
+					'id' => $user['id'],
 					'username' => $user['name'],
 					'userID' => $user['email'],
 					'loginFlg' => True
 				]);
-				return $this->redirect($this->Auth->redirectUrl());
+				return $this->redirect(['controller' => $this->request->getQuery('ref')]);
 			}
 			$this->Flash->error(__('Invalid username or password, try again'));
 		}
-    }
-
+	}
 	public function logout() {
 		$session = $this->request->session();
 		if(empty($session->read('username') ) || empty($session->read('userID'))){
