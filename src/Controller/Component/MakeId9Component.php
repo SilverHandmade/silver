@@ -25,6 +25,9 @@ class MakeId9Component extends Component {
 		}elseif($tbl == 'mov' ){
 			$kt = 5;
 			$MTb = TableRegistry::get('movies');
+		}elseif($tbl == 'pue'){
+			$kt = 5;
+			$MTb = TableRegistry::get('puestions');
 		}else {
 			$flg = False;
 		}
