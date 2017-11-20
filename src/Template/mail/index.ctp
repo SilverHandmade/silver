@@ -20,38 +20,8 @@ $(function(){
 <div class="col-md-offset-2 col-md-8">
 	<p class="title">お問い合わせ</p>
 	<div class="row">
-		<form class="" action="index.html" method="post">
+		<form class="" action="mail" method="post">
 			<table class="table">
-				<tr>
-					<div class="form-group">
-						<td>
-							<div>To</div>
-						</td>
-						<td>
-							<input type="email" aria-hidden="true" class="form-control">
-						</td>
-					</div>
-				</tr>
-				<tr>
-					<div class="form-group">
-						<td>
-							<div id="cc">Cc</div>
-						</td>
-						<td>
-							<input type="email" aria-hidden="true" style="display:none" id="Cc" class="form-control">
-						</td>
-					</div>
-				</tr>
-				<tr>
-					<div class="form-group">
-						<td>
-							<div class="" id="bcc">Bcc</div>
-						</td>
-						<td>
-							<input type="email" aria-hidden="true" style="display:none" id="Bcc" class="form-control">
-						</td>
-					</div>
-				</tr>
 				<tr>
 					<div class="form-group">
 						<td colspan="2">
@@ -73,7 +43,10 @@ $(function(){
 						<button type="submit" name="transmission">送信</button>
 					</td>
 				</tr>
-			</table>
+			<!-- </table> -->
+			<input type="hidden" name="questionid" value="">
+			<input type="hidden" name="userid" value="">
+			<input type="hidden" name="questiondate" value="">
 		</form>
 	</div>
 </div>

@@ -58,9 +58,6 @@ class RegistController extends AppController
         $postfacilitie = $_POST['facilities'];
 		$postfClassId = $_POST['fClassId'];
   		$postrepass  = $_POST['repassword'];
-        //echo "<br><br><br><br><br>" . $postfacilitie;
-
-
     }
   }
   public function confirm(){
