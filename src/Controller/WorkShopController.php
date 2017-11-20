@@ -25,10 +25,10 @@ class WorkShopController extends AppController
 		if ($this->request->is('post')) {
 			$id = $this->MakeId9->id9('pro');
 			$name= $this->request->getData('name');
-			$Model = $this->request->getData('Model/field');
-			$images = $this->request->getData('image');
-			$user = $this->request->getData('user');
-			//$this->set(compact('Model'));
+			$Model = $this->request->getData('text');
+			$images = $this->request->getData('Upload');
+			$user = $this->MakeId9->id9('pro');
+			//$this->set(compact('user'));
 
 			 //echo "<br><br><br><br><br><br>" . $this->MakeId9->id9('pro');
 			$query = $this->Products->query();

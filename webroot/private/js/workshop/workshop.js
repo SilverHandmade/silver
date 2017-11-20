@@ -1,9 +1,9 @@
 //WorkShop作成画面　送信ボタン
 $(function(){
 	$('#Trans').click(function (){
-		var Nseisaku = document.getElementById( "nameS" ).value;
-		var Igamen = document.getElementById( "imageG" ).value;
-		var Msetumei = document.getElementById( "modelS" ).value;
+		var Nseisaku = document.getElementById( "title" ).value;
+		var Igamen = document.getElementById( "file_upload" ).value;
+		var Msetumei = document.getElementById( "Stext" ).value;
 
 		//制作物名エラーメッセージ
 		if (Nseisaku == "") {
