@@ -11,7 +11,7 @@
 	<p class="form-title">新規登録</p>
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6">
-			<form action="regist" method="post" >
+			<form action="confirm" method="post" >
 				<div class="username">
 					<!-- $postname-->
 					<p class="font-color">氏名</p>
@@ -60,7 +60,7 @@
 				</div>
 				<!--送信ボタン-->
 				<div class="submit">
-					<button type="submit" onclick="test();"	value="" class="submit">送信</button>
+					<button type="submit" id="regform" onclick="test();"	value="" class="submit">送信</button>
 				</div>
 			</form>
 		</div>
