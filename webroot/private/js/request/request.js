@@ -62,10 +62,12 @@ $(function(){
 		var re = new RegExp($('#rsearch').val());
 		$('#reqtable tbody tr').each(function(){
 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
+			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
 			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
 			Ttxt = Ttxt.replace("</button>","");
-			alert(Ttxt);
-			if(Ttxt.match(re) != null){
+			FNtxt = FNtxt.replace("<p>","");
+			FNtxt = FNtxt.replace("</p>","");
+			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
 				$(this).show();
 			}else{
 				$(this).hide();

@@ -24,7 +24,7 @@
 			<?php foreach ($facilities as $facility) : ?>
 			<tbody>
 				<tr>
-					<form action="/silver/request/create" method="GET" >
+					<form action="/silver/request/create" method="POST">
 						<input type=hidden name=facility_id value=<?php echo $facility['id']?>>
 						<input type=hidden name=facility_name value=<?php echo $facility['name']?>>
 						<input type=hidden name=facility_address value=<?php echo $facility['address']?>>

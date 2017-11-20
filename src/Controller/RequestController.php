@@ -117,11 +117,11 @@ class RequestController extends AppController
 				'F_moto_id' => $moto_id,
 				'F_saki_id' => $saki_id,
 				'product_id' => $wsid,
-				'title'=> $title,
+				'title' => $title,
 				'From_date' => $now_date,
 				'To_date' => $to_date,
 				'su' => $kosu
-			])
+			]);
 		->execute();
 			echo "データが送信されました";
 			//本番稼働時には下記のURLをトップページのものへ変更する
@@ -139,19 +139,22 @@ class RequestController extends AppController
 
 
 	public function list(){
-		$query = $this->Requests->find();
+		$query = $this->Requests->find()
+		->select(['id','F_moto_id','title','facilities.name'])
+		->join([
+			'table' => 'facilities',
+			'type' => 'LEFT',
+			'conditions' => 'facilities.id = Requests.F_moto_id'
+		]);
+
 		$reqs = $query->all()->ToArray();
 		$this->set(compact('reqs'));
-
-
-		$query = $this->Facilities->find()
-		->select(["id","name"]);
-		$Moto_nametable = $query->all()->ToArray();
-		$this->set(compact('Moto_nametable'));
-
-
-
 	}
+
+
+		public function detail(){
+
+		}
 
 
 }
