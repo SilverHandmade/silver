@@ -12,15 +12,64 @@
 			<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
 		</video>
 	</div>
+
+	<div class="row" id="controls">
+		<div class="col-md-1">
+			<button type="button" class="btn trance" id="play">
+				<span class="glyphicon glyphicon-play"></span>
+			</button>
+			<button type="button" class="btn trance none" id="oneTimeStop">
+				<span class="glyphicon glyphicon-pause"></span>
+			</button>
+		</div>
+
+		<div class="col-md-4">
+			<div id="seekbar" animate></div>
+		</div>
+		<div class="col-md-2">
+			<span id="nowTime"></span>/
+			<span id="allTime"></span>
+		</div>
+
+		<div class="col-md-1">
+			<button type="button" class="btn trance" id="oneTimeStop">
+				<span class="glyphicon glyphicon-volume-up"></span>
+			</button>
+			<button type="button" class="btn trance none" id="oneTimeStop">
+				<span class="glyphicon glyphicon-volume-off"></span>
+			</button>
+		</div>
+
+		<div class="col-md-3">
+			<div id="volbar" animate></div>
+		</div>
+
+		<div class="col-md-1">
+			<button type="button" class="btn trance" id="fullScreen">
+				<span class="glyphicon glyphicon-resize-full"></span>
+			</button>
+			<button type="button" class="btn trance none" id="defaultScreen">
+				<span class="glyphicon glyphicon-resize-small"></span>
+			</button>
+		</div>
+
+
+	</div>
+
 </div>
 
-<!-- <div style="width:400px; background-color:#333333; color:#ffffff;">
-<input type="button" value="再生" onClick="playVideo()" id="play">
-<input type="button" value="一時停止" onClick="pauseVideo()" id="oneTimeStop">
-<input type="button" value="↑" onClick="upVolume()" id="upVol">
-<input type="button" value="↓" onClick="downVolume()" id="downVol">
-<br>
-現在（秒）：<span id="ichi">0</span><br>
-全体（秒）：<span id="nagasa"></span><br>
-<span id="kanryou"></span>
+
+
+
+
+<!-- <div class="col-md-offset-2 col-md-8">
+	<div>
+		<button class="btn btn-default"  id="play" type="button">再生</button>
+		<button class="btn btn-default"  id="oneTimeStop" type="button">一時停止</button>
+		<button class="btn btn-default"  id="upVol" type="button">↑</button>
+		<button class="btn btn-default"  id="downVol" type="button">↓</button>
+		現在（秒）：<span id="ichi">0</span><br>
+		全体（秒）：<span id="nagasa"></span><br>
+
+	</div>
 </div> -->

@@ -1,17 +1,64 @@
 /*search*/
+
 button span {
 	color: inherit;
 }
+
 #videoList .row {
 	margin-top: 15px;
 }
+
 /*search終わり*/
 
 /*view*/
+
 video {
 	/*width: 50vw;
 	min-width: 50vw;
 	height: auto;*/
 	width: 100%;
 }
+
+#controls {
+	padding: 5px 0;
+	background-color: #444;
+	margin: 0 0px;
+}
+
+#controls * {
+	font-size: 17px;
+	color: #FFF;
+}
+
+.trance {
+	padding: 0;
+	background-color: transparent;
+	border: transparent;
+}
+
 /*view終わり*/
+
+#controls [id$="bar"]  {
+	top: 0.5em;
+}
+
+
+.ui-slider .ui-slider-handle {
+	top: -0.15em;
+	width: .8em;
+	height: .8em;
+	border-radius: 100%;
+	border: none;
+}
+.ui-slider-horizontal {
+	height: 7px;
+	background-color: black;
+}
+.ui-widget.ui-widget-content {
+    border: none;
+}
+
+#video:-webkit-full-screen {
+  width: 100%;
+  height: 100%;
+}
