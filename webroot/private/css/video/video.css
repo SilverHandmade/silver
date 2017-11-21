@@ -45,11 +45,15 @@ video {
 
 .ui-slider .ui-slider-handle {
 	top: -0.15em;
+	margin-left: -.5em;
 	width: .8em;
 	height: .8em;
 	border-radius: 100%;
 	border: none;
 }
+/*.ui-slider-range {
+	background-color: steelblue;
+}*/
 .ui-slider-horizontal {
 	height: 7px;
 	background-color: black;

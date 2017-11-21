@@ -23,8 +23,9 @@
 			</button>
 		</div>
 
-		<div class="col-md-4">
-			<div id="seekbar" animate></div>
+		<div class="col-md-6">
+			<div id="seekbar"></div>
+			<!-- <input type="range" id="seekbar" disabled> -->
 		</div>
 		<div class="col-md-2">
 			<span id="nowTime"></span>/
@@ -32,27 +33,28 @@
 		</div>
 
 		<div class="col-md-1">
-			<button type="button" class="btn trance" id="oneTimeStop">
+			<button type="button" class="btn trance" id="mute">
 				<span class="glyphicon glyphicon-volume-up"></span>
 			</button>
-			<button type="button" class="btn trance none" id="oneTimeStop">
+			<button type="button" class="btn trance none" id="unmute">
 				<span class="glyphicon glyphicon-volume-off"></span>
 			</button>
 		</div>
 
-		<div class="col-md-3">
-			<div id="volbar" animate></div>
+		<div class="col-md-1">
+			<div id="volbar"></div>
+			<!-- <input type="range" id="volbar" disabled> -->
 		</div>
 
 		<div class="col-md-1">
-			<button type="button" class="btn trance" id="fullScreen">
+			<button type="button" class="btn trance">
 				<span class="glyphicon glyphicon-resize-full"></span>
 			</button>
-			<button type="button" class="btn trance none" id="defaultScreen">
+			<button type="button" class="btn trance none">
 				<span class="glyphicon glyphicon-resize-small"></span>
 			</button>
 		</div>
-
+		<!-- <div id="val">テスト用表示領域</div> -->
 
 	</div>
 
