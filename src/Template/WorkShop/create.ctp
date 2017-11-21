@@ -25,7 +25,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<button class="btn btn-default" type="button" id="add">
-					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span class="glyphicon glyphicon-plus-sign" name="add"></span>
 				</button>
 			</div>
 		</div>

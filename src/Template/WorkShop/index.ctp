@@ -1,6 +1,6 @@
 
 <?php $this->start('css') ?>
-   <?= $this->Html->css('/private/css/TopPage/index.css') ?>
+   <?= $this->Html->css('/private/css/workshop/index.css') ?>
 <?php $this->end() ?>
 
 <div>
@@ -11,12 +11,17 @@
 	</form>
 
 	<h2>検索結果</h2>
+
+	<div class="col-md-12">
+		<?= $this->Html->link(">>ワークショップ作成画面へ",['controller' => 'workshop', "action" => "create"]);?>
+	</div>
+
 		<div class="row">
 			<?php foreach ($query as $key): ?>
 				<div class="col-md-3">
 					<div class="panel">
 						<a href="">
-							<img src="<?= $this->Url->image(file_exists($key['midasi_url'])?$key['midasi_url']:'no_image.png');?>">
+							<img src="<?= $this->Url->image(file_exists($key['midasi_url'])?$key['midasi_url']:'workshop/sample.png');?>">
 							<h3><?= $key['name'];?></h3>
 							<div class="row">
 								<div class="col-md-12 right">
@@ -28,11 +33,6 @@
 				</div>
 			<?php endforeach; ?>
 		</div>
-
-		<div class="col-md-12">
-			<?= $this->Html->link(">>ワークショップ作成画面へ",['controller' => 'workshop', "action" => "create"]);?>
-		</div>
-
 
 <?php
 	$this->start('script');
