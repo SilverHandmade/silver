@@ -31,21 +31,21 @@ if ($this->request->is('post')){
 
 
 <p>依頼先</p>
-<input type="text" id="reqFN_con" name="requestFN_con" disabled="disabled" value=<?php echo $input_faci_name?>>
+<input type="text" id="reqFN_con" name="requestFN_con" readonly value=<?php echo $input_faci_name?>>
 <p>依頼先所在地</p>
-<input type="text" id="reqFA_con" name="requestFA_con" disabled="disabled" value=<?php echo $input_faci_address?>>
+<input type="text" id="reqFA_con" name="requestFA_con" readonly value=<?php echo $input_faci_address?>>
 <p>制作物タイトル</p>
-<input type="text" id="reqT_con" name="requestT_con" disabled="disabled" value=<?php echo $input_title?>>
+<input type="text" id="reqT_con" name="requestT_con" readonly value=<?php echo $input_title?>>
 <p>制作個数</p>
-<input type="text" id="reqN_con" name="requestN_con" disabled="disabled" value=<?php echo $input_num?>>
+<input type="text" id="reqN_con" name="requestN_con" readonly value=<?php echo $input_num?>>
 <!--wsidがない場合は次の処理を行わない-->
 <?php if ($noid == 0) : ?>
 	<p>ワークショップID</p>
-	<input type="text" id="wsID_con" name="wsID_con" disabled="disabled" value=<?php echo $input_ws?>>
+	<input type="text" id="wsID_con" name="wsID_con" readonly value=<?php echo $input_ws?>>
 <?php endif; ?>
 
 <p>締切日</p>
-<input type="text" id="reqD_con" name="requestD_con" disabled="disabled" value=<?php echo $input_date?>>
+<input type="text" id="reqD_con" name="requestD_con" readonly value=<?php echo $input_date?>>
 <br>
 
 <button type="button" class="button" onclick="location.href='/silver/request/create/'">修正</button>
