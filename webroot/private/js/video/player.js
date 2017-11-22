@@ -45,10 +45,17 @@ $(function(){
 			startTogle();
 		});
 
+
 		video.addEventListener("timeupdate", function(){
 			$('#seekbar').slider('value', Math.floor(video.currentTime));
 			$('#nowTime').html(formatTime(video.currentTime));
 		}, false);
+
+		// $('#controls').hover(function() {
+		// 	$(this).fadeTo('slow/400/fast', 1);
+		// }, function() {
+		// 	$(this).fadeTo('slow/400/fast', 0);
+		// });
 
 		function startTogle() {
 			$('#oneTimeStop').toggle();

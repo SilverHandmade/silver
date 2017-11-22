@@ -22,9 +22,12 @@ video {
 	margin: 0 0px;
 }
 
-#controls button *  {
-	font-size: 18px;
+#controls * {
 	color: #FFF;
+}
+
+#controls button{
+	font-size: 17px;
 }
 
 .trance {

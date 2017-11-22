@@ -22,6 +22,7 @@ Router::scope("/request", function ( RouteBuilder $routes ) {
 		['id' => '\d{10}']
 	);
 });
+
 // Router::scope("/workshop", function ( RouteBuilder $routes ) {
 // 	$routes->connect(
 // 		'/:id',
@@ -36,7 +37,7 @@ Router::scope("/request", function ( RouteBuilder $routes ) {
 Router::scope('/', function (RouteBuilder $routes) {
 	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
 
-    $routes->fallbacks(DashedRoute::class);
+	$routes->fallbacks(DashedRoute::class);
 });
 
 Plugin::routes();

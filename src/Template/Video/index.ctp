@@ -89,7 +89,8 @@
 
 	<div id="videoList">
 		<?php foreach ($results as $key): ?>
-			<a href="<?= $this->Url->build('/video/'.$key['id'], true);?>">
+			<a href="<?= $this->Url->build(["controller" => "video","action" => "view", 'id' => $key['id']])?>">
+
 				<div class="row panel">
 					<div class="col-md-3">
 						投稿日:<?=$key['contribution']?>
@@ -120,7 +121,7 @@
 				<div class="row">
 			<?php endif; ?>
 					<div class="col-md-3">
-						<a href="<?= $this->Url->build('/video/'.$key['id'], true);?>">
+						<a href="<?= $this->Url->build(["controller" => "video","action" => "view", 'id' => $key['id']])?>">
 							<div class="panel">
 								<?=$key['contribution']?>
 								<img src="<?= $this->Url->image(file_exists($key['movie_url'])?$key['movie_url']:"no_image.png");?>">
