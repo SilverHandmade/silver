@@ -12,6 +12,8 @@ value="こんにちは"</input>
 <input type="text" value=<?php echo $_POST['CHANId']?>></input>
 
 </form>
-<iframe src="https://sh-ml.mybluemix.net/mail" NAME="frame1"></iframe>
+<iframe src="https://sh-ml.mybluemix.net/mail" NAME="frame1"
+	width="500px"
+></iframe>
 
 </div>
