@@ -229,4 +229,41 @@ class RequestController extends AppController
 		}
 
 
+		public function select(){
+			$query = $this->Requests->find()
+			->select(['id','F_moto_id','title','ju_flg','Requests.Del_flg','facilities.name'])
+			->join([
+				'table' => 'facilities',
+				'type' => 'LEFT',
+				'conditions' => 'facilities.id = Requests.F_moto_id'])
+			->where([
+					'ju_flg' => 0,
+					//'Requests.Del_flg' => 0
+				]);
+
+
+			$reqlist = $query->all()->ToArray();
+			$this->set(compact('reqlist'));
+		}
+
+		public function edit(){
+			if (isset($_POST['cancelbtn'])) {
+				$query = $this->Requests->query();
+				$query->update()
+			  ->set(['Del_flg' => 1])
+			  ->where(['id' => $_SESSION['sel_id']])
+			  ->execute();
+			  //本番稼働時には下記のURLをトップページのものへ変更する
+			  header( "Location: http://localhost/silver/" );
+			  unset($_SESSION['sel_id']);
+			  $this->Flash->success('依頼をキャンセルしました。');
+			  exit();
+			}
+			if ($this->request->is('post')){
+				$_SESSION['sel_id'] = $_POST['selrequest_id'];
+			}
+
+		}
+
+
 }
