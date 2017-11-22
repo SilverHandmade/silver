@@ -188,6 +188,8 @@ class RequestController extends AppController
 
 		public function detail(){
 
+
+
 			if (isset($_POST['order'])) {
 				$query = $this->Requests->query();
 				$query->update()
@@ -202,6 +204,7 @@ class RequestController extends AppController
 			}
 
 			if ($this->request->is('post')){
+
 				//施設情報の取得
 				$query = $this->Facilities->find()
 				->where(['id ='=>$_POST['request_moto_id']]);
@@ -221,9 +224,37 @@ class RequestController extends AppController
 				$this->set(compact('pdt_info'));
 				$_SESSION['id']=$req_info[0]['id'];
 
-
 			}
 
+
+			//TOPページから詳細へ飛んだ場合の処理
+			$get_id = $this->request->getParam('id');
+			if ($get_id != "") {
+				//依頼情報の取得
+				$query = $this->Requests->find()
+				->where(['id'=>$get_id]);
+				$getreq_info = $query->all()->ToArray();
+				$this->set(compact('getreq_info'));
+
+				//施設情報の取得
+				$query = $this->Facilities->find()
+				->where(['id ='=>$getreq_info[0]['F_moto_id']]);
+				$faci_info = $query->all()->ToArray();
+				$this->set(compact('faci_info'));
+
+				//依頼情報の取得
+				$query = $this->Requests->find()
+				->where(['id ='=>$getreq_info[0]['id']]);
+				$req_info = $query->all()->ToArray();
+				$this->set(compact('req_info'));
+
+				//ワークショップの取得
+				$query = $this->Request_detailses->find()
+				->where(['request_id ='=>$getreq_info[0]['id']]);
+				$pdt_info = $query->all()->ToArray();
+				$this->set(compact('pdt_info'));
+				$_SESSION['id']=$req_info[0]['id'];
+			}
 
 
 		}
@@ -231,15 +262,12 @@ class RequestController extends AppController
 
 		public function select(){
 			$query = $this->Requests->find()
-			->select(['id','F_moto_id','title','ju_flg','Requests.Del_flg','facilities.name'])
+			->select(['id','F_moto_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
 			->join([
 				'table' => 'facilities',
 				'type' => 'LEFT',
 				'conditions' => 'facilities.id = Requests.F_moto_id'])
-			->where([
-					'ju_flg' => 0,
-					//'Requests.Del_flg' => 0
-				]);
+			->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0]);
 
 
 			$reqlist = $query->all()->ToArray();
