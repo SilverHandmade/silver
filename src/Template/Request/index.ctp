@@ -39,5 +39,7 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+		<br><br>
+				<button type="button" class="button" onclick="location.href='/silver/request'">依頼編集・取り消し画面はこちら</button>
 	</div>
 </div>
