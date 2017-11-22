@@ -22,10 +22,16 @@ class ResetPassController extends AppController
 
 	public function mailpass()
     {
-
+		//$this->set("a", $abd);
 
 	}
-	
+
+	public function respass()
+	{
+		//$this->set("a", $abd);
+
+	}
+
     public function index()
     {
 		if ($this->request->is('post')) {
