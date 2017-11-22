@@ -238,7 +238,7 @@ class RequestController extends AppController
 				'conditions' => 'facilities.id = Requests.F_moto_id'])
 			->where([
 					'ju_flg' => 0,
-					'Requests.Del_flg' => 0
+					//'Requests.Del_flg' => 0
 				]);
 
 
