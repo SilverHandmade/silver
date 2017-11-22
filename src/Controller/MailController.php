@@ -19,6 +19,8 @@ class MailController extends AppController
 		$this ->loadmodel('questions');
 		$this ->loadmodel('users');
 		$session = $this->request->session();
+
+		//ログインチェック
 		if (!$session->read('loginFlg')) {
 			$this->redirect(['controller' => 'login']);
 		}
@@ -34,22 +36,21 @@ class MailController extends AppController
 			$postQId = $this->MakeId9->id9('que');
 	        $postSub = $_POST['subjectbox'];
 			$postText = $_POST['text'];
-			$postUId = $_POST['userid'];
-			$postQDate = $_POST['questiondate'];
+			$postUId = $_SESSION['id'];
+			//echo "<br><br><br><br>" . $;
 	  	}
-		//id 質問ID	title 件名	questcont 内容	user_id 質問者ID	transmit 質問日
-
-		$query = $this->questions->query();
-		$query->insert([
-			'id','title','questcont','user_id',
-		])
-		->values([
-			'id' => $postQId,
-			'title' => $postSub,
-			'questcont' => $postText,
-			'user_id' => $postUId,
-		])
-		->execute();
-
+		if (!empty($_POST['flg'])) {
+			$query = $this->questions->query();
+			$query->insert([
+				'id','title','questcont','user_id'
+			])
+			->values([
+				'id' => $postQId,
+				'title' => $postSub,
+				'questcont' => $postText,
+				'user_id' => $postUId
+			])
+			->execute();
+		}
     }
 }
