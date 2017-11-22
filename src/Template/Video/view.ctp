@@ -23,7 +23,7 @@
 			</button>
 		</div>
 
-		<div class="col-md-5">
+		<div class="col-md-4">
 			<div id="seekbar"></div>
 		</div>
 		<div class="col-md-3">
@@ -44,7 +44,7 @@
 			<div id="volbar"></div>
 		</div>
 
-		<div class="">
+		<div class="col-md-1">
 			<button type="button" class="btn trance">
 				<span class="glyphicon glyphicon-download-alt"></span>
 			</button>

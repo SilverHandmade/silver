@@ -7,21 +7,16 @@ $(function(){
 		// 動画の再生時間表示
 		$('#allTime').html(formatTime(video.duration));
 
-		// video.onloadedmetadata = function() {
-		// 	$('#allTime').html(formatTime(video.duration));
-		// }
-
 		$("#seekbar").slider({
 			max: video.duration,
 			step: 1,
-			value: 0,
 			option: 'animate',
 			slide: setTime
 		});
 		$("#volbar").slider({
 			max: 1,
 			step: 0.05,
-			value: 1,
+			value:1,
 			option: 'animate',
 			slide: setVol
 		});
