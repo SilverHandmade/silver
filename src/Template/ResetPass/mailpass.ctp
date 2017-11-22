@@ -13,7 +13,7 @@ value="こんにちは"</input>
 
 </form>
 <iframe src="https://sh-ml.mybluemix.net/mail" NAME="frame1"
-	width="500px"
+	width="500px" style="border:none;"
 ></iframe>
 
 </div>
