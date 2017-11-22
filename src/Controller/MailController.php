@@ -34,7 +34,7 @@ class MailController extends AppController
 
 		if($this->request->is('post')) {
 			$postQId = $this->MakeId9->id9('que');
-	        $postSub = $_POST['subjectbox'];
+			$postSub = $_POST['subjectbox'];
 			$postText = $_POST['text'];
 			$postUId = $_SESSION['id'];
 			//echo "<br><br><br><br>" . $;

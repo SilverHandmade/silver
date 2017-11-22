@@ -14,7 +14,13 @@
 		<div class="form-group" id="plus">
 			<div class="row">
 				<div class="col-md-3">
-					<input type="file" name="Upload" id="file_upload">
+					<div class="div-btn">
+						<input type="file" class="input-file none file">
+						<div class="bottom">
+							<button type="button" name="" id="upload" class="bottom">画像選択</button>
+						</div>
+					</div>
+					<span id="fake_input_file">NOT FILE</span>
 				</div>
 				<div class="col-md-9">
 					<input class="form-control" type="text">
@@ -29,9 +35,9 @@
 				</button>
 			</div>
 		</div>
-		<div class="row">
-			<button type="submit" name="button">送信</button>
-			<button type="button" name="search-back" id="back">検索画面へ</button>
+		<div class="row right">
+			<button type="submit" name="button" class="button-submit">送信</button>
+			<button type="button" name="search-back" id="back" class="button-submit">検索画面へ</button>
 		</div>
 	</form>
 </div>
