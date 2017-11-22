@@ -15,20 +15,25 @@ class WorkShopController extends AppController
     public function initialize()
     {
         parent::initialize();
+				$this->loadmodel('product_detailses');
 				$this->loadmodel('Products');
 				$this->loadComponent('MakeId9');
-
     }
+
+
+
     public function create()
 	{
 		//Table登録
 		if ($this->request->is('post')) {
 			$id = $this->MakeId9->id9('pro');
 			$name= $this->request->getData('name');
-			$Model = $this->request->getData('Model/field');
-			$images = $this->request->getData('image');
-			$user = $this->request->getData('user');
-			//$this->set(compact('Model'));
+			$Model = $this->request->getData('text');
+			$images = $this->request->getData('Upload');
+			$Model_detailses = $this->request->getData('text');
+			$images_detailses = $this->request->getData('Upload');
+			$user = $this->MakeId9->id9('pro');
+			//$this->set(compact('user'));
 
 			 //echo "<br><br><br><br><br><br>" . $this->MakeId9->id9('pro');
 			$query = $this->Products->query();
@@ -38,14 +43,24 @@ class WorkShopController extends AppController
 				'name' => $name,
 				'description' => $Model,
 				'midasi_url'=> $images,
-				'user_id' => $user
-	    	]);
-			//->execute();
+				'user_id' => $user,
+			])
 
+		->execute();
 
+				$query = $this->product_detailses->query();
+				$query->insert(['product_id', 'description','photo_url'])
+				->values([
+					'product_id' => $id,
+					'description' => $Model_detailses,
+					'photo_url'=> $images_detailses,
+				])
 
+			->execute();
 		}
 	}
+
+
 	public function index()
 	{
 		$query = $this->Products->find();
@@ -62,6 +77,20 @@ class WorkShopController extends AppController
 			$query->all();
 			$this->set('query', $query->all()->toArray());
 			}
+	}
+
+	public function detailses()
+	{
+		
+	}
+}
+/*	public function contents($id){
+
+		$data = $this->Products->get($id);
+        $this->autoRender = false;
+        $this->response->type('image/jpeg');
+        $this->response->body(stream_get_contents($Products->midasi_url));
+
 	}
 
 }

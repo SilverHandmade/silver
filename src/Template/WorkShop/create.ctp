@@ -2,16 +2,16 @@
 	<?= $this->Html->css('/private/css/kota/workshop.css') ?>
 <?php $this->end(); ?>
 <?php $this->start('script'); ?>
-	<?= $this->Html->script('/private/js/kota/workshop.js') ?>
+	<?= $this->Html->script('/private/js/workshop/workshop.js') ?>
 <?php $this->end(); ?>
 
 <div class="col-md-offset-1 col-md-10">
 	<form action="" method="post">
 		<div class="form-group">
 			<label for="title">タイトル</label>
-			<input class="form-control" type="text" name="" id="title">
+			<input class="form-control" type="text" name="name" id="title">
 		</div>
-		<div class="form-group" id="plus">
+		<div class="form-group" id="plus" name="plus">
 			<div class="row">
 				<div class="col-md-3">
 					<div class="div-btn">
@@ -23,7 +23,7 @@
 					<span id="fake_input_file">NOT FILE</span>
 				</div>
 				<div class="col-md-9">
-					<input class="form-control" type="text">
+					<input class="form-control" type="text" name="text" id="Stext">
 				</div>
 			</div>
 		</div>
@@ -31,7 +31,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<button class="btn btn-default" type="button" id="add">
-					<span class="glyphicon glyphicon-plus-sign"></span>
+					<span class="glyphicon glyphicon-plus-sign" name="add"></span>
 				</button>
 			</div>
 		</div>
