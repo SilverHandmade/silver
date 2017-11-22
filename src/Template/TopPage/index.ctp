@@ -11,7 +11,7 @@
 	</div>
 	<div class="row right" id="linkTo">
 		<div class="col-md-12">
-			<?= $this->Html->link(">>依頼一覧へ",['controller' => 'request', "action" => "index"]);?>
+			<?= $this->Html->link(">>依頼一覧へ",['controller' => 'request', "action" => "list"]);?>
 		</div>
 	</div>
 <?php endif; ?>

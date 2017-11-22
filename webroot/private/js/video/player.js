@@ -5,9 +5,11 @@ $(function(){
 		// 現在の時間設定
 		$('#nowTime').html(formatTime(video.currentTime));
 		// 動画の再生時間表示
-		video.onloadedmetadata = function() {
-			$('#allTime').html(formatTime(video.duration));
-		}
+		$('#allTime').html(formatTime(video.duration));
+
+		// video.onloadedmetadata = function() {
+		// 	$('#allTime').html(formatTime(video.duration));
+		// }
 
 		$("#seekbar").slider({
 			max: video.duration,
@@ -47,7 +49,6 @@ $(function(){
 			video.pause();
 			startTogle();
 		});
-
 
 		video.addEventListener("timeupdate", function(){
 			$('#seekbar').slider('value', Math.floor(video.currentTime));

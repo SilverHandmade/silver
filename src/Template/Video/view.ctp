@@ -23,11 +23,10 @@
 			</button>
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-md-5">
 			<div id="seekbar"></div>
-			<!-- <input type="range" id="seekbar" disabled> -->
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<span id="nowTime"></span>/
 			<span id="allTime"></span>
 		</div>
@@ -43,7 +42,12 @@
 
 		<div class="col-md-1">
 			<div id="volbar"></div>
-			<!-- <input type="range" id="volbar" disabled> -->
+		</div>
+
+		<div class="">
+			<button type="button" class="btn trance">
+				<span class="glyphicon glyphicon-download-alt"></span>
+			</button>
 		</div>
 
 		<div class="col-md-1">

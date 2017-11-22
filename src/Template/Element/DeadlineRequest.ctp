@@ -1,6 +1,6 @@
 <div class="col-md-3">
 	<div class="panel">
-		<a href="/silver">
+		<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", $key[id]]);?>">
 			<table class="table">
 				<tr>
 					<td><h3><?= $key['title'];?></h3></td>
@@ -19,7 +19,8 @@
 
 			<div class="row">
 				<div class="col-md-12 right">
-					<button class="btn btn-link" type="button">詳細 >></button>
+					<button class="btn btn-link" type="button"></button>
+					<?= $this->Html->link("詳細 >>",['controller' => 'request', "action" => "detail",$key[id]]);?>
 				</div>
 			</div>
 		</a>

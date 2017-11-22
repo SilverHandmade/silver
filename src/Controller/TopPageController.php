@@ -21,7 +21,7 @@ class TopPageController extends AppController
 
     public function index() {
 		$queryRequest = $this->Requests->find()->contain('Facilities')
-		->select(['Requests.title', 'Requests.To_date', 'Facilities.name'])
+		->select(['id', 'Requests.title', 'Requests.To_date', 'Facilities.name'])
 		->order(['Requests.To_date' => 'DESC'])
 		->limit(4);
 		$request = $queryRequest->toArray();
