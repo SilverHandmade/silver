@@ -17,7 +17,10 @@ class RequestController extends AppController
         $this->loadmodel('Products');
         $this->loadmodel('Facilities');
 		$this->loadmodel('Requests');
+		$this->loadmodel('Request_detailses');
+		$this->loadmodel('Product_detailses');
 		$this->loadComponent('MakeId9');
+
 		$session = $this->request->session();
 		if (!$session->read('loginFlg')) {
 			$this->redirect(['controller' => 'login']);
@@ -35,7 +38,7 @@ class RequestController extends AppController
       $this->set(compact('facilities'));
 	  $_SESSION['select_flg'] = 0;
 	  $_SESSION['create_flg'] = 0;
-
+	  unset($_SESSION['p_detail']);
     }
 
 
@@ -67,6 +70,8 @@ class RequestController extends AppController
 
 
 
+
+
 		if (isset($_POST['requestT'])){
 			$_SESSION['request']['title'] = $_POST['requestT'];
 			$_SESSION['request']['number'] = $_POST['requestN'];
@@ -76,6 +81,11 @@ class RequestController extends AppController
 			  foreach ($results as $value) {
 				$value = preg_replace('/[^0-9]/', '', $value);
 				  if ($_SESSION['request']['wsid'] === $value) {
+					  $query = $this->Product_detailses->find()
+					  ->where(['product_id ='=> $value]);
+					  $p_detail = $query->ToArray();
+					  $this->set(compact('p_detail'));
+					  $_SESSION['p_detail'] = $p_detail;
 					break;
 				  }
 				  if(!next($results)){
@@ -93,16 +103,36 @@ class RequestController extends AppController
 
 		//確定ボタンが押されたとき
 		if (isset($_POST['ok'])) {
+
+			//ID連番作成
+			$req_id=$this->MakeId9->id9('req');
+
+
 			//wsidが入力されているとき
 			if (isset($_POST['wsID_con'])) {
 				$wsid = $_POST['wsID_con'];
+				$i = 0;
+				foreach ($_SESSION['p_detail'] as $dt) {
+					$ren = $dt['ren'];
+					$description = $dt['description'];
+					$photo = $dt['photo_url'];
+					$query = $this->Request_detailses->query();
+					$query->insert(['request_id','ren','description','photo_url'])
+					->values([
+						'request_id' => $req_id,
+						'ren' => $ren,
+						'description' => $description,
+						'photo_url' => $photo
+					])
+					->execute();
+				}
+
 			}else{
 				$wsid = null;
 			}
 
 
-			//ID連番
-			$req_id=$this->MakeId9->id9('req');
+
 
 			$moto_id = $_SESSION['Auth']['User']['facilities_id'];
 			$saki_id = $_SESSION['facility']['facility_id'];
@@ -117,20 +147,23 @@ class RequestController extends AppController
 				'F_moto_id' => $moto_id,
 				'F_saki_id' => $saki_id,
 				'product_id' => $wsid,
-				'title'=> $title,
+				'title' => $title,
 				'From_date' => $now_date,
 				'To_date' => $to_date,
 				'su' => $kosu
 			])
 		->execute();
+
+
 			echo "データが送信されました";
 			//本番稼働時には下記のURLをトップページのものへ変更する
 			header( "Location: http://localhost/silver/" ) ;
-			$this->Flash->error(__('依頼データが送信されました。'));
+			$this->Flash->success(__('依頼データが送信されました。'));
 			unset($_SESSION['facility']);
 			unset($_SESSION['request']);
 			unset($_SESSION['select_flg']);
 			unset($_SESSION['create_flg']);
+			unset($_SESSION['p_detail']);
 			exit();
 
 		}
@@ -139,19 +172,61 @@ class RequestController extends AppController
 
 
 	public function list(){
-		$query = $this->Requests->find();
+		$query = $this->Requests->find()
+		->select(['id','F_moto_id','title','ju_flg','facilities.name'])
+		->join([
+			'table' => 'facilities',
+			'type' => 'LEFT',
+			'conditions' => ['facilities.id = Requests.F_moto_id']
+            ])
+		->where(['ju_flg IS NULL']);
+
 		$reqs = $query->all()->ToArray();
 		$this->set(compact('reqs'));
-
-
-		$query = $this->Facilities->find()
-		->select(["id","name"]);
-		$Moto_nametable = $query->all()->ToArray();
-		$this->set(compact('Moto_nametable'));
-
-
-
 	}
+
+
+		public function detail(){
+
+			if (isset($_POST['order'])) {
+				$query = $this->Requests->query();
+				$query->update()
+			  ->set(['ju_flg' => 1])
+			  ->where(['id' => $_SESSION['id']])
+			  ->execute();
+			  //本番稼働時には下記のURLをトップページのものへ変更する
+			  header( "Location: http://localhost/silver/" );
+			  unset($_SESSION['id']);
+			  $this->Flash->success('依頼を受けました。');
+			  exit();
+			}
+
+			if ($this->request->is('post')){
+				//施設情報の取得
+				$query = $this->Facilities->find()
+				->where(['id ='=>$_POST['request_moto_id']]);
+				$faci_info = $query->all()->ToArray();
+				$this->set(compact('faci_info'));
+
+				//依頼情報の取得
+				$query = $this->Requests->find()
+				->where(['id ='=>$_POST['request_id']]);
+				$req_info = $query->all()->ToArray();
+				$this->set(compact('req_info'));
+
+				//ワークショップの取得
+				$query = $this->Request_detailses->find()
+				->where(['request_id ='=>$_POST['request_id']]);
+				$pdt_info = $query->all()->ToArray();
+				$this->set(compact('pdt_info'));
+				$_SESSION['id']=$req_info[0]['id'];
+
+
+			}
+
+
+
+		}
 
 
 }
