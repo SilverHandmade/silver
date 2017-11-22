@@ -22,7 +22,9 @@ class ResetPassController extends AppController
 
 	public function mailpass()
     {
-		//$this->set("a", $abd);
+		$abd = $_POST['CHANGEId'];
+		echo $abd;
+		$this->set("a", $abd);
 
 	}
 
