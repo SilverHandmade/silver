@@ -2,7 +2,7 @@ $(function(){
 	var name = 1;
 	var imagename = 1;
 	$('#add').click(function() {
-		var plusHtml = '<div class="row none div-margin-top" id="plusHtml"><div class="col-md-3"><button class="btn btn-default" type="button" name="button" id="remove"><span class="glyphicon glyphicon-remove-sign"></span></button><div class="div-btn"><input type="file" class="input-file none file"><button type="button" name="image'+ imagename++ +'"id="upload">画像選択</button></div><span id="fake_input_file">NOT FILE</span></div><div class="col-md-9"><input class="form-control" type="text" name="text'+ name++ +'"></div></div>';
+		var plusHtml = '<div class="row none div-margin-top" id="plusHtml"><div class="col-md-3"><button class="btn btn-default" type="button" name="button" id="remove"><span class="glyphicon glyphicon-remove-sign"></span></button><div class="div-btn"><input type="file" class="input-file none file"><button type="button" name="Upload'+ imagename++ +'"id="upload">画像選択</button></div><span id="fake_input_file">NOT FILE</span></div><div class="col-md-9"><input class="form-control" type="text" name="text'+ name++ +'"></div></div>';
 
 		$(plusHtml).appendTo('#plus');
 		$('.none').slideDown();
