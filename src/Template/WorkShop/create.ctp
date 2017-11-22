@@ -2,7 +2,7 @@
 	<?= $this->Html->css('/private/css/kota/workshop.css') ?>
 <?php $this->end(); ?>
 <?php $this->start('script'); ?>
-	<?= $this->Html->script('/private/js/kota/workshop.js') ?>
+	<?= $this->Html->script('/private/js/workshop/workshop.js') ?>
 <?php $this->end(); ?>
 
 <div class="col-md-offset-1 col-md-10">

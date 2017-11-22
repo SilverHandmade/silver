@@ -78,6 +78,11 @@ class WorkShopController extends AppController
 			$this->set('query', $query->all()->toArray());
 			}
 	}
+
+	public function detailses()
+	{
+		
+	}
 }
 /*	public function contents($id){
 
