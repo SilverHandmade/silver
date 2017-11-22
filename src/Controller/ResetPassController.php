@@ -10,13 +10,6 @@ use Cake\View\Exception\MissingTemplateException;
 use Cake\ORM\Table;
 use Cake\Datasource\ConnectionManager;
 
-/**
- * Static content controller
- *
- * This controller will render views from Template/Pages/
- *
- * @link https://book.cakephp.org/3.0/en/controllers/pages-controller.html
- */
 class ResetPassController extends AppController
 {
 
@@ -26,6 +19,18 @@ class ResetPassController extends AppController
 		$this->loadmodel('Users');
         $this->loadComponent('PassHash');
     }
+
+	public function mailpass()
+    {
+		//$this->set("a", $abd);
+
+	}
+
+	public function respass()
+	{
+		//$this->set("a", $abd);
+
+	}
 
     public function index()
     {
@@ -40,6 +45,7 @@ class ResetPassController extends AppController
 			echo '1_'.$Pas.'<br>'.'2_'.$RPas.'<br>'.'ID_'.$Uid.'<br>'.'hs_'.$HHs;
 
 			echo '<br>_'.mb_substr($Pas, -3).'<br>'.strlen($Pas);
+			echo 'https://sh-ml.mybluemix.net/mail';
 
 				if($Pas == $RPas){
 					echo '<br>'.'1';
