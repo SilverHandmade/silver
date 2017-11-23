@@ -1,18 +1,30 @@
 $(function(){
 	var video = $('#video').get(0);
 
-	// 現在の時間設定
-	$('#nowTime').html(formatTime(video.currentTime));
-	// 動画の再生時間表示
-	$('#allTime').html(formatTime(video.duration));
 
+	$(document).ready(function(){
+		// 現在の時間設定
+		$('#nowTime').html(formatTime(video.currentTime));
+		// 動画の再生時間表示
+		$('#allTime').html(formatTime(video.duration));
 
-	// $(document).on("click", "#fullScreen", function(){
-	// 	var elem = document.getElementById("video");
-	// 	if (elem.requestFullscreen) {
-	// 		elem.requestFullscreen();
-	// 	}
-	// });
+		$("#seekbar").slider({
+			max: video.duration,
+			step: 1,
+			range: "min",
+			option: 'animate',
+			slide: setTime
+		});
+		$("#volbar").slider({
+			max: 1,
+			step: 0.05,
+			range: "min",
+			value:1,
+			option: 'animate',
+			slide: setVol
+		});
+
+	});
 
 	$('#fullScreen').click(function() {
 		if (video.requestFullscreen) {
@@ -32,24 +44,6 @@ $(function(){
 	// 	  video.webkitRequestFullscreen();
 	// 	}
 	// });
-
-
-
-	$("#seekbar").slider({
-		max: video.duration,
-		step: 1,
-		range: "min",
-		option: 'animate',
-		slide: setTime
-	});
-	$("#volbar").slider({
-		max: 1,
-		step: 0.05,
-		range: "min",
-		value:1,
-		option: 'animate',
-		slide: setVol
-	});
 
 	$('#mute').click(function() {
 		video.muted = true;

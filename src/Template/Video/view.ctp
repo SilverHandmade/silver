@@ -7,9 +7,9 @@
 
 
 <div class="col-md-offset-2 col-md-8">
-	<div id="video">
-		<video controls poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg">
-			<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+	<div>
+		<video controls poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg"  id="video">
+			<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample.mp4" type='video/mp4;'>
 		</video>
 		<div class="row" id="controls">
 			<div class="col-md-1">
