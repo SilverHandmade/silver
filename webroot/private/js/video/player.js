@@ -1,8 +1,8 @@
 $(function(){
 	var video = $('#video').get(0);
+	var videos = $('#videos').get(0);
 
-
-	$(document).ready(function(){
+	$(window).on('load',function(){
 		// 現在の時間設定
 		$('#nowTime').html(formatTime(video.currentTime));
 		// 動画の再生時間表示
@@ -23,27 +23,28 @@ $(function(){
 			option: 'animate',
 			slide: setVol
 		});
-
 	});
 
 	$('#fullScreen').click(function() {
-		if (video.requestFullscreen) {
-		  video.requestFullscreen();
-		} else if (video.mozRequestFullScreen) {
-		  video.mozRequestFullScreen();
-		} else if (video.webkitRequestFullscreen) {
-		  video.webkitRequestFullscreen();
+		if (videos.requestFullscreen) {
+			videos.requestFullscreen();
+		} else if (videos.mozRequestFullScreen) {
+			videos.mozRequestFullScreen();
+		} else if (videos.webkitRequestFullscreen) {
+			videos.webkitRequestFullscreen();
 		}
+		screenTogle();
 	});
-	// $('#defScreen').click(function() {
-	// 	if (video.requestFullscreen) {
-	// 	  video.requestFullscreen();
-	// 	} else if (video.mozRequestFullScreen) {
-	// 	  video.mozRequestFullScreen();
-	// 	} else if (video.webkitRequestFullscreen) {
-	// 	  video.webkitRequestFullscreen();
-	// 	}
-	// });
+	$('#defScreen').click(function() {
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+		} else if (document.mozCancelFullScreen) {
+			document.mozCancelFullScreen();
+		} else if (document.webkitCancelFullScreen) {
+			document.webkitCancelFullScreen();
+		}
+		screenTogle();
+	});
 
 	$('#mute').click(function() {
 		video.muted = true;
@@ -58,6 +59,10 @@ $(function(){
 	});
 
 	$('#play').click(function (){
+		//動画を再生
+		video.play();
+	});
+	$('#video').click(function (){
 		//動画を再生
 		video.play();
 	});
@@ -79,7 +84,7 @@ $(function(){
 	$('#controls').hover(function() {
 		$(this).fadeTo('slow/400/fast', 1);
 	}, function() {
-		$(this).fadeTo('slow/400/fast', 0.2);
+		$(this).fadeTo('slow/400/fast', 0);
 	});
 
 	function startTogle() {
@@ -89,6 +94,10 @@ $(function(){
 	function volTogle() {
 		$('#mute').toggle();
 		$('#unmute').toggle();
+	}
+	function screenTogle() {
+		$('#fullScreen').toggle();
+		$('#defScreen').toggle();
 	}
 
 	function setTime(event, ui) {

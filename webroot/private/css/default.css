@@ -121,8 +121,8 @@ h2 {
 footer {
 	bottom: 0;
 	width: 100%;
-    height: 30px;
-    position: fixed;
+	height: 30px;
+	position: fixed;
 	background-color: #497937;
 	z-index: 2;
 }
@@ -136,7 +136,7 @@ footer .btn-link, footer .btn-link:hover {
 @media (max-width: 992px) {
 	footer {
 		height: auto;
-	    position: relative;
+		position: relative;
 	}
 }
 /*footer終わり*/
@@ -145,24 +145,25 @@ footer .btn-link, footer .btn-link:hover {
 /*PAGE TOPボタン*/
 #page-top {
 	z-index: 3000;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 77%;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	font-size: 77%;
 }
 #page-top a {
-    background: #666;
-    text-decoration: none;
-    color: #fff;
-    width: 100%;
-    padding: 20px 10px;
-    text-align: center;
-    display: block;
-    border-radius: 5px;
+	background: #666;
+	text-decoration: none;
+	color: #fff;
+	width: 100%;
+	padding: 20px 10px;
+	text-align: center;
+	display: block;
+	border-radius: 5px;
+	opacity: 0.4;
 }
 #page-top a:hover, #page-top a:focus {
-    text-decoration: none;
-	opacity: 0.65;
+	text-decoration: none;
+	opacity: 0.8;
 }
 /*PAGE TOPボタン終わり*/
 

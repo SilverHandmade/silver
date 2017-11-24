@@ -7,10 +7,11 @@
 
 
 <div class="col-md-offset-2 col-md-8">
-	<div>
-		<video controls poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg"  id="video">
+	<div id="videos">
+		<video poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg"  id="video">
 			<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample.mp4" type='video/mp4;'>
 		</video>
+		<button type="button" name="button"></button>
 		<div class="row" id="controls">
 			<div class="col-md-1">
 				<button type="button" class="btn trance" id="play">
@@ -53,10 +54,7 @@
 			<!-- <div id="val">テスト用表示領域</div> -->
 
 		</div>
-
 	</div>
-
-
 </div>
 
 
