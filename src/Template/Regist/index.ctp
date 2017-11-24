@@ -11,7 +11,8 @@
 	<p class="form-title">新規登録</p>
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6">
-			<form action="regist" method="post" >
+			<form action="<?= $this->Url->build(["controller" => "regist","action" => "confirm"])?>" method="post" >
+
 				<div class="username">
 					<!-- $postname-->
 					<p class="font-color">氏名</p>

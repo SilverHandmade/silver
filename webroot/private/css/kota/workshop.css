@@ -61,6 +61,11 @@ input[type="text"] {
 #add {
 	width: 100%;
 }
-/*.margin-left {
-	margin-left: none;
-}*/
+
+.padding {
+	padding-right: 15px;
+}
+
+.margin-left {
+	margin-left: 10px;
+}
