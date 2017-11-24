@@ -17,6 +17,7 @@ class RequestController extends AppController
         $this->loadmodel('Products');
         $this->loadmodel('Facilities');
 		$this->loadmodel('Requests');
+		$this->loadmodel('Users');
 		$this->loadmodel('Request_detailses');
 		$this->loadmodel('Product_detailses');
 		$this->loadComponent('MakeId9');
@@ -173,13 +174,13 @@ class RequestController extends AppController
 
 	public function list(){
 		$query = $this->Requests->find()
-		->select(['id','F_moto_id','title','ju_flg','facilities.name'])
+		->select(['id','F_moto_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
 		->join([
 			'table' => 'facilities',
 			'type' => 'LEFT',
 			'conditions' => ['facilities.id = Requests.F_moto_id']
             ])
-		->where(['ju_flg IS NULL']);
+		->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0]);
 
 		$reqs = $query->all()->ToArray();
 		$this->set(compact('reqs'));
@@ -261,20 +262,39 @@ class RequestController extends AppController
 
 
 		public function select(){
+
+			$query = $this->Users->find()
+			->select(['id','facilities_id'])
+			->where(['id'=>$_SESSION['id']]);
+			$loginuser = $query->all()->ToArray();
+			$this->set(compact('loginuser'));
+
 			$query = $this->Requests->find()
-			->select(['id','F_moto_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
+			->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
 			->join([
 				'table' => 'facilities',
 				'type' => 'LEFT',
-				'conditions' => 'facilities.id = Requests.F_moto_id'])
-			->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0]);
-
-
+				'conditions' => 'facilities.id = Requests.F_saki_id'])
+			->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $loginuser[0]['facilities_id']]);
 			$reqlist = $query->all()->ToArray();
 			$this->set(compact('reqlist'));
+
+
+
 		}
 
 		public function edit(){
+
+
+
+
+
+
+
+
+
+
+
 			if (isset($_POST['cancelbtn'])) {
 				$query = $this->Requests->query();
 				$query->update()
@@ -290,6 +310,7 @@ class RequestController extends AppController
 			if ($this->request->is('post')){
 				$_SESSION['sel_id'] = $_POST['selrequest_id'];
 			}
+
 
 		}
 

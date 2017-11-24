@@ -14,14 +14,21 @@
 			<input type="text" id="rsearch" name="search" value=""/><button type="button" id="Reqsearchbutton" name="sbutton" class="submit-button">検索</button>
 		</form>
 
-		<table id="reqseltable" align="" class="table">
-			<thead>
-				<tr>
-					<th>件名</th>
-					<th>依頼元施設名</th>
 
-				</tr>
-			</thead>
+		<?php if ($reqlist == NULL): ?>
+			<br><br>
+			<h>編集可能な依頼がありません。</h>
+			<br><br>
+			<button type="button" class="button" onclick="location.href='/silver/'">戻る</button>
+		<?php endif; ?>
+			<table id="reqseltable" align="" class="table">
+				<thead>
+					<tr>
+						<th>件名</th>
+						<th>依頼先施設名</th>
+					</tr>
+				</thead>
+
 			<?php foreach ($reqlist as $req) : ?>
 
 			<tbody>
@@ -40,6 +47,7 @@
 				</tr>
 
 			<?php endforeach; ?>
+
 			</tbody>
 		</table>
 	</div>
