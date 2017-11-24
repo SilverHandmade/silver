@@ -25,17 +25,22 @@ $(function(){
 		});
 	});
 
-	$('#fullScreen').click(function() {
-		if (videos.requestFullscreen) {
-			videos.requestFullscreen();
-		} else if (videos.mozRequestFullScreen) {
-			videos.mozRequestFullScreen();
-		} else if (videos.webkitRequestFullscreen) {
-			videos.webkitRequestFullscreen();
-		}
-		screenTogle();
+	$('#playStop').click(function (){
+		startTogle()
 	});
-	$('#defScreen').click(function() {
+	$('#video').click(function (){
+		startTogle()
+	});
+	$('#mute').click(function() {
+		volTogle();
+	});
+
+	video.addEventListener("timeupdate", function(){
+		$('#seekbar').slider('value', Math.floor(video.currentTime));
+		$('#nowTime').html(formatTime(video.currentTime));
+	}, false);
+
+	$('#fullScreen').click(function() {
 		if (document.exitFullscreen) {
 			document.exitFullscreen();
 		} else if (document.mozCancelFullScreen) {
@@ -43,43 +48,28 @@ $(function(){
 		} else if (document.webkitCancelFullScreen) {
 			document.webkitCancelFullScreen();
 		}
-		screenTogle();
+		if (videos.requestFullscreen) {
+			videos.requestFullscreen();
+		} else if (videos.mozRequestFullScreen) {
+			videos.mozRequestFullScreen();
+		} else if (videos.webkitRequestFullscreen) {
+			videos.webkitRequestFullscreen();
+		}
 	});
-
-	$('#mute').click(function() {
-		video.muted = true;
-		$("#volbar").slider('value', 0);
-		volTogle();
-	});
-
-	$('#unmute').click(function() {
-		video.muted = false;
-		$("#volbar").slider('value', video.volume);
-		volTogle();
-	});
-
-	$('#play').click(function (){
-		//動画を再生
-		video.play();
-	});
-	$('#video').click(function (){
-		//動画を再生
-		video.play();
-	});
-	$('#oneTimeStop').click(function() {
-		//動画を一時停止
-		video.pause();
-	});
-	video.addEventListener("timeupdate", function(){
-		$('#seekbar').slider('value', Math.floor(video.currentTime));
-		$('#nowTime').html(formatTime(video.currentTime));
-	}, false);
-	video.addEventListener("play", function(){
-		startTogle();
-	}, false);
-	video.addEventListener("pause", function(){
-		startTogle();
-	}, false);
+	document.addEventListener("webkitfullscreenchange", handleFSevent, false);
+	document.addEventListener("mozfullscreenchange", handleFSevent, false);
+	document.addEventListener("MSFullscreenChange", handleFSevent, false);
+	document.addEventListener("fullscreenchange", handleFSevent, false);
+	function handleFSevent() {
+		if( (document.webkitFullscreenElement && document.webkitFullscreenElement !== null)
+		 || (document.mozFullScreenElement && document.mozFullScreenElement !== null)
+		 || (document.msFullscreenElement && document.msFullscreenElement !== null)
+		 || (document.fullS1creenElement && document.fullScreenElement !== null) ) {
+			screenTogle();
+		}else{
+			screenTogle();
+		}
+	}
 
 	$('#controls').hover(function() {
 		$(this).fadeTo('slow/400/fast', 1);
@@ -88,22 +78,33 @@ $(function(){
 	});
 
 	function startTogle() {
-		$('#oneTimeStop').toggle();
-		$('#play').toggle();
+		$('.glyphicon-play').toggle();
+		$('.glyphicon-pause').toggle();
+		if (video.paused) {
+			video.play();
+		} else {
+			video.pause();
+		}
 	}
 	function volTogle() {
-		$('#mute').toggle();
-		$('#unmute').toggle();
+		$('.glyphicon-volume-up').toggle();
+		$('.glyphicon-volume-off').toggle();
+		if (video.muted) {
+			video.muted = false;
+			$("#volbar").slider('value', video.volume);
+		} else {
+			video.muted = true;
+			$("#volbar").slider('value', 0);
+		}
 	}
 	function screenTogle() {
-		$('#fullScreen').toggle();
-		$('#defScreen').toggle();
+		$('.glyphicon-resize-full').toggle();
+		$('.glyphicon-resize-small').toggle();
 	}
 
 	function setTime(event, ui) {
 		video.currentTime = ui.value;
 	}
-
 	function setVol(event, ui) {
 		if (ui.value === 0) {
 			volTogle();
