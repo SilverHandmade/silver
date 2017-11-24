@@ -41,7 +41,12 @@
 			<td><p>依頼元郵便番号：</p></td>
 			<td><p><?php echo $faci_info[0]['Post'] ?></p></td>
 		</tr>
-
+		<?php if ($req_info[0]['product_id'] != ""): ?>
+			<tr>
+				<td><p>ワークショップID：</p></td>
+				<td><p><?php echo $req_info[0]['product_id'] ?></p></td>
+			</tr>
+		<?php endif; ?>
 		<?php foreach ($pdt_info as $pinfo) : ?>
 			<tr>
 

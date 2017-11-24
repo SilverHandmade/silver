@@ -17,6 +17,7 @@ class RequestController extends AppController
         $this->loadmodel('Products');
         $this->loadmodel('Facilities');
 		$this->loadmodel('Requests');
+		$this->loadmodel('Users');
 		$this->loadmodel('Request_detailses');
 		$this->loadmodel('Product_detailses');
 		$this->loadComponent('MakeId9');
@@ -173,13 +174,13 @@ class RequestController extends AppController
 
 	public function list(){
 		$query = $this->Requests->find()
-		->select(['id','F_moto_id','title','ju_flg','facilities.name'])
+		->select(['id','F_moto_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
 		->join([
 			'table' => 'facilities',
 			'type' => 'LEFT',
 			'conditions' => ['facilities.id = Requests.F_moto_id']
             ])
-		->where(['ju_flg IS NULL']);
+		->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0]);
 
 		$reqs = $query->all()->ToArray();
 		$this->set(compact('reqs'));
@@ -187,6 +188,8 @@ class RequestController extends AppController
 
 
 		public function detail(){
+
+
 
 			if (isset($_POST['order'])) {
 				$query = $this->Requests->query();
@@ -202,6 +205,7 @@ class RequestController extends AppController
 			}
 
 			if ($this->request->is('post')){
+
 				//施設情報の取得
 				$query = $this->Facilities->find()
 				->where(['id ='=>$_POST['request_moto_id']]);
@@ -221,32 +225,76 @@ class RequestController extends AppController
 				$this->set(compact('pdt_info'));
 				$_SESSION['id']=$req_info[0]['id'];
 
-
 			}
 
+
+			//TOPページから詳細へ飛んだ場合の処理
+			$get_id = $this->request->getParam('id');
+			if ($get_id != "") {
+				//依頼情報の取得
+				$query = $this->Requests->find()
+				->where(['id'=>$get_id]);
+				$getreq_info = $query->all()->ToArray();
+				$this->set(compact('getreq_info'));
+
+				//施設情報の取得
+				$query = $this->Facilities->find()
+				->where(['id ='=>$getreq_info[0]['F_moto_id']]);
+				$faci_info = $query->all()->ToArray();
+				$this->set(compact('faci_info'));
+
+				//依頼情報の取得
+				$query = $this->Requests->find()
+				->where(['id ='=>$getreq_info[0]['id']]);
+				$req_info = $query->all()->ToArray();
+				$this->set(compact('req_info'));
+
+				//ワークショップの取得
+				$query = $this->Request_detailses->find()
+				->where(['request_id ='=>$getreq_info[0]['id']]);
+				$pdt_info = $query->all()->ToArray();
+				$this->set(compact('pdt_info'));
+				$_SESSION['id']=$req_info[0]['id'];
+			}
 
 
 		}
 
 
 		public function select(){
+
+			$query = $this->Users->find()
+			->select(['id','facilities_id'])
+			->where(['id'=>$_SESSION['id']]);
+			$loginuser = $query->all()->ToArray();
+			$this->set(compact('loginuser'));
+
 			$query = $this->Requests->find()
-			->select(['id','F_moto_id','title','ju_flg','Requests.Del_flg','facilities.name'])
+			->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
 			->join([
 				'table' => 'facilities',
 				'type' => 'LEFT',
-				'conditions' => 'facilities.id = Requests.F_moto_id'])
-			->where([
-					'ju_flg' => 0,
-					//'Requests.Del_flg' => 0
-				]);
-
-
+				'conditions' => 'facilities.id = Requests.F_saki_id'])
+			->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $loginuser[0]['facilities_id']]);
 			$reqlist = $query->all()->ToArray();
 			$this->set(compact('reqlist'));
+
+
+
 		}
 
 		public function edit(){
+
+
+
+
+
+
+
+
+
+
+
 			if (isset($_POST['cancelbtn'])) {
 				$query = $this->Requests->query();
 				$query->update()
@@ -262,6 +310,7 @@ class RequestController extends AppController
 			if ($this->request->is('post')){
 				$_SESSION['sel_id'] = $_POST['selrequest_id'];
 			}
+
 
 		}
 

@@ -45,8 +45,10 @@ $(function(){
 		$('#facitable tbody tr').each(function(){
 			var Ntxt = $(this).find("#fname:eq(0)").html();
 			var Atxt = $(this).find("#faddress:eq(0)").html();
+
 			Ntxt = Ntxt.replace("<button type=\"submit\">","");
 			Ntxt = Ntxt.replace("</button>","");
+			alert(Ntxt);
 			if(Atxt.match(re) != null || Ntxt.match(re) != null){
 				$(this).show();
 			}else{
