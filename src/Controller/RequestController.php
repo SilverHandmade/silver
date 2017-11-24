@@ -265,7 +265,7 @@ class RequestController extends AppController
 
 			$query = $this->Users->find()
 			->select(['id','facilities_id'])
-			->where(['id'=>$_SESSION['id']]);
+			->where(['id'=>$_SESSION['Auth']['User']['id']]);
 			$loginuser = $query->all()->ToArray();
 			$this->set(compact('loginuser'));
 
@@ -281,19 +281,11 @@ class RequestController extends AppController
 
 
 
+
 		}
 
+
 		public function edit(){
-
-
-
-
-
-
-
-
-
-
 
 			if (isset($_POST['cancelbtn'])) {
 				$query = $this->Requests->query();
@@ -310,6 +302,7 @@ class RequestController extends AppController
 			if ($this->request->is('post')){
 				$_SESSION['sel_id'] = $_POST['selrequest_id'];
 			}
+
 
 
 		}

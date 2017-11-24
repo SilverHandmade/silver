@@ -46,9 +46,8 @@ $(function(){
 			var Ntxt = $(this).find("#fname:eq(0)").html();
 			var Atxt = $(this).find("#faddress:eq(0)").html();
 
-			Ntxt = Ntxt.replace("<button type=\"submit\">","");
+			Ntxt = Ntxt.replace("<button type=\"submit\" class=\"typesubmit\">","");
 			Ntxt = Ntxt.replace("</button>","");
-			alert(Ntxt);
 			if(Atxt.match(re) != null || Ntxt.match(re) != null){
 				$(this).show();
 			}else{
@@ -62,7 +61,7 @@ $(function(){
 $(function(){
 	$('#Reqsearchbutton').bind("click",function(){
 		var re = new RegExp($('#rsearch').val());
-		$('#reqtable tbody tr').each(function(){
+		$('#reqseltable tbody tr').each(function(){
 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
 			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
 			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
