@@ -6,7 +6,7 @@
 <?php $this->end(); ?>
 
 <div class="col-md-offset-1 col-md-10">
-	<form action="" method="post">
+	<form action="" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="title">タイトル</label>
 			<input class="form-control" type="text" name="name" id="title">
@@ -20,7 +20,7 @@
 							<button type="button" name="upload" id="G_upload" class="bottom">画像選択</button>
 						</div>
 					</div>
-					<span id="fake_input_file">NOT FILE</span>
+					<span id="fake_input_file" class="margin-left">NOT FILE</span>
 				</div>
 				<div class="col-md-9">
 					<input class="form-control" type="text" name="text" id="Stext">
@@ -35,9 +35,9 @@
 				</button>
 			</div>
 		</div>
-		<div class="row">
-			<button type="submit" name="button" id="Trans">送信</button>
-			<button type="button" name="search-back" id="back">検索画面へ</button>
+		<div class="row right padding">
+			<button type="submit" name="button" class="button-submit" id="Trans">送信</button>
+			<button type="button" name="search-back" id="back" class="button-submit">検索画面へ</button>
 		</div>
 	</form>
 </div>
