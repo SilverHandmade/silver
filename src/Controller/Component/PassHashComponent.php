@@ -10,4 +10,10 @@ class PassHashComponent extends Component {
 		$hasher = new DefaultPasswordHasher();
 		return $hasher->hash($pass);
 	}
+	// パスワードチェック
+	public function pasCheck($inputPass, $databasePass) {
+		$hasher = new DefaultPasswordHasher();
+		return $hasher->check($inputPass, $databasePass);
+	}
+
 }

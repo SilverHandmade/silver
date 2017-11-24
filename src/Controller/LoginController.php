@@ -61,7 +61,7 @@ class LoginController extends AppController
 				]);
 				return $this->redirect(['controller' => $this->request->getQuery('ref')]);
 			}
-			$this->Flash->error(__('Invalid username or password, try again'));
+			$this->Flash->error(__('again'));
 		}
 	}
 	public function logout() {

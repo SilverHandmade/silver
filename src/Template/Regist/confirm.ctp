@@ -47,8 +47,8 @@
 		<tr>
 			<td width=150>パスワード</td>
 			<td width=250 height=50>
-			<?php	$str2 = str_repeat('*', strlen($_POST['password']));echo $str2?></td>
-			<input type="hidden" name="password" value="<?php $str2 = str_repeat('*', strlen($_POST['password']));echo $str2 ?>">
+			<?php $str2 = str_repeat('*', strlen($_POST['password']));echo $str2?></td>
+			<input type="hidden" name="password" value="<?= $_POST['password'] ?>">
 
 		</tr>
 
