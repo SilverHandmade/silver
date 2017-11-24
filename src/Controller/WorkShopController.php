@@ -29,9 +29,9 @@ class WorkShopController extends AppController
 			$id = $this->MakeId9->id9('pro');
 			$name= $this->request->getData('name');
 			$Model = $this->request->getData('text');
-			$images = $this->request->getData('Upload');
 			$Model_detailses = $this->request->getData('text');
-			$images_detailses = $this->request->getData('Upload');
+			$images = $this->request->getData('upload');
+			$images_detailses = $this->request->getData('upload');
 			$user = $this->MakeId9->id9('pro');
 			//$this->set(compact('user'));
 
@@ -44,9 +44,9 @@ class WorkShopController extends AppController
 				'description' => $Model,
 				'midasi_url'=> $images,
 				'user_id' => $user,
-			])
+			]);
 
-		->execute();
+		//->execute();
 
 				$query = $this->product_detailses->query();
 				$query->insert(['product_id', 'description','photo_url'])
@@ -54,9 +54,9 @@ class WorkShopController extends AppController
 					'product_id' => $id,
 					'description' => $Model_detailses,
 					'photo_url'=> $images_detailses,
-				])
+				]);
 
-			->execute();
+			//->execute();
 		}
 	}
 
@@ -81,7 +81,7 @@ class WorkShopController extends AppController
 
 	public function detailses()
 	{
-		
+
 	}
 }
 /*	public function contents($id){
