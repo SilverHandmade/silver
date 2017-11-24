@@ -6,9 +6,12 @@ use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\Mailer\Email;
 
 class MailController extends AppController
 {
+
+
 
     public function initialize()
     {
@@ -28,6 +31,15 @@ class MailController extends AppController
 
 
     public function index() {
+
+		if (isset($_POST['transmission'])) {
+			$email = new Email('default');
+			$email->from(['Taguchi.SilverHandmade@gmail.com' => '田口　恵太郎'])
+				->to('nagiyan15@gmail.com')
+				->subject($_POST['subjectbox'])
+				->send($_POST['text']);
+		}
+
 		$question = $this->questions->find('all');
         $questionArray = $question->toArray();
         $this->set(compact('$questionArray'));
