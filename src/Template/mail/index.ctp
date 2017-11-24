@@ -26,7 +26,7 @@ $(function(){
 				<tr>
 					<div class="form-group">
 						<td colspan="2">
-							<textarea name="text" rows="8" cols="80" class="form-control"></textarea>
+							<textarea name="text" rows="8" cols="60" class="textarea form-control"></textarea>
 						</td>
 					</div>
 				</tr>

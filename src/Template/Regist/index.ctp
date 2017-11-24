@@ -23,7 +23,7 @@
 					<p class="font-color">フリガナ</p>
 					<input type="text" id="hurigana" name="hurigana" value="">
 				</div>
-				<div class="checkbox">
+				<div class="checkbox checkbox-layout">
 					<?php foreach ($fClassArray as $key =>$value)
 						{ ?>
 							<input type="radio" name="fClassId" value="<?= $value['id'] ?>" <?php if ($key == 0){

@@ -18,3 +18,10 @@ form {
 	font-size: 14px;
 	padding: 4px;
 }
+.textarea {
+	resize: none;
+}
+
+.title {
+	font-size: 20px;
+}

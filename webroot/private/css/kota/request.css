@@ -1,4 +1,10 @@
-button, button[type="submit"] {
+button,
+button[type="submit"],
+button[type="button"] {
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
+}
+
+h2 {
+	margin-top: 10px;
 }
