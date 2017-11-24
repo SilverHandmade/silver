@@ -17,7 +17,7 @@ class EmailController extends AppController
     public function index() {
 		$email = new Email('default');
 		$email->from(['Taguchi.SilverHandmade@gmail.com' => 'OIC'])
-			->to('oic.t.ueda@gmail.com')
+			->to('nagiyan15@gmail.com')
 			->subject('About')
 			->send('My message');
     }

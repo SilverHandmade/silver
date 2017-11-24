@@ -8,11 +8,6 @@ $(function(){
 		$('#Cc').toggle();
 	});
 });
-$(function(){
-	$('#bcc').click(function() {
-		$('#Bcc').toggle();
-	});
-});
 </script>
 <div class="col-md-offset-2 col-md-8">
 	<p class="title">お問い合わせ</p>
