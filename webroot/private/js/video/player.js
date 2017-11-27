@@ -3,29 +3,35 @@ $(function(){
 	var videos = $('#videos').get(0);
 
 	$(window).on('load',function(){
-		// 現在の時間設定
-		$('#nowTime').html(formatTime(video.currentTime));
 		// 動画の再生時間表示
 		$('#allTime').html(formatTime(video.duration));
 
 		$("#seekbar").slider({
-			max: video.duration,
-			step: 1,
-			range: "min",
-			option: 'animate',
-			slide: setTime
-		});
-		$("#volbar").slider({
-			max: 1,
-			step: 0.05,
-			range: "min",
-			value:1,
-			option: 'animate',
-			slide: setVol
+			max: video.duration
 		});
 	});
+	$("#seekbar").slider({
+		step: 1,
+		range: "min",
+		option: 'animate',
+		slide: setTime
+	});
+	$("#volbar").slider({
+		max: 1,
+		step: 0.05,
+		range: "min",
+		value:1,
+		option: 'animate',
+		slide: setVol
+	});
+	$('#allTime').html(formatTime(0));
+	$('#nowTime').html(formatTime(0));
+
 
 	$('#playStop').click(function (){
+		startTogle()
+	});
+	$('#start').click(function (){
 		startTogle()
 	});
 	$('#video').click(function (){
@@ -71,11 +77,11 @@ $(function(){
 		}
 	}
 
-	$('#controls').hover(function() {
-		$(this).fadeTo('slow/400/fast', 1);
-	}, function() {
-		$(this).fadeTo('slow/400/fast', 0);
-	});
+	// $('#videos').hover(function() {
+	// 	$('#controls').fadeTo('400', 1);
+	// }, function() {
+	// 	$('#controls').delay(700).fadeTo('400', 0);
+	// });
 
 	function startTogle() {
 		$('.glyphicon-play').toggle();
@@ -84,6 +90,7 @@ $(function(){
 			video.play();
 		} else {
 			video.pause();
+			$('#start').toggle();
 		}
 	}
 	function volTogle() {
