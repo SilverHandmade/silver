@@ -10,6 +10,9 @@ use Cake\View\Exception\MissingTemplateException;
 use Cake\ORM\Table;
 use Cake\Datasource\ConnectionManager;
 
+use Ramsey\Uuid\Uuid;
+use Moontoast\Math\BigNumber;
+
 class ResetPassController extends AppController
 {
 
@@ -22,10 +25,11 @@ class ResetPassController extends AppController
 
 	public function mailpass()
     {
-		$abd = $_POST['CHANGEId'];
-		echo $abd;
-		$this->set("a", $abd);
-
+		//$abd = uniqid();
+	//	echo ;
+		$uuid = Uuid::uuid4();
+		echo Uuid::uuid4();
+		$this->set("a", $uuid);
 	}
 
 	public function respass()
@@ -47,9 +51,8 @@ class ResetPassController extends AppController
 			echo '1_'.$Pas.'<br>'.'2_'.$RPas.'<br>'.'ID_'.$Uid.'<br>'.'hs_'.$HHs;
 
 			echo '<br>_'.mb_substr($Pas, -3).'<br>'.strlen($Pas);
-			echo 'https://sh-ml.mybluemix.net/mail';
 
-				if($Pas == $RPas){
+				if(($Pas <> "" || $RPas <> "") && $Pas == $RPas){
 					echo '<br>'.'1';
 					$query = ConnectionManager::get('default');
 					$query->update('users',['password' => $HHs],['id' => $Uid]);
