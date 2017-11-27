@@ -35,7 +35,7 @@ class MailController extends AppController
 		if (isset($_POST['transmission'])) {
 			$email = new Email('default');
 			$email->from(['Taguchi.SilverHandmade@gmail.com' => '田口　恵太郎'])
-				->to('nagiyan15@gmail.com')
+				->to($this->request->$_SESSION['userID'])
 				->subject($_POST['subjectbox'])
 				->send($_POST['text']);
 		}
