@@ -5,7 +5,6 @@ $(function(){
 	$(window).on('load',function(){
 		// 動画の再生時間表示
 		$('#allTime').html(formatTime(video.duration));
-
 		$("#seekbar").slider({
 			max: video.duration
 		});
@@ -18,7 +17,7 @@ $(function(){
 	});
 	$("#volbar").slider({
 		max: 1,
-		step: 0.05,
+		step: 0.01,
 		range: "min",
 		value:1,
 		option: 'animate',
@@ -84,13 +83,13 @@ $(function(){
 	// });
 
 	function startTogle() {
+		$('#start').toggle();
 		$('.glyphicon-play').toggle();
 		$('.glyphicon-pause').toggle();
 		if (video.paused) {
 			video.play();
 		} else {
 			video.pause();
-			$('#start').toggle();
 		}
 	}
 	function volTogle() {

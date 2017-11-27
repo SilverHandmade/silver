@@ -18,7 +18,6 @@ button span {
 
 #videos #video {
 	width: 100%;
-	/*height: 50%;*/
 	height: 60vh;
 	background-color: #000;
 }
@@ -43,7 +42,7 @@ button span {
 #controls button{
 	font-size: 17px;
 }
-#controls button,
+#controls .control-button,
 #controls div {
 	float: left;
 }
@@ -106,7 +105,11 @@ button span {
 
 #videos #video:-webkit-full-screen,
 #videos #video:-moz-full-screen,
-#videos #video:-ms-fullscreen,
+#videos #video:-ms-fullscreen {
+
+	width: 100%;
+	height: 100%;
+}
 #videos #video:fullscreen {
 	width: 100%;
 	height: 100%;

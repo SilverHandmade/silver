@@ -13,27 +13,27 @@
 	</video>
 	<span class="glyphicon glyphicon-play" id="start"></span>
 	<div class="row" id="controls">
-		<div class="control-button" style="background-color:blue;">
+		<div class="control-button">
 			<button type="button" class="btn trance" id="playStop">
 				<span class="glyphicon glyphicon-play"></span>
 				<span class="glyphicon glyphicon-pause none"></span>
 			</button>
 		</div>
 
-		<div id="seekbar" style="background-color:red;"></div>
-		<div id="time" style="background-color:green;">
+		<div id="seekbar"></div>
+		<div id="time">
 			<span id="nowTime"></span>/
 			<span id="allTime"></span>
 		</div>
-		<div class="control-button" style="background-color:blue;">
+		<div class="control-button">
 			<button type="button" class="btn trance" id="mute">
 				<span class="glyphicon glyphicon-volume-up"></span>
 				<span class="glyphicon glyphicon-volume-off none"></span>
 			</button>
 		</div>
 
-		<div id="volbar" style="background-color:red;"></div>
-		<div class="control-button" style="background-color:green;">
+		<div id="volbar"></div>
+		<div class="control-button">
 			<button type="button" class="btn trance" id="fullScreen">
 				<span class="glyphicon glyphicon-resize-full"></span>
 				<span class="glyphicon glyphicon-resize-small none"></span>
