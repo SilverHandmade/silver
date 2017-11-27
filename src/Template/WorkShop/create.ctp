@@ -13,6 +13,8 @@
 		</div>
 		<div class="form-group" id="plus" name="plus">
 			<div class="row">
+
+				
 				<div class="col-md-3">
 					<div class="div-btn">
 						<input type="file" class="input-file none file" name="upload" id="G_upload">
@@ -22,6 +24,8 @@
 					</div>
 					<span id="fake_input_file" class="margin-left">NOT FILE</span>
 				</div>
+
+
 				<div class="col-md-9">
 					<input class="form-control" type="text" name="text" id="Stext">
 				</div>
