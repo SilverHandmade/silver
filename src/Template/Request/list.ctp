@@ -4,7 +4,11 @@
 	$this->end();
 ?>
 
-
+<?php
+	$this->start('css');
+	echo $this->Html->css('/private/css/kota/request.css');
+	$this->end();
+ ?>
 
 
 <div class="col-md-offset-2 col-md-8">
@@ -23,25 +27,22 @@
 
 				</tr>
 			</thead>
-			<?php foreach ($reqs as $req) : ?>
-
-			<tbody>
-				<tr>
-					<form action="/silver/request/detail" method="POST" >
-						<input type=hidden name=request_id value=<?php echo $req['id']?>>
-						<input type=hidden name=request_moto_id value=<?php echo $req['F_moto_id']?>>
-						<td id="rtitle">
-							<button type="submit" class="submit-button"><?php echo $req['title']?></button>
-						</td>
-						<td id="rfaci_name">
-							<p><?php echo $req['facilities']['name']?></p>
-						</td>
-
-					</form>
-				</tr>
-
-			<?php endforeach; ?>
-			</tbody>
 		</table>
+		<?php foreach ($reqs as $req) : ?>
+			<div class="panel">
+				<form action="/silver/request/detail" method="POST" >
+					<input type=hidden name=request_id value="<?php echo $req['id']?>">
+					<input type=hidden name=request_moto_id value="<?php echo $req['F_moto_id']?>">
+					<button type="submit" class="submit row">
+						<div id="rtitle" class="col-md-6">
+							<?php echo $req['title']?>
+						</div>
+						<div id="rfaci_name" class="col-md-6">
+							<p><?php echo $req['facilities']['name']?></p>
+						</div>
+					</button>
+				</form>
+			</div>
+		<?php endforeach; ?>
 	</div>
 </div>

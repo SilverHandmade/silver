@@ -8,3 +8,23 @@ button[type="button"] {
 h2 {
 	margin-top: 10px;
 }
+
+.btn-l {
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+.submit {
+	background-color:transparent;
+	border-style:none;
+	text-decoration:underline;
+	/*width: 16em;*/
+	text-align: justify;
+}
+
+.search {
+	width: 300px;
+}
+* {
+	outline: none;
+}

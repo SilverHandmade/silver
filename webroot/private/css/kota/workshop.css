@@ -69,3 +69,13 @@ input[type="text"] {
 .margin-left {
 	margin-left: 10px;
 }
+
+.span {
+	width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+	vertical-align: bottom;
+	padding-bottom: 1px;
+}

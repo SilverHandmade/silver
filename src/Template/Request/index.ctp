@@ -21,25 +21,35 @@
 					<th>所在地</th>
 				</tr>
 			</thead>
-			<?php foreach ($facilities as $facility) : ?>
-			<tbody>
+
+			<!-- <tbody>
 				<tr>
-					<form action="/silver/request/create" method="POST">
-						<input type=hidden name=facility_id value=<?php echo $facility['id']?>>
-						<input type=hidden name=facility_name value=<?php echo $facility['name']?>>
-						<input type=hidden name=facility_address value=<?php echo $facility['address']?>>
-						<td id="fname">
-							<button type="submit" class="typesubmit"><?php echo $facility['name']?></button>
-						</td>
-					</form>
+
+
 					<td id="faddress" align="justify">
-						<?php echo $facility['address']?>
+
 					</td>
 				</tr>
-				<?php endforeach; ?>
-			</tbody>
+
+			</tbody> -->
 		</table>
-		<br><br>
-				<button type="button" class="button" onclick="location.href='/silver/request/select'">依頼編集・取り消し画面はこちら</button>
+		<?php foreach ($facilities as $facility) : ?>
+		<div class="panel">
+			<form action="/silver/request/create" method="POST">
+				<input type=hidden name=facility_id value=<?php echo $facility['id']?>>
+				<input type=hidden name=facility_name value=<?php echo $facility['name']?>>
+				<input type=hidden name=facility_address value=<?php echo $facility['address']?>>
+				<button type="submit" class="submit row">
+					<div class="col-md-6">
+						<?php echo $facility['name']?>
+					</div>
+					<div class="col-md-6">
+						<?php echo $facility['address']?>
+					</div>
+				</button>
+			</form>
+		</div>
+		<?php endforeach; ?>
+		<button type="button" class="btn-l" onclick="location.href='/silver/request/select'">依頼編集・取り消し画面はこちら</button>
 	</div>
 </div>

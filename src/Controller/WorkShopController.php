@@ -84,13 +84,3 @@ class WorkShopController extends AppController
 
 	}
 }
-/*	public function contents($id){
-
-		$data = $this->Products->get($id);
-        $this->autoRender = false;
-        $this->response->type('image/jpeg');
-        $this->response->body(stream_get_contents($Products->midasi_url));
-
-	}
-
-}

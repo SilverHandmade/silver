@@ -2,10 +2,11 @@
 	$this->start('script');
 	echo $this->Html->script('/private/js/request/request.js');
 	$this->end();
+
+	$this->start('css');
+	echo $this->Html->css('/private/css/kota/request.css');
+	$this->end();
 ?>
-
-
-
 
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
@@ -14,7 +15,6 @@
 		<form class="" action="" method="GET" onsubmit="doSomething();return false;">
 			<input type="text" id="rsearch" name="search" value=""/><button type="button" id="Reqsearchbutton" name="sbutton" class="submit-button">検索</button>
 		</form>
-
 
 		<?php if ($reqlist == NULL): ?>
 			<br><br>
@@ -29,28 +29,23 @@
 						<th>依頼先施設名</th>
 					</tr>
 				</thead>
-
+			</table>
 			<?php foreach ($reqlist as $req) : ?>
-
-			<tbody>
-				<tr>
+				<div class="panel">
 					<form action="/silver/request/edit" method="POST" >
-						<input type=hidden name=selrequest_id value=<?php echo $req['id']?>>
-						<input type=hidden name=selrequest_saki_id value=<?php echo $req['F_saki_id']?>>
-						<td id="rtitle">
-							<button type="submit" class="submit-button"><?php echo $req['title']?></button>
-						</td>
-						<td id="rfaci_name">
-							<p><?php echo $req['facilities']['name']?></p>
-						</td>
-
+						<input type="hidden" name="selrequest_id" value="<?php echo $req['id']?>">
+						<input type="hidden" name="selrequest_saki_id" value="<?php echo $req['F_saki_id']?>">
+						<button type="submit" class="submit row">
+							<div id="rtitle" class="col-md-6">
+								<?php echo $req['title']?>
+							</div>
+							<div id="rfaci_name" class="col-md-6">
+								<p><?php echo $req['facilities']['name']?></p>
+							</div>
+						</button>
 					</form>
-				</tr>
-
+				</div>
 			<?php endforeach; ?>
-
-			</tbody>
-		</table>
 		<?php endif; ?>
 	</div>
 </div>
