@@ -1,6 +1,5 @@
 $(function() {
 
-
 	$('#regform').submit(function() {
 
 	    var username = $('#username').val();
