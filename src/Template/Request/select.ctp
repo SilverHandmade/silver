@@ -17,9 +17,9 @@
 
 
 		<?php if ($reqlist == NULL): ?>
-			<br><br>
+			<br>
 			<h>編集可能な依頼がありません。</h>
-			<br><br>
+			<br>
 			<button type="button" class="button" onclick="location.href='/silver/'">戻る</button>
 		<?php else: ?>
 			<table id="reqseltable" align="" class="table">

@@ -31,6 +31,17 @@ class RequestController extends AppController
 
 
 	public function index(){
+
+	$query = $this->Users->find()
+	->select(['id','facility_classes_id'])
+	->where(['id' => $_SESSION['Auth']['User']['id']]);
+
+	$user_faci = $query->all()->ToArray();
+	$this->set(compact('user_faci'));
+
+
+
+
       $query = $this->Facilities->find()
       ->select(['id','name','address'])
       ->where(['facility_classes_id ='=>2]);
@@ -173,22 +184,39 @@ class RequestController extends AppController
 
 
 	public function list(){
+		$query = $this->Users->find()
+		->select(['id','facilities_id','facility_classes_id'])
+		->where(['id' => $_SESSION['Auth']['User']['id']]);
+
+		$user_faci = $query->all()->ToArray();
+		$this->set(compact('user_faci'));
+		$f_saki = $user_faci[0]['facilities_id'];
+
+
+		if ($user_faci[0]['facility_classes_id'] == 2) {
 		$query = $this->Requests->find()
-		->select(['id','F_moto_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
+		->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
 		->join([
 			'table' => 'facilities',
 			'type' => 'LEFT',
 			'conditions' => ['facilities.id = Requests.F_moto_id']
             ])
-		->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0]);
+		->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki]);
 
 		$reqs = $query->all()->ToArray();
 		$this->set(compact('reqs'));
+		}
 	}
 
 
 		public function detail(){
 
+			$query = $this->Users->find()
+			->select(['id','facility_classes_id'])
+			->where(['id' => $_SESSION['Auth']['User']['id']]);
+
+			$user_faci = $query->all()->ToArray();
+			$this->set(compact('user_faci'));
 
 
 			if (isset($_POST['order'])) {
@@ -287,7 +315,7 @@ class RequestController extends AppController
 
 		public function edit(){
 
-			if (isset($_POST['cancelbtn'])) {
+			if (isset($_POST['Reqcancelbtn'])) {
 				$query = $this->Requests->query();
 				$query->update()
 			  ->set(['Del_flg' => 1])
@@ -299,8 +327,20 @@ class RequestController extends AppController
 			  $this->Flash->success('依頼をキャンセルしました。');
 			  exit();
 			}
+
 			if ($this->request->is('post')){
-				$_SESSION['sel_id'] = $_POST['selrequest_id'];
+				$query = $this->Requests->find()
+				->where(['id'=> $_POST['selrequest_id']]);
+				$edit_req = $query->all()->ToArray();
+				$this->set(compact('edit_req'));
+				$_SESSION['sel_id'] = $edit_req[0]['id'];
+
+				$query = $this->Facilities->find()
+				->select(['name','Post','address'])
+				->where(['id'=> $edit_req[0]['F_saki_id']]);
+				$edit_reqsaki = $query->all()->ToArray();
+				$this->set(compact('edit_reqsaki'));
+
 			}
 
 

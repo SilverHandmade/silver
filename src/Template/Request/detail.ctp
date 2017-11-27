@@ -61,7 +61,12 @@
 
 
 </table>
+<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
 	<button type="submit" class="button" name="order">依頼を受ける</button>
+<?php else: ?>
+	<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+<?php endif; ?>
+
 	</form>
 </div>
 </div>

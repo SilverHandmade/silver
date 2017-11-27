@@ -16,13 +16,15 @@
 		</form>
 
 		<table id="reqtable" align="" class="table">
-			<thead>
-				<tr>
-					<th>件名</th>
-					<th>依頼元施設名</th>
 
-				</tr>
-			</thead>
+			<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
+				<thead>
+					<tr>
+						<th>件名</th>
+						<th>依頼元施設名</th>
+
+					</tr>
+				</thead>
 			<?php foreach ($reqs as $req) : ?>
 
 			<tbody>
@@ -41,6 +43,17 @@
 				</tr>
 
 			<?php endforeach; ?>
+			<?php else: ?>
+				<thead>
+					<tr>
+						<th>あなたもしかして保育園？</th>
+					</tr>
+					<tr>
+						<td><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
+					</tr>
+				</thead>
+
+			<?php endif; ?>
 			</tbody>
 		</table>
 	</div>
