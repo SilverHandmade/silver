@@ -64,5 +64,11 @@ $(function(){
 		});
 	});
 
+	$(function(){
+		$('#syousaibtn1').click(function (){
+			location.href = "/localhost/silver/work-shop/detailses";
+
+		});
+	});
 
 });

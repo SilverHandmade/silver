@@ -26,7 +26,7 @@ class WorkShopController extends AppController
 	{
 		//Table登録
 
-		
+
 		if ($this->request->is('post')) {
 			$id = $this->MakeId9->id9('pro');
 			$name= $this->request->getData('name');
