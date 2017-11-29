@@ -1,7 +1,7 @@
 <?= $this->Html->css('/private/css/kota/resetpass.css') ?>
 
 <div id="form">
-	<p class="form-title">パスワード再設定</p>
+	<p class="form-title">パスワード変更</p>
 	<form action="" method="post">
 		<p class="font-color">パスワード</p>
 		<p class="password">
