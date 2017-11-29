@@ -25,7 +25,7 @@
 							<h3><?= $key['name'];?></h3>
 							<div class="row">
 								<div class="col-md-12 right">
-									<button class="btn btn-link" type="button" name="syousaibtn" id="syousaibtn1" >詳細 >></button>
+									<button type="button" class="btn btn-link" onclick="location.href='/silver/work-shop/detailses'">詳細>></button>
 								</div>
 							</div>
 						</a>
@@ -36,7 +36,7 @@
 
 <?php
 	$this->start('script');
-	echo $this->Html->script('/private/js/workshop/workshop.js');
+	echo $this->Html->script('/private/js/kota/workshop.js');
 	$this->end();
 ?>
 <div>
