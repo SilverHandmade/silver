@@ -13,6 +13,7 @@ class EmailController extends AppController
     public function initialize()
     {
         parent::initialize();
+		
     }
     public function index() {
 		$email = new Email('default');

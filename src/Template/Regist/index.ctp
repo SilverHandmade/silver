@@ -11,17 +11,17 @@
 	<p class="form-title">新規登録</p>
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6">
-			<form action="<?= $this->Url->build(["controller" => "regist","action" => "confirm"])?>" method="post" >
+			<form action="<?= $this->Url->build(["controller" => "regist","action" => "confirm"])?>" id="regform" method="post">
 
 				<div class="username">
 					<!-- $postname-->
 					<p class="font-color">氏名</p>
-					<input type="text" id="username" name="name" value="">
+					<input type="text" id="username" name="name" value="" required>
 				</div>
 				<div class="furigana">
 					<!-- $posthurigana-->
 					<p class="font-color">フリガナ</p>
-					<input type="text" id="hurigana" name="hurigana" value="">
+					<input type="text" id="hurigana" name="hurigana" value=""required>
 				</div>
 				<div class="checkbox checkbox-layout">
 					<?php foreach ($fClassArray as $key =>$value)
@@ -48,20 +48,20 @@
 				<div class="mailadress">
 					<!-- $postmail-->
 					<p class="font-color">メールアドレス</p>
-					<input type="email" id="regM" name="email" value="">
+					<input type="email" id="regM" name="email" value="" required>
 					<!-- $postremail-->
-					<input type="email" id="regRM" name="reemail" placeholder="再入力">
+					<input type="email" id="regRM" name="reemail" placeholder="再入力" required>
 				</div>
 				<div class="password">
 					<!-- $postpass-->
 					<p class="font-color">パスワード</p>
-					<input type="password" id="regP" name="password" value="">
+					<input type="password" id="regP" name="password" value="" required>
 					<!-- $postrepass-->
-					<input type="password" id="regRP" name="repassword" placeholder="再入力">
+					<input type="password" id="regRP" name="repassword" placeholder="再入力" required>
 				</div>
 				<!--送信ボタン-->
 				<div class="submit">
-					<button type="submit" id="regform" onclick="test();"	value="" class="submit">送信</button>
+					<button type="submit" value="" class="submit">送信</button>
 				</div>
 			</form>
 		</div>

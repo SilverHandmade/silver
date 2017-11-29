@@ -35,14 +35,14 @@ class MailController extends AppController
 		if (isset($_POST['transmission'])) {
 			$email = new Email('default');
 			$email->from(['Taguchi.SilverHandmade@gmail.com' => '田口　恵太郎'])
-				->to($this->request->$_SESSION['userID'])
+				->to($_SESSION['userID'])
 				->subject($_POST['subjectbox'])
 				->send($_POST['text']);
 		}
 
 		$question = $this->questions->find('all');
         $questionArray = $question->toArray();
-        $this->set(compact('$questionArray'));
+        $this->set(compact('questionArray'));
 
 		if($this->request->is('post')) {
 			$postQId = $this->MakeId9->id9('que');
