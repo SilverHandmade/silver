@@ -22,7 +22,7 @@
 							<button type="button" name="upload" id="G_upload" class="bottom">画像選択</button>
 						</div>
 					</div>
-					<span id="fake_input_file" class="margin-left">NOT FILE</span>
+					<span id="fake_input_file" class="margin-left span">NOT FILE</span>
 				</div>
 
 
@@ -35,7 +35,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<button class="btn btn-default" type="button" id="add">
-					<span class="glyphicon glyphicon-plus-sign" name="add"></span>
+				<span class="glyphicon glyphicon-plus-sign" name="add"></span>
 				</button>
 			</div>
 		</div>

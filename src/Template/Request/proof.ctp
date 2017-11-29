@@ -2,6 +2,10 @@
 	$this->start('script');
 	echo $this->Html->script('/private/js/request/request.js');
 	$this->end();
+
+	$this->start('css');
+	echo $this->Html->css('/private/css/kota/request.css');
+	$this->end();
 ?>
 
 <?php
@@ -27,29 +31,34 @@ if ($this->request->is('post')){
 
 
 <div class="col-md-offset-2 col-md-8 center">
-<form action="" method="POST" >
+	<p class="font-title">確認</p>
+	<div class="row">
+		<div class="col-md-offset-3 col-md-8">
+			<form action="" method="POST" id="form">
 
 
-<p>依頼先</p>
-<input type="text" id="reqFN_con" name="requestFN_con" readonly value=<?php echo $input_faci_name?>>
-<p>依頼先所在地</p>
-<input type="text" id="reqFA_con" name="requestFA_con" readonly value=<?php echo $input_faci_address?>>
-<p>制作物タイトル</p>
-<input type="text" id="reqT_con" name="requestT_con" readonly value=<?php echo $input_title?>>
-<p>制作個数</p>
-<input type="text" id="reqN_con" name="requestN_con" readonly value=<?php echo $input_num?>>
-<!--wsidがない場合は次の処理を行わない-->
-<?php if ($noid == 0) : ?>
-	<p>ワークショップID</p>
-	<input type="text" id="wsID_con" name="wsID_con" readonly value=<?php echo $input_ws?>>
-<?php endif; ?>
+				<p class="font-p">依頼先</p>
+				<input type="text" id="reqFN_con" class="type-text" name="requestFN_con" readonly value=<?php echo $input_faci_name?>>
+				<p class="font-p">依頼先所在地</p>
+				<input type="text" id="reqFA_con" class="type-text" name="requestFA_con" readonly value=<?php echo $input_faci_address?>>
+				<p class="font-p">制作物タイトル</p>
+				<input type="text" id="reqT_con" class="type-text" name="requestT_con" readonly value=<?php echo $input_title?>>
+				<p class="font-p">制作個数</p>
+				<input type="text" id="reqN_con" class="type-text" name="requestN_con" readonly value=<?php echo $input_num?>>
+				<!--wsidがない場合は次の処理を行わない-->
+				<?php if ($noid == 0) : ?>
+					<p class="font-p">ワークショップID</p>
+					<input type="text" id="wsID_con" class="type-text" name="wsID_con" readonly value=<?php echo $input_ws?>>
+				<?php endif; ?>
 
-<p>締切日</p>
-<input type="text" id="reqD_con" name="requestD_con" readonly value=<?php echo $input_date?>>
-<br>
+				<p class="font-p">締切日</p>
+				<input type="text" id="reqD_con" class="type-text" name="requestD_con" readonly value=<?php echo $input_date?>>
 
-<button type="button" class="button" onclick="location.href='/silver/request/create/'">修正</button>
-<button type="submit" class="button" name="ok" onclick="">確定</button>
-
+				<div class="btn-sub">
+					<button type="button" class="button btn-sub" onclick="location.href='/silver/request/create/'">修正</button>
+					<button type="submit" class="button btn-sub" name="ok" onclick="">確定</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
-</form>
