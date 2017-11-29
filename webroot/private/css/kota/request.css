@@ -23,8 +23,38 @@ h2 {
 }
 
 .search {
-	width: 300px;
+	width: 250px;
 }
 * {
 	outline: none;
+}
+
+.type-text {
+	width: 350px;
+	height: 30px;
+	padding: 3px;
+	font-size: 14px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+.btn-sub {
+	text-align: right;
+	margin-top: 5px;
+}
+
+.font-p {
+	text-align: left;
+	color: #497937;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+#form {
+	width: 350px;
+}
+
+.font-title {
+	color: #497937;
+	font-size:30px;
 }

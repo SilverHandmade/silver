@@ -26,13 +26,17 @@
 				<thead>
 					<tr>
 						<th>件名</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
 						<th>依頼先施設名</th>
 					</tr>
 				</thead>
 			</table>
 			<?php foreach ($reqlist as $req) : ?>
 				<div class="panel">
-					<form action="/silver/request/edit" method="POST" >
+					<form action="/silver/request/edit" method="POST">
 						<input type="hidden" name="selrequest_id" value="<?php echo $req['id']?>">
 						<input type="hidden" name="selrequest_saki_id" value="<?php echo $req['F_saki_id']?>">
 						<button type="submit" class="submit row">
