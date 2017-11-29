@@ -5,66 +5,41 @@
 	<?= $this->Html->script('/private/js/video/player.js') ?>
 <?php $this->end() ?>
 
-
 <div class="col-md-offset-2 col-md-8">
-	<div id="videos">
-		<video poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg"  id="video">
-			<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample.mp4" type='video/mp4;'>
-		</video>
-		<!-- <button type="button" class="btn trance">
-			<span class="glyphicon glyphicon-play"></span>
-		</button> -->
-		<div class="row" id="controls">
-			<div class="col-md-1">
+	<div class="row" id="videos">
+		<div class="col-md-12" id="player">
+			<video poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg" id="video">
+				<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample.mp4" type='video/mp4;'>
+				<p>video要素がサポートされていないブラウザでご覧になっています。</p>
+			</video>
+		</div>
+		<div class="col-md-12 " id="controls">
+			<div class="control-button">
 				<button type="button" class="btn trance" id="playStop">
 					<span class="glyphicon glyphicon-play"></span>
 					<span class="glyphicon glyphicon-pause none"></span>
 				</button>
 			</div>
 
-			<div class="col-md-4">
-				<div id="seekbar"></div>
-			</div>
-			<div class="col-md-3">
+			<div id="seekbar"></div>
+			<div id="time">
 				<span id="nowTime"></span>/
 				<span id="allTime"></span>
 			</div>
-
-			<div class="col-md-1">
+			<div class="control-button">
 				<button type="button" class="btn trance" id="mute">
 					<span class="glyphicon glyphicon-volume-up"></span>
 					<span class="glyphicon glyphicon-volume-off none"></span>
 				</button>
 			</div>
 
-			<div class="col-md-2">
-				<div id="volbar"></div>
-			</div>
-
-			<div class="col-md-1">
+			<div id="volbar"></div>
+			<div class="control-button">
 				<button type="button" class="btn trance" id="fullScreen">
 					<span class="glyphicon glyphicon-resize-full"></span>
 					<span class="glyphicon glyphicon-resize-small none"></span>
 				</button>
 			</div>
-			<!-- <div id="val">テスト用表示領域</div> -->
-
 		</div>
 	</div>
 </div>
-
-
-
-
-
-<!-- <div class="col-md-offset-2 col-md-8">
-	<div>
-		<button class="btn btn-default"  id="play" type="button">再生</button>
-		<button class="btn btn-default"  id="oneTimeStop" type="button">一時停止</button>
-		<button class="btn btn-default"  id="upVol" type="button">↑</button>
-		<button class="btn btn-default"  id="downVol" type="button">↓</button>
-		現在（秒）：<span id="ichi">0</span><br>
-		全体（秒）：<span id="nagasa"></span><br>
-
-	</div>
-</div> -->
