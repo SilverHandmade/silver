@@ -83,7 +83,6 @@ $(function(){
 
 var rtitle = document.getElementById( "reqselT_con" ).value;
 var rnum = document.getElementById( "reqselN_con" ).value;
-var wsid = document.getElementById( "selwsID_con" ).value;
 var rdate = document.getElementById( "selreqD_con" ).value;
 
 //現在の日付を取得
@@ -107,13 +106,17 @@ if (rnum <= 0) {
 	document.getElementById( "reqselN_con" ).value = 1;
 	return false;
 }
-//日付チェック
-var d = deadline.getTime() - now.getTime();
-d = Math.floor(d / dms);
-if (d < 7) {
-	alert("締め切りが七日を切っています。");
-	return false;
+
+if (document.getElementById( "dateCheck" ).checked) {
+	//日付チェック
+	var d = deadline.getTime() - now.getTime();
+	d = Math.floor(d / dms);
+	if (d < 7) {
+		alert("締め切りが七日を切っています。");
+		return false;
+	}
 }
+
 
 });
 });

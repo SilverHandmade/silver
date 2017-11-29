@@ -50,6 +50,8 @@ class RequestController extends AppController
       $this->set(compact('facilities'));
 	  $_SESSION['select_flg'] = 0;
 	  $_SESSION['create_flg'] = 0;
+	  unset($_SESSION['edit_flg']);
+	  unset($_SESSION['req_edit']);
 	  unset($_SESSION['p_detail']);
     }
 
@@ -307,13 +309,11 @@ class RequestController extends AppController
 			$reqlist = $query->all()->ToArray();
 			$this->set(compact('reqlist'));
 
-
-
-
 		}
 
 
 		public function edit(){
+			$_SESSION['req_flg'] = 0;
 
 			if (isset($_POST['Reqcancelbtn'])) {
 				$query = $this->Requests->query();
@@ -328,6 +328,18 @@ class RequestController extends AppController
 			  exit();
 			}
 
+			if (isset($_POST['nextbtn'])) {
+				$_SESSION['req_edit']['title'] = $_POST['requestselT_con'];
+				$_SESSION['req_edit']['number'] = $_POST['requestselN_con'];
+				$_SESSION['req_edit']['date'] = $_POST['selrequestD_con'];
+			  //本番稼働時には下記のURLをトップページのものへ変更する
+			  header( "Location: http://localhost/silver/request/edit_ploof/" );
+			  exit();
+			}
+
+
+
+
 			if ($this->request->is('post')){
 				$query = $this->Requests->find()
 				->where(['id'=> $_POST['selrequest_id']]);
@@ -335,16 +347,14 @@ class RequestController extends AppController
 				$this->set(compact('edit_req'));
 				$_SESSION['sel_id'] = $edit_req[0]['id'];
 
-				$query = $this->Facilities->find()
-				->select(['name','Post','address'])
-				->where(['id'=> $edit_req[0]['F_saki_id']]);
-				$edit_reqsaki = $query->all()->ToArray();
-				$this->set(compact('edit_reqsaki'));
-
 			}
 
 
+		}
 
+
+		public function editploof(){
+			$_SESSION['edit_flg'] = 1;
 		}
 
 
