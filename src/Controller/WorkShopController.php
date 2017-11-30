@@ -85,6 +85,12 @@ class WorkShopController extends AppController
 
 	public function detailses()
 	{
+		if($this->request->is('post')){
+			$query = $this->Product_detailses->find()
+			->where(['product_id ='=>$_POST['product_id']]);
+			$pdt = $query->all()->ToArray();
+			$this->set(compact('pdt'));
+		}
 
 	}
 }
