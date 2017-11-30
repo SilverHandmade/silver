@@ -85,6 +85,7 @@ div {
 }
 #videos #controls #volbar {
 	min-width: 15%;
+	background: #888;
 }
 .trance {
 	padding: 0;
