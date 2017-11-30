@@ -14,12 +14,12 @@
 		<div class="form-group" id="plus" name="plus">
 			<div class="row">
 
-				
+
 				<div class="col-md-3">
 					<div class="div-btn">
-						<input type="file" class="input-file none file" name="upload" id="G_upload">
-						<div class="bottom">
-							<button type="button" name="upload" id="G_upload" class="bottom">画像選択</button>
+						<input type="file" class="input-file none file" name="upload" id="G_upload" accept="image/*">
+						<div class="button">
+							<button type="button" name="upload" id="G_upload" class="button">画像選択</button>
 						</div>
 					</div>
 					<span id="fake_input_file" class="margin-left span">NOT FILE</span>

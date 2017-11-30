@@ -8,7 +8,6 @@
 	$this->end();
 ?>
 
-
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
 		<h2>依頼詳細情報</h2>
@@ -50,24 +49,17 @@
 				<?php endif; ?>
 				<?php foreach ($pdt_info as $pinfo) : ?>
 					<tr>
-
 						<td colspan="3"><p>手順<?php echo $pinfo['ren'] + 1 ?></p>
 						<img src= alt="TAG index" border="0">
 						<p><?php echo $pinfo['description'] ?></p></td>
-
-			</tr>
-		<?php endforeach; ?>
-
-
-
-
-</table>
-<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
-	<button type="submit" class="button" name="order">依頼を受ける</button>
-<?php else: ?>
-	<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
-<?php endif; ?>
-
-	</form>
-</div>
+					</tr>
+				<?php endforeach; ?>
+		</table>
+		<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
+			<button type="submit" class="button btn" name="order">依頼を受ける</button>
+		<?php else: ?>
+			<button type="button" class="button btn" onclick="location.href='/silver/'">トップへ</button>
+		<?php endif; ?>
+		</form>
+	</div>
 </div>
