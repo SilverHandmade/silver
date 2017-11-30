@@ -112,10 +112,19 @@ if (document.getElementById( "dateCheck" ).checked) {
 	var d = deadline.getTime() - now.getTime();
 	d = Math.floor(d / dms);
 	if (d < 7) {
-		alert("締め切りが七日を切っています。");
+		alert("締め切りが本日から七日を切っています。");
+		return false;
+	}
+}else{
+	var myRet = confirm("締め切り日は変更されません。よろしいですか？");
+	if ( myRet == true ){
+		
+	}else{
 		return false;
 	}
 }
+
+
 
 
 });

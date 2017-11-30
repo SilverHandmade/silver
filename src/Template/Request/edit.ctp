@@ -2,8 +2,8 @@
 	$this->start('script');
 	echo $this->Html->script('/private/js/request/request.js');
 	$this->end();
-?>
 
+?>
 
 
 
@@ -15,18 +15,19 @@
 
 
 			<p>制作物タイトル</p>
-			<input type="text" id="reqselT_con" name="requestselT_con" value=<?php if ($_SESSION['edit_flg'] == 1) {
+			<input type="text" id="reqselT_con" name="requestselT_con"  required value=<?php if ($_SESSION['edit_flg'] == 1) {
 				echo $_SESSION['req_edit']['title'];}else{ echo $edit_req[0]['title'];}?>>
 			<p>制作個数</p>
-			<input type="number" id="reqselN_con" name="requestselN_con" min="1" max="999" value=<?php if ($_SESSION['edit_flg'] == 1) {
-				echo $_SESSION['req_edit']['title'];}else{ echo $edit_req[0]['su'];}?>>
+			<input type="number" id="reqselN_con" name="requestselN_con" min="1" max="999"  value=<?php if ($_SESSION['edit_flg'] == 1) {
+				echo $_SESSION['req_edit']['number'];}else{ echo $edit_req[0]['su'];}?>>
 			<p>締切日</p>
-			<input type="checkbox" id="dateCheck">
-			<input type="date" id="selreqD_con" name="selrequestD_con" value=<?php if ($_SESSION['edit_flg'] == 1) {
-				echo $_SESSION['req_edit']['title'];}else{ echo $edit_req[0]['date'];}?>>
+			<input type="checkbox" id="dateCheck" name="Dcheck" value="1" checked="checked">
+			<input type="date" id="selreqD_con" name="selrequestD_con" required value=<?php if ($_SESSION['edit_flg'] == 1) {
+				echo $_SESSION['req_edit']['moto_date'];}else{ echo date("Y-n-j", strtotime($edit_req[0]['To_date']));}?>>
 
 			<br>
 			<button type="submit" class="button" id="edit_con" name ="nextbtn">次へ</button>
+			<button type="button" class="button" onclick="location.href='/silver/request/select/'">戻る</button>
 		</form>
 	</div>
 </div>

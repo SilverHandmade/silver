@@ -53,6 +53,7 @@ class RequestController extends AppController
 	  unset($_SESSION['edit_flg']);
 	  unset($_SESSION['req_edit']);
 	  unset($_SESSION['p_detail']);
+	  unset($_SESSION['sel_id']);
     }
 
 
@@ -292,6 +293,7 @@ class RequestController extends AppController
 
 
 		public function select(){
+			$_SESSION['edit_flg'] = 0;
 
 			$query = $this->Users->find()
 			->select(['id','facilities_id'])
@@ -313,7 +315,9 @@ class RequestController extends AppController
 
 
 		public function edit(){
-			$_SESSION['req_flg'] = 0;
+			$_SESSION['dateCheck'] = 0;
+
+
 
 			if (isset($_POST['Reqcancelbtn'])) {
 				$query = $this->Requests->query();
@@ -332,6 +336,10 @@ class RequestController extends AppController
 				$_SESSION['req_edit']['title'] = $_POST['requestselT_con'];
 				$_SESSION['req_edit']['number'] = $_POST['requestselN_con'];
 				$_SESSION['req_edit']['date'] = $_POST['selrequestD_con'];
+
+				if (isset($_POST['Dcheck'])) {
+					$_SESSION['dateCheck'] = $_POST['Dcheck'];
+				}
 			  //本番稼働時には下記のURLをトップページのものへ変更する
 			  header( "Location: http://localhost/silver/request/edit_ploof/" );
 			  exit();
@@ -346,6 +354,7 @@ class RequestController extends AppController
 				$edit_req = $query->all()->ToArray();
 				$this->set(compact('edit_req'));
 				$_SESSION['sel_id'] = $edit_req[0]['id'];
+				$_SESSION['req_edit']['moto_date'] = date("Y-n-j", strtotime($edit_req[0]['To_date']));
 
 			}
 
@@ -355,6 +364,35 @@ class RequestController extends AppController
 
 		public function editploof(){
 			$_SESSION['edit_flg'] = 1;
+			//確定ボタンが押されたとき
+			if (isset($_POST['edit_ok'])) {
+				$edit_titleP = $_SESSION['req_edit']['title'];
+				$edit_suP = $_SESSION['req_edit']['number'];
+				$edit_dateP = $_POST['requestD_con'];
+				$query = $this->Requests->query();
+				$query->update()
+			  ->set(['title' => $edit_titleP,
+		  			 'su' => $edit_suP,
+				 	 'To_date' => $edit_dateP])
+			  ->where(['id' => $_SESSION['sel_id']])
+			  ->execute();
+
+
+				echo "データが更新されました";
+				//本番稼働時には下記のURLをトップページのものへ変更する
+				header( "Location: http://localhost/silver/" ) ;
+				$this->Flash->success(__('依頼データが送信されました。'));
+				unset($_SESSION['facility']);
+				unset($_SESSION['request']);
+				unset($_SESSION['select_flg']);
+				unset($_SESSION['create_flg']);
+				unset($_SESSION['p_detail']);
+				unset($_SESSION['req_edit']);
+				unset($_SESSION['edit_flg']);
+				unset($_SESSION['dateCheck']);
+				unset($_SESSION['sel_id']);
+				exit();
+			}
 		}
 
 
