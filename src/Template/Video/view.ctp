@@ -9,7 +9,7 @@
 	<div class="row" id="videos">
 		<div class="col-md-12" id="player">
 			<video poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg" id="video">
-				<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample.mp4" type='video/mp4;'>
+				<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample.mp4" preload="metadata" type='video/mp4;'>
 				<p>video要素がサポートされていないブラウザでご覧になっています。</p>
 			</video>
 		</div>
@@ -22,10 +22,13 @@
 			</div>
 
 			<div id="seekbar"></div>
+			<div id="progressbar"></div>
+
 			<div id="time">
 				<span id="nowTime"></span>/
 				<span id="allTime"></span>
 			</div>
+
 			<div class="control-button">
 				<button type="button" class="btn trance" id="mute">
 					<span class="glyphicon glyphicon-volume-up"></span>
@@ -42,4 +45,5 @@
 			</div>
 		</div>
 	</div>
+
 </div>
