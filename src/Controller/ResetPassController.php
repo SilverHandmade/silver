@@ -26,11 +26,29 @@ class ResetPassController extends AppController
 
 	public function mailpass()
     {
+			if($this->request->is('post')) {
+				if($_POST['flg'] = 1){
+					$err= '<div id="form">';
+					$err.= '<p>ドメインが入力されていません</p>';
+					$err.= '</div>';
+					$this->set("err", $err);
+				}
+			}
 
 	}
 
 	public function respass()
 	{
+		if(strpos($_POST['email'],'@') !== false){
+			$link = 'action="https://sh-ml.mybluemix.net/mail"';
+			$link.= 'target="form1">';
+		}else {
+			$link = 'action="http://localhost/silver/resetpass/mailpass"';
+			$link.= 'target="_parent">';
+			$link.= '<input type="hidden" name="flg" value="1">';
+		}
+		$this->set("link", $link);
+
 		// UUIDの作成
 		$uuid = Uuid::uuid4();
 		// echo "<br><br><br><br><br><br>";
@@ -79,15 +97,14 @@ class ResetPassController extends AppController
 			}elseif ($this->request->is('post')) {
 				$Uid = $_POST['id'];
 				$Pas = $_POST['password'];
-				$RPas = $_POST['password'];
-				$_POST['repassword'];
+				$RPas = $_POST['repassword'];
 				$HHs = $this->PassHash->hash($_POST['password']);
 				if(($Pas <> "" || $RPas <> "") && $Pas == $RPas){
 					$query = ConnectionManager::get('default');
 					$query->update('users',['password' => $HHs],['id' => $Uid]);
-
-
-
+					$Tb = TableRegistry::get('unique_ids');
+					$data = $Tb->find()->where(['user_id' => $Uid])->first();
+					$Tb->delete($data);
 				}
 			}else {
 				echo "リンクが正しくありません2";
