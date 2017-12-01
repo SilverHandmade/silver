@@ -19,6 +19,13 @@
 
 </table>
 
+<table>
+	<tr>
+		<input type="text" name="answertxt" value="">
+		<input type="button" id="answerbtn" value="回答する">
+	</tr>
+</table>
+
 <?php if ($_SESSION['Auth']['User']['facilities_id'] == $detailId[0]['user_id']): ?>
 	<button type="submit" class="button" name="order">編集</button>
 <?php else: ?>

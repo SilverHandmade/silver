@@ -5,7 +5,7 @@
 ?>
 
 
-<form class="" action="answers" id="ansForm" method="post">
+<form class="" action="detail" id="ansForm" method="post">
 	<div class="">
 		<input type="text" name="dummy" style="display:none;">
 		<input type="text" id="indextxt" value="">
@@ -17,7 +17,8 @@
 				<th>内容</th>
 				<th>投稿日</th>
 				<?php foreach ($witsesArray as $witseslist) {?>
-					<form class="" action="answers/detail" method="post">
+				<tbody>
+					<form class="" action="detail" method="post">
 						<li id="indexlist" style="list-style:none;">
 							<tr id="qtable">
 								<td id="witsestitle"><input type="submit" id="titlebtn" value="<?php echo $witseslist['title']?>"></td>
@@ -31,10 +32,9 @@
 							</tr>
 						</li>
 					</form>
+				</tbody>
 				<?php } ?>
 			</table>
 		</ol>
 </form>
-<form class="" action="answers/create" method="post">
-	<input type="submit" name="" value="投稿">
-</form>
+	<input type="button" onclick="location.href='create'" name="" value="投稿">

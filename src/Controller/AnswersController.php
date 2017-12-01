@@ -58,39 +58,34 @@ class AnswersController extends AppController
 		if ($this->request->is('post')){
 
 			//施設情報の取得
-			$query = $this->witses->find()
-			->where(['id ='=>$_POST['witsesId']]);
+			$query = $this->witses->find();
 			$detailId = $query->all()->ToArray();
 			$this->set(compact('detailId'));
 
 
 			if($this->request->is('post')) {
-				$posttitle = $_POST[''];
-				$postcontent = $_POST[''];
-				$postdate = $_POST[''];
-				$postid = $_POST[''];
-				$postUid = $_POST[''];
+				$posttitle = $_POST['titletxt'];
+				$postcontent = $_POST['contenttxt'];
+				$sessionId = $_SESSION['Auth']['User']['id'];
+				$nowdate = date("Y-m-d H:i:s");
+				// $postUid = $_POST[''];
 			}
 
-			if (!empty($_POST['flg'])) {
-				$query = $this->users->query();
+				$query = $this->witses->query();
 				$query->insert([
-					'id','title','content','user_id','Postdate','kan_flg','Del_flg'
+					'id','title','content','user_id','Postdate'
 				])
 				->values([
-					'id' => '',
-					'title' => ,
-					'content' => ,
-					'user_id' => ,
-					'Postdate' => ,
-					'kan_flg' => ,
-					'Del_flg' =>
+					'id' => '1006',
+					'title' => $posttitle,
+					'content' => $postcontent,
+					'user_id' => $sessionId,
+					'Postdate' => $nowdate
 				])
 				->execute();
 				// id 知恵ID title タイトル content お悩み内容 user_id 投稿者 Postdate 投稿日 kan_flg 完了フラグ Del_flg
 
-				$this->redirect(['controller' => 'login', 'action' => 'index']);
-			}
+				$this->redirect(['controller' => 'answers', 'action' => 'index']);
 
 		}
 	}
