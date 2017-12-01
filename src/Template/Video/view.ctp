@@ -6,6 +6,7 @@
 <?php $this->end() ?>
 
 <div class="col-md-offset-2 col-md-8">
+	<h2><?= $video['title'] ?></h2>
 	<div class="row" id="videos">
 		<div class="col-md-12" id="player">
 			<video poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg" id="video">
@@ -42,6 +43,31 @@
 					<span class="glyphicon glyphicon-resize-full"></span>
 					<span class="glyphicon glyphicon-resize-small none"></span>
 				</button>
+			</div>
+		</div>
+	</div>
+	<div class="row" id="nextVideo">
+		<div class="col-md-12">
+			<div id="Carousel" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<img src="../img/sample-1140x500.png" alt="First slide">
+					</div>
+					<div class="item">
+						<img src="../img/sampleB-1140x500.png" alt="Second slide">
+					</div>
+					<div class="item">
+						<img src="../img/sampleC-1140x500.png" alt="Third slide">
+					</div>
+				</div>
+				<a class="left carousel-control" href="#Carousel" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">前へ</span>
+				</a>
+				<a class="right carousel-control" href="#Carousel" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">次へ</span>
+				</a>
 			</div>
 		</div>
 	</div>

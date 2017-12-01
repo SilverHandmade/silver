@@ -6,11 +6,11 @@ $(function(){
 		// 動画の再生時間表示
 		$('#allTime').html(formatTime(video.duration));
 		$("#seekbar").slider({
-			max: video.duration
+			max: Math.floor(video.duration)
 		});
 
 		$("#progressbar").progressbar({
-			max: video.duration
+			max: Math.floor(video.duration)
 		});
 	});
 	$("#progressbar").progressbar({
@@ -106,12 +106,13 @@ $(function(){
 		var buffer = video.buffered;
 		var lastIdx = buffer.length - 1;
 		var buffEnd = buffer.end(lastIdx);
-		console.log(buffEnd);
-		console.log(video.duration);
+		console.log(Math.floor(buffEnd));
+		console.log($("#progressbar").progressbar('value'));
 		$("#progressbar").progressbar({
-			value: buffEnd
+			value: Math.floor(buffEnd)
 		});
-		if (buffEnd == video.duration) {
+
+		if (Math.floor(buffEnd) == $("#progressbar").progressbar('value')) {
 			clearInterval(id);
 		}
 	}

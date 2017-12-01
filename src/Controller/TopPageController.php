@@ -16,6 +16,7 @@ class TopPageController extends AppController
 		$this->loadmodel('Requests');
 		$this->loadmodel('Facilities');
 		$this->loadmodel('Products');
+		$this->loadmodel('Witses');
     }
 
 
@@ -29,10 +30,18 @@ class TopPageController extends AppController
 
 
 		$queryWorkShop = $this->Products->find()
+		->select(['id', 'name', 'midasi_url', 'Postdate'])
 		->order(['Postdate' => 'DESC'])
 		->limit(4)->all();
 		$workshop = $queryWorkShop->toArray();
 		$this->set(compact('workshop'));
+
+		$queryWitses = $this->Witses->find()
+		->select(['id', 'title', 'Postdate'])
+		->order(['Postdate' => 'DESC'])
+		->limit(4)->all();
+		$witses = $queryWitses->toArray();
+		$this->set(compact('witses'));
 
     }
 }
