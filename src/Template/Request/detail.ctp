@@ -62,9 +62,21 @@
 
 
 </table>
-<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
-	<button type="submit" class="button" name="order">依頼を受ける</button>
-<?php else: ?>
+<?php if ($user_faci[0]['facility_classes_id'] == 2 && $req_info[0]['ju_flg'] == 0): ?>
+	<button type="submit" class="button" name="order" id="order">依頼を受ける</button><br>
+	<button type="button" class="button" onclick="location.href='/silver/request/list'">依頼一覧へ</button>
+<?php endif; ?>
+<?php if ($user_faci[0]['facility_classes_id'] == 2 && $req_info[0]['ju_flg'] == 1): ?>
+	<button type="button" class="button" onclick="location.href='/silver/request/list'">依頼一覧へ</button><br>
+	<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+<?php endif; ?>
+<?php if ($user_faci[0]['facility_classes_id'] == 1 && $req_info[0]['ju_flg'] == 0): ?>
+	<button type="button" class="button" onclick="location.href='/silver/request/list'">依頼一覧へ</button><br>
+	<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+<?php endif; ?>
+<?php if ($user_faci[0]['facility_classes_id'] == 1 && $req_info[0]['ju_flg'] == 1): ?>
+	<button type="submit" class="button" name="kanryo" id="kanryo">依頼完了</button><br>
+	<button type="button" class="button" onclick="location.href='/silver/request/list'">依頼一覧へ</button><br>
 	<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
 <?php endif; ?>
 

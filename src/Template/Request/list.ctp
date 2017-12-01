@@ -26,7 +26,7 @@
 					<tr>
 						<th>件名</th>
 						<th>依頼元施設名</th>
-
+						<th>受注状況</th>
 					</tr>
 				</thead>
 			<?php foreach ($reqs as $req) : ?>
@@ -42,39 +42,63 @@
 						<td id="rfaci_name">
 							<p><?php echo $req['facilities']['name']?></p>
 						</td>
-
+						<td id="req_state">
+							<?php if ($req['ju_flg'] != NULL): ?>
+								<p>受注中</p>
+							<?php endif; ?>
+							<?php if ($req['ju_flg'] == NULL): ?>
+								<p>受注可能</p>
+							<?php endif; ?>
+						</td>
 					</form>
 				</tr>
 
 			<?php endforeach; ?>
+			<tr>
+				<td colspan="3"><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
+			</tr>
+			</div>
+
 			<?php else: ?>
 				<thead>
 					<tr>
-						<th>あなたもしかして保育園？</th>
-					</tr>
-					<tr>
-						<td><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
+						<th>件名</th>
+						<th>依頼先施設名</th>
+						<th>依頼状況</th>
 					</tr>
 				</thead>
+				<?php foreach ($reqs_hoiku as $req) : ?>
 
+				<tbody>
+					<tr>
+						<form action="/silver/request/detail" method="POST" >
+							<input type=hidden name=request_id value=<?php echo $req['id']?>>
+							<input type=hidden name=request_moto_id value=<?php echo $req['F_moto_id']?>>
+							<td id="rtitle">
+								<button type="submit" class="submit-button"><?php echo $req['title']?></button>
+							</td>
+							<td id="rfaci_name">
+								<p><?php echo $req['facilities']['name']?></p>
+							</td>
+							<td id="req_state">
+								<?php if ($req['ju_flg'] != NULL): ?>
+									<p>受注中</p>
+								<?php endif; ?>
+								<?php if ($req['ju_flg'] == NULL): ?>
+									<p>依頼中</p>
+								<?php endif; ?>
+							</td>
+
+						</form>
+					</tr>
+
+				<?php endforeach; ?>
+				<tr>
+					<td colspan="3"><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
+				</tr>
 			<?php endif; ?>
 			</tbody>
 		</table>
-		<?php foreach ($reqs as $req) : ?>
-			<div class="panel">
-				<form action="/silver/request/detail" method="POST" >
-					<input type=hidden name=request_id value="<?php echo $req['id']?>">
-					<input type=hidden name=request_moto_id value="<?php echo $req['F_moto_id']?>">
-					<button type="submit" class="submit row">
-						<div id="rtitle" class="col-md-6">
-							<?php echo $req['title']?>
-						</div>
-						<div id="rfaci_name" class="col-md-6">
-							<p><?php echo $req['facilities']['name']?></p>
-						</div>
-					</button>
-				</form>
-			</div>
-		<?php endforeach; ?>
-	</div>
+
+
 </div>

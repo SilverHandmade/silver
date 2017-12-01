@@ -45,7 +45,8 @@
 		</table>
 
 		<br><br>
-				<button type="button" class="button" onclick="location.href='/silver/request/select'">依頼編集・取り消し画面はこちら</button>
+				<button type="button" class="button" onclick="location.href='/silver/request/select'">依頼編集・取り消し画面はこちら</button><br>
+				<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
 			<?php else: ?>
 				<h2>介護施設の方は依頼の作成は出来ません<h2>
 				<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>

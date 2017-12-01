@@ -204,11 +204,23 @@ class RequestController extends AppController
 			'type' => 'LEFT',
 			'conditions' => ['facilities.id = Requests.F_moto_id']
             ])
-		->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki]);
+		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki]);
 
 		$reqs = $query->all()->ToArray();
 		$this->set(compact('reqs'));
-		}
+	}elseif ($user_faci[0]['facility_classes_id'] == 1) {
+		$query = $this->Requests->find()
+		->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
+		->join([
+			'table' => 'facilities',
+			'type' => 'LEFT',
+			'conditions' => ['facilities.id = Requests.F_saki_id']
+            ])
+		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki]);
+
+		$reqs_hoiku = $query->all()->ToArray();
+		$this->set(compact('reqs_hoiku'));
+	}
 	}
 
 
@@ -234,6 +246,22 @@ class RequestController extends AppController
 			  $this->Flash->success('依頼を受けました。');
 			  exit();
 			}
+
+			//依頼完了ボタンが押されたとき
+			if (isset($_POST['kanryo'])) {
+				$query = $this->Requests->query();
+				$query->update()
+			  ->set(['kan_flg' => 1])
+			  ->where(['id' => $_SESSION['id']])
+			  ->execute();
+			  //本番稼働時には下記のURLをトップページのものへ変更する
+			  header( "Location: http://localhost/silver/" );
+			  unset($_SESSION['id']);
+			  $this->Flash->success('依頼が完了されました。');
+			  exit();
+			}
+
+
 
 			if ($this->request->is('post')){
 

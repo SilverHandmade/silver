@@ -61,11 +61,13 @@ $(function(){
 $(function(){
 	$('#Reqsearchbutton').bind("click",function(){
 		var re = new RegExp($('#rsearch').val());
-		$('#reqseltable tbody tr').each(function(){
+		alert("a");
+		$('#reqtable tbody tr').each(function(){
 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
 			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
 			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
 			Ttxt = Ttxt.replace("</button>","");
+
 			FNtxt = FNtxt.replace("<p>","");
 			FNtxt = FNtxt.replace("</p>","");
 			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
@@ -76,6 +78,32 @@ $(function(){
 		});
 	});
 });
+
+
+//編集依頼一覧絞り込み
+$(function(){
+	$('#editReqbutton').bind("click",function(){
+		var re = new RegExp($('#rsearch').val());
+
+		$('#panel').each(function(){
+			var Ttxt = $(this).find("#rtitle:eq(0)").html();
+			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
+			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
+			Ttxt = Ttxt.replace("</button>","");
+			alert(Ttxt);
+			FNtxt = FNtxt.replace("<p>","");
+			FNtxt = FNtxt.replace("</p>","");
+			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
+				$(this).show();
+			}else{
+				$(this).hide();
+			}
+		});
+	});
+});
+
+
+
 
 
 $(function(){
@@ -100,6 +128,7 @@ if (rtitle.length > 40) {
 	alert("タイトルが40字を超えています。");
 	return false;
 }
+
 //個数チェック
 if (rnum <= 0) {
 	alert("個数に0以下の数値は指定できません。");
@@ -118,7 +147,7 @@ if (document.getElementById( "dateCheck" ).checked) {
 }else{
 	var myRet = confirm("締め切り日は変更されません。よろしいですか？");
 	if ( myRet == true ){
-		
+
 	}else{
 		return false;
 	}
@@ -126,9 +155,33 @@ if (document.getElementById( "dateCheck" ).checked) {
 
 
 
+});
+});
 
+
+//依頼詳細画面の依頼完了ボタンが押されたとき
+$(function(){
+	$('#kanryo').bind("click",function(){
+		var myRet = confirm("依頼を完了しますか？");
+		if ( myRet == true ){
+
+		}else{
+			return false;
+		}
 });
 });
+
+//依頼詳細画面の依頼受注ボタンが押されたとき
+$(function(){
+	$('#kanryo').bind("click",function(){
+		var myRet = confirm("依頼を受注しますか？");
+		if ( myRet == true ){
+		}else{
+			return false;
+		}
+});
+});
+
 
 //今日の日時を表示
 	/*	window.onload = function () {
