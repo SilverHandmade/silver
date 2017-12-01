@@ -26,19 +26,21 @@ class ResetPassController extends AppController
 
 	public function mailpass()
     {
-			if($this->request->is('post')) {
-				if($_POST['flg'] = 1){
-					$err= '<div id="form">';
-					$err.= '<p>ドメインが入力されていません</p>';
-					$err.= '</div>';
-					$this->set("err", $err);
-				}
+		// 返された理由の表示
+		if($this->request->is('post')) {
+			if($_POST['flg'] = 1){
+				$err= '<div id="form">';
+				$err.= '<p>ドメインが入力されていません</p>';
+				$err.= '</div>';
+				$this->set("err", $err);
 			}
+		}
 
 	}
 
 	public function respass()
 	{
+		// @があれば↑(進む)、なければ↓(返す)
 		if(strpos($_POST['email'],'@') !== false){
 			$link = 'action="https://sh-ml.mybluemix.net/mail"';
 			$link.= 'target="form1">';
@@ -51,7 +53,6 @@ class ResetPassController extends AppController
 
 		// UUIDの作成
 		$uuid = Uuid::uuid4();
-		// echo "<br><br><br><br><br><br>";
 		$this->set("a", $uuid);
 
 		// 入力されているemailで登録してるユーザがあるか
@@ -77,38 +78,38 @@ class ResetPassController extends AppController
 
 	public function mailchange()
 	{
-			// echo "<br><br><br><br><br>";
-			if ($this->request->is('get')) {
-				$uuid = $_GET['uu'];
-				$Tb = TableRegistry::get('unique_ids');
-				$query = $Tb->find();
-				$ret = $query->select(['user_id','cnt' => $query->func()->count('*')])
-		        			->where(['uuid'=> $uuid ])->first();
-				// echo $ret;
-				// debug($query);
-				echo $ret->user_id;
-				if(isset($ret->cnt)){
-					$Uid = $ret->user_id;
-					$this->set("b", $Uid);
-					echo "ok";
-				}else {
-					echo "リンクが正しくありません1";
-				}
-			}elseif ($this->request->is('post')) {
-				$Uid = $_POST['id'];
-				$Pas = $_POST['password'];
-				$RPas = $_POST['repassword'];
-				$HHs = $this->PassHash->hash($_POST['password']);
-				if(($Pas <> "" || $RPas <> "") && $Pas == $RPas){
-					$query = ConnectionManager::get('default');
-					$query->update('users',['password' => $HHs],['id' => $Uid]);
-					$Tb = TableRegistry::get('unique_ids');
-					$data = $Tb->find()->where(['user_id' => $Uid])->first();
-					$Tb->delete($data);
-				}
+		// GETにデータがあれば(メールから来ている)
+		echo "<br><br><br><br><br><br><br><br>";
+		if ($this->request->is('get')) {
+			$uuid = $_GET['uu'];
+			$Tb = TableRegistry::get('unique_ids');
+			$query = $Tb->find();
+			$ret = $query->select(['user_id','cnt' => $query->func()->count('*')])
+	        			->where(['uuid'=> $uuid ])->first();
+			// echo $ret->user_id;
+			// 1つ以上あればpostようにset
+			if(isset($ret->cnt)){
+				$Uid = $ret->user_id;
+				$this->set("b", $Uid);
+				// echo "ok";
 			}else {
-				echo "リンクが正しくありません2";
+				echo "リンクが正しくありません1";
 			}
+		}elseif ($this->request->is('post')) {
+			$Uid = $_POST['id'];
+			$Pas = $_POST['password'];
+			$RPas = $_POST['repassword'];
+			$HHs = $this->PassHash->hash($_POST['password']);
+			if(($Pas <> "" || $RPas <> "") && $Pas == $RPas){
+				$query = ConnectionManager::get('default');
+				$query->update('users',['password' => $HHs],['id' => $Uid]);
+				$Tb = TableRegistry::get('unique_ids');
+				$data = $Tb->find()->where(['user_id' => $Uid])->first();
+				$Tb->delete($data);
+			}
+		}else {
+			echo "リンクが正しくありません2";
+		}
 
 
 	}
@@ -132,8 +133,6 @@ class ResetPassController extends AppController
 					echo '<br>'.'1';
 					$query = ConnectionManager::get('default');
 					$query->update('users',['password' => $HHs],['id' => $Uid]);
-
-					//debug($query);
 				}else {
 					echo '<br>'.'0';
 				}
@@ -145,8 +144,6 @@ class ResetPassController extends AppController
 				// );
 
 		}
-
-
 
 
 	}
