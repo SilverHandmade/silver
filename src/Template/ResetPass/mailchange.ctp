@@ -14,6 +14,7 @@
 			<button type="submit" name="reset" class="submit">変更</button><br>
 		</p>
 		<input type="hidden" name="id" value="<?php echo $b;?>">
+		<input type="hidden" name="id" value="<?php echo $_GET['uu'];?>">
 	</form>
 </div>
 <?php }elseif ($this->request->is('post')) { ?>

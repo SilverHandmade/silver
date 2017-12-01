@@ -21,6 +21,7 @@ class ResetPassController extends AppController
         parent::initialize();
 		$this->loadmodel('Users');
 		$this->loadmodel('Unique_ids');
+		$this->loadmodel('product_detailses');//試し
         $this->loadComponent('PassHash');
     }
 
@@ -35,7 +36,21 @@ class ResetPassController extends AppController
 				$this->set("err", $err);
 			}
 		}
-
+		// ここから
+		// $proid = 171100001;
+		// $Tb = TableRegistry::get('product_detailses');
+		// $query = $Tb->query();
+		// $query->insert([
+		// 	'product_id','ren'
+		// ])
+		// ->values([
+		// 	'product_id' => $proid,
+		// 	'ren' => call pdren('171100001')
+		// ])
+		// echo "<br><br><br><br><br><br><br>".$query;
+		// ->execute();
+		// debug($query);
+		// ここまで試し
 	}
 
 	public function respass()
@@ -79,7 +94,7 @@ class ResetPassController extends AppController
 	public function mailchange()
 	{
 		// GETにデータがあれば(メールから来ている)
-		echo "<br><br><br><br><br><br><br><br>";
+		// echo "<br><br><br><br><br><br><br><br>";
 		if ($this->request->is('get')) {
 			$uuid = $_GET['uu'];
 			$Tb = TableRegistry::get('unique_ids');
@@ -106,6 +121,16 @@ class ResetPassController extends AppController
 				$Tb = TableRegistry::get('unique_ids');
 				$data = $Tb->find()->where(['user_id' => $Uid])->first();
 				$Tb->delete($data);
+				$temp= '<div id="form">';
+				$temp.= '<p>パスワードが再設定されました</p>';
+				$temp.= '</div>';
+				$this->set("temp", $temp);
+			}else {
+				$temp= '<body onload="document.F.submit();">';
+				$temp.= '<form METHOD="POST" name="F" action="http://localhost/silver/resetpass/mailchange?uu=">';
+				$temp.= '';
+				$temp.= '</div>';
+				$this->set("temp", $temp);
 			}
 		}else {
 			echo "リンクが正しくありません2";
