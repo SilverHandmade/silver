@@ -28,6 +28,9 @@ class MakeId9Component extends Component {
 		}elseif($tbl == 'que'){
 			$kt = 5;
 			$MTb = TableRegistry::get('questions');
+		}elseif($tbl == 'wit'){
+			$kt = 5;
+			$MTb = TableRegistry::get('witses');
 		}else {
 			$flg = False;
 		}
