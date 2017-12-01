@@ -9,6 +9,10 @@ h2 {
 	margin-top: 10px;
 }
 
+.btn-sear {
+	vertical-align: middle;
+}
+
 .btn-l {
 	margin-top: 30px;
 	margin-left: 30px;
@@ -36,6 +40,18 @@ h2 {
 	font-size: 14px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
+}
+
+.type-search {
+	margin-top: 3px;
+	width: 350px;
+	height: 33px;
+	padding-top: 0;
+	/*margin-bottom: 10px;*/
+	font-size: 14px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	vertical-align: middle;
 }
 
 .btn-sub {
