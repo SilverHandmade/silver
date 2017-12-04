@@ -9,6 +9,7 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\ORM\Table;
 use Cake\Datasource\ConnectionManager;
+use Cake\Auth\DefaultPasswordHasher;
 
 use Ramsey\Uuid\Uuid;
 use Moontoast\Math\BigNumber;
@@ -36,21 +37,6 @@ class ResetPassController extends AppController
 				$this->set("err", $err);
 			}
 		}
-		// ここから
-		// $proid = 171100001;
-		// $Tb = TableRegistry::get('product_detailses');
-		// $query = $Tb->query();
-		// $query->insert([
-		// 	'product_id','ren'
-		// ])
-		// ->values([
-		// 	'product_id' => $proid,
-		// 	'ren' => call pdren('171100001')
-		// ])
-		// echo "<br><br><br><br><br><br><br>".$query;
-		// ->execute();
-		// debug($query);
-		// ここまで試し
 	}
 
 	public function respass()
@@ -94,7 +80,6 @@ class ResetPassController extends AppController
 	public function mailchange()
 	{
 		// GETにデータがあれば(メールから来ている)
-		// echo "<br><br><br><br><br><br><br><br>";
 		if ($this->request->is('get')) {
 			$uuid = $_GET['uu'];
 			$Tb = TableRegistry::get('unique_ids');
@@ -143,30 +128,36 @@ class ResetPassController extends AppController
     public function index()
     {
 		if ($this->request->is('post')) {
+		echo '<br><br><br><br><br>';
 			$session = $this->request->session();
 			$Uid = $session->read('id');
 			$OPas = $this->request->getData('oldpassword');
 			$Tb = TableRegistry::get('users');
 			// パス比較
 			$query = $Tb->find();
-			$ret = $query->select(['user_id','password'])
-						->where(['id'=> $_POST['id']])->first();
+			$ret = $query->select(['id','password'])
+						->where(['id'=> $Uid])->first();
+			$hasher = new DefaultPasswordHasher();
+			if($hasher->check($OPas, $ret->password)){
+			  	$Pflg = 1;
+			}else{
+				$Pflg = 0;
+			}
 
 			$Pas = $this->request->getData('password');
 			$RPas = $this->request->getData('repassword');
 			$HHs = $this->PassHash->hash($this->request->getData('password'));
 			// デバッグ用
-			echo '<br><br><br><br><br>';
-			echo '1_'.$Pas.'<br>'.'2_'.$RPas.'<br>'.'ID_'.$Uid.'<br>'.'hs_'.$HHs;
+			echo '<br>1_'.$Pas.'<br>'.'2_'.$RPas.'<br>'.'ID_'.$Uid.'<br>'.'hs_'.$HHs;
 
 			echo '<br>_'.mb_substr($Pas, -3).'<br>'.strlen($Pas);
 			// ここまで
-				if(($Pas <> "" || $RPas <> "") && $Pas == $RPas){
-					echo '<br>'.'1';
+				if(($Pas <> "" || $RPas <> "") && $Pas == $RPas && $Pflg == 1 && strlen($Pas) >=1){
+					echo '<br>'.'変更おk';
 					$query = ConnectionManager::get('default');
 					$query->update('users',['password' => $HHs],['id' => $Uid]);
 				}else {
-					echo '<br>'.'0';
+					echo '<br>'.'変更NG';
 				}
 				// $validate = array(
 				// 	'password' => array(
