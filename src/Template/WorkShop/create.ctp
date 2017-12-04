@@ -14,10 +14,10 @@
 		<div class="form-group" id="plus" name="plus">
 			<div class="row">
 
-				
+
 				<div class="col-md-3">
 					<div class="div-btn">
-						<input type="file" class="input-file none file" name="upload" id="G_upload">
+						<input type="file" class="input-file none file" name="upload_gazo" id="G_upload">
 						<div class="bottom">
 							<button type="button" name="upload" id="G_upload" class="bottom">画像選択</button>
 						</div>
