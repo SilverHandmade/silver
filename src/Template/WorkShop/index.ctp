@@ -25,7 +25,7 @@
 							<h3><?= $key['name'];?></h3>
 							<div class="row">
 								<div class="col-md-12 right">
-									<button type="button" class="btn btn-link" onclick="location.href='/silver/work-shop/detailses'">詳細>></button>
+									<?= $this->Html->link(">>詳細",['controller' => 'workshop', "action" => "detailses"]);?>
 								</div>
 							</div>
 						</a>
