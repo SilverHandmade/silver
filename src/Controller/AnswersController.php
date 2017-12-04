@@ -32,16 +32,19 @@ class AnswersController extends AppController
         $witsesArray = $witses->toArray();
         $this->set(compact('witsesArray'));
 
-
-
 		if($this->request->is('post')) {
 			$posttitle = $_POST['hidetitle'];
 			$postcontent = $_POST['hidecontent'];
 			$postdate = $_POST['hidedate'];
 			$postid = $_POST['witsesId'];
 			$postUid = $_POST['witsesUId'];
-			$sessionUid = $_SESSION['Auth']['User']['facilities_id'];
+			$sessionUid = $_SESSION['Auth']['User']['id'];
 		}
+
+		// $wmessage = $this->wits_messages->find()
+		// ->where(['id ='=>$postid]);
+        // $wmessageArray = $wmessage->toArray();
+        // $this->set(compact('wmessageArray'));
 
 		if ($this->request->is('post')){
 
@@ -52,18 +55,38 @@ class AnswersController extends AppController
 			$this->set(compact('detailId'));
 
 		}
+
+
+// wits_id ren message transmit user_id Del_flg
+		// $query = $this->wits_messages->query();
+		// $query->insert([
+		// 	'wits_id','ren','message','transmit','user_id','Del_flg'
+		// ])
+		// ->values([
+		// 	'wits_id' => $postid,
+		// 	'ren' => '',
+		// 	'message' => '',
+		// 	'transmit' => '',
+		// 	'user_id' => '',
+		// 	'Del_flg' => ''
+		// ])
+		// ->execute();
 	}
 
 	public function create(){
 		if ($this->request->is('post')){
 
 			//施設情報の取得
-			$query = $this->witses->find();
+			$query = $this->witses->find()
+			->select(['max(id)']);
 			$detailId = $query->all()->ToArray();
 			$this->set(compact('detailId'));
 
 
+
+
 			if($this->request->is('post')) {
+
 				$posttitle = $_POST['titletxt'];
 				$postcontent = $_POST['contenttxt'];
 				$sessionId = $_SESSION['Auth']['User']['id'];
@@ -76,7 +99,7 @@ class AnswersController extends AppController
 					'id','title','content','user_id','Postdate'
 				])
 				->values([
-					'id' => '1006',
+					'id' => '1007',
 					'title' => $posttitle,
 					'content' => $postcontent,
 					'user_id' => $sessionId,
