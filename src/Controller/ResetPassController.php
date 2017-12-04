@@ -120,7 +120,8 @@ class ResetPassController extends AppController
 				$query->update('users',['password' => $HHs],['id' => $Uid]);
 				$Tb = TableRegistry::get('unique_ids');
 				$data = $Tb->find()->where(['user_id' => $Uid])->first();
-				$Tb->delete($data);
+				echo '<br><br><br><br><br><br><br><br>'.$data;
+				$Tb->delete($data)->where(['user_id' => $Uid]);
 				$temp= '<div id="form">';
 				$temp.= '<p>パスワードが再設定されました</p>';
 				$temp.= '</div>';
@@ -145,6 +146,12 @@ class ResetPassController extends AppController
 			$session = $this->request->session();
 			$Uid = $session->read('id');
 			$OPas = $this->request->getData('oldpassword');
+			$Tb = TableRegistry::get('users');
+			// パス比較
+			$query = $Tb->find();
+			$ret = $query->select(['user_id','password'])
+						->where(['id'=> $_POST['id']])->first();
+
 			$Pas = $this->request->getData('password');
 			$RPas = $this->request->getData('repassword');
 			$HHs = $this->PassHash->hash($this->request->getData('password'));

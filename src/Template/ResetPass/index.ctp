@@ -3,7 +3,11 @@
 <div id="form">
 	<p class="form-title">パスワード変更</p>
 	<form action="" method="post">
-		<p class="font-color">パスワード</p>
+		<p class="font-color">現在のパスワード</p>
+		<p class="password">
+			<input type="password" name="oldpassword" value="">
+		</p>
+		<p class="font-color">新しいパスワード</p>
 		<p class="password">
 			<input type="password" name="password" value="">
 		</p>
