@@ -5,16 +5,20 @@
 	<?= $this->Html->script('/private/js/video/player.js') ?>
 <?php $this->end() ?>
 
-<div class="col-md-offset-2 col-md-8">
+<div class="col-md-offset-2 col-md-8" id="player">
 	<h2><?= $video['title'] ?></h2>
 	<div class="row" id="videos">
-		<div class="col-md-12" id="player">
+		<div class="col-md-12" id="screen">
 			<video poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg" id="video">
 				<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample.mp4" preload="metadata" type='video/mp4;'>
 				<p>video要素がサポートされていないブラウザでご覧になっています。</p>
 			</video>
+			<button type="button" class="btn trance" id="start">
+				<span class="glyphicon glyphicon-play"></span>
+			</button>
 		</div>
-		<div class="col-md-12 " id="controls">
+
+		<div id="controls">
 			<div class="control-button">
 				<button type="button" class="btn trance" id="playStop">
 					<span class="glyphicon glyphicon-play"></span>
@@ -46,30 +50,34 @@
 			</div>
 		</div>
 	</div>
-	<div class="row" id="nextVideo">
-		<div class="col-md-12">
-			<div id="Carousel" class="carousel slide" data-ride="carousel">
-				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<img src="../img/sample-1140x500.png" alt="First slide">
-					</div>
-					<div class="item">
-						<img src="../img/sampleB-1140x500.png" alt="Second slide">
-					</div>
-					<div class="item">
-						<img src="../img/sampleC-1140x500.png" alt="Third slide">
-					</div>
+
+	<div id="nextVideo">
+		<div id="Carousel" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="<?= $this->Url->image("no_image.png") ?>" alt="First slide">
+					<img src="<?= $this->Url->image("no_image.png") ?>" alt="First slide">
+					<img src="<?= $this->Url->image("no_image.png") ?>" alt="First slide">
 				</div>
-				<a class="left carousel-control" href="#Carousel" role="button" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">前へ</span>
-				</a>
-				<a class="right carousel-control" href="#Carousel" role="button" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">次へ</span>
-				</a>
+				<div class="item">
+					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Second slide">
+					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Second slide">
+					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Second slide">
+				</div>
+				<div class="item">
+					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Third slide">
+					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Third slide">
+					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Third slide">
+				</div>
 			</div>
+			<a class="left carousel-control" href="#Carousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">前へ</span>
+			</a>
+			<a class="right carousel-control" href="#Carousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">次へ</span>
+			</a>
 		</div>
 	</div>
-
 </div>

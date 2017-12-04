@@ -10,24 +10,23 @@ button span {
 /*search終わり*/
 
 /*view*/
-div {
-	/*border: solid red 1px;*/
-}
 #videos {
+	position: relative;
 	width: 100%;
 	height: 100%;
 	margin: 0;
+	min-width: 540px;
 }
-#videos #player {
+#videos #screen {
 	position: relative;
 	padding: 0;
 }
-#videos #player::before {
+#videos #screen::before {
 	content: " ";
 	display: block;
 	padding-top: 56.25%;
 }
-#videos #player #video {
+#videos #screen #video {
 	background-color: black;
 	position: absolute;
 	width: 100%;
@@ -43,6 +42,8 @@ div {
 	padding: 5px 0;
 	background-color: #444;
 	text-align: center;
+	float: left;
+	min-width: inherit;
 }
 
 #videos #controls * {
@@ -60,9 +61,11 @@ div {
 #videos #controls [id$="bar"]  {
 	top: 0.5em;
 }
-
 #videos #controls div *:hover {
 	cursor: pointer;
+}
+#videos #controls #time *:hover {
+	cursor: auto;
 }
 #videos #controls .control-button,
 #videos #controls div {
@@ -115,8 +118,30 @@ div {
 	margin-top: 7px;
 }
 
+#start {
+	position: absolute;
+	display: inline-block;
+	color: #DDD;
+	font-size: 50px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	cursor: default;
+}
+.trance:active {
+	box-shadow: none;
+}
+
 #nextVideo {
-	margin-top: 20px;
+	min-width: 540px;
+}
+#nextVideo #Carousel {
+	height: 50px;
+}
+#nextVideo #Carousel * {
+	height: inherit;
 }
 /*view終わり*/
 

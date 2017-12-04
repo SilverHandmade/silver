@@ -44,14 +44,13 @@ $(function(){
 	$('#video').click(function (){
 		startTogle()
 	});
-	$('#mute').click(function() {
-		volTogle();
-	});
+
 
 	video.addEventListener("timeupdate", function(){
 		$('#seekbar').slider('value', Math.floor(video.currentTime));
 		$('#nowTime').html(formatTime(video.currentTime));
 	}, false);
+
 
 	$('#fullScreen').click(function() {
 		if (document.exitFullscreen) {
@@ -106,17 +105,14 @@ $(function(){
 		var buffer = video.buffered;
 		var lastIdx = buffer.length - 1;
 		var buffEnd = buffer.end(lastIdx);
-		console.log(Math.floor(buffEnd));
-		console.log($("#progressbar").progressbar('value'));
 		$("#progressbar").progressbar({
 			value: Math.floor(buffEnd)
 		});
-
-		if (Math.floor(buffEnd) == $("#progressbar").progressbar('value')) {
-			clearInterval(id);
+		if (Math.floor(video.duration) == $("#progressbar").progressbar('value')) {
+			clearInterval(progressFlg);
 		}
 	}
-	var id = setInterval(function(){
+	var progressFlg = setInterval(function(){
 		updatebuffer();
 	},1000);
 
@@ -130,17 +126,7 @@ $(function(){
 			video.pause();
 		}
 	}
-	function volTogle() {
-		$('.glyphicon-volume-up').toggle();
-		$('.glyphicon-volume-off').toggle();
-		if (video.muted) {
-			video.muted = false;
-			$("#volbar").slider('value', video.volume);
-		} else {
-			video.muted = true;
-			$("#volbar").slider('value', 0);
-		}
-	}
+
 	function screenTogle() {
 		$('.glyphicon-resize-full').toggle();
 		$('.glyphicon-resize-small').toggle();
@@ -155,13 +141,33 @@ $(function(){
 	function setTime(event, ui) {
 		video.currentTime = ui.value;
 	}
-	function setVol(event, ui) {
-		if (ui.value === 0) {
-			volTogle();
-		} else if (video.volume === 0) {
-			volTogle();
+
+	$('#mute').click(function() {
+		volTogle();
+	});
+	function volTogle() {
+		$('.glyphicon-volume-up').toggle();
+		$('.glyphicon-volume-off').toggle();
+		if (video.muted) {
+			video.muted = false;
+			if (video.volume == 0) {
+				video.volume = 1;
+			}
+			$("#volbar").slider('value', video.volume);
+		} else {
+			video.muted = true;
+			$("#volbar").slider('value', 0);
 		}
+	}
+	function setVol(event, ui) {
 		video.volume = ui.value;
+		if (ui.value == 0) {
+			volTogle();
+		} else {
+			video.muted = false;
+			$('.glyphicon-volume-off').hide();
+			$('.glyphicon-volume-up').show();
+		}
 	}
 
 	function formatTime(sec) {
