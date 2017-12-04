@@ -99,24 +99,34 @@ class ResetPassController extends AppController
 			$Uid = $_POST['id'];
 			$Pas = $_POST['password'];
 			$RPas = $_POST['repassword'];
-			$HHs = $this->PassHash->hash($_POST['password']);
-			if(($Pas <> "" || $RPas <> "") && $Pas == $RPas){
+			echo '<br><br><br><br><br><br>';
+			if(($Pas <> "" && $RPas <> "") && $Pas == $RPas){
+				$HHs = $this->PassHash->hash($_POST['password']);
 				$query = ConnectionManager::get('default');
 				$query->update('users',['password' => $HHs],['id' => $Uid]);
 				$Tb = TableRegistry::get('unique_ids');
-				$data = $Tb->find()->where(['user_id' => $Uid])->first();
-				echo '<br><br><br><br><br><br><br><br>'.$data;
-				$Tb->delete($data)->where(['user_id' => $Uid]);
+				// $user_id = $Tb->find()->where(['user_id' => $Uid])->first();
+				$Tb = TableRegistry::get('unique_ids');
+				$query = $Tb->query();
+				$query->delete()
+				->where([
+					'user_id' => $Uid,
+				])
+				->execute();
+				// $Tb->delete($Uid);
 				$temp= '<div id="form">';
 				$temp.= '<p>パスワードが再設定されました</p>';
 				$temp.= '</div>';
 				$this->set("temp", $temp);
+				echo 1;
 			}else {
+				
 				$temp= '<body onload="document.F.submit();">';
-				$temp.= '<form METHOD="POST" name="F" action="http://localhost/silver/resetpass/mailchange?uu=">';
-				$temp.= '';
-				$temp.= '</div>';
+				$temp.= '<form METHOD="POST" name="F" action="http://localhost/silver/resetpass/mailchange?uu="';
+				$temp.= $_POST['uu'];
+				$temp.= '></div>';
 				$this->set("temp", $temp);
+				echo 2;
 			}
 		}else {
 			echo "リンクが正しくありません2";
@@ -128,7 +138,6 @@ class ResetPassController extends AppController
     public function index()
     {
 		if ($this->request->is('post')) {
-		echo '<br><br><br><br><br>';
 			$session = $this->request->session();
 			$Uid = $session->read('id');
 			$OPas = $this->request->getData('oldpassword');
@@ -143,29 +152,37 @@ class ResetPassController extends AppController
 			}else{
 				$Pflg = 0;
 			}
-
+			// フォームから取得
 			$Pas = $this->request->getData('password');
 			$RPas = $this->request->getData('repassword');
 			$HHs = $this->PassHash->hash($this->request->getData('password'));
-			// デバッグ用
-			echo '<br>1_'.$Pas.'<br>'.'2_'.$RPas.'<br>'.'ID_'.$Uid.'<br>'.'hs_'.$HHs;
-
-			echo '<br>_'.mb_substr($Pas, -3).'<br>'.strlen($Pas);
-			// ここまで
-				if(($Pas <> "" || $RPas <> "") && $Pas == $RPas && $Pflg == 1 && strlen($Pas) >=1){
-					echo '<br>'.'変更おk';
-					$query = ConnectionManager::get('default');
-					$query->update('users',['password' => $HHs],['id' => $Uid]);
-				}else {
-					echo '<br>'.'変更NG';
-				}
-				// $validate = array(
-				// 	'password' => array(
-				// 		'rule'    => array('between', 8, 20),
-				// 		'message' => '8〜20文字でよろしく'
-				// 	)
-				// );
-
+			// 上から数字・小文字・大文字があるか
+			$inte = preg_match("/[0-9]/",$Pas);
+			$lit = preg_match("/[a-z]/",$Pas);
+			$lag = preg_match("/[A-Z]/",$Pas);
+			// 文字種が何種類あるか
+			$mozisyu = $inte + $lit + $lag;
+					// デバッグ用
+					// echo '<br>1_'.$Pas.'<br>'.'2_'.$RPas.'<br>'.'ID_'.$Uid.'<br>'.'hs_'.$HHs;
+		            //
+					// echo '<br>文字数_'.strlen($Pas).'<br>PWflg_'.$Pflg;
+					// echo '<br>数値'.$inte.'<br>小文字'.$lit.'<br>大文字'.$lag.'<br>文字種'.$mozisyu;
+					// ここまで
+			// 両方が空白でない & 再入力と同じ & 現在のPWが同じ & 文字数が8~20 & 文字種が2種以上
+			if(($Pas <> "" && $RPas <> "") && $Pas == $RPas && $Pflg == 1 && strlen($Pas) >=8 && strlen($Pas) <=20 && $mozisyu >= 2){
+				// echo '<br>'.'変更おk';
+				$query = ConnectionManager::get('default');
+				$query->update('users',['password' => $HHs],['id' => $Uid]);
+			}else {
+				// echo '<br>'.'変更NG';
+				$this->Flash->error(__('入力が正しくありません。再度入力してください。'));
+			}
+			// $validate = array(
+			// 	'password' => array(
+			// 		'rule'    => array('between', 8, 20),
+			// 		'message' => '8〜20文字でよろしく'
+			// 	)
+			// );
 		}
 
 

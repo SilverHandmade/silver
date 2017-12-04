@@ -18,4 +18,6 @@
 			<button type="submit" name="reset" class="submit">変更</button><br>
 		</p>
 	</form>
+
 </div>
+<p align="center">数字・小文字・大文字のうち2種類以上で、8～20文字のパスワードを設定してください。</p>

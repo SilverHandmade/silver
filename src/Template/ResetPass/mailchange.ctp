@@ -21,6 +21,11 @@
 	<div id="form">
 			<p>パスワードが再設定されました</p>
 	</div>
+<?php }elseif ($_POST['flg'] = 1) { ?>
+	<div id="form">
+			<?php echo $temp; ?>
+			<!-- <p>パスワードが再設定されました</p> -->
+	</div>
 <?php }else { ?>
 	<div>
 		<p>リンクが正しくありません</p>
