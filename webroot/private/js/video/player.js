@@ -6,9 +6,17 @@ $(function(){
 		// 動画の再生時間表示
 		$('#allTime').html(formatTime(video.duration));
 		$("#seekbar").slider({
-			max: video.duration
+			max: Math.floor(video.duration)
+		});
+
+		$("#progressbar").progressbar({
+			max: Math.floor(video.duration)
 		});
 	});
+	$("#progressbar").progressbar({
+		value: 0
+	});
+
 	$("#seekbar").slider({
 		step: 1,
 		range: "min",
@@ -36,14 +44,13 @@ $(function(){
 	$('#video').click(function (){
 		startTogle()
 	});
-	$('#mute').click(function() {
-		volTogle();
-	});
+
 
 	video.addEventListener("timeupdate", function(){
 		$('#seekbar').slider('value', Math.floor(video.currentTime));
 		$('#nowTime').html(formatTime(video.currentTime));
 	}, false);
+
 
 	$('#fullScreen').click(function() {
 		if (document.exitFullscreen) {
@@ -76,11 +83,38 @@ $(function(){
 		}
 	}
 
-	// $('#videos').hover(function() {
+	// $('#videos').mousemove(function() {
 	// 	$('#controls').fadeTo('400', 1);
-	// }, function() {
-	// 	$('#controls').delay(700).fadeTo('400', 0);
+	// 	$('#controls').delay(700).fadeTo('400', 0.5);
 	// });
+	// var cont = $('#controls'),
+	// delayTime = 100;
+	// moveTimer = 0;
+	// $('#videos').on('mousemove', function(){
+	// 	clearTimeout(moveTimer);
+	// 	cont.fadeTo('400', 1);
+	// 	moveTimer = setTimeout(function(){
+	// 		cont.fadeTo('400', 0);
+	// 	}, delayTime);
+	// }).on('mouseout', function(){
+	// 	clearTimeout(moveTimer);
+	// 	cont.fadeTo('400', 0);
+	// });
+	var con = 0;
+	function updatebuffer() {
+		var buffer = video.buffered;
+		var lastIdx = buffer.length - 1;
+		var buffEnd = buffer.end(lastIdx);
+		$("#progressbar").progressbar({
+			value: Math.floor(buffEnd)
+		});
+		if (Math.floor(video.duration) == $("#progressbar").progressbar('value')) {
+			clearInterval(progressFlg);
+		}
+	}
+	var progressFlg = setInterval(function(){
+		updatebuffer();
+	},1000);
 
 	function startTogle() {
 		$('#start').toggle();
@@ -92,32 +126,48 @@ $(function(){
 			video.pause();
 		}
 	}
+
+	function screenTogle() {
+		$('.glyphicon-resize-full').toggle();
+		$('.glyphicon-resize-small').toggle();
+		if ($('#controls').css('margin-top') == '0px') {
+			$('#controls').css('margin-top',)
+			$('#controls').css({'margin-top':$('#controls').get(0).scrollHeight * -1 + 'px','opacity': '0.65'})
+		} else {
+			$('#controls').css({'margin-top':'0','opacity': '1'})
+		}
+	}
+
+	function setTime(event, ui) {
+		video.currentTime = ui.value;
+	}
+
+	$('#mute').click(function() {
+		volTogle();
+	});
 	function volTogle() {
 		$('.glyphicon-volume-up').toggle();
 		$('.glyphicon-volume-off').toggle();
 		if (video.muted) {
 			video.muted = false;
+			if (video.volume == 0) {
+				video.volume = 1;
+			}
 			$("#volbar").slider('value', video.volume);
 		} else {
 			video.muted = true;
 			$("#volbar").slider('value', 0);
 		}
 	}
-	function screenTogle() {
-		$('.glyphicon-resize-full').toggle();
-		$('.glyphicon-resize-small').toggle();
-	}
-
-	function setTime(event, ui) {
-		video.currentTime = ui.value;
-	}
 	function setVol(event, ui) {
-		if (ui.value === 0) {
-			volTogle();
-		} else if (video.volume === 0) {
-			volTogle();
-		}
 		video.volume = ui.value;
+		if (ui.value == 0) {
+			volTogle();
+		} else {
+			video.muted = false;
+			$('.glyphicon-volume-off').hide();
+			$('.glyphicon-volume-up').show();
+		}
 	}
 
 	function formatTime(sec) {

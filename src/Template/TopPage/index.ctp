@@ -39,3 +39,35 @@
 		<?= $this->Html->link(">>ワークショップ一覧へ",['controller' => 'request', "action" => "index"]);?>
 	</div>
 </div>
+
+<h2>新着知恵袋</h2>
+<div class="row">
+	<?php foreach ($witses as $key): ?>
+		<div class="col-md-3">
+			<div class="panel">
+				<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $key['id']])?>">
+					<table class="table">
+						<tr>
+							<td><h3><?= $key['title'];?></h3></td>
+						</tr>
+						<tr>
+							<td>
+								<div><?= $key['Postdate'];?></div>
+							</td>
+						</tr>
+					</table>
+					<div class="row">
+						<div class="col-md-12 right">
+							<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $key['id']])?>">詳細 >></a>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	<?php endforeach; ?>
+</div>
+<div class="row right" id="linkTo">
+	<div class="col-md-12">
+		<?= $this->Html->link(">>知恵袋一覧へ",['controller' => 'request', "action" => "list"]);?>
+	</div>
+</div>

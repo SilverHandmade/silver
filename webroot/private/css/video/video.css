@@ -10,42 +10,49 @@ button span {
 /*search終わり*/
 
 /*view*/
-div {
-	/*border: solid red 1px;*/
-}
 #videos {
+	position: relative;
 	width: 100%;
 	height: 100%;
+	margin: 0;
+	min-width: 540px;
 }
-#videos #player {
+#videos #screen {
+	position: relative;
 	padding: 0;
-	width: inherit;
-	height: inherit;
 }
-#videos #video {
+#videos #screen::before {
+	content: " ";
+	display: block;
+	padding-top: 56.25%;
+}
+#videos #screen #video {
 	background-color: black;
-	width: 100ex;
-	height: calc(100ex / 16 * 9);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+    left: 0;
 }
 
 #videos #controls {
-	position: relative;
 	background-color: #444;
 	padding: 0;
-	width: 100ex;
-	height: 100%;
-	margin: -40px 0 0 0;
+	width: 100%;
 	padding: 5px 0;
 	background-color: #444;
 	text-align: center;
-
+	float: left;
+	min-width: inherit;
 }
+
 #videos #controls * {
 	color: #FFF;
 	padding: 0;
 }
 #videos #controls button{
 	font-size: 17px;
+	margin: auto;
 }
 #videos #controls span:hover,
 #videos #controls span:focus {
@@ -54,9 +61,11 @@ div {
 #videos #controls [id$="bar"]  {
 	top: 0.5em;
 }
-
 #videos #controls div *:hover {
 	cursor: pointer;
+}
+#videos #controls #time *:hover {
+	cursor: auto;
 }
 #videos #controls .control-button,
 #videos #controls div {
@@ -70,6 +79,7 @@ div {
 }
 #videos #controls #seekbar {
 	min-width: 45%;
+	background: transparent;
 }
 #videos #controls #time {
 	min-width: 15%;
@@ -78,25 +88,67 @@ div {
 }
 #videos #controls #volbar {
 	min-width: 15%;
+	background: #888;
 }
 .trance {
 	padding: 0;
 	background-color: transparent;
 	border: transparent;
 }
-#videos #video:-webkit-full-screen,
-#videos #video:-moz-full-screen,
-#videos #video:-ms-fullscreen,
-#videos #video:fullscreen {
+#videos:-webkit-full-screen {
 	width: 100%;
 	height: 100%;
+}
+#videos:-moz-full-screen {
+	width: 100%;
+	height: 100%;
+}
+#videos:-ms-fullscreen {
+	width: 100%;
+	height: 100%;
+}
+#videos:fullscreen {
+	width: 100%;
+	height: 100%;
+}
+
+#progressbar {
+	width: 45%;
+	margin-left: -45%;
+	margin-top: 7px;
+}
+
+#start {
+	position: absolute;
+	display: inline-block;
+	color: #DDD;
+	font-size: 50px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	cursor: default;
+}
+.trance:active {
+	box-shadow: none;
+}
+
+#nextVideo {
+	min-width: 540px;
+}
+#nextVideo #Carousel {
+	height: 50px;
+}
+#nextVideo #Carousel * {
+	height: inherit;
 }
 /*view終わり*/
 
 
 /*jquery ui 上書き*/
 .ui-slider-range {
-	background: #ddd;
+	background: steelblue;
 }
 
 .ui-slider .ui-slider-handle {
@@ -107,11 +159,18 @@ div {
 	border-radius: 100%;
 	border: none;
 }
+.ui-progressbar,
 .ui-slider-horizontal {
+	margin: 0;
 	height: 7px;
 	background: black;
 }
 .ui-widget.ui-widget-content {
     border: none;
+}
+.ui-progressbar .ui-progressbar-value {
+	margin: 0;
+	border: none;
+	background: #888;
 }
 /*jquery ui 上書き 終わり*/
