@@ -1,0 +1,59 @@
+.title {
+	font-size: 35px;
+	margin-bottom: 12px;
+}
+.title2 {
+	height: auto;
+}
+
+.sisetu {
+	float: left;
+}
+
+.date {
+	text-align: left;
+	vertical-align: top;
+	float: right;
+}
+
+.sisetu-date {
+	/*display: inline-block;*/
+	display: block;
+	height: auto;
+}
+
+
+.main {
+	display: block;
+	float: left;
+	font-size: 20px;
+	/*margin-top: 30px;*/
+	margin-bottom: 40px;
+	height: auto;
+	padding-top: 30px;
+}
+
+.tarea {
+	resize: none;
+	outline: none;
+}
+
+.ans p {
+	display: none;
+}
+
+.ans-btn {
+	margin-top: 5px;
+	text-align: right;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+
+.answers {
+	height: auto;
+	overflow : hidden;
+}
+
+.answers2 {
+	height: auto;
+}

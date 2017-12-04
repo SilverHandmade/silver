@@ -6,8 +6,8 @@
 <div>
 	<h1>ワークショップ検索画面</h1>
 	<form action="" method="Post">
-		<input type="text" name="searchtext" id="searchtext1">
-		<input type="submit" name="search" id="searchS" value="検索">
+		<input type="text" name="searchtext" id="searchtext1"/>
+		<input type="submit" class="btn" name="search" id="searchS" value="検索" onfocus="this.blur();"/>
 	</form>
 
 	<h2>検索結果</h2>

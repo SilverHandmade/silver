@@ -17,9 +17,9 @@
 
 				<div class="col-md-3">
 					<div class="div-btn">
-						<input type="file" class="input-file none file" name="upload_gazo" id="G_upload">
-						<div class="bottom">
-							<button type="button" name="upload" id="G_upload" class="bottom">画像選択</button>
+						<input type="file" class="input-file none file" name="upload" id="G_upload" accept="image/*">
+						<div class="button">
+							<button type="button" name="upload" id="G_upload" class="button">画像選択</button>
 						</div>
 					</div>
 					<span id="fake_input_file" class="margin-left span">NOT FILE</span>
@@ -40,8 +40,8 @@
 			</div>
 		</div>
 		<div class="row right padding">
-			<button type="submit" name="button" class="button-submit" id="Trans">送信</button>
-			<button type="button" name="search-back" id="back" class="button-submit">検索画面へ</button>
+			<button type="submit" name="button" class="button-submit" id="Trans" onfocus="this.blur();">送信</button>
+			<button type="button" name="search-back" id="back" class="button-submit" onfocus="this.blur();">検索画面へ</button>
 		</div>
 	</form>
 </div>

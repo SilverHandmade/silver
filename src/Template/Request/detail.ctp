@@ -5,9 +5,9 @@
 
 	$this->start('css');
 	echo $this->Html->css('/private/css/kota/detail.css');
+	// echo $this->Html->css('/private/css/kota/request.css');
 	$this->end();
 ?>
-
 
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
