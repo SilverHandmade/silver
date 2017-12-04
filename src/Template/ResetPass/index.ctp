@@ -3,7 +3,11 @@
 <div id="form">
 	<p class="form-title">パスワード変更</p>
 	<form action="" method="post">
-		<p class="font-color">パスワード</p>
+		<p class="font-color">現在のパスワード</p>
+		<p class="password">
+			<input type="password" name="oldpassword" value="">
+		</p>
+		<p class="font-color">新しいパスワード</p>
 		<p class="password">
 			<input type="password" name="password" value="">
 		</p>
@@ -14,4 +18,6 @@
 			<button type="submit" name="reset" class="submit">変更</button><br>
 		</p>
 	</form>
+
 </div>
+<p align="center">数字・小文字・大文字のうち2種類以上で、8～20文字のパスワードを設定してください。</p>
