@@ -32,7 +32,7 @@ if ($this->request->is('post')){
 
 <div class="col-md-offset-2 col-md-8 center">
 	<p class="font-title">確認</p>
-	<a>確定すると依頼先とワークショップIDの変更はできません。</a>
+	<p>確定すると<b><u>依頼先</u></b>と<b><u>ワークショップID</u></b>の変更はできません。</p>
 	<div class="row">
 		<div class="col-md-offset-3 col-md-8">
 			<form action="" method="POST" id="form">

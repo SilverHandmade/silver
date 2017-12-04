@@ -61,13 +61,11 @@ $(function(){
 $(function(){
 	$('#Reqsearchbutton').bind("click",function(){
 		var re = new RegExp($('#rsearch').val());
-		alert("a");
 		$('#reqtable tbody tr').each(function(){
 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
 			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
 			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
 			Ttxt = Ttxt.replace("</button>","");
-
 			FNtxt = FNtxt.replace("<p>","");
 			FNtxt = FNtxt.replace("</p>","");
 			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
@@ -85,12 +83,11 @@ $(function(){
 	$('#editReqbutton').bind("click",function(){
 		var re = new RegExp($('#rsearch').val());
 
-		$('#panel').each(function(){
+		$('.panel').each(function(){
 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
 			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
 			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
 			Ttxt = Ttxt.replace("</button>","");
-			alert(Ttxt);
 			FNtxt = FNtxt.replace("<p>","");
 			FNtxt = FNtxt.replace("</p>","");
 			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
@@ -173,8 +170,19 @@ $(function(){
 
 //依頼詳細画面の依頼受注ボタンが押されたとき
 $(function(){
-	$('#kanryo').bind("click",function(){
+	$('#order').bind("click",function(){
 		var myRet = confirm("依頼を受注しますか？");
+		if ( myRet == true ){
+		}else{
+			return false;
+		}
+});
+});
+
+//依頼編集画面の依頼取り消しボタンが押されたとき
+$(function(){
+	$('#cancel').bind("click",function(){
+		var myRet = confirm("依頼を取り消しますか？");
 		if ( myRet == true ){
 		}else{
 			return false;

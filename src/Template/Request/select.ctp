@@ -12,15 +12,15 @@
 	<div class="row center">
 		<h2>修正依頼選択<h2>
 			<input type="text" name="dummy" style="display:none;">
-		<form class="" action="" method="GET" onsubmit="doSomething();return false;">
+		<!-- <form class="" action="" method="GET" onsubmit="doSomething();return false;"> -->
 			<input type="text" id="rsearch" name="search" value=""/><button type="button" id="editReqbutton" name="sbutton" class="submit-button">検索</button>
-		</form>
+		<!-- </form> -->
 
 		<?php if ($reqlist == NULL): ?>
 			<br>
 			<h>編集可能な依頼がありません。</h>
 			<br>
-			<button type="button" class="button" onclick="location.href='/silver/'">戻る</button>
+			<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
 		<?php else: ?>
 			<table id="reqseltable" align="" class="table">
 				<thead>
@@ -50,6 +50,9 @@
 					</form>
 				</div>
 			<?php endforeach; ?>
+			<button type="button" class="button" onclick="location.href='/silver/request/'">戻る</button>
+			<br>
+			<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
 		<?php endif; ?>
 	</div>
 </div>

@@ -49,11 +49,13 @@
 					</tr>
 				<?php endif; ?>
 				<?php foreach ($pdt_info as $pinfo) : ?>
-					<tr>
+					<tr align="center">
 
-						<td colspan="3"><p>手順<?php echo $pinfo['ren'] + 1 ?></p>
-						<img src= alt="TAG index" border="0">
-						<p><?php echo $pinfo['description'] ?></p></td>
+						<td colspan="3"><div align="center"><p><b>手順<?php echo $pinfo['ren'] + 1 ?></b></p></div>
+						<div align="center"><img src="<?= $this->Url->image('workshop/'.$pinfo['photo_url'])?>" width="500" height="325"></div>
+						<div align="center"><p><?php echo $pinfo['description'] ?></p></div>
+
+					</td>
 
 			</tr>
 		<?php endforeach; ?>
