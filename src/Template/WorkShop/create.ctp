@@ -40,8 +40,8 @@
 			</div>
 		</div>
 		<div class="row right padding">
-			<button type="submit" name="button" class="button-submit" id="Trans">送信</button>
-			<button type="button" name="search-back" id="back" class="button-submit">検索画面へ</button>
+			<button type="submit" name="button" class="button-submit" id="Trans" onfocus="this.blur();">送信</button>
+			<button type="button" name="search-back" id="back" class="button-submit" onfocus="this.blur();">検索画面へ</button>
 		</div>
 	</form>
 </div>

@@ -5,6 +5,7 @@
 
 	$this->start('css');
 	echo $this->Html->css('/private/css/kota/detail.css');
+	// echo $this->Html->css('/private/css/kota/request.css');
 	$this->end();
 ?>
 
@@ -56,9 +57,9 @@
 				<?php endforeach; ?>
 		</table>
 		<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
-			<button type="submit" class="button btn" name="order">依頼を受ける</button>
+			<button type="submit" class="button btn" name="order" onfocus="this.blur();">依頼を受ける</button>
 		<?php else: ?>
-			<button type="button" class="button btn" onclick="location.href='/silver/'">トップへ</button>
+			<button type="button" class="button btn" onclick="location.href='/silver/'" onfocus="this.blur();">トップへ</button>
 		<?php endif; ?>
 		</form>
 	</div>
