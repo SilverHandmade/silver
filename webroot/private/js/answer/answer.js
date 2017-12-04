@@ -1,20 +1,16 @@
 $(function(){
 	$('#indexbtn').bind("click",function(){
+
 		var re = new RegExp($('#indextxt').val());
-
-		$('#qtable').each(function(){
-			var Ntxt = $(this).find("#qtitle:eq(0)").html();
-			var Atxt = $(this).find("#qcontent:eq(0)").html();
-
-
-			Ntxt = Ntxt.replace("<a href=\"answers/detail\">","");
-			Ntxt = Ntxt.replace("</a>","");
-
-			// re = re.replace("/","");
-			// re = re.replace("/","");
-			alert(re);
-
-			if(Atxt.match(re) != null || Ntxt.match(re) != null){
+		$('.indexlist').each(function(){
+			var Ttxt = $(this).find("#wtitle:eq(0)").html();
+			var Ctxt = $(this).find("#wcontent:eq(0)").html();
+			Ttxt = Ttxt.replace("<input type=\"submit\" id=\"titlebtn\" value=\"","");
+			Ttxt = Ttxt.replace("\">","");
+			// alert(re);
+			// alert(Ttxt);
+			// alert(Ctxt);
+			if(Ctxt.match(re) != null || Ttxt.match(re) != null){
 				$(this).show();
 			}else{
 				$(this).hide();
@@ -22,4 +18,9 @@ $(function(){
 		});
 	});
 });
-		var indextxt = $('#indextxt').val();
+$(function(){
+	$('#answerbtn').bind("click",function(){
+		var answertxt = document.getElementById( "answertxt" ).value;
+		$('#appendtable').append('<tr><td value="">' + answertxt + '</td></tr>');
+	});
+});
