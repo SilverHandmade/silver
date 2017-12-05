@@ -17,14 +17,16 @@
 		<input type="hidden" name="uu" value="<?php echo $_GET['uu'];?>">
 	</form>
 </div>
+<?php }elseif ($_POST['flg'] = 1) { ?>
+<div id="form">
+	 <body onload="document.F.submit();">
+	 <form METHOD="GET" name="F" action="http://localhost/silver/resetpass/mailchange">
+	 <input type="hidden" name="uu" value=<?php echo $_POST['uu'];?>>
+	 <p>再入力してください</p>
+</div>
 <?php }elseif ($this->request->is('post')) { ?>
 	<div id="form">
 			<p>パスワードが再設定されました</p>
-	</div>
-<?php }elseif ($_POST['flg'] = 1) { ?>
-	<div id="form">
-			<?php echo $temp; ?>
-			<!-- <p>パスワードが再設定されました</p> -->
 	</div>
 <?php }else { ?>
 	<div>

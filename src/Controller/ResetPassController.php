@@ -104,7 +104,6 @@ class ResetPassController extends AppController
 				$HHs = $this->PassHash->hash($_POST['password']);
 				$query = ConnectionManager::get('default');
 				$query->update('users',['password' => $HHs],['id' => $Uid]);
-				$Tb = TableRegistry::get('unique_ids');
 				// $user_id = $Tb->find()->where(['user_id' => $Uid])->first();
 				$Tb = TableRegistry::get('unique_ids');
 				$query = $Tb->query();
@@ -113,19 +112,14 @@ class ResetPassController extends AppController
 					'user_id' => $Uid,
 				])
 				->execute();
-				// $Tb->delete($Uid);
-				$temp= '<div id="form">';
-				$temp.= '<p>パスワードが再設定されました</p>';
-				$temp.= '</div>';
-				$this->set("temp", $temp);
+				// $temp= '<div id="form">';
+				// $temp.= '<p>パスワードが再設定されました</p>';
+				// $temp.= '</div>';
+				// $this->set("temp", $temp);
 				echo 1;
 			}else {
 				
-				$temp= '<body onload="document.F.submit();">';
-				$temp.= '<form METHOD="POST" name="F" action="http://localhost/silver/resetpass/mailchange?uu="';
-				$temp.= $_POST['uu'];
-				$temp.= '></div>';
-				$this->set("temp", $temp);
+				// $this->set("temp", $temp);
 				echo 2;
 			}
 		}else {
@@ -140,9 +134,9 @@ class ResetPassController extends AppController
 		if ($this->request->is('post')) {
 			$session = $this->request->session();
 			$Uid = $session->read('id');
+			// 現在のパス比較
 			$OPas = $this->request->getData('oldpassword');
 			$Tb = TableRegistry::get('users');
-			// パス比較
 			$query = $Tb->find();
 			$ret = $query->select(['id','password'])
 						->where(['id'=> $Uid])->first();
