@@ -3,6 +3,10 @@
 	echo $this->Html->script('/private/js/request/request.js');
 	$this->end();
 
+	$this->start('css');
+	echo $this->Html->css('/private/css/kota/request.css');
+	$this->end();
+
 ?>
 
 

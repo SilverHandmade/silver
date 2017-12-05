@@ -26,29 +26,29 @@
 			<th>&nbsp;</th>
 			<th>&nbsp;</th>
 			<th>&nbsp;</th>
-			<th>登校日</th>
+			<th>投稿日</th>
 		</tr>
 	</thead>
 </table>
 <?php foreach ($witsesArray as $witseslist) {?>
 <tbody>
 	<div class="indexlist">
-		<form class="" action="detail" method="post">
+		<form class="" action="answers/detail" method="post">
 			<!-- <li id="indexlist" style="list-style:none;"> -->
-			<input type="hidden" name="hidetitle" value="<?php echo $witseslist['title']?>">
-			<input type="hidden" name="hidecontent" value="<?php echo $witseslist['content'];?>">
-			<input type="hidden" name="hidedate" value="<?php echo $witseslist['Postdate'];?>">
-			<input type="hidden" name="witsesId" value=<?php echo $witseslist['id']?>>
-			<input type="hidden" name="witsesUId" value=<?php echo $witseslist['user_id']?>>
+			<input type="hidden" name="hidetitle" value="<?= $witseslist['title'];?>">
+			<input type="hidden" name="hidecontent" value="<?= $witseslist['content'];?>">
+			<input type="hidden" name="hidedate" value="<?= $witseslist['Postdate'];?>">
+			<input type="hidden" name="witsesId" value=<?= $witseslist['id'];?>>
+			<input type="hidden" name="witsesUId" value=<?= $witseslist['user_id'];?>>
 			<button type="submit" name="button">
 				<div id="wtitle">
-					<?php echo $witseslist['title']?>
+					<?= $witseslist['title'];?>
 				</div>
 				<div id="wcontent">
-					<?php echo $witseslist['content'];?>
+					<?= $witseslist['content'];?>
 				</div>
 				<div id="wdate">
-					<?php echo $witseslist['Postdate'];?>
+					<?= $witseslist['Postdate'];?>
 				</div>
 			</button>
 			<!-- </li> -->
@@ -56,4 +56,4 @@
 	</div>
 </tbody>
 <?php } ?>
-<input type="button" onclick="location.href='create'" name="" value="投稿">
+<input type="button" onclick="location.href='answers/create'" name="" value="投稿">

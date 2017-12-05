@@ -2,6 +2,10 @@
 	$this->start('script');
 	echo $this->Html->script('/private/js/request/request.js');
 	$this->end();
+
+	$this->start('css');
+	echo $this->Html->css('/private/css/kota/request.css');
+	$this->end();
 ?>
 
 <?php
@@ -28,7 +32,7 @@ $user_faci = $_SESSION['Auth']['User']['facilities_id'];
 
 <p>締切日</p>
 <input type="text" id="reqD_con" name="requestD_con" readonly value=<?php if ($_SESSION['dateCheck'] == 1) {
-	echo $input_date;}else{ echo $_SESSION['req_edit']['moto_date'];}?>> 
+	echo $input_date;}else{ echo $_SESSION['req_edit']['moto_date'];}?>>
 <br>
 
 <button type="button" class="button" onclick="location.href='/silver/request/edit/'">修正</button>
