@@ -4,7 +4,7 @@ $(function(){
 		var mode = GetCookie('videoViewMode');
 		if (mode === null) {
 			document.cookie = 'videoViewMode=list';
-			$("#listMode").addClass("none");
+			$(".glyphicon-th-list").addClass("none");
 			$("#videoPanel").addClass("none");
 		} else {
 			if (mode === 'list') {
@@ -19,7 +19,6 @@ $(function(){
 
 	$('#ModeTogle').click(function (){
 		Modetoggle();
-		document.cookie = 'videoViewMode=list';
 	});
 
 	function Modetoggle() {
@@ -27,6 +26,11 @@ $(function(){
 		$('.glyphicon-th-list').toggle();
 		$('#videoList').fadeToggle();
 		$('.glyphicon-th-large').toggle();
+		if (document.cookie == 'videoViewMode=list') {
+			document.cookie = 'videoViewMode=panel';
+		} else {
+			document.cookie = 'videoViewMode=list';
+		}
 	}
 
 	function GetCookie(name) {

@@ -81,7 +81,7 @@
 		<button class="btn btn-success" type="submit" name="button">検索</button>
 		<button class="btn bbtn-default" type="button" id="ModeTogle">
 			<span class="glyphicon glyphicon-th-large"></span>
-			<span class="glyphicon glyphicon-th-list none"></span>
+			<span class="glyphicon glyphicon-th-list"></span>
 		</button>
 
 	</form>
