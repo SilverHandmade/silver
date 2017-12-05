@@ -19,7 +19,7 @@
 
 			<div class="row">
 				<div class="col-md-12 right">
-					<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $key['id']])?>">詳細 >></a>
+					<button class="btn btn-link" type="button" >詳細 >></button>
 				</div>
 			</div>
 		</a>

@@ -167,15 +167,20 @@ footer .btn-link, footer .btn-link:hover {
 }
 /*PAGE TOPボタン終わり*/
 
-/*panlel*/
+/*panel*/
+.panel:active {
+	box-shadow: 2px 2px #ddd;
+}
 .panel {
+	position: relative;
+	border-radius: 0;
 	border: 1px solid #ddd;
-	margin: 5px;
 	padding: 10px;
 	box-shadow: 5px 5px #ddd;
 	cursor: pointer;
 }
-.panel > a{
+
+.panel a{
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -189,7 +194,7 @@ footer .btn-link, footer .btn-link:hover {
 	width: 100%;
 	height: auto;
 }
-/*panlel 終わり*/
+/*panel 終わり*/
 
 /*その他*/
 h3 {

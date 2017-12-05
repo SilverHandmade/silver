@@ -33,6 +33,8 @@
 
 	<?= $this->fetch('script') ?>
 
+
+
 </head>
 <body>
 <nav class="navbar navbar navbar-fixed-top" id="navbar">

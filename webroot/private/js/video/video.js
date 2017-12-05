@@ -8,30 +8,25 @@ $(function(){
 			$("#videoPanel").addClass("none");
 		} else {
 			if (mode === 'list') {
-				$("#listMode").addClass("none");
+				$(".glyphicon-th-list").addClass("none");
 				$("#videoPanel").addClass("none");
 			} else {
-				$("#panelMode").addClass("none");
+				$(".glyphicon-th-large").addClass("none");
 				$("#videoList").addClass("none");
 			}
 		}
 	});
 
-	$('#listMode').click(function (){
+	$('#ModeTogle').click(function (){
 		Modetoggle();
 		document.cookie = 'videoViewMode=list';
 	});
 
-	$('#panelMode').click(function (){
-		Modetoggle();
-		document.cookie = 'videoViewMode=panel';
-	});
-
 	function Modetoggle() {
 		$('#videoPanel').fadeToggle();
-		$('#listMode').toggle();
+		$('.glyphicon-th-list').toggle();
 		$('#videoList').fadeToggle();
-		$('#panelMode').toggle();
+		$('.glyphicon-th-large').toggle();
 	}
 
 	function GetCookie(name) {
