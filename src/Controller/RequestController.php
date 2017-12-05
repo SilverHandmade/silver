@@ -264,7 +264,6 @@ class RequestController extends AppController
 
 
 			if ($this->request->is('post')){
-
 				//施設情報の取得
 				$query = $this->Facilities->find()
 				->where(['id ='=>$_POST['request_moto_id']]);

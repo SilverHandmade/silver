@@ -109,12 +109,12 @@ echo"<br><br><br><br><br>";
 
 	public function detailses()
 	{
-		if($this->request->is('post')){
-			$query = $this->Products->find()
-			->where(['id ='=>$_POST['product_id']]);
-			$pdt = $query->all()->ToArray();
-			$this->set(compact('pdt'));
-		}
 
+			if($this->request->is('post')){
+				$query = $this->product_detailses->find()
+				->where(['product_id ='=>$_POST['product_id']]);
+				$pdt = $query->all()->ToArray();
+				$this->set(compact('pdt'));
+			}
 	}
 }
