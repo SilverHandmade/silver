@@ -266,10 +266,20 @@ class RequestController extends AppController
 			if ($this->request->is('post')){
 
 				//施設情報の取得
-				$query = $this->Facilities->find()
-				->where(['id ='=>$_POST['request_moto_id']]);
-				$faci_info = $query->all()->ToArray();
-				$this->set(compact('faci_info'));
+				if ($_SESSION['Auth']['User']['facility_classes_id'] == 2) {
+					$query = $this->Facilities->find()
+					->where(['id ='=>$_POST['request_moto_id']]);
+					$faci_moto_info = $query->all()->ToArray();
+					$this->set(compact('faci_moto_info'));
+				}else {
+					$query = $this->Facilities->find()
+					->where(['id ='=>$_POST['request_saki_id']]);
+					$faci_saki_info = $query->all()->ToArray();
+					$this->set(compact('faci_saki_info'));
+				}
+
+
+
 
 				//依頼情報の取得
 				$query = $this->Requests->find()
@@ -297,10 +307,17 @@ class RequestController extends AppController
 				$this->set(compact('getreq_info'));
 
 				//施設情報の取得
-				$query = $this->Facilities->find()
-				->where(['id ='=>$getreq_info[0]['F_moto_id']]);
-				$faci_info = $query->all()->ToArray();
-				$this->set(compact('faci_info'));
+				if ($_SESSION['Auth']['User']['facility_classes_id'] == 2) {
+					$query = $this->Facilities->find()
+					->where(['id ='=>$getreq_info[0]['F_moto_id']]);
+					$faci_moto_info = $query->all()->ToArray();
+					$this->set(compact('faci_moto_info'));
+				}else {
+					$query = $this->Facilities->find()
+					->where(['id ='=>$getreq_info[0]['F_saki_id']]);
+					$faci_saki_info = $query->all()->ToArray();
+					$this->set(compact('faci_saki_info'));
+				}
 
 				//依頼情報の取得
 				$query = $this->Requests->find()
@@ -406,10 +423,9 @@ class RequestController extends AppController
 			  ->execute();
 
 
-				echo "データが更新されました";
 				//本番稼働時には下記のURLをトップページのものへ変更する
 				header( "Location: http://localhost/silver/" ) ;
-				$this->Flash->success(__('依頼データが送信されました。'));
+				$this->Flash->success(__('データが更新されました。'));
 				unset($_SESSION['facility']);
 				unset($_SESSION['request']);
 				unset($_SESSION['select_flg']);

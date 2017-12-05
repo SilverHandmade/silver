@@ -28,11 +28,11 @@ $user_faci = $_SESSION['Auth']['User']['facilities_id'];
 
 <p>締切日</p>
 <input type="text" id="reqD_con" name="requestD_con" readonly value=<?php if ($_SESSION['dateCheck'] == 1) {
-	echo $input_date;}else{ echo $_SESSION['req_edit']['moto_date'];}?>> 
+	echo $input_date;}else{ echo $_SESSION['req_edit']['moto_date'];}?>>
 <br>
 
 <button type="button" class="button" onclick="location.href='/silver/request/edit/'">修正</button>
-<button type="submit" class="button" name="edit_ok" onclick="">確定</button>
+<button type="submit" class="button" name="edit_ok" id="edit_ok" onclick="">確定</button>
 
 </div>
 </form>

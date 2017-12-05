@@ -57,7 +57,7 @@ if ($this->request->is('post')){
 
 				<div class="btn-sub">
 					<button type="button" class="button btn-sub" onclick="location.href='/silver/request/create/'">修正</button>
-					<button type="submit" class="button btn-sub" name="ok" onclick="">確定</button>
+					<button type="submit" class="button btn-sub" name="ok" id="ok" onclick="">確定</button>
 				</div>
 			</form>
 		</div>

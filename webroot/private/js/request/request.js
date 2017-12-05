@@ -132,6 +132,11 @@ if (rnum <= 0) {
 	document.getElementById( "reqselN_con" ).value = 1;
 	return false;
 }
+if (rnum > 999) {
+	alert("個数に4桁以上の数値は指定できません。");
+	document.getElementById( "reqselN_con" ).value = 1;
+	return false;
+}
 
 if (document.getElementById( "dateCheck" ).checked) {
 	//日付チェック
@@ -190,6 +195,27 @@ $(function(){
 });
 });
 
+//依頼修正画面の修正確定ボタンが押されたとき
+$(function(){
+	$('#edit_ok').bind("click",function(){
+		var myRet = confirm("この内容で更新しますか？");
+		if ( myRet == true ){
+		}else{
+			return false;
+		}
+});
+});
+
+//依頼画面の確定ボタンが押されたとき
+$(function(){
+	$('#ok').bind("click",function(){
+		var myRet = confirm("この内容でよろしいですか？");
+		if ( myRet == true ){
+		}else{
+			return false;
+		}
+});
+});
 
 //今日の日時を表示
 	/*	window.onload = function () {
