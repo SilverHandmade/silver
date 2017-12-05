@@ -17,7 +17,7 @@ class RequestsFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'id' => ['type' => 'integer', 'length' => 10, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '依頼ID', 'precision' => null, 'autoIncrement' => null],
+        'id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '依頼ID', 'precision' => null, 'autoIncrement' => null],
         'F_moto_id' => ['type' => 'integer', 'length' => 6, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '依頼元施設ID', 'precision' => null, 'autoIncrement' => null],
         'F_saki_id' => ['type' => 'integer', 'length' => 6, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '依頼先施設ID', 'precision' => null, 'autoIncrement' => null],
         'product_id' => ['type' => 'integer', 'length' => 9, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '制作物ID', 'precision' => null, 'autoIncrement' => null],
@@ -50,8 +50,8 @@ class RequestsFixture extends TestFixture
             'F_saki_id' => 1,
             'product_id' => 1,
             'title' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-            'From_date' => 1510286779,
-            'To_date' => 1510286779,
+            'From_date' => 1512437205,
+            'To_date' => 1512437205,
             'su' => 1,
             'ju_flg' => 1,
             'kan_flg' => 1,
