@@ -1,8 +1,7 @@
 <?= $this->Html->css('/private/css/kota/resetpass.css') ?>
-<?php if ($this->request->is('get')) { ?>
 <div id="form">
 	<p class="form-title">パスワード再設定</p>
-	<form action="http://localhost/silver/resetpass/mailchange" method="post">
+	<form action="http://localhost/silver/resetpass/mailchange?uu=<?php echo $_GET['uu'];?>" method="POST">
 		<p class="font-color">パスワード</p>
 		<p class="password">
 			<input type="password" name="password" value="">
@@ -17,19 +16,3 @@
 		<input type="hidden" name="uu" value="<?php echo $_GET['uu'];?>">
 	</form>
 </div>
-<?php }elseif ($_POST['flg'] = 1) { ?>
-<div id="form">
-	 <body onload="document.F.submit();">
-	 <form METHOD="GET" name="F" action="http://localhost/silver/resetpass/mailchange">
-	 <input type="hidden" name="uu" value=<?php echo $_POST['uu'];?>>
-	 <p>再入力してください</p>
-</div>
-<?php }elseif ($this->request->is('post')) { ?>
-	<div id="form">
-			<p>パスワードが再設定されました</p>
-	</div>
-<?php }else { ?>
-	<div>
-		<p>リンクが正しくありません</p>
-	</div>
-<?php } ?>
