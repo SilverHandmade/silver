@@ -1,18 +1,29 @@
 /*search*/
+form  {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#inputTitle > * {
+	float: left;
+}
+#inputTitle > input {
+	width: 80%;
+}
+#inputTitle > button {
+	width: 10%;
+}
+
 button span {
 	color: inherit;
 }
 
-#videoList > .row {
-	margin-top: 15px;
+#videoList.row,
+#videoPanel.row {
+	padding-top: 15px;
 }
 .panel h3 {
 	height: 1em;
 	overflow: hidden;
-}
-#videoPanel > div {
-	padding-left: 5px;
-	padding-right: 5px;
 }
 
 /*search終わり*/
@@ -148,7 +159,6 @@ button span {
 	margin-top: 7px;
 }
 
-
 .trance:active {
 	box-shadow: none;
 }
@@ -158,13 +168,25 @@ button span {
 }
 #nextVideo #Carousel {
 	height: 100px;
+	background: #262626;
 }
 #nextVideo #Carousel * {
 	height: inherit;
 	color: #ddd;
+	font-size: 30px;
 }
 #nextVideo #Carousel a {
 	background-color: transparent;
+}
+.carousel-control {
+	width: auto;
+}
+.carousel-control.left,
+.carousel-control.right {
+	margin-top: -0.5em;
+}
+.carousel-control.right {
+	right: 1em;
 }
 /*view終わり*/
 
