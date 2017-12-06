@@ -64,7 +64,6 @@
 					<tr>
 						<th>件名</th>
 						<th>依頼先施設名</th>
-						
 						<th>依頼状況</th>
 					</tr>
 				</thead>
@@ -89,7 +88,6 @@
 									<p>依頼中</p>
 								<?php endif; ?>
 							</td>
-
 						</form>
 					</tr>
 
