@@ -110,7 +110,7 @@ class ResetPassController extends AppController
 			$mozisyu = $inte + $lit + $lag;
 
 			// 両方が空白でない & 再入力と同じ & 文字数が6~20 & 文字種が2種以上
-			if(($Pas <> "" && $RPas <> "") && $Pas == $RPas && && strlen($Pas) >=6 && strlen($Pas) <=20 && $mozisyu >= 2){
+			if(($Pas <> "" && $RPas <> "") && $Pas == $RPas && strlen($Pas) >=6 && strlen($Pas) <=20 && $mozisyu >= 2){
 				$HHs = $this->PassHash->hash($_POST['password']);
 				$query = ConnectionManager::get('default');
 				$query->update('users',['password' => $HHs],['id' => $Uid]);
@@ -130,12 +130,6 @@ class ResetPassController extends AppController
 		}else {
 			echo "リンクが正しくありません2";
 		}
-
-	}
-
-	public function changereq()
-	{
-
 
 	}
 
