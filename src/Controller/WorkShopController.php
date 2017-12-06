@@ -39,9 +39,7 @@ class WorkShopController extends AppController
 			$user = $this->MakeId9->id9('pro');
 			//$this->set(compact('user'));
 
-			//  echo "<br><br><br><br><br><br>" . $this->request->getData('upload');
 			//作成画面
-
 			$query = $this->Products->query();
 			$query->insert(['id', 'name', 'description','midasi_url','user_id'])
 			->values([
@@ -78,7 +76,7 @@ echo"<br><br><br><br><br>";
 				'ren' => $cnt,
 				'description' => $_POST[$cnt1],
 				'photo_url'=> $_POST[$cnt2],
-				])->execute();
+			])->execute();
 					$cnt++;
 					$cnt1 = "text".$cnt;
 					$cnt2 = "upload_gazo".$cnt;
@@ -109,12 +107,7 @@ echo"<br><br><br><br><br>";
 
 	public function detailses()
 	{
-
-			if($this->request->is('post')){
-				$query = $this->product_detailses->find()
-				->where(['product_id ='=>$_POST['product_id']]);
-				$pdt = $query->all()->ToArray();
-				$this->set(compact('pdt'));
-			}
+		$geImage = $this->product_detailses->get($this->request->getParam('product_id'));
+		$this->set('image', $geImage->toArray());
 	}
 }
