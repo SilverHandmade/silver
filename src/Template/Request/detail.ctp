@@ -13,7 +13,7 @@
 	<div class="row center">
 		<h2>依頼詳細情報</h2>
 		<table id="detailtbl" align="" class="table">
-			<form action="" method="POST" >
+			<form action="" method="POST">
 				<tr>
 					<th class="center"><p>タイトル：</p></th>
 					<td><p><?php echo $req_info[0]['title'] ?></p></td>

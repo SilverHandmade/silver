@@ -32,12 +32,9 @@
 			<?php foreach ($reqs as $req) : ?>
 
 			<tbody>
-				<tr>
-					<form action="/silver/request/detail" method="POST" >
-						<input type=hidden name=request_id value=<?php echo $req['id']?>>
-						<input type=hidden name=request_moto_id value=<?php echo $req['F_moto_id']?>>
+				<tr class="panel">
 						<td id="rtitle">
-							<button type="submit" class="submit-button"><?php echo $req['title']?></button>
+							<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $req['id']])?>"><?php echo $req['title']?></a>
 						</td>
 						<td id="rfaci_name">
 							<p><?php echo $req['facilities']['name']?></p>
@@ -50,7 +47,6 @@
 								<p>受注可能</p>
 							<?php endif; ?>
 						</td>
-					</form>
 				</tr>
 
 			<?php endforeach; ?>
@@ -68,15 +64,10 @@
 					</tr>
 				</thead>
 				<?php foreach ($reqs_hoiku as $req) : ?>
-
 				<tbody>
-					<tr>
-						<form action="/silver/request/detail" method="POST" >
-							<input type=hidden name=request_id value=<?php echo $req['id']?>>
-							<input type=hidden name=request_moto_id value=<?php echo $req['F_moto_id']?>>
-							<input type=hidden name=request_saki_id value=<?php echo $req['F_saki_id']?>>
+					<tr class="panel">
 							<td id="rtitle">
-								<button type="submit" class="submit-button"><?php echo $req['title']?></button>
+								<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $req['id']])?>"><?php echo $req['title']?></a>
 							</td>
 							<td id="rfaci_name">
 								<p><?php echo $req['facilities']['name']?></p>
@@ -89,8 +80,6 @@
 									<p>依頼中</p>
 								<?php endif; ?>
 							</td>
-
-						</form>
 					</tr>
 
 				<?php endforeach; ?>

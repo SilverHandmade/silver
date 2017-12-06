@@ -27,14 +27,9 @@
 			<?php foreach ($facilities as $facility) : ?>
  			<tbody>
  				<tr>
- 					<form action="/silver/request/create" method="POST">
- 						<input type=hidden name=facility_id value=<?php echo $facility['id']?>>
- 						<input type=hidden name=facility_name value=<?php echo $facility['name']?>>
- 						<input type=hidden name=facility_address value=<?php echo $facility['address']?>>
  						<td id="fname">
- 							<button type="submit" class="typesubmit"><?php echo $facility['name']?></button>
+							<a href="<?= $this->Url->build(["controller" => "request","action" => "create",'id' => $facility['id']])?>"><?php echo $facility['name']?></a>
  						</td>
- 					</form>
  					<td id="faddress" align="justify">
  						<?php echo $facility['address']?>
   					</td>

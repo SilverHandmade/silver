@@ -35,19 +35,14 @@
 				</thead>
 			</table>
 			<?php foreach ($reqlist as $req) : ?>
-				<div class="panel">
-					<form action="/silver/request/edit" method="POST" id="panel">
-						<input type="hidden" name="selrequest_id" value="<?php echo $req['id']?>">
-						<input type="hidden" name="selrequest_saki_id" value="<?php echo $req['F_saki_id']?>">
-						<button type="submit" class="submit row">
+				<div>
+						<a href="<?= $this->Url->build(["controller" => "request","action" => "edit",'id' => $req['id']])?>">
 							<div id="rtitle" class="col-md-6">
 								<?php echo $req['title']?>
-							</div>
+							</div></a>
 							<div id="rfaci_name" class="col-md-6">
 								<p><?php echo $req['facilities']['name']?></p>
 							</div>
-						</button>
-					</form>
 				</div>
 			<?php endforeach; ?>
 			<button type="button" class="button" onclick="location.href='/silver/request/'">戻る</button>

@@ -217,6 +217,8 @@ $(function(){
 });
 });
 
+
+
 //今日の日時を表示
 	/*	window.onload = function () {
 				//今日の日時を表示

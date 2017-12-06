@@ -31,7 +31,7 @@ $user_faci = $_SESSION['Auth']['User']['facilities_id'];
 	echo $input_date;}else{ echo $_SESSION['req_edit']['moto_date'];}?>>
 <br>
 
-<button type="button" class="button" onclick="location.href='/silver/request/edit/'">修正</button>
+<button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "request","action" => "edit",'id' => $_SESSION['sel_id']])?>'">修正</button>
 <button type="submit" class="button" name="edit_ok" id="edit_ok" onclick="">確定</button>
 
 </div>
