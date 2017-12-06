@@ -18,86 +18,71 @@
 			<input type="text" name="dummy" style="display:none;">
 			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="Reqsearchbutton" name="sbutton" class="submit-button">検索</button>
 		</form>
-
-		<table id="reqtable" align="" class="table">
-
-			<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
+		<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
+			<table id="reqtable" align="" class="table row">
 				<thead>
 					<tr>
-						<th>件名</th>
-						<th>依頼元施設名</th>
-						<th>受注状況</th>
+						<td class="col-md-4">件名</td>
+						<td class="col-md-6">依頼元施設名</td>
+						<td class="col-md-2">受注状況</td>
 					</tr>
 				</thead>
+			</table>
 			<?php foreach ($reqs as $req) : ?>
 
-			<tbody>
-				<tr>
-					<form action="/silver/request/detail" method="POST" >
-						<input type=hidden name=request_id value=<?= $req['id'];?>>
-						<input type=hidden name=request_moto_id value=<?= $req['F_moto_id']?>>
-						<td id="rtitle">
-							<button type="submit" class="submit-button"><?= $req['title'];?></button>
-						</td>
-						<td id="rfaci_name">
+				<div class="row panel">
+					<a href="">
+						<div id="rtitle" class="col-md-4">
+							<a href=""><?= $req['title'];?>
+						</div>
+						<div id="rfaci_name" class="col-md-6">
 							<p><?= $req['facilities']['name'];?></p>
-						</td>
-						<td id="req_state">
+						</div>
+						<div id="req_state" class="col-md-2">
 							<?php if ($req['ju_flg'] != NULL): ?>
 								<p class="p-jutyu">受注中</p>
 							<?php endif; ?>
 							<?php if ($req['ju_flg'] == NULL): ?>
 								<p>受注可能</p>
 							<?php endif; ?>
-						</td>
-					</form>
-				</tr>
-
-			<?php endforeach; ?>
-			<tr>
-				<td colspan="3"><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
-			</tr>
+						</div>
+					</a>
 			</div>
 
-			<?php else: ?>
+			<?php endforeach; ?>
+			<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+
+		<?php else: ?>
+			<table id="request-tab"class="row table">
 				<thead>
 					<tr>
-						<th>件名</th>
-						<th>依頼先施設名</th>
-						<th>依頼状況</th>
+						<td class="col-md-4">件名</td>
+						<td class="col-md-7">依頼先施設名</td>
+						<td class="col-md-1">依頼状況</td>
 					</tr>
 				</thead>
-				<?php foreach ($reqs_hoiku as $req) : ?>
-
-				<tbody>
-					<tr>
-						<form action="/silver/request/detail" method="POST" >
-							<input type=hidden name=request_id value=<?php echo $req['id']?>>
-							<input type=hidden name=request_moto_id value=<?php echo $req['F_moto_id']?>>
-							<td id="rtitle">
-								<button type="submit" class="submit-button"><?php echo $req['title']?></button>
-							</td>
-							<td id="rfaci_name">
-								<p><?php echo $req['facilities']['name']?></p>
-							</td>
-							<td id="req_state">
-								<?php if ($req['ju_flg'] != NULL): ?>
-									<p class="p-jutyu">受注中</p>
-								<?php endif; ?>
-								<?php if ($req['ju_flg'] == NULL): ?>
-									<p>依頼中</p>
-								<?php endif; ?>
-							</td>
-						</form>
-					</tr>
-
-				<?php endforeach; ?>
-				<tr>
-					<td colspan="3"><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
-				</tr>
-			<?php endif; ?>
-			</tbody>
-		</table>
-
-
+			</table>
+			<?php foreach ($reqs_hoiku as $req) : ?>
+				<div class="row panel">
+					<a href="">
+						<div id="rtitle" class="col-md-4">
+							<p><?php echo $req['title']?></p>
+						</div>
+						<div id="rfaci_name" class="col-md-7">
+							<p class="left"><?php echo $req['facilities']['name']?></p>
+						</div>
+						<div id="req_state" class="col-md-1">
+							<?php if ($req['ju_flg'] != NULL): ?>
+								<p class="p-jutyu">受注中</p>
+							<?php endif; ?>
+							<?php if ($req['ju_flg'] == NULL): ?>
+								<p>依頼中</p>
+							<?php endif; ?>
+						</div>
+					</a>
+				</div>
+			<?php endforeach; ?>
+			<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+		<?php endif; ?>
+	</div>
 </div>

@@ -10,6 +10,10 @@ button[type="button"] {
 	outline: none;
 }
 
+input[type="text"] {
+	outline: none;
+}
+
 h2 {
 	margin-top: 10px;
 }
@@ -85,5 +89,18 @@ h2 {
 }
 
 .p-jutyu {
-	color:#ff0000;
+	color:#e2041b;
+}
+
+.typesubmit {
+	word-wrap: normal;
+	text-align: left;
+	width: 200px;
+	height: 3em;
+	overflow: hidden;
+}
+
+#request-tab,
+#reqtable {
+	margin: 0;
 }

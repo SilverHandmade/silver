@@ -26,8 +26,6 @@
 				<thead>
 					<tr>
 						<th>件名</th>
-
-						
 						<th>&nbsp;</th>
 						<th>&nbsp;</th>
 						<th>&nbsp;</th>
