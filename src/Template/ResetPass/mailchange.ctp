@@ -16,3 +16,4 @@
 		<input type="hidden" name="uu" value="<?php echo $_GET['uu'];?>">
 	</form>
 </div>
+<p align="center">数字・小文字・大文字のうち2種類以上で、6～20文字のパスワードを設定してください。</p>

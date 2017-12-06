@@ -101,8 +101,16 @@ class ResetPassController extends AppController
 			$Uid = $_POST['id'];
 			$Pas = $_POST['password'];
 			$RPas = $_POST['repassword'];
-			// echo '<br><br><br><br><br><br>';
-			if(($Pas <> "" && $RPas <> "") && $Pas == $RPas){
+			$this->set("b", $Uid);
+			// 上から数字・小文字・大文字があるか
+			$inte = preg_match("/[0-9]/",$Pas);
+			$lit = preg_match("/[a-z]/",$Pas);
+			$lag = preg_match("/[A-Z]/",$Pas);
+			// 文字種が何種類あるか
+			$mozisyu = $inte + $lit + $lag;
+
+			// 両方が空白でない & 再入力と同じ & 文字数が6~20 & 文字種が2種以上
+			if(($Pas <> "" && $RPas <> "") && $Pas == $RPas && && strlen($Pas) >=6 && strlen($Pas) <=20 && $mozisyu >= 2){
 				$HHs = $this->PassHash->hash($_POST['password']);
 				$query = ConnectionManager::get('default');
 				$query->update('users',['password' => $HHs],['id' => $Uid]);
@@ -160,23 +168,24 @@ class ResetPassController extends AppController
 			// 文字種が何種類あるか
 			$mozisyu = $inte + $lit + $lag;
 					// デバッグ用
-					echo '<br><br><br><br><br><br>';
-					echo '<br>0_'.$OPas.'<br>1_'.$Pas.'<br>'.'2_'.$RPas.'<br>'.'ID_'.$Uid.'<br>'.'hs_'.$HHs;
-
-					echo '<br>文字数_'.strlen($Pas).'<br>PWflg_'.$Pflg;
-					echo '<br>数値'.$inte.'<br>小文字'.$lit.'<br>大文字'.$lag.'<br>文字種'.$mozisyu;
+					// echo '<br><br><br><br><br><br>';
+					// echo '<br>0_'.$OPas.'<br>1_'.$Pas.'<br>'.'2_'.$RPas.'<br>'.'ID_'.$Uid.'<br>'.'hs_'.$HHs;
+                    //
+					// echo '<br>文字数_'.strlen($Pas).'<br>PWflg_'.$Pflg;
+					// echo '<br>数値'.$inte.'<br>小文字'.$lit.'<br>大文字'.$lag.'<br>文字種'.$mozisyu;
 					// ここまで
-			// 両方が空白でない & 再入力と同じ & 現在のPWが同じ & 文字数が8~20 & 文字種が2種以上
-			if(($Pas <> "" && $RPas <> "") && $Pas == $RPas && $Pflg == 1 && strlen($Pas) >=8 && strlen($Pas) <=20 && $mozisyu >= 2){
+			// 両方が空白でない & 再入力と同じ & 現在のPWが同じ & 文字数が6~20 & 文字種が2種以上
+			if(($Pas <> "" && $RPas <> "") && $Pas == $RPas && $Pflg == 1 && strlen($Pas) >=6 && strlen($Pas) <=20 && $mozisyu >= 2){
 				// echo '<br>'.'変更おk';
 				$query = ConnectionManager::get('default');
 				$query->update('users',['password' => $HHs],['id' => $Uid]);
 				$this->Flash->error(__('パスワードが変更されました。'));
-			}
-		}else {
+			}else {
 			// echo '<br>'.'変更NG';
 			$this->Flash->error(__('入力が正しくありません。再度入力してください。'));
+			}
 		}
+
 		// $validate = array(
 		// 	'password' => array(
 		// 		'rule'    => array('between', 8, 20),
