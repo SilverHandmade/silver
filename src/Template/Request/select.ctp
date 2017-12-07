@@ -13,7 +13,7 @@
 		<h2>修正依頼選択<h2>
 			<input type="text" name="dummy" style="display:none;">
 		<!-- <form class="" action="" method="GET" onsubmit="doSomething();return false;"> -->
-			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="editReqbutton" name="sbutton" class="submit-button">検索</button>
+			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
 		<!-- </form> -->
 
 		<?php if ($reqlist == NULL): ?>
@@ -50,9 +50,9 @@
 					</form>
 				</div>
 			<?php endforeach; ?>
-			<button type="button" class="button" onclick="location.href='/silver/request/'">戻る</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='/silver/request/'">戻る</button>
 			<br>
-			<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='/silver/'">トップへ</button>
 		<?php endif; ?>
 	</div>
 </div>

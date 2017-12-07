@@ -14,7 +14,7 @@
 			<input type="password" name="password" value="">
 		</p>
 		<p class="submit">
-			<button type="submit" name="login" class="submit">ログイン</button><br>
+			<button type="submit" name="login" class="btn btn-success">ログイン</button><br>
 		</p>
 		<p>
 			<?= $this->Html->link("初めての方はこちら" ,['controller' => 'regist', "action" => 'index']);?>

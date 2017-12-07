@@ -15,7 +15,7 @@
 	<div class="row center">
 		<h2>修正依頼選択<h2>
 		<form class="" action="" method="POST">
-			<button type="submit" id="cancel" name="Reqcancelbtn" class="submit-button">依頼取り消し</button>
+			<button type="submit" id="cancel" name="Reqcancelbtn" class="btn btn-primary ">依頼取り消し</button>
 
 
 			<p>制作物タイトル</p>
@@ -30,8 +30,8 @@
 				echo $_SESSION['req_edit']['moto_date'];}else{ echo date("Y-n-j", strtotime($edit_req[0]['To_date']));}?>>
 
 			<br>
-			<button type="submit" class="button" id="edit_con" name ="nextbtn">次へ</button>
-			<button type="button" class="button" onclick="location.href='/silver/request/select/'">戻る</button>
+			<button type="submit" class="btn btn-primary" id="edit_con" name ="nextbtn">次へ</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='/silver/request/select/'">戻る</button>
 		</form>
 	</div>
 </div>

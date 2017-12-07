@@ -16,7 +16,7 @@
 		<h2>依頼一覧<h2>
 		<form class="" action="" method="GET" onsubmit="doSomething();return false;">
 			<input type="text" name="dummy" style="display:none;">
-			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="Reqsearchbutton" name="sbutton" class="submit-button">検索</button>
+			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="Reqsearchbutton" name="sbutton" class="btn btn-success">検索</button>
 		</form>
 		<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
 			<table id="reqtable" align="" class="table row">
@@ -30,7 +30,7 @@
 			</table>
 			<?php foreach ($reqs as $req) : ?>
 
-				<div class="row panel">
+				<div class="row panel list-panel">
 					<a href="">
 						<div id="rtitle" class="col-md-4">
 							<a href=""><?= $req['title'];?>
@@ -50,7 +50,7 @@
 			</div>
 
 			<?php endforeach; ?>
-			<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='/silver/'">トップへ</button>
 
 		<?php else: ?>
 			<table id="request-tab"class="row table">
@@ -63,7 +63,7 @@
 				</thead>
 			</table>
 			<?php foreach ($reqs_hoiku as $req) : ?>
-				<div class="row panel">
+				<div class="row panel list-panel">
 					<a href="">
 						<div id="rtitle" class="col-md-4">
 							<p><?php echo $req['title']?></p>
@@ -82,7 +82,7 @@
 					</a>
 				</div>
 			<?php endforeach; ?>
-			<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='/silver/'">トップへ</button>
 		<?php endif; ?>
 	</div>
 </div>

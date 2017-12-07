@@ -34,8 +34,8 @@ var test = <?php echo $results; ?>;
 					echo $_SESSION['request']['date'];}?>>
 
 				<div class="right">
-					<button type="submit" class="button" name="createReq" onclick="return nextpage()">次へ</button>
-					<button type="button" class="button" onclick="location.href='/silver/request'">戻る</button>
+					<button type="submit" class="btn btn-primary" name="createReq" onclick="return nextpage()">次へ</button>
+					<button type="button" class="btn btn-primary" onclick="location.href='/silver/request'">戻る</button>
 				</div>
 			</form>
 		</div>
