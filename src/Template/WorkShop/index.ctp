@@ -11,6 +11,7 @@
 
 	<h2>検索結果</h2>
 
+
 	<div class="col-md-12">
 		<?= $this->Html->link(">>ワークショップ作成画面へ",['controller' => 'workshop', "action" => "create"]);?>
 	</div>

@@ -4,6 +4,13 @@
 		<tr>
 			<td colspan="3"><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
 		</tr>
-	<h2><?= $video['description'] ?></h2>
+				<?php foreach ($detailses as $key) : ?>
+					<tr align="center">
+								<td colspan="3"><div align="center"><p><b>手順<?php echo $key['ren'] + 1 ?></b></p></div>
+								<div align="center"><img src="<?= $this->Url->image('workshop/'.$key['photo_url'])?>" width="500" height="325"></div>
+								<div align="center"><p><?php echo $key['description'] ?></p></div>
+								</td>
+					</tr>
+				<?php endforeach; ?>
 	</table>
 </div>

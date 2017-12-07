@@ -48,8 +48,8 @@ class WorkShopController extends AppController
 				'description' => $Model,
 				'midasi_url'=> $images,
 				'user_id' => $user,
-			])
-			->execute();
+			]);
+			//->execute();
 
 			//詳細画面
 			$query = $this->product_detailses->query();
@@ -58,7 +58,7 @@ class WorkShopController extends AppController
 			'product_id' => $product_id,
 			'description' => $Model_detailses,
 			'photo_url'=> $images_detailses,
-		])->execute();
+		]);//->execute();
 echo"<br><br><br><br><br>";
 			$cnt = 1;
 			$cnt1 = "text".$cnt;
@@ -76,7 +76,7 @@ echo"<br><br><br><br><br>";
 				'ren' => $cnt,
 				'description' => $_POST[$cnt1],
 				'photo_url'=> $_POST[$cnt2],
-			])->execute();
+			]);//->execute();
 					$cnt++;
 					$cnt1 = "text".$cnt;
 					$cnt2 = "upload_gazo".$cnt;
@@ -107,7 +107,8 @@ echo"<br><br><br><br><br>";
 
 	public function detailses()
 	{
-		$geImage = $this->product_detailses->get($this->request->getParam('product_id'));
-		$this->set('image', $geImage->toArray());
+		
+		$detailses = $this->product_detailses->find();
+		$this->set('detailses',$detailses);
 	}
 }
