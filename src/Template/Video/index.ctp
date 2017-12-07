@@ -152,4 +152,3 @@
 		<?php endforeach; ?>
 	</div>
 </div>
-<button type="button"class="btn btn-danger">danger</button>
