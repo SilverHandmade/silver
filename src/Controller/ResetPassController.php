@@ -34,6 +34,7 @@ class ResetPassController extends AppController
 				$this->Flash->error(__('ドメインが入力されていません'));
 			}elseif ($_POST['flg'] == 2) {
 				$this->Flash->error(__('リンクの消費期限が切れています'));
+				// UPDATE `unique_ids` SET sendtime='2017-12-07 14:07:46' WHERE user_id = 'id入力'
 		}
 	}
 
