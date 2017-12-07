@@ -9,8 +9,9 @@
 	<h2><?= $video['title'] ?></h2>
 	<div class="row" id="videos">
 		<div class="col-md-12" id="screen">
-			<video poster="<?= $this->request->getAttribute("webroot") ?>img/sample.jpg" id="video">
-				<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample.mp4" preload="metadata" type='video/mp4;'>
+			<!-- <canvas id="poster"></canvas> -->
+			<video id="video">
+				<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample2.mp4" preload="metadata" type='video/mp4;'>
 				<p>video要素がサポートされていないブラウザでご覧になっています。</p>
 			</video>
 			<button type="button" class="btn trance" id="start">
@@ -52,31 +53,44 @@
 	</div>
 
 	<div id="nextVideo">
-		<div id="Carousel" class="carousel slide" data-ride="carousel">
+		<div id="Carousel" class="carousel slide" data-ride="carousel" data-interval="false">
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img src="<?= $this->Url->image("no_image.png") ?>" alt="First slide">
-					<img src="<?= $this->Url->image("no_image.png") ?>" alt="First slide">
-					<img src="<?= $this->Url->image("no_image.png") ?>" alt="First slide">
+					<div class="row">
+						<div class="col-md-offset-1 col-md-10 center">
+							<a href="">
+								<img src="<?= $this->Url->image("sample.jpg") ?>" alt="First slide">
+							</a>
+							<a href="">
+								<img src="<?= $this->Url->image("sample.jpg") ?>" alt="First slide">
+							</a>
+							<a href="">
+								<img src="<?= $this->Url->image("sample.jpg") ?>" alt="First slide">
+							</a>
+						</div>
+					</div>
 				</div>
 				<div class="item">
-					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Second slide">
-					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Second slide">
-					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Second slide">
-				</div>
-				<div class="item">
-					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Third slide">
-					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Third slide">
-					<img src="<?= $this->Url->image("no_image.png") ?>" alt="Third slide">
+					<div class="row">
+						<div class="col-md-offset-1 col-md-10 center">
+							<a href="">
+								<img src="<?= $this->Url->image("sample.jpg") ?>" alt="Second slide">
+							</a>
+							<a href="">
+								<img src="<?= $this->Url->image("sample.jpg") ?>" alt="Second slide">
+							</a>
+							<a href="">
+								<img src="<?= $this->Url->image("sample.jpg") ?>" alt="Second slide">
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 			<a class="left carousel-control" href="#Carousel" role="button" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				<span class="sr-only">前へ</span>
 			</a>
 			<a class="right carousel-control" href="#Carousel" role="button" data-slide="next">
 				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">次へ</span>
 			</a>
 		</div>
 	</div>

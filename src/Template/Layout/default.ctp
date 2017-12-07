@@ -33,6 +33,8 @@
 
 	<?= $this->fetch('script') ?>
 
+
+
 </head>
 <body>
 <nav class="navbar navbar navbar-fixed-top" id="navbar">
@@ -107,8 +109,8 @@
 		<div class="col-md-10" id="col-main">
 			<div class="row">
 				<?= $this->Flash->render() ?>
+				<?= $this->fetch('content') ?>
 			</div>
-			<?= $this->fetch('content') ?>
 		</div>
 
 		<!-- 右サイドカラム -->

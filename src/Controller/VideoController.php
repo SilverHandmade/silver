@@ -10,20 +10,20 @@ use Cake\I18n\Time;
 
 class VideoController extends AppController
 {
-    public function initialize()
-    {
-        parent::initialize();
+	public function initialize()
+	{
+		parent::initialize();
 		$session = $this->request->session();
 		if (!$session->read('loginFlg')) {
 			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
 		}
 		$this->loadmodel('Movies');
-    }
-    public function index()
-    {
+	}
+	public function index()
+	{
 		$queryMov = $this->Movies->find();
 		if ($this->request->is('POST')) {
-			$queryMov->contain();
+			// $queryMov->contain();
 			// ->select('title');
 			if (!empty($this->request->getData('title'))) {
 				$queryMov->where(['title LIKE' => '%' . $this->request->getData('title') . '%']);
@@ -39,10 +39,12 @@ class VideoController extends AppController
 			}
 			if (!empty($this->request->getData('term'))) {
 				$now = Time::now();
-				$queryMov->find()
-				    ->where(function ($exp, $q) {
-				        return $exp->between('contribution', $now, $now->subDays($this->request->getData('term')));
-	    			});
+				$args = Time::now();;
+				$args->subDays($this->request->getData('term'));
+				$queryMov
+					->where(function ($exp, $q) use ($args, $now) {
+						return $exp->between('contribution', $args, $now);
+					});
 			}
 			$this->set('results', $queryMov->toArray());
 		} else {
@@ -53,5 +55,9 @@ class VideoController extends AppController
 	{
 		$geVideo = $this->Movies->get($this->request->getParam('id'));
 		$this->set('video', $geVideo->toArray());
+	}
+	public function upload()
+	{
+		
 	}
 }

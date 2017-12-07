@@ -40,6 +40,8 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
+		// 検索→遷移→戻る で起こる有効期限切れ対策
+		session_cache_limiter('private');
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');

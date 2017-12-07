@@ -38,7 +38,7 @@ h2 {
 	min-height: 41px;
 	max-height: 41px;
 	background-color: #c5b66d;
-	border-top: solid 1px #0f0f0f;
+	border-top: solid 1px #325225;
 }
 #menubar ul {
 	background-color: inherit;
@@ -167,15 +167,22 @@ footer .btn-link, footer .btn-link:hover {
 }
 /*PAGE TOPボタン終わり*/
 
-/*panlel*/
+/*panel*/
+.panel:active {
+	box-shadow: 2px 2px #ddd;
+	top: 3px;
+	left: 3px;
+}
 .panel {
+	position: relative;
+	border-radius: 0;
 	border: 1px solid #ddd;
-	margin: 5px;
 	padding: 10px;
 	box-shadow: 5px 5px #ddd;
 	cursor: pointer;
 }
-.panel > a{
+
+.panel a{
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -189,7 +196,7 @@ footer .btn-link, footer .btn-link:hover {
 	width: 100%;
 	height: auto;
 }
-/*panlel 終わり*/
+/*panel 終わり*/
 
 /*その他*/
 h3 {

@@ -28,7 +28,6 @@ class TopPageController extends AppController
 		$request = $queryRequest->toArray();
 		$this->set(compact('request'));
 
-
 		$queryWorkShop = $this->Products->find()
 		->select(['id', 'name', 'midasi_url', 'Postdate'])
 		->order(['Postdate' => 'DESC'])

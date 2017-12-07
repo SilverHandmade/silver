@@ -1,6 +1,7 @@
 $(function(){
 	var video = $('#video').get(0);
 	var videos = $('#videos').get(0);
+	var $canvas = $('#poster');
 
 	$(window).on('load',function(){
 		// 動画の再生時間表示
@@ -12,8 +13,15 @@ $(function(){
 		$("#progressbar").progressbar({
 			max: Math.floor(video.duration)
 		});
+
+		// サムネイルの表示
+		$canvas.attr('width', $('#video').width());
+		$canvas.attr('height', $('#video').height());
+		$canvas[0].getContext('2d').drawImage(video, 0, 0, $canvas.width(), $canvas.height());
+		// サムネイルの表示
 	});
 	$("#progressbar").progressbar({
+		max: 1,
 		value: 0
 	});
 
@@ -41,16 +49,15 @@ $(function(){
 	$('#start').click(function (){
 		startTogle()
 	});
-	$('#video').click(function (){
-		startTogle()
-	});
+	// $('#video').click(function (){
+	// 	startTogle()
+	// });
 
 
 	video.addEventListener("timeupdate", function(){
 		$('#seekbar').slider('value', Math.floor(video.currentTime));
 		$('#nowTime').html(formatTime(video.currentTime));
 	}, false);
-
 
 	$('#fullScreen').click(function() {
 		if (document.exitFullscreen) {
@@ -117,7 +124,7 @@ $(function(){
 	},1000);
 
 	function startTogle() {
-		$('#start').toggle();
+		$canvas.hide();
 		$('.glyphicon-play').toggle();
 		$('.glyphicon-pause').toggle();
 		if (video.paused) {
