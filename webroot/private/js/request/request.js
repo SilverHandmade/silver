@@ -46,8 +46,13 @@ $(function(){
 			var Ntxt = $(this).find("#fname:eq(0)").html();
 			var Atxt = $(this).find("#faddress:eq(0)").html();
 
-			Ntxt = Ntxt.replace("<button type=\"submit\" class=\"typesubmit\">","");
-			Ntxt = Ntxt.replace("</button>","");
+
+			Ntxt = Ntxt.replace("<a href=\"/silver/request/create\?","");
+			Ntxt = Ntxt.replace(/id=\d*/,"");
+			Ntxt = Ntxt.replace("\">","");
+			Ntxt = Ntxt.replace("</a>","");
+
+
 			if(Atxt.match(re) != null || Ntxt.match(re) != null){
 				$(this).show();
 			}else{
@@ -64,8 +69,10 @@ $(function(){
 		$('#reqtable tbody tr').each(function(){
 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
 			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
-			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
-			Ttxt = Ttxt.replace("</button>","");
+			Ttxt = Ttxt.replace("<a href=\"/silver/","");
+			Ttxt = Ttxt.replace(/request\/\d*/,"");
+			Ttxt = Ttxt.replace("\">","");
+			Ttxt = Ttxt.replace("</a>","");
 			FNtxt = FNtxt.replace("<p>","");
 			FNtxt = FNtxt.replace("</p>","");
 			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
@@ -83,7 +90,7 @@ $(function(){
 	$('#editReqbutton').bind("click",function(){
 		var re = new RegExp($('#rsearch').val());
 
-		$('.panel').each(function(){
+		$('.req_li').each(function(){
 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
 			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
 			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");

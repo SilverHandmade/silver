@@ -84,7 +84,7 @@
 
 				<?php endforeach; ?>
 				<tr>
-					<td colspan="3"><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
+					<td colspan="3"><button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button></td>
 				</tr>
 			<?php endif; ?>
 			</tbody>

@@ -27,7 +27,7 @@
 
 			<br>
 			<button type="submit" class="button" id="edit_con" name ="nextbtn">次へ</button>
-			<button type="button" class="button" onclick="location.href='/silver/request/select/'">戻る</button>
+			<button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "select"])?>'">戻る</button>
 		</form>
 	</div>
 </div>

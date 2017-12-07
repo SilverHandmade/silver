@@ -35,19 +35,22 @@
 				</thead>
 			</table>
 			<?php foreach ($reqlist as $req) : ?>
-				<div>
-						<a href="<?= $this->Url->build(["controller" => "request","action" => "edit",'id' => $req['id']])?>">
-							<div id="rtitle" class="col-md-6">
-								<?php echo $req['title']?>
-							</div></a>
-							<div id="rfaci_name" class="col-md-6">
-								<p><?php echo $req['facilities']['name']?></p>
-							</div>
+
+				<div class="row panel req_li">
+					<a href="<?= $this->Url->build(["controller" => "request","action" => "edit",'id' => $req['id']])?>">
+						<div id="rtitle" class="col-md-6">
+							<?php echo $req['title']?>
+						</div>
+						<div id="rfaci_name" class="col-md-6">
+							<p><?php echo $req['facilities']['name']?></p>
+						</div>
+					</a>
 				</div>
+
 			<?php endforeach; ?>
-			<button type="button" class="button" onclick="location.href='/silver/request/'">戻る</button>
+			<button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "index"])?>'">戻る</button>
 			<br>
-			<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+			<button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button>
 		<?php endif; ?>
 	</div>
 </div>

@@ -292,9 +292,6 @@ class RequestController extends AppController
 	}
 
 
-
-
-
 		public function select(){
 			$_SESSION['edit_flg'] = 0;
 
