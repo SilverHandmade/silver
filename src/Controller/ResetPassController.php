@@ -30,25 +30,20 @@ class ResetPassController extends AppController
     {
 		// 返された理由の表示
 		if($this->request->is('post')) {
-			if($_POST['flg'] == 1){
+			if($this->request->getData('flg') == 1){
 				$this->Flash->error(__('ドメインが入力されていません'));
-			}elseif ($_POST['flg'] == 2) {
+			}elseif ($this->request->getData('flg') == 2) {
 				$this->Flash->error(__('リンクの消費期限が切れています'));
 				// UPDATE `unique_ids` SET sendtime='2017-12-07 14:07:46' WHERE user_id = 'id入力'
+			}
 		}
-	}
-
-
-		// $timestamp = strtotime( "+15 minute" , $today ) ;
-
-
 
 	}
 
 	public function respass()
 	{
 		// @があれば↑(進む)、なければ↓(返す)
-		if(strpos($_POST['email'],'@') !== false ){
+		if(strpos($this->request->getData('email'),'@') !== false ){
 			$link = 'action="https://sh-ml.mybluemix.net/mail"';
 			$link.= 'target="form1">';
 		}else {
@@ -66,7 +61,7 @@ class ResetPassController extends AppController
 		$Tb = TableRegistry::get('users');
 		$query = $Tb->find();
 		$ret = $query->select(['id','cnt' => $query->func()->count('*')])
-					->where(['email'=>$_POST['email']])->first();
+					->where(['email'=>$this->request->getData('email')])->first();
 		// 存在すれば、再設定用テーブルに挿入
 		if($ret->cnt >= 1){
 			$Uid = $ret->id;
@@ -114,7 +109,7 @@ class ResetPassController extends AppController
 				echo "リンクが正しくありません1";
 			}
 		}elseif ($this->request->is('post')) {
-			$uuid = $_POST['uu'];
+			$uuid = $this->request->getData('uu');
 			$Tb = TableRegistry::get('unique_ids');
 			$query = $Tb->find();
 			$ret = $query->select(['user_id','sendtime'])
@@ -130,9 +125,9 @@ class ResetPassController extends AppController
 				echo $sa_flg = 2;
 			}
 			$this->set("sa", $sa_flg);
-			$Uid = $_POST['id'];
-			$Pas = $_POST['password'];
-			$RPas = $_POST['repassword'];
+			$Uid = $this->request->getData('id');
+			$Pas = $this->request->getData('password');
+			$RPas = $this->request->getData('repassword');
 			$this->set("b", $Uid);
 			// 上から数字・小文字・大文字があるか
 			$inte = preg_match("/[0-9]/",$Pas);
@@ -143,7 +138,7 @@ class ResetPassController extends AppController
 			if($sa_flg == 1){
 				// 両方が空白でない & 再入力と同じ & 文字数が6~20 & 文字種が2種以上 &15分以内
 				if(($Pas <> "" && $RPas <> "") && $Pas == $RPas && strlen($Pas) >=6 && strlen($Pas) <=20 && $mozisyu >= 2){
-					$HHs = $this->PassHash->hash($_POST['password']);
+					$HHs = $this->PassHash->hash($this->request->getData('password'));
 					$query = ConnectionManager::get('default');
 					$query->update('users',['password' => $HHs],['id' => $Uid]);
 					$Tb = TableRegistry::get('unique_ids');
