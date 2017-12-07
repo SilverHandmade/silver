@@ -1,8 +1,8 @@
 <?= $this->Html->css('/private/css/kota/resetpass.css') ?>
-<?php if ($this->request->is('get')) { ?>
+<?php if($sa == 1){?>
 <div id="form">
 	<p class="form-title">パスワード再設定</p>
-	<form action="http://localhost/silver/resetpass/mailchange" method="post">
+	<form action="http://localhost/silver/resetpass/passchange?uu=<?php echo $_GET['uu'];?>" method="POST">
 		<p class="font-color">パスワード</p>
 		<p class="password">
 			<input type="password" name="password" value="">
@@ -17,17 +17,12 @@
 		<input type="hidden" name="uu" value="<?php echo $_GET['uu'];?>">
 	</form>
 </div>
-<?php }elseif ($this->request->is('post')) { ?>
-	<div id="form">
-			<p>パスワードが再設定されました</p>
-	</div>
-<?php }elseif ($_POST['flg'] = 1) { ?>
-	<div id="form">
-			<?php echo $temp; ?>
-			<!-- <p>パスワードが再設定されました</p> -->
-	</div>
-<?php }else { ?>
-	<div>
-		<p>リンクが正しくありません</p>
-	</div>
-<?php } ?>
+<p align="center">数字・小文字・大文字のうち2種類以上で、6～20文字のパスワードを設定してください。</p>
+
+<?php }else {?>
+	<body onload="document.F.submit();">
+		<form METHOD="POST"  name="F" action="<?= $this->Url->build(["controller" => "resetpass","action" => "mailpass"]);?>">
+			<input type="hidden" name="flg" value="2">
+		</form>
+	</body>
+<?php }?>
