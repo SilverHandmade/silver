@@ -56,4 +56,8 @@ class VideoController extends AppController
 		$geVideo = $this->Movies->get($this->request->getParam('id'));
 		$this->set('video', $geVideo->toArray());
 	}
+	public function upload()
+	{
+		
+	}
 }

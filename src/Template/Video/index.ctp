@@ -88,13 +88,13 @@
 
 	<div class="row">
 		<div class="col-md-6">
-			<button class="btn btn-primary" type="button" id="ModeTogle">
+			<button class="btn btn-info" type="button" id="ModeTogle">
 				<span class="glyphicon glyphicon-th-large"></span>
 				<span class="glyphicon glyphicon-th-list"></span>
 			</button>
 		</div>
 		<div class="col-md-6 right">
-			<button type="button" class="btn btn-info right">
+			<button type="button" class="btn btn-primary right">
 				アップロード
 				<span class="glyphicon glyphicon-cloud-upload"></span>
 			</button>
@@ -152,3 +152,4 @@
 		<?php endforeach; ?>
 	</div>
 </div>
+<button type="button"class="btn btn-danger">danger</button>
