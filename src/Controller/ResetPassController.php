@@ -77,7 +77,7 @@ class ResetPassController extends AppController
 		}
 	}
 
-	public function mailchange()
+	public function passchange()
 	{
 		// GETにデータがあれば(メールから来ている)
 		if ($this->request->is('get')) {

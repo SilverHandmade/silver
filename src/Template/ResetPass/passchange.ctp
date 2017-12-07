@@ -1,7 +1,7 @@
 <?= $this->Html->css('/private/css/kota/resetpass.css') ?>
 <div id="form">
 	<p class="form-title">パスワード再設定</p>
-	<form action="http://localhost/silver/resetpass/mailchange?uu=<?php echo $_GET['uu'];?>" method="POST">
+	<form action="http://localhost/silver/resetpass/passchange?uu=<?php echo $_GET['uu'];?>" method="POST">
 		<p class="font-color">パスワード</p>
 		<p class="password">
 			<input type="password" name="password" value="">
