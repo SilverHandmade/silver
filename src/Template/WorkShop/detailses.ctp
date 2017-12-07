@@ -1,17 +1,16 @@
 <div　class="row">
 	<h2>詳細画面</h2>
 	<table id="detailtbl" align="" class="table">
-		<form action="" method="POST" >
-			<?php if ($pdt[0]['product_id'] != ""): ?>
-			<tr>
-				<th class="center"><p>画像：</p></th>
-				<td><p><?php echo $pdt[0]['photo_url'] ?></p></td>
-			</tr>
-				<tr>
-					<th class="center"><p>説明：</p></th>
-					<td><p><?php echo $pdt[0]['description'] ?></p></td>
-				</tr>
-			<?php endif; ?>
-		</form>
+		<tr>
+			<td colspan="3"><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
+		</tr>
+				<?php foreach ($detailses as $key) : ?>
+					<tr align="center">
+								<td colspan="3"><div align="center"><p><b>手順<?php echo $key['ren'] + 1 ?></b></p></div>
+								<div align="center"><img src="<?= $this->Url->image('workshop/'.$key['photo_url'])?>" width="500" height="325"></div>
+								<div align="center"><p><?php echo $key['description'] ?></p></div>
+								</td>
+					</tr>
+				<?php endforeach; ?>
 	</table>
 </div>

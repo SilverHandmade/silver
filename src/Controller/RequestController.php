@@ -261,7 +261,32 @@ class RequestController extends AppController
 			  exit();
 			}
 
-			//以下依頼詳細情報の取得
+
+
+			if ($this->request->is('post')){
+				//施設情報の取得
+				$query = $this->Facilities->find()
+				->where(['id ='=>$_POST['request_moto_id']]);
+				$faci_info = $query->all()->ToArray();
+				$this->set(compact('faci_info'));
+
+				//依頼情報の取得
+				$query = $this->Requests->find()
+				->where(['id ='=>$_POST['request_id']]);
+				$req_info = $query->all()->ToArray();
+				$this->set(compact('req_info'));
+
+				//ワークショップの取得
+				$query = $this->Request_detailses->find()
+				->where(['request_id ='=>$_POST['request_id']]);
+				$pdt_info = $query->all()->ToArray();
+				$this->set(compact('pdt_info'));
+				$_SESSION['id']=$req_info[0]['id'];
+
+			}
+
+
+			//TOPページから詳細へ飛んだ場合の処理
 			$get_id = $this->request->getParam('id');
 
 			//依頼情報の取得

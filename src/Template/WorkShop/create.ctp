@@ -17,7 +17,6 @@
 
 				<div class="col-md-3">
 					<div class="div-btn">
-						<input type="file" class="input-file none file" name="upload" id="G_upload" accept="image/*">
 						<div class="button">
 							<button type="button" name="upload" id="G_upload" class="button">画像選択</button>
 						</div>
