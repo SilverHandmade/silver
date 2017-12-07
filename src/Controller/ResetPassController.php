@@ -30,19 +30,24 @@ class ResetPassController extends AppController
     {
 		// 返された理由の表示
 		if($this->request->is('post')) {
-			if($_POST['flg'] = 1){
-				$err= '<div id="form">';
-				$err.= '<p>ドメインが入力されていません</p>';
-				$err.= '</div>';
-				$this->set("err", $err);
-			}
+			if($_POST['flg'] == 1){
+				$this->Flash->error(__('ドメインが入力されていません'));
+			}elseif ($_POST['flg'] == 2) {
+				$this->Flash->error(__('リンクの消費期限が切れています'));
 		}
+	}
+
+
+		// $timestamp = strtotime( "+15 minute" , $today ) ;
+
+
+
 	}
 
 	public function respass()
 	{
 		// @があれば↑(進む)、なければ↓(返す)
-		if(strpos($_POST['email'],'@') !== false){
+		if(strpos($_POST['email'],'@') !== false ){
 			$link = 'action="https://sh-ml.mybluemix.net/mail"';
 			$link.= 'target="form1">';
 		}else {
@@ -85,9 +90,19 @@ class ResetPassController extends AppController
 			$uuid = $_GET['uu'];
 			$Tb = TableRegistry::get('unique_ids');
 			$query = $Tb->find();
-			$ret = $query->select(['user_id','cnt' => $query->func()->count('*')])
+			$ret = $query->select(['user_id','cnt' => $query->func()->count('*'),'sendtime'])
 	        			->where(['uuid'=> $uuid ])->first();
-			// echo $ret->user_id;
+			// 時間計算(15分)
+			$tmp = $ret->sendtime;
+			$DBtime = date("YmdHis", strtotime($ret->sendtime));
+			$NowTime = date("YmdHis");
+			$sa = $NowTime - $DBtime;
+			IF($sa <= 1500){
+				echo $sa_flg = 1;
+			}else {
+				echo $sa_flg = 2;
+			}
+			$this->set("sa", $sa_flg);
 			// 1つ以上あればpostようにset
 			if(isset($ret->cnt)){
 				$Uid = $ret->user_id;
@@ -98,6 +113,22 @@ class ResetPassController extends AppController
 				echo "リンクが正しくありません1";
 			}
 		}elseif ($this->request->is('post')) {
+			$uuid = $_POST['uu'];
+			$Tb = TableRegistry::get('unique_ids');
+			$query = $Tb->find();
+			$ret = $query->select(['user_id','sendtime'])
+	        			->where(['uuid'=> $uuid ])->first();
+			// 時間計算(15分)
+			$tmp = $ret->sendtime;
+			$DBtime = date("YmdHis", strtotime($ret->sendtime));
+			$NowTime = date("YmdHis");
+			$sa = $NowTime - $DBtime;
+			IF($sa <= 1500){
+				echo $sa_flg = 1;
+			}else {
+				echo $sa_flg = 2;
+			}
+			$this->set("sa", $sa_flg);
 			$Uid = $_POST['id'];
 			$Pas = $_POST['password'];
 			$RPas = $_POST['repassword'];
@@ -108,24 +139,27 @@ class ResetPassController extends AppController
 			$lag = preg_match("/[A-Z]/",$Pas);
 			// 文字種が何種類あるか
 			$mozisyu = $inte + $lit + $lag;
+			if($sa_flg == 1){
+				// 両方が空白でない & 再入力と同じ & 文字数が6~20 & 文字種が2種以上 &15分以内
+				if(($Pas <> "" && $RPas <> "") && $Pas == $RPas && strlen($Pas) >=6 && strlen($Pas) <=20 && $mozisyu >= 2){
+					$HHs = $this->PassHash->hash($_POST['password']);
+					$query = ConnectionManager::get('default');
+					$query->update('users',['password' => $HHs],['id' => $Uid]);
+					$Tb = TableRegistry::get('unique_ids');
+					$query = $Tb->query();
+					$query->delete()
+					->where([
+						'user_id' => $Uid,
+					])
+					->execute();
+					$this->Flash->error(__('パスワードが変更されました。'));
+				}else {
+					$this->Flash->error(__('入力が正しくありません。再度入力してください。'));
+					// $this->set("temp", $temp);
 
-			// 両方が空白でない & 再入力と同じ & 文字数が6~20 & 文字種が2種以上
-			if(($Pas <> "" && $RPas <> "") && $Pas == $RPas && strlen($Pas) >=6 && strlen($Pas) <=20 && $mozisyu >= 2){
-				$HHs = $this->PassHash->hash($_POST['password']);
-				$query = ConnectionManager::get('default');
-				$query->update('users',['password' => $HHs],['id' => $Uid]);
-				$Tb = TableRegistry::get('unique_ids');
-				$query = $Tb->query();
-				$query->delete()
-				->where([
-					'user_id' => $Uid,
-				])
-				->execute();
-				$this->Flash->error(__('パスワードが変更されました。'));
+				}
 			}else {
-				$this->Flash->error(__('入力が正しくありません。再度入力してください。'));
-				// $this->set("temp", $temp);
-
+				$this->Flash->error(__('リンクの消費期限が切れています＾＾'));
 			}
 		}else {
 			echo "リンクが正しくありません2";

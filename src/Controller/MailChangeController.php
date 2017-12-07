@@ -41,6 +41,38 @@ public function mailsend()
 		// UUIDの作成
 		$uuid = Uuid::uuid4();
 		$this->set("a", $uuid);
+
+		$session = $this->request->session();
+		$Uid = $session->read('id');
+		$Tb = TableRegistry::get('users');
+		$query = $Tb->find();
+		$ret = $query->select(['id','cnt' => $query->func()->count('*'),'email'])
+					->where(['id'=> $Uid])->first();
+
+		$cnt = 1;
+		$Tb = TableRegistry::get('change_mails');
+		$query = $Tb->find();
+		$ret_cnt = $query->select(['change_id','cnt' => $query->func()->count('*'),'email'])
+					->where(['id'=> $Uid])->first();
+		if($ret_cnt->cnt >= 1){
+			$cnt = $ret_cnt->cnt + 1;
+		}
+
+
+		$Tb = TableRegistry::get('change_mails');
+		$query = $Tb->query();
+		$query->insert([
+			'user_id','change_id','m_mail','c_mail','uuid'
+		])
+		->values([
+			'user_id' => $Uid,
+			'change_id' => $cnt,
+			'm_mail' => $ret->email,
+			'c_mail' => ,
+			'uuid' => $uuid
+		])
+		->execute();
+
 	}
 
 

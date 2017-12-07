@@ -11,7 +11,6 @@
 <a name="" href="<?= $this->Url->build(["controller" => "mailchange","action" => "mailsend"])?>">
 <span style="border-bottom: solid 1px;">こちら</span></a></p>
 
-
 <iframe name="form1" src="https://sh-ml.mybluemix.net/change"
 	width="400" height="100" style="border:none;"></iframe>
 </body>
