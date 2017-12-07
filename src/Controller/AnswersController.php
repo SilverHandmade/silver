@@ -74,42 +74,40 @@ class AnswersController extends AppController
 	}
 
 	public function create(){
-		if ($this->request->is('post')){
+		//施設情報の取得
+		$query = $this->witses->find();
+		$query->select(['id' => $query->func()->max('id')]);
+		$detailId = $query->all()->ToArray();
+		$this->set(compact('detailId'));
 
-			//施設情報の取得
-			$query = $this->witses->find()
-			->select(['max(id)']);
-			$detailId = $query->all()->ToArray();
-			$this->set(compact('detailId'));
+		$incId = $detailId[0]['id'] + 1;
+		$sessionId = $_SESSION['Auth']['User']['id'];
+		$nowdate = date("Y-m-d H:i:s");
+		// $postUid = $_POST[''];
 
-
-
-
-			if($this->request->is('post')) {
-
-				$posttitle = $_POST['titletxt'];
-				$postcontent = $_POST['contenttxt'];
-				$sessionId = $_SESSION['Auth']['User']['id'];
-				$nowdate = date("Y-m-d H:i:s");
-				// $postUid = $_POST[''];
-			}
-
-				$query = $this->witses->query();
-				$query->insert([
-					'id','title','content','user_id','Postdate'
-				])
-				->values([
-					'id' => '1007',
-					'title' => $posttitle,
-					'content' => $postcontent,
-					'user_id' => $sessionId,
-					'Postdate' => $nowdate
-				])
-				->execute();
-				// id 知恵ID title タイトル content お悩み内容 user_id 投稿者 Postdate 投稿日 kan_flg 完了フラグ Del_flg
-
-				$this->redirect(['controller' => 'answers', 'action' => 'index']);
-
+		if ($this->request->is('post')) {
+			$posttitle = $_POST['titletxt'];
+			$postcontent = $_POST['contenttxt'];
 		}
+
+		if (!empty($_POST['flg'])) {
+			$query = $this->witses->query();
+			$query->insert([
+				'id','title','content','user_id','Postdate'
+			])
+			->values([
+				'id' => $incId,
+				'title' => $posttitle,
+				'content' => $postcontent,
+				'user_id' => $sessionId,
+				'Postdate' => $nowdate
+			])
+			->execute();
+		}
+
+		// id 知恵ID title タイトル content お悩み内容 user_id 投稿者 Postdate 投稿日 kan_flg 完了フラグ Del_flg
+
+		// $this->redirect(['controller' => 'answers', 'action' => 'index']);
+
 	}
 }

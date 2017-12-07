@@ -19,8 +19,7 @@ $(function(){
 	});
 });
 $(function(){
-	$('#answerbtn').bind("click",function(){
-		var answertxt = document.getElementById( "answertxt" ).value;
-		$('#appendtable').append('<tr><td value="">' + answertxt + '</td></tr>');
+	$('h1').replaceWith(function() {
+		$(this).replaceWith("<p>"+$(this).text()+"</p>")
 	});
 });

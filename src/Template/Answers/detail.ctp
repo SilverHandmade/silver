@@ -28,7 +28,7 @@
 <table>
 	<tr>
 		<input type="text" id="answertxt" value="">
-		<input type="button" id="answerbtn" value="回答する">
+		<input type="button" id="answerbtn" value="回答する" onclick="insertRow('sample1_table')">
 	</tr>
 </table>
 
@@ -41,3 +41,46 @@
 <table id="appendtable">
 
 </table>
+<script>
+/**
+ * 行追加
+ */
+function insertRow(id) {
+    // テーブル取得
+    var table = document.getElementById(id);
+    // 行を行末に追加
+    var row = table.insertRow(-1);
+    // セルの挿入
+    var cell1 = row.insertCell(-1);
+    var cell2 = row.insertCell(-1);
+    var cell3 = row.insertCell(-1);
+    // ボタン用 HTML
+    var button = '<input type="button" id="editbtn" value="行削除" onclick="deleteRow(this)" />';
+
+    // 行数取得
+    var row_len = table.rows.length;
+
+    // セルの内容入力
+    cell1.innerHTML = row_len + "-" + 1;
+    cell2.innerHTML = row_len + "-" + 2;
+	cell3.innerHTML = button;
+}
+function deleteRow(obj) {
+    // 削除ボタンを押下された行を取得
+    tr = obj.parentNode.parentNode;
+    // trのインデックスを取得して行を削除する
+    tr.parentNode.deleteRow(tr.sectionRowIndex);
+}
+
+</script>
+<table id="sample1_table">
+    <tr>
+        <td nowrap>1-1</td>
+        <td nowrap>1-2</td>
+		<td nowrap>
+			<input type="button" id="editbtn" value="行削除"onclick="deleteRow(this)" />
+		</td>
+    </tr>
+</table>
+
+<h2>テスト</h2>
