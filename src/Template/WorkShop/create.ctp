@@ -18,7 +18,7 @@
 				<div class="col-md-3">
 					<div class="div-btn">
 						<div class="button">
-							<button type="button" name="upload" id="G_upload" class="button">画像選択</button>
+							<button type="button" name="upload" id="G_upload" class="btn btn-info">画像選択</button>
 						</div>
 					</div>
 					<span id="fake_input_file" class="margin-left span">NOT FILE</span>
@@ -33,14 +33,14 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<button class="btn btn-default" type="button" id="add">
+				<button class="btn btn-success" type="button" id="add">
 				<span class="glyphicon glyphicon-plus-sign" name="add"></span>
 				</button>
 			</div>
 		</div>
 		<div class="row right padding">
-			<button type="submit" name="button" class="button-submit" id="Trans" onfocus="this.blur();">送信</button>
-			<button type="button" name="search-back" id="back" class="button-submit" onfocus="this.blur();">検索画面へ</button>
+			<button type="submit" name="button" class="btn btn-success" id="Trans" onfocus="this.blur();">送信</button>
+			<button type="button" name="search-back" id="back" class="btn btn-primary" onfocus="this.blur();">検索画面へ</button>
 		</div>
 	</form>
 </div>

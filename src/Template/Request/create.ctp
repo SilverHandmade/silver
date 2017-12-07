@@ -19,23 +19,23 @@ var test = <?php echo $results; ?>;
 			<form action="/silver/request/proof" method="post">
 
 				<p class="font-p">制作物タイトル</p>
-	<input type="text" id="reqT" name="requestT" maxlength="40" required value=<?php if ($_SESSION['create_flg'] == 1) {
-		echo $_SESSION['request']['title'];} ?> >
-	<p class="font-p">制作個数</p>
-	<div class="left">
-		<input type="number" id="reqN" name="requestN" min="1" max="999" required value=<?php if ($_SESSION['create_flg'] == 1) {
-			echo $_SESSION['request']['number'];}else{ echo 1;} ?>>
-	</div>
-	<p class="font-p">ワークショップID</p>
-	<input type="text" id="wsID" name="wsID" autocomplete="on" value=<?php if ($_SESSION['create_flg'] == 1) {
-		echo $_SESSION['request']['wsid'];} ?>>
-	<p class="font-p">締切日</p>
-	<input type="date" id="reqD" name="requestD" required value=<?php if ($_SESSION['create_flg'] == 1) {
-		echo $_SESSION['request']['date'];}?>>
+				<input type="text" id="reqT" name="requestT" maxlength="40" required value=<?php if ($_SESSION['create_flg'] == 1) {
+					echo $_SESSION['request']['title'];} ?> >
+				<p class="font-p">制作個数</p>
+				<div class="left">
+					<input type="number" id="reqN" name="requestN" min="1" max="999" required value=<?php if ($_SESSION['create_flg'] == 1) {
+					echo $_SESSION['request']['number'];}else{ echo 1;} ?>>
+				</div>
+				<p class="font-p">ワークショップID</p>
+				<input type="text" id="wsID" name="wsID" autocomplete="on" value=<?php if ($_SESSION['create_flg'] == 1) {
+					echo $_SESSION['request']['wsid'];} ?>>
+				<p class="font-p">締切日</p>
+				<input type="date" id="reqD" name="requestD" required value=<?php if ($_SESSION['create_flg'] == 1) {
+					echo $_SESSION['request']['date'];}?>>
 
-	<div class="right">
-		<button type="submit" class="button" name="createReq" onclick="return nextpage()">次へ</button>
-		<button type="button" class="button" onclick="location.href='/silver/request'">戻る</button>
+				<div class="right">
+					<button type="submit" class="btn btn-primary" name="createReq" onclick="return nextpage()">次へ</button>
+					<button type="button" class="btn btn-primary" onclick="location.href='/silver/request'">戻る</button>
 				</div>
 			</form>
 		</div>

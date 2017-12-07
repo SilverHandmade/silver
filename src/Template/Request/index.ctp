@@ -9,10 +9,16 @@
 
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
-		<form class="" action="" method="GET" onsubmit="doSomething();return false;">
+		<h2>依頼先一覧<h2>
+		<form class="form-inline" action="" method="GET" onsubmit="doSomething();return false;">
 			<input type="text" name="dummy" style="display:none;"/>
 		<?php if ($user_faci[0]['facility_classes_id'] == 1): ?>
-			<input type="text" id="fsearch" name="search" value="" class="search"/><button type="button" id="searchbutton" name="sbutton" class="submit-button">検索</button>
+			<div class="form-group">
+				<div class="input-group">
+					<input type="text" id="fsearch" name="search" value="" class="form-control"/>
+					<button type="button" id="searchbutton" name="sbutton" class="btn btn-success">検索</button>
+				</div>
+			</div>
 		</form>
 
 		<h2>依頼先一覧<h2>

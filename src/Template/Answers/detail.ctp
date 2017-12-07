@@ -1,5 +1,8 @@
-
 <?php
+	$this->start('css');
+	echo $this->Html->css('/private/css/kota/answers.css');
+	$this->end();
+
 	$this->start('script');
 		echo $this->Html->script('/private/js/answer/answer.js');
 	$this->end();

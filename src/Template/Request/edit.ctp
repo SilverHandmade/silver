@@ -3,6 +3,10 @@
 	echo $this->Html->script('/private/js/request/request.js');
 	$this->end();
 
+	$this->start('css');
+	echo $this->Html->css('/private/css/kota/request.css');
+	$this->end();
+
 ?>
 
 
@@ -11,7 +15,7 @@
 	<div class="row center">
 		<h2>修正依頼選択<h2>
 		<form class="" action="" method="POST">
-			<button type="submit" id="cancel" name="Reqcancelbtn" class="submit-button">依頼取り消し</button>
+			<button type="submit" id="cancel" name="Reqcancelbtn" class="btn btn-primary ">依頼取り消し</button>
 
 
 			<p>制作物タイトル</p>
