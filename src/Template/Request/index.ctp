@@ -26,15 +26,10 @@
 			</thead>
 			<?php foreach ($facilities as $facility) : ?>
  			<tbody>
- 				<tr>
- 					<form action="/silver/request/create" method="POST">
- 						<input type=hidden name=facility_id value=<?php echo $facility['id']?>>
- 						<input type=hidden name=facility_name value=<?php echo $facility['name']?>>
- 						<input type=hidden name=facility_address value=<?php echo $facility['address']?>>
+ 				<tr class="panel">
  						<td id="fname">
- 							<button type="submit" class="typesubmit"><?php echo $facility['name']?></button>
+							<a href="<?= $this->Url->build(["controller" => "request","action" => "create",'id' => $facility['id']])?>"><?php echo $facility['name']?></a>
  						</td>
- 					</form>
  					<td id="faddress" align="justify">
  						<?php echo $facility['address']?>
   					</td>
@@ -45,11 +40,11 @@
 		</table>
 
 		<br><br>
-				<button type="button" class="button" onclick="location.href='/silver/request/select'">依頼編集・取り消し画面はこちら</button><br>
-				<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+				<button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "select"])?>'">依頼編集・取り消し画面はこちら</button><br>
+				<button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button>
 			<?php else: ?>
 				<h2>介護施設の方は依頼の作成は出来ません<h2>
-				<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+				<button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button>
 			<?php endif; ?>
 	</div>
 </div>

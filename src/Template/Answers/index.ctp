@@ -32,8 +32,8 @@
 </table>
 <?php foreach ($witsesArray as $witseslist) {?>
 <tbody>
-	<div class="indexlist">
-		<form class="" action="detail" method="post">
+	<div class="indexlist panel">
+		<form class="" action="answers/detail" method="post">
 			<!-- <li id="indexlist" style="list-style:none;"> -->
 			<input type="hidden" name="hidetitle" value="<?php echo $witseslist['title']?>">
 			<input type="hidden" name="hidecontent" value="<?php echo $witseslist['content'];?>">
@@ -56,4 +56,4 @@
 	</div>
 </tbody>
 <?php } ?>
-<input type="button" onclick="location.href='create'" name="" value="投稿">
+<input type="button" onclick="location.href='answers/create'" name="" value="投稿">

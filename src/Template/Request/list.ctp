@@ -11,7 +11,7 @@
  ?>
 
 
-<div class="col-md-offset-2 col-md-8">
+<div class="col-md-12">
 	<div class="row center">
 		<h2>依頼一覧<h2>
 		<form class="" action="" method="GET" onsubmit="doSomething();return false;">
@@ -32,25 +32,21 @@
 			<?php foreach ($reqs as $req) : ?>
 
 			<tbody>
-				<tr>
-					<form action="/silver/request/detail" method="POST" >
-						<input type=hidden name=request_id value=<?php echo $req['id']?>>
-						<input type=hidden name=request_moto_id value=<?php echo $req['F_moto_id']?>>
+				<tr class="panel">
 						<td id="rtitle">
-							<button type="submit" class="submit-button"><?php echo $req['title']?></button>
+							<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $req['id']])?>"><?php echo $req['title']?></a>
 						</td>
 						<td id="rfaci_name">
 							<p><?php echo $req['facilities']['name']?></p>
 						</td>
 						<td id="req_state">
 							<?php if ($req['ju_flg'] != NULL): ?>
-								<p>受注中</p>
+								<p class="p-jutyu">受注中</p>
 							<?php endif; ?>
 							<?php if ($req['ju_flg'] == NULL): ?>
 								<p>受注可能</p>
 							<?php endif; ?>
 						</td>
-					</form>
 				</tr>
 
 			<?php endforeach; ?>
@@ -62,39 +58,33 @@
 			<?php else: ?>
 				<thead>
 					<tr>
-						<th>件名</th>
-						<th>依頼先施設名</th>
-						<th>依頼状況</th>
+						<th width="400">件名</th>
+						<th width="500">依頼先施設名</th>
+						<th width="120">依頼状況</th>
 					</tr>
 				</thead>
 				<?php foreach ($reqs_hoiku as $req) : ?>
-
 				<tbody>
-					<tr>
-						<form action="/silver/request/detail" method="POST" >
-							<input type=hidden name=request_id value=<?php echo $req['id']?>>
-							<input type=hidden name=request_moto_id value=<?php echo $req['F_moto_id']?>>
+					<tr class="panel">
 							<td id="rtitle">
-								<button type="submit" class="submit-button"><?php echo $req['title']?></button>
+								<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $req['id']])?>"><?php echo $req['title']?></a>
 							</td>
 							<td id="rfaci_name">
 								<p><?php echo $req['facilities']['name']?></p>
 							</td>
 							<td id="req_state">
 								<?php if ($req['ju_flg'] != NULL): ?>
-									<p>受注中</p>
+									<p class="p-jutyu">受注中</p>
 								<?php endif; ?>
 								<?php if ($req['ju_flg'] == NULL): ?>
 									<p>依頼中</p>
 								<?php endif; ?>
 							</td>
-
-						</form>
 					</tr>
 
 				<?php endforeach; ?>
 				<tr>
-					<td colspan="3"><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
+					<td colspan="3"><button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button></td>
 				</tr>
 			<?php endif; ?>
 			</tbody>

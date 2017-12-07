@@ -40,13 +40,10 @@ class RequestController extends AppController
 	$this->set(compact('user_faci'));
 
 
-
-
       $query = $this->Facilities->find()
       ->select(['id','name','address'])
       ->where(['facility_classes_id ='=>2]);
       $facilities = $query->all()->ToArray();
-      $jsonResults = json_encode($facilities);
       $this->set(compact('facilities'));
 	  $_SESSION['select_flg'] = 0;
 	  $_SESSION['create_flg'] = 0;
@@ -54,24 +51,31 @@ class RequestController extends AppController
 	  unset($_SESSION['req_edit']);
 	  unset($_SESSION['p_detail']);
 	  unset($_SESSION['sel_id']);
+	  unset($_SESSION['facility']);
+	  unset($_SESSION['request']);
     }
 
 
     public function create()
     {
-		if ($this->request->is('post')){
+		$get_id = $this->request->getQuery('id');
 			if ($_SESSION['select_flg'] == 0) {
 				//セッションに依頼先データを保存する
-				$_SESSION['facility']['facility_id'] = $_POST['facility_id'];
-				$_SESSION['facility']['facility_name'] = $_POST['facility_name'];
-				$_SESSION['facility']['facility_address'] = $_POST['facility_address'];
+				$query = $this->Facilities->find()
+				->select(['id','name','address'])
+				->where(['id ='=>$get_id]);
+				$facilities = $query->all()->ToArray();
+				$this->set(compact('facilities'));
+				$_SESSION['facility']['facility_id'] = $facilities[0]['id'];
+				$_SESSION['facility']['facility_name'] = $facilities[0]['name'];
+				$_SESSION['facility']['facility_address'] = $facilities[0]['address'];
 				$_SESSION['select_flg'] = 1;
 			}
 
-		}
+	}
 
 
-    }
+
 
 
 	public function proof(){
@@ -122,7 +126,6 @@ class RequestController extends AppController
 			//ID連番作成
 			$req_id=$this->MakeId9->id9('req');
 
-
 			//wsidが入力されているとき
 			if (isset($_POST['wsID_con'])) {
 				$wsid = $_POST['wsID_con'];
@@ -146,9 +149,6 @@ class RequestController extends AppController
 				$wsid = null;
 			}
 
-
-
-
 			$moto_id = $_SESSION['Auth']['User']['facilities_id'];
 			$saki_id = $_SESSION['facility']['facility_id'];
 			$title = $_POST['requestT_con'];
@@ -171,8 +171,8 @@ class RequestController extends AppController
 
 
 			echo "データが送信されました";
-			//本番稼働時には下記のURLをトップページのものへ変更する
-			header( "Location: http://localhost/silver/" ) ;
+
+			header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' ) ;
 			$this->Flash->success(__('依頼データが送信されました。'));
 			unset($_SESSION['facility']);
 			unset($_SESSION['request']);
@@ -233,15 +233,15 @@ class RequestController extends AppController
 			$user_faci = $query->all()->ToArray();
 			$this->set(compact('user_faci'));
 
-
+			//依頼受注ボタンが押されたとき
 			if (isset($_POST['order'])) {
 				$query = $this->Requests->query();
 				$query->update()
 			  ->set(['ju_flg' => 1])
 			  ->where(['id' => $_SESSION['id']])
 			  ->execute();
-			  //本番稼働時には下記のURLをトップページのものへ変更する
-			  header( "Location: http://localhost/silver/" );
+
+			  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' );
 			  unset($_SESSION['id']);
 			  $this->Flash->success('依頼を受けました。');
 			  exit();
@@ -254,70 +254,42 @@ class RequestController extends AppController
 			  ->set(['kan_flg' => 1])
 			  ->where(['id' => $_SESSION['id']])
 			  ->execute();
-			  //本番稼働時には下記のURLをトップページのものへ変更する
-			  header( "Location: http://localhost/silver/" );
+
+			  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' );
 			  unset($_SESSION['id']);
 			  $this->Flash->success('依頼が完了されました。');
 			  exit();
 			}
 
-
-
-			if ($this->request->is('post')){
-
-				//施設情報の取得
-				$query = $this->Facilities->find()
-				->where(['id ='=>$_POST['request_moto_id']]);
-				$faci_info = $query->all()->ToArray();
-				$this->set(compact('faci_info'));
-
-				//依頼情報の取得
-				$query = $this->Requests->find()
-				->where(['id ='=>$_POST['request_id']]);
-				$req_info = $query->all()->ToArray();
-				$this->set(compact('req_info'));
-
-				//ワークショップの取得
-				$query = $this->Request_detailses->find()
-				->where(['request_id ='=>$_POST['request_id']]);
-				$pdt_info = $query->all()->ToArray();
-				$this->set(compact('pdt_info'));
-				$_SESSION['id']=$req_info[0]['id'];
-
-			}
-
-
-			//TOPページから詳細へ飛んだ場合の処理
+			//以下依頼詳細情報の取得
 			$get_id = $this->request->getParam('id');
-			if ($get_id != "") {
-				//依頼情報の取得
-				$query = $this->Requests->find()
-				->where(['id'=>$get_id]);
-				$getreq_info = $query->all()->ToArray();
-				$this->set(compact('getreq_info'));
+
+			//依頼情報の取得
+			$query = $this->Requests->find()
+			->where(['id'=>$get_id]);
+			$req_info = $query->all()->ToArray();
+			$this->set(compact('req_info'));
 
 				//施設情報の取得
-				$query = $this->Facilities->find()
-				->where(['id ='=>$getreq_info[0]['F_moto_id']]);
-				$faci_info = $query->all()->ToArray();
-				$this->set(compact('faci_info'));
-
-				//依頼情報の取得
-				$query = $this->Requests->find()
-				->where(['id ='=>$getreq_info[0]['id']]);
-				$req_info = $query->all()->ToArray();
-				$this->set(compact('req_info'));
+				if ($_SESSION['Auth']['User']['facility_classes_id'] == 2) {
+					$query = $this->Facilities->find()
+					->where(['id ='=>$req_info[0]['F_moto_id']]);
+					$faci_moto_info = $query->all()->ToArray();
+					$this->set(compact('faci_moto_info'));
+				}else {
+					$query = $this->Facilities->find()
+					->where(['id ='=>$req_info[0]['F_saki_id']]);
+					$faci_saki_info = $query->all()->ToArray();
+					$this->set(compact('faci_saki_info'));
+				}
 
 				//ワークショップの取得
 				$query = $this->Request_detailses->find()
-				->where(['request_id ='=>$getreq_info[0]['id']]);
+				->where(['request_id ='=>$req_info[0]['id']]);
 				$pdt_info = $query->all()->ToArray();
 				$this->set(compact('pdt_info'));
 				$_SESSION['id']=$req_info[0]['id'];
-			}
-
-
-		}
+	}
 
 
 		public function select(){
@@ -353,8 +325,8 @@ class RequestController extends AppController
 			  ->set(['Del_flg' => 1])
 			  ->where(['id' => $_SESSION['sel_id']])
 			  ->execute();
-			  //本番稼働時には下記のURLをトップページのものへ変更する
-			  header( "Location: http://localhost/silver/" );
+
+			  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' );
 			  unset($_SESSION['sel_id']);
 			  $this->Flash->success('依頼をキャンセルしました。');
 			  exit();
@@ -368,17 +340,17 @@ class RequestController extends AppController
 				if (isset($_POST['Dcheck'])) {
 					$_SESSION['dateCheck'] = $_POST['Dcheck'];
 				}
-			  //本番稼働時には下記のURLをトップページのものへ変更する
-			  header( "Location: http://localhost/silver/request/edit_ploof/" );
+
+			  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/request/edit_ploof/' );
 			  exit();
-			}
+		  }
 
 
 
-
-			if ($this->request->is('post')){
+		  $get_id = $this->request->getQuery('id');
+			if ($get_id != ""){
 				$query = $this->Requests->find()
-				->where(['id'=> $_POST['selrequest_id']]);
+				->where(['id'=> $get_id]);
 				$edit_req = $query->all()->ToArray();
 				$this->set(compact('edit_req'));
 				$_SESSION['sel_id'] = $edit_req[0]['id'];
@@ -406,10 +378,9 @@ class RequestController extends AppController
 			  ->execute();
 
 
-				echo "データが更新されました";
-				//本番稼働時には下記のURLをトップページのものへ変更する
-				header( "Location: http://localhost/silver/" ) ;
-				$this->Flash->success(__('依頼データが送信されました。'));
+
+				header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' ) ;
+				$this->Flash->success(__('データが更新されました。'));
 				unset($_SESSION['facility']);
 				unset($_SESSION['request']);
 				unset($_SESSION['select_flg']);
