@@ -47,7 +47,6 @@ class RequestController extends AppController
       $this->set(compact('facilities'));
 	  $_SESSION['select_flg'] = 0;
 	  $_SESSION['create_flg'] = 0;
-	  unset($_SESSION['edit_flg']);
 	  unset($_SESSION['req_edit']);
 	  unset($_SESSION['p_detail']);
 	  unset($_SESSION['sel_id']);
@@ -177,7 +176,6 @@ class RequestController extends AppController
 			unset($_SESSION['facility']);
 			unset($_SESSION['request']);
 			unset($_SESSION['select_flg']);
-			unset($_SESSION['create_flg']);
 			unset($_SESSION['p_detail']);
 			exit();
 
@@ -260,31 +258,6 @@ class RequestController extends AppController
 			  $this->Flash->success('依頼が完了されました。');
 			  exit();
 			}
-
-
-
-			if ($this->request->is('post')){
-				//施設情報の取得
-				$query = $this->Facilities->find()
-				->where(['id ='=>$_POST['request_moto_id']]);
-				$faci_info = $query->all()->ToArray();
-				$this->set(compact('faci_info'));
-
-				//依頼情報の取得
-				$query = $this->Requests->find()
-				->where(['id ='=>$_POST['request_id']]);
-				$req_info = $query->all()->ToArray();
-				$this->set(compact('req_info'));
-
-				//ワークショップの取得
-				$query = $this->Request_detailses->find()
-				->where(['request_id ='=>$_POST['request_id']]);
-				$pdt_info = $query->all()->ToArray();
-				$this->set(compact('pdt_info'));
-				$_SESSION['id']=$req_info[0]['id'];
-
-			}
-
 
 			//TOPページから詳細へ飛んだ場合の処理
 			$get_id = $this->request->getParam('id');
@@ -409,10 +382,8 @@ class RequestController extends AppController
 				unset($_SESSION['facility']);
 				unset($_SESSION['request']);
 				unset($_SESSION['select_flg']);
-				unset($_SESSION['create_flg']);
 				unset($_SESSION['p_detail']);
 				unset($_SESSION['req_edit']);
-				unset($_SESSION['edit_flg']);
 				unset($_SESSION['dateCheck']);
 				unset($_SESSION['sel_id']);
 				exit();

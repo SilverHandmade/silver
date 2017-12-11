@@ -17,7 +17,6 @@ var test = <?php echo $results; ?>;
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6">
 			<form action="/silver/request/proof" method="post">
-
 				<p class="font-p">制作物タイトル</p>
 				<input type="text" id="reqT" name="requestT" maxlength="40" required value=<?php if ($_SESSION['create_flg'] == 1) {
 					echo $_SESSION['request']['title'];} ?> >

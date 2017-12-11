@@ -66,7 +66,7 @@ $(function(){
 $(function(){
 	$('#Reqsearchbutton').bind("click",function(){
 		var re = new RegExp($('#rsearch').val());
-		$('#reqtable tbody tr').each(function(){
+		$('.panel').each(function(){
 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
 			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
 			Ttxt = Ttxt.replace("<a href=\"/silver/","");
@@ -81,6 +81,7 @@ $(function(){
 				$(this).hide();
 			}
 		});
+		$('#selectbox').val("0");
 	});
 });
 
@@ -223,6 +224,47 @@ $(function(){
 		}
 });
 });
+
+//list画面のステータスセレクトボックスの処理
+function select_state(){
+	var sel_st = new RegExp($('#selectbox').val());
+	if (sel_st == "/0/") {
+		$('.panel').each(function(){
+			var req_st = $(this).find("#req_state:eq(0)").html();
+			$(this).show();
+
+		});
+	}else if (sel_st == "/1/") {
+		$('.panel').each(function(){
+		var req_st = $(this).find("#req_state:eq(0)").html();
+		req_st = req_st.replace("<p>","");
+		req_st = req_st.replace("<p class=\"p-jutyu\">","");
+		req_st = req_st.replace("</p>","");
+		if(req_st.match("受注中") != null ){
+			$(this).show();
+		}else{
+			$(this).hide();
+		}
+		});
+	}else if (sel_st == "/2/") {
+		$('.panel').each(function(){
+		var req_st = $(this).find("#req_state:eq(0)").html();
+		req_st = req_st.replace("<p>","");
+		req_st = req_st.replace("<p class=\"p-jutyu\">","");
+		req_st = req_st.replace("</p>","");
+		if(req_st.match("受注可能") != null ){
+			$(this).show();
+		}else if (req_st.match("依頼中") != null ) {
+			$(this).show();
+		}else{
+			$(this).hide();
+		}
+		});
+	}
+
+
+
+}
 
 
 

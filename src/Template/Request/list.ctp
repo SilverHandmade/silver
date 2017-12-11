@@ -19,15 +19,21 @@
 			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="Reqsearchbutton" name="sbutton" class="btn btn-success">検索</button>
 		</form>
 		<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
-			<table id="reqtable" align="" class="table row">
+			<select id="selectbox" onchange="select_state()">
+				<option value="0">すべて</option>
+				<option value="1">受注中のみ</option>
+				<option value="2">受注可能のみ</option>
+			</select>
+
+			<table id="request-tab"class="row table">
 				<thead>
 					<tr>
-						<td class="col-md-4">件名</td>
-						<td class="col-md-6">依頼元施設名</td>
-						<td class="col-md-2">受注状況</td>
+						<th width="400">件名</th>
+						<th width="500">依頼元施設名</th>
+						<th width="120">受注状況</th>
 					</tr>
 				</thead>
-			</table>
+
 			<?php foreach ($reqs as $req) : ?>
 
 			<tbody>
@@ -49,9 +55,13 @@
 				</tr>
 
 			<?php endforeach; ?>
-			<button type="button" class="btn btn-primary" onclick="location.href='/silver/'">トップへ</button>
-
 		<?php else: ?>
+			<select id="selectbox" onchange="select_state()">
+				<option value="0">すべて</option>
+				<option value="1">受注中のみ</option>
+				<option value="2">依頼中のみ</option>
+			</select>
+
 			<table id="request-tab"class="row table">
 				<thead>
 					<tr>
@@ -80,10 +90,11 @@
 					</tr>
 
 				<?php endforeach; ?>
+				<?php endif; ?>
 				<tr>
 					<td colspan="3"><button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button></td>
 				</tr>
-			<?php endif; ?>
+
 			</tbody>
 		</table>
 
