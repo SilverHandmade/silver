@@ -31,14 +31,14 @@
 <table>
 	<tr>
 		<input type="text" id="answertxt" value="">
-		<input type="button" id="answerbtn" value="回答する" onclick="insertRow('sample1_table')">
+		<input type="button" id="answerbtn" value="回答する" onclick="insertRow('sample1_table')" class="btn btn-success">
 	</tr>
 </table>
 
 <?php if ($_SESSION['Auth']['User']['id'] == $detailId[0]['user_id']): ?>
 	<button type="submit" class="button" name="edit">編集</button>
 <?php else: ?>
-	<button type="button" class="button" onclick="location.href='/silver/answers'">トップへ</button>
+	<button type="button" class="btn btn-primary" onclick="location.href='/silver/answers'">トップへ</button>
 <?php endif; ?>
 
 <table id="appendtable">
