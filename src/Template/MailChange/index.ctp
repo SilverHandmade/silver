@@ -16,9 +16,4 @@
 			<button type="submit" name="reset" class="submit">変更</button><br>
 		</p>
 	</form>
-
-
-
-
-
 </div>
