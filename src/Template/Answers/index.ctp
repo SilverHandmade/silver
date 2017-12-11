@@ -6,6 +6,7 @@
 
 <form class="" id="ansForm" method="post">
 	<div class="">
+		<br><br><br>
 		<input type="text" id="indextxt" value="">
 		<input type="text" name="dummy" style="display:none;">
 		<input type="button" id="indexbtn" value="検索">
@@ -33,8 +34,7 @@
 <?php foreach ($witsesArray as $witseslist) {?>
 <tbody>
 	<div class="indexlist">
-		<form class="" action="answers/detail" method="post">
-			<!-- <li id="indexlist" style="list-style:none;"> -->
+		<form class="" action="detail" method="post">
 			<input type="hidden" name="hidetitle" value="<?= $witseslist['title'];?>">
 			<input type="hidden" name="hidecontent" value="<?= $witseslist['content'];?>">
 			<input type="hidden" name="hidedate" value="<?= $witseslist['Postdate'];?>">
@@ -51,9 +51,8 @@
 					<?= $witseslist['Postdate'];?>
 				</div>
 			</button>
-			<!-- </li> -->
 		</form>
 	</div>
 </tbody>
 <?php } ?>
-<input type="button" onclick="location.href='answers/create'" name="" value="投稿">
+<input type="button" onclick="location.href='create'" name="" value="投稿">

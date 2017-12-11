@@ -14,6 +14,7 @@ class AnswersController extends AppController
     {
         parent::initialize();
 		$this->loadModel('witses');
+		$this->loadModel('wits_messages');
 
 		$session = $this->request->session();
 		//ログインチェック
@@ -32,6 +33,11 @@ class AnswersController extends AppController
         $witsesArray = $witses->toArray();
         $this->set(compact('witsesArray'));
 
+		$wits_messages = $this->wits_messages->find('all');
+		$witmesArray = $wits_messages->toArray();
+		$this->set(compact('witmesArray'));
+
+
 		if($this->request->is('post')) {
 			$posttitle = $_POST['hidetitle'];
 			$postcontent = $_POST['hidecontent'];
@@ -40,11 +46,6 @@ class AnswersController extends AppController
 			$postUid = $_POST['witsesUId'];
 			$sessionUid = $_SESSION['Auth']['User']['id'];
 		}
-
-		// $wmessage = $this->wits_messages->find()
-		// ->where(['id ='=>$postid]);
-        // $wmessageArray = $wmessage->toArray();
-        // $this->set(compact('wmessageArray'));
 
 		if ($this->request->is('post')){
 
@@ -55,7 +56,6 @@ class AnswersController extends AppController
 			$this->set(compact('detailId'));
 
 		}
-
 
 // wits_id ren message transmit user_id Del_flg
 		// $query = $this->wits_messages->query();

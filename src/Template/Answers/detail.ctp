@@ -10,9 +10,6 @@
 
 <table id="detailtbl" align="" class="table">
 	<form action="" method="POST" >
-
-
-
 		<tr>
 			<td><p>タイトル：</p></td>
 				<td><p><?php echo $detailId[0]['title'] ?></p></td>
@@ -25,7 +22,6 @@
 			<td><p>投稿日：</p></td>
 			<td><p><?php echo $detailId[0]['Postdate'] ?></p></td>
 		</tr>
-
 </table>
 
 <table>
@@ -49,6 +45,9 @@
  * 行追加
  */
 function insertRow(id) {
+
+	var text = document.getElementById('answertxt').value;
+	alert(text);
     // テーブル取得
     var table = document.getElementById(id);
     // 行を行末に追加
@@ -59,14 +58,14 @@ function insertRow(id) {
     var cell3 = row.insertCell(-1);
     // ボタン用 HTML
     var button = '<input type="button" id="editbtn" value="行削除" onclick="deleteRow(this)" />';
-
+	var waku = '<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">' + text + '</div>';
     // 行数取得
     var row_len = table.rows.length;
 
     // セルの内容入力
-    cell1.innerHTML = row_len + "-" + 1;
-    cell2.innerHTML = row_len + "-" + 2;
-	cell3.innerHTML = button;
+    cell1.innerHTML = waku;
+	cell2.innerHTML = button;
+
 }
 function deleteRow(obj) {
     // 削除ボタンを押下された行を取得
@@ -75,15 +74,17 @@ function deleteRow(obj) {
     tr.parentNode.deleteRow(tr.sectionRowIndex);
 }
 
+
 </script>
 <table id="sample1_table">
     <tr>
-        <td nowrap>1-1</td>
-        <td nowrap>1-2</td>
-		<td nowrap>
+		<?php foreach ($witmesArray as $witmesdiv): ?>
+			<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+				<?= $witmesdiv['message'];?>
+			</div>
+		<?php endforeach; ?>
+		<!-- <td nowrap>
 			<input type="button" id="editbtn" value="行削除"onclick="deleteRow(this)" />
-		</td>
+		</td> -->
     </tr>
 </table>
-
-<h2>テスト</h2>
