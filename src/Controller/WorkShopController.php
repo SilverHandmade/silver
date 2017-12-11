@@ -21,7 +21,7 @@ class WorkShopController extends AppController
     }
 
 
-
+//作成画面
     public function create()
 	{
 		//Table登録
@@ -39,7 +39,6 @@ class WorkShopController extends AppController
 			$user = $this->MakeId9->id9('pro');
 			//$this->set(compact('user'));
 
-			//作成画面
 			$query = $this->Products->query();
 			$query->insert(['id', 'name', 'description','midasi_url','user_id'])
 			->values([
@@ -75,7 +74,7 @@ echo"<br><br><br><br><br>";
 				'product_id' => $product_id,
 				'ren' => $cnt,
 				'description' => $_POST[$cnt1],
-				'photo_url'=> $_POST[$cnt2],
+				'photo_url' => $_POST[$cnt2],
 			]);//->execute();
 					$cnt++;
 					$cnt1 = "text".$cnt;
@@ -86,7 +85,7 @@ echo"<br><br><br><br><br>";
 		}
 	}
 
-
+//検索画面
 	public function index()
 	{
 		$query = $this->Products->find();
@@ -104,11 +103,36 @@ echo"<br><br><br><br><br>";
 			$this->set('query', $query->all()->toArray());
 			}
 	}
-
+//詳細画面
 	public function detailses()
 	{
-		
+		$query = $this->request->getQuery('id');
+
 		$detailses = $this->product_detailses->find();
+		$detailses->where(['product_id'=>$query]);
 		$this->set('detailses',$detailses);
 	}
+//編集選択
+	public function select()
+	{
+		$query = $this->Products->find();
+		if ($this->request->is('post')) {
+			$query->contain();
+
+			if (!empty($this->request->getData('S_text'))) {
+				$query->where(['name LIKE' => '%'. $this->request->getData('S_text') . '%']);
+			}
+			$query->all();
+			$this->set('query', $query->all()->toArray());
+
+			} else {
+			$query->all();
+			$this->set('query', $query->all()->toArray());
+			}
+	}
+//編集選択画面
+ 	public function edit()
+	{
+		
+ 	}
 }

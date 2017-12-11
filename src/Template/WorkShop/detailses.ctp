@@ -2,7 +2,10 @@
 	<h2>詳細画面</h2>
 	<table id="detailtbl" align="" class="table">
 		<tr>
-			<td colspan="3"><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
+			<?= $this->Html->link(">>戻る",['controller' => 'workshop', "action" => "index"]);?>
+		</tr>
+		<tr>
+			<?= $this->Html->link(">>トップページへ",['controller' => 'TopPage', "action" => "index"]);?>
 		</tr>
 				<?php foreach ($detailses as $key) : ?>
 					<tr align="center">
