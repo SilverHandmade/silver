@@ -15,6 +15,14 @@ use Moontoast\Math\BigNumber;
 
 class MailchangeController extends AppController
 {
+
+    public function initialize()
+    {
+        parent::initialize();
+		$this->loadmodel('Users');
+		$this->loadmodel('change_mails');
+    }
+
 	public function index()
     {
 			$session = $this->request->session();
@@ -29,7 +37,8 @@ class MailchangeController extends AppController
 
 public function mailsend()
 	{
-		if(strpos($_POST['n_email'],'@') !== false){
+
+		if(strpos($_POST['new_email'],'@') !== false){
 			$link = 'action="https://sh-ml.mybluemix.net/change"';
 			$link.= 'target="form1">';
 		}else {
@@ -52,8 +61,8 @@ public function mailsend()
 		$cnt = 1;
 		$Tb = TableRegistry::get('change_mails');
 		$query = $Tb->find();
-		$ret_cnt = $query->select(['change_id','cnt' => $query->func()->count('*'),'email'])
-					->where(['id'=> $Uid])->first();
+		$ret_cnt = $query->select(['change_id','cnt' => $query->func()->count('*'),'m_mail'])
+					->where(['user_id'=> $Uid])->first();
 		if($ret_cnt->cnt >= 1){
 			$cnt = $ret_cnt->cnt + 1;
 		}
@@ -68,7 +77,7 @@ public function mailsend()
 			'user_id' => $Uid,
 			'change_id' => $cnt,
 			'm_mail' => $ret->email,
-			'c_mail' => ,
+			'c_mail' => $this->request->getData('new_email'),
 			'uuid' => $uuid
 		])
 		->execute();

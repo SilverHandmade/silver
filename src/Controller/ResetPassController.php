@@ -22,7 +22,6 @@ class ResetPassController extends AppController
         parent::initialize();
 		$this->loadmodel('Users');
 		$this->loadmodel('Unique_ids');
-		$this->loadmodel('product_detailses');//試し
         $this->loadComponent('PassHash');
     }
 

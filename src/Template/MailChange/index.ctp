@@ -9,7 +9,7 @@
 		<br>
 		<p class="font-color">変更したいメールアドレス</p>
 		<p class="password">
-			<input type="text" name="n_email" value="">
+			<input type="text" name="new_email" value="">
 		</p>
 		<br>
 		<p class="submit">
