@@ -72,7 +72,8 @@
 					<li><?= $this->Html->link("依頼",['controller' => 'Request', "action" => "index"]);?></li>
 					<li><?= $this->Html->link("ワークショップ",['controller' => 'WorkShop', "action" => "index"]);?></li>
 					<li><?= $this->Html->link("動画",['controller' => 'Video', "action" => "index"]);?></li>
-					<li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li>
+					<li><?= $this->Html->link("知恵袋",['controller' => 'answers', "action" => "index"]);?></li>
+					<!-- <li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li> -->
 				</ul>
 			</div>
 		</div>
