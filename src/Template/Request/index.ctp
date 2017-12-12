@@ -9,7 +9,7 @@
 
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
-		<h2>依頼先一覧<h2>
+		<h2>依頼先一覧</h2>
 		<form class="form-inline" action="" method="GET" onsubmit="doSomething();return false;">
 			<input type="text" name="dummy" style="display:none;"/>
 		<?php if ($user_faci[0]['facility_classes_id'] == 1): ?>
@@ -21,7 +21,7 @@
 			</div>
 		</form>
 
-		<h2>依頼先一覧<h2>
+		<h2>依頼先一覧</h2>
 
 		<table id="facitable" class="table">
 			<thead>

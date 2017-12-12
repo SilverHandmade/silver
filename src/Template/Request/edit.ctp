@@ -13,7 +13,7 @@
 
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
-		<h2>修正依頼選択<h2>
+		<h2>修正依頼選択</h2>
 		<form class="" action="" method="POST">
 			<button type="submit" id="cancel" name="Reqcancelbtn" class="btn btn-primary ">依頼取り消し</button>
 

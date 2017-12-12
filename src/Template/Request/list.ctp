@@ -13,7 +13,7 @@
 
 <div class="col-md-12">
 	<div class="row center">
-		<h2>依頼一覧<h2>
+		<h2>依頼一覧</h2>
 		<form class="" action="" method="GET" onsubmit="doSomething();return false;">
 			<input type="text" name="dummy" style="display:none;">
 			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="Reqsearchbutton" name="sbutton" class="btn btn-success">検索</button>
