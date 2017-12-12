@@ -4,6 +4,7 @@ use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\Cache\Cache;
 /**
  * Static content controller
  *
@@ -18,9 +19,9 @@ class LoginController extends AppController
         parent::initialize();
 		$session = $this->request->session();
 		// セッション情報取得
-		if ($session->read('loginFlg')) {
-			$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
-		}
+		// if ($session->read('loginFlg')) {
+		// 	$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
+		// }
 		//認証
 		$this->loadComponent('Auth',[
 			'authenticate' => [
@@ -44,6 +45,7 @@ class LoginController extends AppController
                 'action' => 'index',
             ]
 		]);
+		// Cache::clear(false);
     }
     // ログイン
     public function index()

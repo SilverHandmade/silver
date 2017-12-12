@@ -58,6 +58,6 @@ class VideoController extends AppController
 	}
 	public function upload()
 	{
-		
+
 	}
 }
