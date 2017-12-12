@@ -18,8 +18,8 @@ $(function(){
 		});
 	});
 });
-$(function(){
-	$('h1').replaceWith(function() {
-		$(this).replaceWith("<p>"+$(this).text()+"</p>")
-	});
-});
+// $(function(){
+// 	$('h1').replaceWith(function() {
+// 		$(this).replaceWith("<p>"+$(this).text()+"</p>")
+// 	});
+// });

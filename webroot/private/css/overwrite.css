@@ -94,6 +94,9 @@ a.navbar-brand {
     background-color: #99e8ff;
 	border-color: #269abc;
 }
+.btn * {
+	color: inherit;
+}
 
 /*.table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {

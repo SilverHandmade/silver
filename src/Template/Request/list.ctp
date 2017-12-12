@@ -14,9 +14,12 @@
 <div class="col-md-12">
 	<div class="row center">
 		<h2>依頼一覧<h2>
-		<form class="" action="" method="GET" onsubmit="doSomething();return false;">
-			<input type="text" name="dummy" style="display:none;">
-			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="Reqsearchbutton" name="sbutton" class="btn btn-success">検索</button>
+		<form class="form-inline" action="" method="GET" onsubmit="doSomething();return false;">
+			<div class="sear-lay">
+				<input type="text" name="dummy" style="display:none;">
+				<input type="text" id="rsearch" name="search" value="" class="search form-control"/>
+				<button type="button" id="Reqsearchbutton" name="sbutton" class="btn-search btn btn-success">検索</button>
+			</div>
 		</form>
 		<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
 			<table id="reqtable" align="" class="table row">
@@ -29,7 +32,6 @@
 				</thead>
 			</table>
 			<?php foreach ($reqs as $req) : ?>
-
 				<div class="row panel list-panel">
 					<a href="">
 						<div id="rtitle" class="col-md-4">
@@ -47,8 +49,7 @@
 							<?php endif; ?>
 						</div>
 					</a>
-			</div>
-
+				</div>
 			<?php endforeach; ?>
 			<button type="button" class="btn btn-primary" onclick="location.href='/silver/'">トップへ</button>
 

@@ -45,6 +45,7 @@
 	height: 100%;
 	cursor: pointer;
 	display: none;
+
 }
 
 input[type="text"] {
@@ -61,6 +62,12 @@ input[type="text"] {
 
 #add {
 	width: 100%;
+	text-align: left;
+}
+
+#add * {
+	color: inherit;
+	font-size: 16px;
 }
 
 /*.padding {

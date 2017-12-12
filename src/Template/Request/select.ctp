@@ -10,11 +10,14 @@
 
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
-		<h2>修正依頼選択<h2>
-			<input type="text" name="dummy" style="display:none;">
-		<!-- <form class="" action="" method="GET" onsubmit="doSomething();return false;"> -->
-			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
-		<!-- </form> -->
+		<h2>修正依頼選択</h2>
+		<div class="form-inline sear-lay">
+			<div class="form-group">
+				<input type="text" name="dummy" style="display:none;">
+				<input type="text" id="rsearch" name="search" value="" class="search form-control"/>
+				<button type="button" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
+			</div>
+		</div>
 
 		<?php if ($reqlist == NULL): ?>
 			<br>
@@ -36,7 +39,7 @@
 			</table>
 			<?php foreach ($reqlist as $req) : ?>
 
-				<div class="row panel req_li">
+				<div class="row panel req_li list-panel">
 					<a href="<?= $this->Url->build(["controller" => "request","action" => "edit",'id' => $req['id']])?>">
 						<div id="rtitle" class="col-md-6">
 							<?php echo $req['title']?>
@@ -49,7 +52,6 @@
 
 			<?php endforeach; ?>
 			<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "index"])?>'">戻る</button>
-			<br>
 			<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button>
 		<?php endif; ?>
 	</div>
