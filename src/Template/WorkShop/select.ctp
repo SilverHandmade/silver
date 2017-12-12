@@ -10,7 +10,6 @@
 			<div class = "row cneter">
 				<a href="<?= $this->Url->build(["controller" => "workshop","action" => "edit", 'id' => $key['id']])?>">
 					<div class="col-md-3">
-						<label for="update">投稿日<?= $key['Postdate'];?></label>
 						<h3><?=$key['name']?></h3>
 						<div align="center"><img src="<?= $this->Url->image('workshop/'.$key['midasi_url'])?>" width="500" height="325"></div>
 					</div>

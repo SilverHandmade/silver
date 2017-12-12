@@ -130,9 +130,21 @@ echo"<br><br><br><br><br>";
 			$this->set('query', $query->all()->toArray());
 			}
 	}
-//編集選択画面
+//編集入力画面
  	public function edit()
 	{
-		
+		if (isset($_POST['Pdtcancelbtn'])) {
+			$query = $this->Products->query();
+			$query->update()
+		  ->set(['Del_flg' => 1])
+		  ->where(['id' => $_SESSION['id']])
+		  ->execute();
+
+		  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' );
+		  unset($_SESSION['id']);
+		  $this->Flash->success('ワークショップを削除しました。');
+		  exit();
+		}
+
  	}
 }

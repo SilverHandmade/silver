@@ -7,6 +7,7 @@
 
 <div class="col-md-offset-1 col-md-10">
 	<form action="" method="post" enctype="multipart/form-data">
+		<?php $this->form->create('sakusei'); ?>
 		<div class="form-group">
 			<label for="title">タイトル</label>
 			<input class="form-control" type="text" name="name" id="title">
@@ -27,7 +28,7 @@
 
 
 				<div class="col-md-9">
-					<input class="form-control" type="text" name="text" id="Stext">
+					<p>手順説明</p><input class="form-control" type="text" name="text" id="Stext">
 				</div>
 			</div>
 		</div>

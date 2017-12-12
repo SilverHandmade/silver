@@ -7,6 +7,9 @@
 		<tr>
 			<?= $this->Html->link(">>トップページへ",['controller' => 'TopPage', "action" => "index"]);?>
 		</tr>
+		<div class="col-md-12">
+			<?= $this->Html->link(">>ワークショップ編集画面へ",['controller' => 'workshop', "action" => "select"]);?>
+		</div>
 				<?php foreach ($detailses as $key) : ?>
 					<tr align="center">
 								<td colspan="3"><div align="center"><p><b>手順<?php echo $key['ren'] + 1 ?></b></p></div>

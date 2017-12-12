@@ -15,9 +15,9 @@
 	<div class="col-md-12">
 		<?= $this->Html->link(">>ワークショップ作成画面へ",['controller' => 'workshop', "action" => "create"]);?>
 	</div>
-	
+
 	<div class="col-md-12">
-		<?= $this->Html->link(">>編集画面へ",['controller' => 'workshop', "action" => "select"]);?>
+		<?= $this->Html->link(">>ワークショップ編集画面へ",['controller' => 'workshop', "action" => "select"]);?>
 	</div>
 <div class="col-md-offset-2 col-md-8">
 			<?php foreach ($query as $key): ?>
