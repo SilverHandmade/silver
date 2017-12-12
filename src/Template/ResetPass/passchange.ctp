@@ -11,7 +11,7 @@
 			<input type="password" name="repassword" value="" placeholder="再入力">
 		</p>
 		<p class="submit">
-			<button type="submit" name="reset" class="submit">変更</button><br>
+			<button type="submit" name="reset" class="submit btn btn-success">変更</button><br>
 		</p>
 		<input type="hidden" name="id" value="<?php echo $b;?>">
 		<input type="hidden" name="uu" value="<?php echo $_GET['uu'];?>">

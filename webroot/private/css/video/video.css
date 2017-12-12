@@ -3,14 +3,11 @@ form  {
 	width: 100%;
 	margin-bottom: 10px;
 }
-#inputTitle > * {
+#inputTitle > div > * {
 	float: left;
 }
-#inputTitle > input {
-	width: 80%;
-}
-#inputTitle > button {
-	width: 10%;
+#inputTitle button {
+	width: 50%;
 }
 
 button span {
