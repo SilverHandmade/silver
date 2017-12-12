@@ -20,7 +20,7 @@
 			<br>
 			<h>編集可能な依頼がありません。</h>
 			<br>
-			<button type="button" class="button" onclick="location.href='/silver/'">トップへ</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='/silver/'">トップへ</button>
 		<?php else: ?>
 			<table id="reqseltable" align="" class="table">
 				<thead>
@@ -48,9 +48,9 @@
 				</div>
 
 			<?php endforeach; ?>
-			<button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "index"])?>'">戻る</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "index"])?>'">戻る</button>
 			<br>
-			<button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button>
 		<?php endif; ?>
 	</div>
 </div>

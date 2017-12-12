@@ -63,8 +63,13 @@ input[type="text"] {
 	width: 100%;
 }
 
-.padding {
+/*.padding {
 	padding-right: 15px;
+}*/
+
+.btn-margin {
+	margin-top: 5px;
+	padding-right: 5px;
 }
 
 .margin-left {

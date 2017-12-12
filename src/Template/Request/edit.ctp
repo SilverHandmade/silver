@@ -30,8 +30,8 @@
 				echo $_SESSION['req_edit']['moto_date'];}else{ echo date("Y-n-j", strtotime($edit_req[0]['To_date']));}?>>
 
 			<br>
-			<button type="submit" class="button" id="edit_con" name ="nextbtn">次へ</button>
-			<button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "select"])?>'">戻る</button>
+			<button type="submit" class="btn btn-primary" id="edit_con" name ="nextbtn">次へ</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "select"])?>'">戻る</button>
 		</form>
 	</div>
 </div>
