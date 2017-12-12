@@ -32,7 +32,7 @@ $(function(){
 				</tr>
 				<tr>
 					<td>
-						<button type="submit" name="transmission" class="success">送信</button>
+						<button type="submit" name="transmission" class="success btn btn-success">送信</button>
 						<input type="hidden" name="flg" value="true">
 					</td>
 				</tr>

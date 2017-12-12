@@ -8,7 +8,7 @@
 	<div class="">
 		<input type="text" id="indextxt" value="">
 		<input type="text" name="dummy" style="display:none;">
-		<input type="button" id="indexbtn" value="検索">
+		<input type="button" id="indexbtn" value="検索" class="btn btn-success">
 
 	</div>
 </form>
@@ -56,4 +56,4 @@
 	</div>
 </tbody>
 <?php } ?>
-<input type="button" onclick="location.href='answers/create'" name="" value="投稿">
+<input type="button" onclick="location.href='answers/create'" name="" value="投稿" class="btn btn-primary">

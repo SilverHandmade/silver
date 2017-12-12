@@ -10,5 +10,5 @@
 		</tr>
 </table>
 	<input type="hidden" name="flg" value="true">
-	<input type="submit" name="Completebtn" value="完了">
+	<input type="submit" name="Completebtn" value="完了" class="btn btn-success">
 	</form>

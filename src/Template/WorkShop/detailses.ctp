@@ -2,7 +2,7 @@
 	<h2>詳細画面</h2>
 	<table id="detailtbl" align="" class="table">
 		<tr>
-			<td colspan="3"><button type="button" class="button" onclick="location.href='/silver/'">トップへ</button></td>
+			<td colspan="3"><button type="button" class="btn btn-primary" onclick="location.href='/silver/'">トップへ</button></td>
 		</tr>
 				<?php foreach ($detailses as $key) : ?>
 					<tr align="center">

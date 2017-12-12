@@ -30,23 +30,24 @@
 			</table>
 			<?php foreach ($reqs as $req) : ?>
 
-			<tbody>
-				<tr class="panel">
-						<td id="rtitle">
-							<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $req['id']])?>"><?php echo $req['title']?></a>
-						</td>
-						<td id="rfaci_name">
-							<p><?php echo $req['facilities']['name']?></p>
-						</td>
-						<td id="req_state">
+				<div class="row panel list-panel">
+					<a href="">
+						<div id="rtitle" class="col-md-4">
+							<a href=""><?= $req['title'];?>
+						</div>
+						<div id="rfaci_name" class="col-md-6">
+							<p><?= $req['facilities']['name'];?></p>
+						</div>
+						<div id="req_state" class="col-md-2">
 							<?php if ($req['ju_flg'] != NULL): ?>
 								<p class="p-jutyu">受注中</p>
 							<?php endif; ?>
 							<?php if ($req['ju_flg'] == NULL): ?>
 								<p>受注可能</p>
 							<?php endif; ?>
-						</td>
-				</tr>
+						</div>
+					</a>
+			</div>
 
 			<?php endforeach; ?>
 			<button type="button" class="btn btn-primary" onclick="location.href='/silver/'">トップへ</button>
@@ -55,37 +56,33 @@
 			<table id="request-tab"class="row table">
 				<thead>
 					<tr>
-						<th width="400">件名</th>
-						<th width="500">依頼先施設名</th>
-						<th width="120">依頼状況</th>
+						<td class="col-md-4">件名</td>
+						<td class="col-md-7">依頼先施設名</td>
+						<td class="col-md-1">依頼状況</td>
 					</tr>
 				</thead>
-				<?php foreach ($reqs_hoiku as $req) : ?>
-				<tbody>
-					<tr class="panel">
-							<td id="rtitle">
-								<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $req['id']])?>"><?php echo $req['title']?></a>
-							</td>
-							<td id="rfaci_name">
-								<p><?php echo $req['facilities']['name']?></p>
-							</td>
-							<td id="req_state">
-								<?php if ($req['ju_flg'] != NULL): ?>
-									<p class="p-jutyu">受注中</p>
-								<?php endif; ?>
-								<?php if ($req['ju_flg'] == NULL): ?>
-									<p>依頼中</p>
-								<?php endif; ?>
-							</td>
-					</tr>
-
-				<?php endforeach; ?>
-				<tr>
-					<td colspan="3"><button type="button" class="button" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button></td>
-				</tr>
-			<?php endif; ?>
-			</tbody>
-		</table>
-
-
+			</table>
+			<?php foreach ($reqs_hoiku as $req) : ?>
+				<div class="row panel list-panel">
+					<a href="">
+						<div id="rtitle" class="col-md-4">
+							<p><?php echo $req['title']?></p>
+						</div>
+						<div id="rfaci_name" class="col-md-7">
+							<p class="left"><?php echo $req['facilities']['name']?></p>
+						</div>
+						<div id="req_state" class="col-md-1">
+							<?php if ($req['ju_flg'] != NULL): ?>
+								<p class="p-jutyu">受注中</p>
+							<?php endif; ?>
+							<?php if ($req['ju_flg'] == NULL): ?>
+								<p>依頼中</p>
+							<?php endif; ?>
+						</div>
+					</a>
+				</div>
+			<?php endforeach; ?>
+			<button type="button" class="btn btn-primary" onclick="location.href='/silver/'">トップへ</button>
+		<?php endif; ?>
+	</div>
 </div>
