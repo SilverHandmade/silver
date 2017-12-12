@@ -19,7 +19,7 @@ $(function(){
 	});
 });
 $(function(){
-	$('h1').replaceWith(function() {
-		$(this).replaceWith("<p>"+$(this).text()+"</p>")
+	$('#indexbtn').bind("click",function(){
+
 	});
 });
