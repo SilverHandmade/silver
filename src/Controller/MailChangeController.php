@@ -36,7 +36,7 @@ class MailchangeController extends AppController
 		$query = $Tb->find();
 		$ret = $query->select(['id','email'])
 					->where(['id'=> $Uid])->first();
-		$this->set("meado", $ret->email);
+		$this->set("meado", $session->read('userID'));
     }
 
 public function mailsend()
@@ -106,32 +106,35 @@ public function mailsend()
 			$query = $Tb->find();
 			$ret = $query->select(['user_id','c_mail','change_time'])
 	        			->where(['uuid'=> $uuid ,'kan_flg'=> 0])->first();
-			$Uid = $ret->user_id;
-			// 時間計算(15分)
-			$DBtime = date("YmdHis", strtotime($ret->change_time));
-			$NowTime = date("YmdHis");
-			echo $sa = $NowTime - $DBtime;
-			IF($sa <= 1500){
-				$sa_flg = 1;
-			}else {
-				$sa_flg = 2;
-			}
-			$this->set("sa", $sa_flg);
-			if($sa_flg == 1){
-				if(isset($ret->user_id)){
-					$query = ConnectionManager::get('default');
-					$query->update('users',
-						['email' => $ret->c_mail],
-						['id' => $Uid ]);
-					$query->update('change_mails',
-						['uuid' => null ,'kan_flg' => 1],
-						['uuid' => $uuid ]);
-				}else {
-					// 一つもなければ
-					echo "リンクが正しくありません1";
+			$sa_flg = 2;
+			if(isset($ret)){
+				$Uid = $ret->user_id;
+				// 時間計算(15分)
+				$DBtime = date("YmdHis", strtotime($ret->change_time));
+				$NowTime = date("YmdHis");
+				$sa = $NowTime - $DBtime;
+				IF($sa <= 1500){
+					$sa_flg = 1;
 				}
+				if($sa_flg == 1){
+						$query = ConnectionManager::get('default');
+						$query->update('users',
+							['email' => $ret->c_mail],
+							['id' => $Uid ]);
+						$query->update('change_mails',
+							['uuid' => null ,'kan_flg' => 1],
+							['uuid' => $uuid ]);
+						$session = $this->request->session();
+						$session->write([
+							'userID' => $ret->c_mail
+						]);
+				}else {
+					$this->Flash->error(__('リンクの使用期限が切れています。'));
+				}
+			}else {
+				$this->Flash->error(__('リンクの使用期限が切れているか、既に変更されています。'));
 			}
-		echo "リンクが正しくありません2";
+			$this->set("sa_flg", $sa_flg);
 		}
 	}
 
