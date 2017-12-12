@@ -2,6 +2,11 @@
 	$this->start('script');
 		echo $this->Html->script('/private/js/answer/answer.js');
 	$this->end();
+
+	$this->start('css');
+		echo $this->Html->css('/private/css/kota/request.css');
+	$this->end();
+
 ?>
 
 <form class="" id="ansForm" method="post">
@@ -18,41 +23,34 @@
 	<thead>
 		<tr>
 			<th>タイトル</th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
 			<th>内容</th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
 			<th>投稿日</th>
 		</tr>
 	</thead>
-</table>
+
 <?php foreach ($witsesArray as $witseslist) {?>
 <tbody>
-	<div class="indexlist">
-		<form class="" action="detail" method="post">
-			<input type="hidden" name="hidetitle" value="<?= $witseslist['title'];?>">
-			<input type="hidden" name="hidecontent" value="<?= $witseslist['content'];?>">
-			<input type="hidden" name="hidedate" value="<?= $witseslist['Postdate'];?>">
-			<input type="hidden" name="witsesId" value=<?= $witseslist['id'];?>>
-			<input type="hidden" name="witsesUId" value=<?= $witseslist['user_id'];?>>
-			<button type="submit" name="button">
+	<tr class="panel">
+		<td>
+			<a href="<?= $this->Url->build(["controller" => "answers","action" => "detail",'id' => $witseslist['id']])?>"><?php echo $witseslist['name']?>
 				<div id="wtitle">
 					<?= $witseslist['title'];?>
 				</div>
+			</td>
+				<td>
 				<div id="wcontent">
 					<?= $witseslist['content'];?>
 				</div>
+				</td>
+				<td>
 				<div id="wdate">
 					<?= $witseslist['Postdate'];?>
 				</div>
-			</button>
-		</form>
-	</div>
+				</td>
+			</a>
+		</td>
+	</tr>
 </tbody>
 <?php } ?>
+</table>
 <input type="button" onclick="location.href='create'" name="" value="投稿">

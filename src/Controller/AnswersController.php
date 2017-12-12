@@ -29,6 +29,7 @@ class AnswersController extends AppController
 
     }
 	public function detail(){
+
 		$witses = $this->witses->find('all');
         $witsesArray = $witses->toArray();
         $this->set(compact('witsesArray'));
@@ -37,25 +38,13 @@ class AnswersController extends AppController
 		$witmesArray = $wits_messages->toArray();
 		$this->set(compact('witmesArray'));
 
+		$get_id = $this->request->getQuery('id');
 
-		if($this->request->is('post')) {
-			$posttitle = $_POST['hidetitle'];
-			$postcontent = $_POST['hidecontent'];
-			$postdate = $_POST['hidedate'];
-			$postid = $_POST['witsesId'];
-			$postUid = $_POST['witsesUId'];
-			$sessionUid = $_SESSION['Auth']['User']['id'];
-		}
-
-		if ($this->request->is('post')){
-
-			//施設情報の取得
-			$query = $this->witses->find()
-			->where(['id ='=>$_POST['witsesId']]);
-			$detailId = $query->all()->ToArray();
-			$this->set(compact('detailId'));
-
-		}
+		$query = $this->witses->find()
+		->select(['title','content','Postdate'])
+		->where(['id ='=>$get_id]);
+		$detailId = $query->all()->ToArray();
+		$this->set(compact('detailId'));
 
 // wits_id ren message transmit user_id Del_flg
 		// $query = $this->wits_messages->query();
