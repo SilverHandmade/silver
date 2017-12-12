@@ -94,6 +94,9 @@ a.navbar-brand {
     background-color: #99e8ff;
 	border-color: #114051;
 }
+.btn * {
+	color: inherit;
+}
 
 
 

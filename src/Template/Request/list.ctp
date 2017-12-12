@@ -13,10 +13,20 @@
 
 <div class="col-md-12">
 	<div class="row center">
+<<<<<<< HEAD
 		<h2>依頼一覧</h2>
 		<form class="" action="" method="GET" onsubmit="doSomething();return false;">
 			<input type="text" name="dummy" style="display:none;">
 			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="Reqsearchbutton" name="sbutton" class="btn btn-success">検索</button>
+=======
+		<h2>依頼一覧<h2>
+		<form class="form-inline" action="" method="GET" onsubmit="doSomething();return false;">
+			<div class="sear-lay">
+				<input type="text" name="dummy" style="display:none;">
+				<input type="text" id="rsearch" name="search" value="" class="search form-control"/>
+				<button type="button" id="Reqsearchbutton" name="sbutton" class="btn-search btn btn-success">検索</button>
+			</div>
+>>>>>>> b4f42fc410d94a2a5b98776c772cafa8da78106e
 		</form>
 		<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
 			<select id="selectbox" onchange="select_state()">
@@ -35,7 +45,6 @@
 				</thead>
 
 			<?php foreach ($reqs as $req) : ?>
-
 				<div class="row panel list-panel">
 					<a href="">
 						<div id="rtitle" class="col-md-4">
@@ -53,8 +62,7 @@
 							<?php endif; ?>
 						</div>
 					</a>
-			</div>
-
+				</div>
 			<?php endforeach; ?>
 		<?php else: ?>
 			<select id="selectbox" onchange="select_state()">

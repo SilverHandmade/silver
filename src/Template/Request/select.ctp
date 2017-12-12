@@ -36,7 +36,7 @@
 			</table>
 			<?php foreach ($reqlist as $req) : ?>
 
-				<div class="row panel req_li">
+				<div class="row panel req_li list-panel">
 					<a href="<?= $this->Url->build(["controller" => "request","action" => "edit",'id' => $req['id']])?>">
 						<div id="rtitle" class="col-md-6">
 							<?php echo $req['title']?>
@@ -49,7 +49,6 @@
 
 			<?php endforeach; ?>
 			<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "index"])?>'">戻る</button>
-			<br>
 			<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button>
 		<?php endif; ?>
 	</div>

@@ -27,6 +27,7 @@ h2 {
 	margin-left: 30px;
 }
 
+
 .submit {
 	background-color:transparent;
 	border-style:none;
@@ -36,14 +37,14 @@ h2 {
 }
 
 .search {
-	width: 250px;
+	width: 100%;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
-	margin-bottom: 15px;
+	/*margin-bottom: 15px;*/
 }
 * {
 	outline: none;
-	/*font-size: 18px;*/
+	font-size: 16px;
 }
 
 .type-text {
@@ -105,6 +106,19 @@ h2 {
 	margin: 0;
 }
 
-.list-panel {
+/*.list-panel {
 	margin-bottom: 5px;
+}*/
+
+.btn-search {
+	margin-left: 0;
 }
+
+.sear-lay {
+	margin-bottom: 10px;
+}
+
+
+/*#reqtable thead tr td:414 {
+	visibility : hidden;
+}*/

@@ -18,8 +18,8 @@ $(function(){
 		});
 	});
 });
-$(function(){
-	$('#indexbtn').bind("click",function(){
-
-	});
-});
+// $(function(){
+// 	$('h1').replaceWith(function() {
+// 		$(this).replaceWith("<p>"+$(this).text()+"</p>")
+// 	});
+// });

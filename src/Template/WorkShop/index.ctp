@@ -9,9 +9,11 @@
 
 ?>
 
-	<form action="" method="Post">
-		<input type="text" name="searchtext" id="searchtext1"/>
-		<input type="submit" class="btn btn-success" name="search" id="searchS" value="検索" onfocus="this.blur();"/>
+	<form action="" method="Post" class="form-inline">
+		<div class="ws-margin">
+			<input type="text" name="searchtext" id="searchtext1" class="input-search form-control"/>
+			<input type="submit" class="btn btn-success" name="search" id="searchS" value="検索" onfocus="this.blur();"/>
+		</div>
 	</form>
 
 	<h2>検索結果</h2>

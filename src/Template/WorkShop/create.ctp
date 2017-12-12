@@ -35,8 +35,9 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<button class="btn btn-default" type="button" id="add">
+				<button class="btn btn-info" type="button" id="add">
 				<span class="glyphicon glyphicon-plus-sign" name="add"></span>
+					画像を追加
 				</button>
 			</div>
 		</div>
