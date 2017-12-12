@@ -64,17 +64,17 @@ a.navbar-brand {
 
 .btn-success {
     background-color: #497937;
-	border-color: #325225;
+	border-color: #3e6a2f;
 }
 .btn-success:hover,
 .btn-success:focus,
 .btn-success:active {
-	background-color: #3f682f;
-	border-color: #325225;
+	background-color: #355827;
+	border-color: #25401c;
 }
 .btn-success:focus:active {
-	background-color: #304f24;
-	border-color: #325225;
+	background-color: #25401c;
+	border-color: #0B1207;
 }
 
 .btn-info {
@@ -87,13 +87,15 @@ a.navbar-brand {
 .btn-info:active {
 	color: #4387e9;
     background-color: #99e8ff;
-	border-color: #269abc;
+	border-color: #1c7088;
 }
 .btn-info:active:active {
 	color: #4387e9;
     background-color: #99e8ff;
-	border-color: #269abc;
+	border-color: #114051;
 }
+
+
 
 /*.table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {

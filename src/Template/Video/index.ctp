@@ -11,16 +11,22 @@
 		<div class="col-md-12">
 			<form action="" method="post">
 				<div class="row">
-					<div class="col-md-12" id="inputTitle">
-						<input class="form-control" type="text" name="title" id="title" placeholder="タイトル"/>
-						<button class="btn btn-info" type="button" id="openDetails" data-toggle="modal" data-target="#detailsModal">
-							詳細検索
-							<span class="glyphicon glyphicon-option-vertical"></span>
-						</button>
-						<button class="btn btn-success" type="submit">
-							検索
-							<span class="glyphicon glyphicon-search"></span>
-						</button>
+					<div class="col-md-offset-2 col-md-8">
+						<div class="row" id="inputTitle">
+							<div class="col-md-9">
+								<input class="form-control" type="text" name="title" id="title" placeholder="タイトル"/>
+							</div>
+							<div class="col-md-3">
+								<button class="btn btn-info" type="button" id="openDetails" data-toggle="modal" data-target="#detailsModal">
+									詳細
+									<span class="glyphicon glyphicon-option-vertical"></span>
+								</button>
+								<button class="btn btn-success" type="submit">
+									検索
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- モーダル -->
@@ -98,6 +104,7 @@
 				アップロード
 				<span class="glyphicon glyphicon-cloud-upload"></span>
 			</button>
+
 		</div>
 	</div>
 
@@ -152,4 +159,3 @@
 		<?php endforeach; ?>
 	</div>
 </div>
-<button type="button"class="btn btn-danger">danger</button>
