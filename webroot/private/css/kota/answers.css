@@ -49,6 +49,10 @@
 	-moz-border-radius: 6px;
 }
 
+.ans-text {
+	width: 100%;
+}
+
 .answers {
 	height: auto;
 	overflow : hidden;
@@ -56,4 +60,14 @@
 
 .answers2 {
 	height: auto;
+}
+
+#wtitle p {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#wcontent p {
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

@@ -1,14 +1,24 @@
-<table id="createtbl" align="" class="table">
+<div id="createtbl" class="">
 	<form action="" method="POST" >
-		<tr>
-			<td><p>タイトル：</p></td>
-			<td><input type="text" name="titletxt" value=""></td>
-		</tr>
-		<tr>
-			<td><p>内容：</p></td>
-			<td><input type="text" name="contenttxt" value=""></td>
-		</tr>
-</table>
-	<input type="hidden" name="flg" value="true">
-	<input type="submit" name="Completebtn" value="完了" class="btn btn-success">
+		<div>
+			<div>
+				<p>タイトル：</p>
+			</div>
+			<div>
+				<input type="text" name="titletxt" value="" class="form-control">
+			</div>
+		</div>
+		<div>
+			<div>
+				<p>内容：</p>
+			</div>
+			<div>
+				<textarea name="textarea" rows="6" cols="80" class="tarea form-control" placeholder="内容入力してね！！"></textarea>
+			</div>
+		</div>
+		<div class="">
+			<input type="hidden" name="flg" value="true">
+			<input type="submit" name="Completebtn" value="完了" class="btn btn-success">
+		</div>
 	</form>
+</div>

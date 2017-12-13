@@ -6,16 +6,23 @@
 			<input type="button" name="S_button" id="select_t" value="検索">
 		</form>
 
-		<?php foreach ($query as $key): ?>
-			<div class = "row cneter">
-				<a href="<?= $this->Url->build(["controller" => "workshop","action" => "edit", 'id' => $key['id']])?>">
-					<div class="col-md-3">
-						<h3><?=$key['name']?></h3>
-						<div align="center"><img src="<?= $this->Url->image('workshop/'.$key['midasi_url'])?>" width="500" height="325"></div>
+			<?php foreach ($query as $key): ?>
+				<div class="col-md-12">
+					<div class = "row panel">
+						<a href="<?= $this->Url->build(["controller" => "workshop","action" => "edit", 'id' => $key['id']])?>">
+							<div class="col-md-3">
+								<div align="center"><img src="<?= $this->Url->image('workshop/'.$key['midasi_url'])?>" width="500" height="325"></div>
+							</div>
+							<div class="col-md-9">
+								<div class="row">
+									<div class="col-md-12">
+										<h3><?=$key['name']?></h3>
+									</div>
+								</div>
+							</div>
+						</a>
 					</div>
-				</a>
-			</div>
-		<?php endforeach; ?>
-
+				</div>
+			<?php endforeach; ?>
 	</div>
 </div>
