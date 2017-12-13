@@ -26,20 +26,17 @@
 
 <table>
 	<tr>
-		<input type="text" id="answertxt" value="">
-		<input type="button" id="answerbtn" value="回答する" onclick="insertRow('sample1_table')" class="btn btn-success">
+		<input type="text" name="answertxt" id="answertxt" value="">
+		<input type="submit" name="answerbtn" value="回答する"  class="btn btn-success">
+		
 	</tr>
 </table>
 
 <?php if ($_SESSION['Auth']['User']['id'] == $detailId[0]['user_id']): ?>
 	<button type="submit" class="button" name="edit">編集</button>
 <?php else: ?>
-	<button type="button" class="btn btn-primary" onclick="location.href='/silver/answers'">トップへ</button>
+	<?= $this->Html->link('トップへ',['controller'=>'Answers','action'=>'index'],['class'=>'btn btn-primary']); ?>
 <?php endif; ?>
-
-<table id="appendtable">
-
-</table>
 
 <table id="sample1_table">
     <tr>

@@ -30,7 +30,7 @@
 
 <?php foreach ($witsesArray as $witseslist) {?>
 <tbody>
-	<tr class="panel">
+	<tr class="panel"　id="indextable">
 		<td>
 			<a href="<?= $this->Url->build(["controller" => "answers","action" => "detail",'id' => $witseslist['id']])?>"><?php echo $witseslist['name']?>
 				<div id="wtitle">
@@ -52,4 +52,4 @@
 	</tr>
 </tbody>
 <?php } ?>
-<input type="button" onclick="location.href='answers/create'" name="" value="投稿" class="btn btn-primary">
+<?= $this->Html->link('投稿',['controller'=>'Answers','action'=>'create'],['class'=>'btn btn-primary']); ?>
