@@ -138,6 +138,9 @@ footer .btn-link, footer .btn-link:hover {
 		height: auto;
 		position: relative;
 	}
+	#page-top {
+		display: none;
+	}
 }
 /*footer終わり*/
 
@@ -164,6 +167,11 @@ footer .btn-link, footer .btn-link:hover {
 #page-top a:hover, #page-top a:focus {
 	text-decoration: none;
 	opacity: 0.8;
+}
+@media (max-width: 992px) {
+	#page-top, #page-top a {
+		display: none;
+	}
 }
 /*PAGE TOPボタン終わり*/
 
