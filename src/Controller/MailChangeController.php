@@ -36,7 +36,7 @@ class MailchangeController extends AppController
 		$query = $Tb->find();
 		$ret = $query->select(['id','email'])
 					->where(['id'=> $Uid])->first();
-		$this->set("meado", $session->read('userID'));
+		$this->set("meado", $ret->email);
     }
 
 public function mailsend()
