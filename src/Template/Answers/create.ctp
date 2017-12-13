@@ -23,7 +23,7 @@
 		</div>
 		<div class="">
 			<input type="hidden" name="flg" value="true">
-			<input type="submit" name="Completebtn" id="completebtn" value="完了" class="btn btn-success">
+			<button type="submit" name="Completebtn" id="completebtn" class="btn btn-success">完了</button>
 		</div>
 	</form>
 </div>

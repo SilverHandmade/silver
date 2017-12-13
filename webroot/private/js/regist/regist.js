@@ -1,7 +1,6 @@
 $(function() {
 
 	$('#regform').submit(function() {
-
 	    var username = $('#username').val();
 	    var hurigana = $('#hurigana').val();
 	    var regM = $('#regM').val();
@@ -46,4 +45,27 @@ $(function() {
 
 	});
 
+});
+$(function(){
+	$('#transmit').bind("click",function(){
+		var username = $('#username').val();
+		var hurigana = $('#hurigana').val();
+		var regM = $('#regM').val();
+		var regRM = $('#regRM').val();
+		var regP = $('#regP').val();
+		var regRP = $('#regRP').val();
+		username = username.trim();
+		hurigana = hurigana.trim();
+		regM = regM.trim();
+		regRM = regRM.trim();
+		regP = regP.trim();
+		regRP = regRP.trim();
+
+		if (username.length == 0 || hurigana.length == 0 || regM.length == 0 || regRM.length == 0 || regP.length == 0 || regRP.length == 0) {
+			alert("入力されていない項目があります。");
+			return false;
+		}
+
+
+	});
 });

@@ -16,11 +16,8 @@ class AnswersController extends AppController
 		$this->loadModel('witses');
 		$this->loadModel('wits_messages');
 
-		$session = $this->request->session();
-		//ログインチェック
-		if (empty($session->read('Auth'))) {
-			$this->redirect(['controller' => 'login']);
-		}
+
+
     }
     public function index() {
 		$witses = $this->witses->find('all');
@@ -30,11 +27,17 @@ class AnswersController extends AppController
     }
 	public function detail(){
 
+
+		$user = $this->Userinfo->getuser();
+		if (empty($user)) {
+			$this->redirect(['controller' => 'login']);
+		}
+
 		$witses = $this->witses->find('all');
         $witsesArray = $witses->toArray();
         $this->set(compact('witsesArray'));
 
-		$get_id = $this->request->getQuery('id');
+		$get_id = $this->request->getParam('id');
 
 		$wits_messages = $this->wits_messages->find('all')
 		->where(['wits_id ='=>$get_id]);
@@ -48,14 +51,14 @@ class AnswersController extends AppController
 		$this->set(compact('maxRenArray'));
 
 		$query = $this->witses->find()
-		->select(['title','content','Postdate'])
+		->select(['user_id','title','content','Postdate'])
 		->where(['id ='=>$get_id]);
 		$detailId = $query->all()->ToArray();
 		$this->set(compact('detailId'));
 
-		if (isset($_POST['answerbtn'])) {
-			$answertxt = $_POST['answertxt'];
-			$userId = $_SESSION['Auth']['User']['id'];
+		if (isset($_POST['ans-submit'])) {
+			$answertxt = $_POST['ans-submit'];
+			$userId = $user['id'];
 			$nowdate = date("Y/m/d H:i:s");
 			$incRen = $maxRenArray[0]['ren'] + 1;
 
@@ -77,6 +80,11 @@ class AnswersController extends AppController
 	}
 
 	public function create(){
+		$user = $this->Userinfo->getuser();
+		if (empty($user)) {
+			$this->redirect(['controller' => 'login']);
+		}
+
 		//施設情報の取得
 		$query = $this->witses->find();
 		$query->select(['id' => $query->func()->max('id')]);
@@ -84,13 +92,13 @@ class AnswersController extends AppController
 		$this->set(compact('detailId'));
 
 		$incId = $detailId[0]['id'] + 1;
-		$sessionId = $_SESSION['Auth']['User']['id'];
+		$sessionId = $user['id'];
 		$nowdate = date("Y-m-d H:i:s");
 		// $postUid = $_POST[''];
 
 		if ($this->request->is('post')) {
 			$posttitle = $_POST['titletxt'];
-			$postcontent = $_POST['contenttxt'];
+			$postcontent = $_POST['textarea'];
 		}
 
 		if (!empty($_POST['flg'])) {
