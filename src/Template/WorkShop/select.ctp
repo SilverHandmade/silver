@@ -5,13 +5,13 @@
 			<input type="text" name="S_text" id="select_t">
 			<input type="button" name="S_button" id="select_t" value="検索">
 		</form>
-		
-		<?= $this->Html->link(">>戻る",['controller' => 'workshop', "action" => "index"]);?>
+
+		<?= $this->Html->link(">>戻る",['controller' => 'WorkShop', "action" => "index"]);?>
 
 			<?php foreach ($query as $key): ?>
 				<div class="col-md-12">
 					<div class = "row panel">
-						<a href="<?= $this->Url->build(["controller" => "workshop","action" => "edit", 'id' => $key['id']])?>">
+						<a href="<?= $this->Url->build(["controller" => "WorkShop","action" => "edit", 'id' => $key['id']])?>">
 							<div class="col-md-3">
 								<div align="center"><img src="<?= $this->Url->image('workshop/'.$key['midasi_url'])?>" width="500" height="325"></div>
 							</div>

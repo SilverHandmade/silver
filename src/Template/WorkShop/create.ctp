@@ -8,7 +8,6 @@
 <div class="col-md-offset-1 col-md-10">
 	<h2>ワークショップ作成画面</h2>
 	<form action="" method="post" enctype="multipart/form-data">
-		<?php $this->form->create('sakusei'); ?>
 		<div class="form-group">
 			<input class="form-control" type="text" name="name" id="title" placeholder="タイトル">
 		</div>

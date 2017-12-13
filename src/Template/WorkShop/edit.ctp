@@ -13,7 +13,7 @@
 				<input type="text" id="" name="requestselT_con"  required value=<?php if ($_SESSION['edit_flg'] == 1) {
 					echo $_SESSION['req_edit']['description'];}else{ echo $edit_req[0]['description'];}?>>
 					<tr>
-						<?= $this->Html->link(">>戻る",['controller' => 'workshop', "action" => "select"]);?>
+						<?= $this->Html->link(">>戻る",['controller' => 'WorkShop', "action" => "select"]);?>
 					</tr>
 
 		</form>
