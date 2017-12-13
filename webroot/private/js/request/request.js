@@ -47,10 +47,10 @@ $(function(){
 			var Atxt = $(this).find("#faddress:eq(0)").html();
 
 
-			Ntxt = Ntxt.replace("<a href=\"/silver/request/create\?","");
-			Ntxt = Ntxt.replace(/id=\d*/,"");
-			Ntxt = Ntxt.replace("\">","");
-			Ntxt = Ntxt.replace("</a>","");
+			// Ntxt = Ntxt.replace("<a href=\"/silver/request/create\?","");
+			// Ntxt = Ntxt.replace(/id=\d*/,"");
+			// Ntxt = Ntxt.replace("\">","");
+			// Ntxt = Ntxt.replace("</a>","");
 
 
 			if(Atxt.match(re) != null || Ntxt.match(re) != null){
@@ -69,11 +69,10 @@ $(function(){
 		$('.panel').each(function(){
 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
 			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
-			Ttxt = Ttxt.replace("<a href=\"/silver/","");
-			Ttxt = Ttxt.replace(/request\/\d*/,"");
-			Ttxt = Ttxt.replace("\">","");
-			Ttxt = Ttxt.replace("</a>","");
-			FNtxt = FNtxt.replace("<p>","");
+
+			Ttxt = Ttxt.replace("<p>","");
+			Ttxt = Ttxt.replace("</p>","");
+			FNtxt = FNtxt.replace("<p class=\"left\">","");
 			FNtxt = FNtxt.replace("</p>","");
 			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
 				$(this).show();
