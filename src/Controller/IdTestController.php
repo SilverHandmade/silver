@@ -35,7 +35,10 @@ class IdTestController extends AppController
 			if(isset($ret_d->id)){
 				$name_ren = $ret_d->id;
 			}
-			echo $name_id."-".$name_ren.basename($_FILES['name']);
+			// $asd = basename($_FILES['upload_gazo']['name']);
+			$path_parts = pathinfo(basename($_FILES['upload_gazo']['name']));
+			echo $asd = ".".$path_parts['extension'], "\n"."<br>";
+			echo $zxc = $name_id."x".$name_ren.$asd."<br>";
 
 
 
