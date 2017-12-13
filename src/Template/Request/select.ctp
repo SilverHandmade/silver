@@ -4,21 +4,20 @@
 	$this->end();
 
 	$this->start('css');
-	echo $this->Html->css('/private/css/kota/request.css');
+	echo $this->Html->css('/private/css/request/request.css');
 	$this->end();
 ?>
 
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
 		<h2>修正依頼選択</h2>
-		<div class="form-inline sear-lay">
-			<div class="form-group">
+		<div class="form-group">
+			<div class="form-inline sear-lay">
 				<input type="text" name="dummy" style="display:none;">
-				<input type="text" id="rsearch" name="search" value="" class="search"/>
+				<input type="text" id="rsearch" name="search" value="" class="form-control"/>
 				<button type="button" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
 			</div>
 		</div>
-
 		<?php if ($reqlist == NULL): ?>
 			<br>
 			<h>編集可能な依頼がありません。</h>

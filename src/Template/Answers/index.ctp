@@ -4,16 +4,18 @@
 	$this->end();
 
 	$this->start('css');
-		echo $this->Html->css('/private/css/kota/request.css');
+		echo $this->Html->css('/private/css/answers/answers.css');
 	$this->end();
 
 ?>
 
 <form class="" id="ansForm" method="post">
-	<div class="">
-		<input type="text" id="indextxt" value="" class="ans-text form-control">
-		<input type="text" name="dummy" style="display:none;">
-		<button type="button" id="indexbtn" class="btn btn-success">検索</button>
+	<div class="form-group">
+		<div class="form-inline sear-lay">
+			<input type="text" name="dummy" style="display:none;">
+			<input type="text" id="indextxt" value="" class="ans-text form-control">
+			<button type="button" id="indexbtn" class="btn btn-success">検索</button>
+		</div>
 	</div>
 </form>
 <br><br>

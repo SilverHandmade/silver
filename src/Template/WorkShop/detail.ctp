@@ -10,13 +10,21 @@
 		<div class="col-md-12">
 			<?= $this->Html->link(">>ワークショップ編集画面へ",['controller' => 'WorkShop', "action" => "select"]);?>
 		</div>
-				<?php foreach ($detailses as $key) : ?>
-					<tr align="center">
-								<td colspan="3"><div align="center"><p><b>手順<?php echo $key['ren'] + 1 ?></b></p></div>
-								<div align="center"><img src="<?= $this->Url->image('WorkShop/'.$key['photo_url'])?>" width="500" height="325"></div>
-								<div align="center"><p><?php echo $key['description'] ?></p></div>
-								</td>
-					</tr>
-				<?php endforeach; ?>
+		<?php foreach ($detailses as $key) : ?>
+			<tr align="center">
+				<td colspan="3"><div align="center">
+					<p>
+						<b>手順<?php echo $key['ren'] + 1 ?></b>
+					</p>
+					</div>
+					<div align="center">
+						<img src="<?= $this->Url->image('workshop/'.$key['photo_url'])?>" width="500" height="325">
+					</div>
+					<div align="center">
+						<p><?php echo $key['description'] ?></p>
+					</div>
+				</td>
+			</tr>
+		<?php endforeach; ?>
 	</table>
 </div>

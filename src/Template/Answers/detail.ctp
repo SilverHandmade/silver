@@ -1,6 +1,6 @@
 <?php
 	$this->start('css');
-	echo $this->Html->css('/private/css/kota/answers.css');
+	echo $this->Html->css('/private/css/answers/answers.css');
 	$this->end();
 
 	$this->start('script');
@@ -48,7 +48,7 @@
 						</div>
 					<?php endforeach; ?>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>

@@ -3,7 +3,7 @@
 		<h2>ワークショップ編集画面</h2>
 		<form action=""method="post">
 			<input type="text" name="S_text" id="select_t">
-			<input type="button" name="S_button" id="select_t" value="検索">
+			<button type="button" name="S_button" id="select_t" value="">検索</button>
 		</form>
 
 		<?= $this->Html->link(">>戻る",['controller' => 'WorkShop', "action" => "index"]);?>

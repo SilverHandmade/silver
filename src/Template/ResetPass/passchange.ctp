@@ -1,4 +1,4 @@
-<?= $this->Html->css('/private/css/kota/resetpass.css') ?>
+<?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>
 <?php if($sa == 1){?>
 <div id="form">
 	<p class="form-title">パスワード再設定</p>

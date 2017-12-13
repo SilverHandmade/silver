@@ -3,7 +3,7 @@
 	echo $this->Html->script('/private/js/regist/regist.js');
 	$this->end();
 	$this->start('css');
-	echo $this->Html->css('/private/css/kota/regist.css');
+	echo $this->Html->css('/private/css/regist/regist.css');
 	$this->end();
 ?>
 <!-- -->

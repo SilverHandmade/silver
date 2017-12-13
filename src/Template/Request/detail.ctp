@@ -4,7 +4,7 @@
 	$this->end();
 
 	$this->start('css');
-	echo $this->Html->css('/private/css/kota/detail.css');
+	echo $this->Html->css('/private/css/request/detail.css');
 	// echo $this->Html->css('/private/css/kota/request.css');
 	$this->end();
 ?>
