@@ -41,18 +41,14 @@ class AppController extends Controller
     {
         parent::initialize();
 		// 検索→遷移→戻る で起こる有効期限切れ対策
-		session_cache_limiter('private_no_expire');
+		// session_cache_limiter('private_no_expire');
+		// session_cache_limiter('nocache');
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
 
-		$this->loadComponent('SetUsername');
-		$user = $this->SetUsername->setname();
-		if ($user['tranceName'] == 'ログイン') {
-			$user['registFlg'] = True;
-		} else {
-			$user['registFlg'] = False;
-		}
+		$this->loadComponent('Userinfo');
+		$user = $this->Userinfo->setname();
 		$this->set(compact('user'));
 
         /*

@@ -1,22 +1,21 @@
 <div class="col-md-3">
 	<div class="panel">
 		<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $key['id']])?>">
-			<table class="table">
-				<tr>
-					<td><h3><?= $key['title'];?></h3></td>
-				</tr>
-				<tr>
-					<td>
-						<div><?= $key->facility['name'];?></div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div><?= $key['To_date'];?>〆切!</div>
-					</td>
-				</tr>
-			</table>
-
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="list-group">
+						<li class="list-group-item">
+							<h3><?= $key['title'];?></h3>
+						</li>
+						<li class="list-group-item">
+							<?= $key->facility['name'];?>
+						</li>
+						<li class="list-group-item">
+							<?= $key['To_date'];?>〆切!
+						</li>
+					</ul>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-md-12 right">
 					<button class="btn btn-link" type="button" >詳細 >></button>
