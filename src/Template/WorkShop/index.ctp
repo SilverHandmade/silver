@@ -4,7 +4,7 @@
 		echo $this->Html->css('/private/css/workshop/index.css');
 	$this->end();
 	$this->start('script');
-		echo $this->Html->script('/private/js/kota/workshop.js');
+		echo $this->Html->script('/private/js/workshop/workshop.js');
 	$this->end();
 
 ?>
@@ -12,7 +12,7 @@
 	<form action="" method="Post" class="form-inline">
 		<div class="ws-margin">
 			<input type="text" name="searchtext" id="searchtext1" class="input-search form-control"/>
-			<input type="submit" class="btn btn-success" name="search" id="searchS" value="検索" onfocus="this.blur();"/>
+			<button type="submit" class="btn btn-success" name="search" id="searchS" value="" onfocus="this.blur();"/>検索</button>
 		</div>
 	</form>
 

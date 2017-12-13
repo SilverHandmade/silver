@@ -1,4 +1,4 @@
-<?= $this->Html->css('/private/css/kota/resetpass.css') ?>
+<?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>
 <body onload="document.F.submit();">
 	<form METHOD="POST"  name="F" action="<?= $link; ?>" target="<?= $target ?>">
 		<?php if(isset($e_flg)){
