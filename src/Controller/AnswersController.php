@@ -18,7 +18,7 @@ class AnswersController extends AppController
 
 		$session = $this->request->session();
 		//ログインチェック
-		if (!$session->read('loginFlg')) {
+		if (empty($session->read('Auth'))) {
 			$this->redirect(['controller' => 'login']);
 		}
     }
@@ -34,11 +34,18 @@ class AnswersController extends AppController
         $witsesArray = $witses->toArray();
         $this->set(compact('witsesArray'));
 
-		$wits_messages = $this->wits_messages->find('all');
+		$get_id = $this->request->getQuery('id');
+
+		$wits_messages = $this->wits_messages->find('all')
+		->where(['wits_id ='=>$get_id]);
 		$witmesArray = $wits_messages->toArray();
 		$this->set(compact('witmesArray'));
 
-		$get_id = $this->request->getQuery('id');
+		$query = $this->wits_messages->find();
+		$query->select(['ren' => $query->func()->max('ren')])
+		->where(['wits_id ='=>$get_id]);
+		$maxRenArray = $query->all()->ToArray();
+		$this->set(compact('maxRenArray'));
 
 		$query = $this->witses->find()
 		->select(['title','content','Postdate'])
@@ -46,20 +53,27 @@ class AnswersController extends AppController
 		$detailId = $query->all()->ToArray();
 		$this->set(compact('detailId'));
 
-// wits_id ren message transmit user_id Del_flg
-		// $query = $this->wits_messages->query();
-		// $query->insert([
-		// 	'wits_id','ren','message','transmit','user_id','Del_flg'
-		// ])
-		// ->values([
-		// 	'wits_id' => $postid,
-		// 	'ren' => '',
-		// 	'message' => '',
-		// 	'transmit' => '',
-		// 	'user_id' => '',
-		// 	'Del_flg' => ''
-		// ])
-		// ->execute();
+		if (isset($_POST['answerbtn'])) {
+			$answertxt = $_POST['answertxt'];
+			$userId = $_SESSION['Auth']['User']['id'];
+			$nowdate = date("Y/m/d H:i:s");
+			$incRen = $maxRenArray[0]['ren'] + 1;
+
+
+			$query = $this->wits_messages->query();
+			$query->insert([
+				'wits_id','ren','message','transmit','user_id','Del_flg'
+			])
+			->values([
+				'wits_id' => $get_id,
+				'ren' => $incRen,
+				'message' => $answertxt,
+				'transmit' => $nowdate,
+				'user_id' => $userId,
+				'Del_flg' => '0'
+			])
+			->execute();
+		}
 	}
 
 	public function create(){
