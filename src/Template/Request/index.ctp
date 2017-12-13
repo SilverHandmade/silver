@@ -44,12 +44,12 @@
   				</div>
   				<?php endforeach; ?>
 			<div class="center">
-				<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "select"])?>'">依頼編集・取り消し画面はこちら</button>
-				<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button>
+				<?= $this->Html->link('依頼編集・取り消し画面はこちら',["controller" => "Request","action" => "select"],['class'=>'btn btn-primary'])?>
+				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 			</div>
 			<?php else: ?>
 				<h2>介護施設の方は依頼の作成は出来ません<h2>
-				<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "TopPage","action" => "index"])?>'">トップへ</button>
+				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 			<?php endif; ?>
 	</div>
 </div>

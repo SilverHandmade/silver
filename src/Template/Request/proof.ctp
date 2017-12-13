@@ -56,7 +56,7 @@ if ($this->request->is('post')){
 				<input type="text" id="reqD_con" class="type-text" name="requestD_con" readonly value=<?php echo $input_date?>>
 
 				<div class="btn-sub">
-					<button type="button" class="btn btn-primary btn-sub" onclick="location.href='<?= $this->Url->build(["controller" => "request","action" => "create",'id' => $_SESSION['facility']['facility_id']])?>'">修正</button>
+					<?= $this->Html->link('修正',["controller" => "request","action" => "create",'id' => $_SESSION['facility']['facility_id']],['class'=>'btn btn-primary'])?>
 					<button type="submit" class="btn btn-success btn-sub" name="ok" id="ok" onclick="">確定</button>
 				</div>
 			</form>

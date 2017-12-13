@@ -42,7 +42,7 @@ if (d < 7) {
 $(function(){
 	$('#searchbutton').bind("click",function(){
 		var re = new RegExp($('#fsearch').val());
-		$('#facitable tbody tr').each(function(){
+		$('.list-panel').each(function(){
 			var Ntxt = $(this).find("#fname:eq(0)").html();
 			var Atxt = $(this).find("#faddress:eq(0)").html();
 

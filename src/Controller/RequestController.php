@@ -22,9 +22,17 @@ class RequestController extends AppController
 		$this->loadmodel('Product_detailses');
 		$this->loadComponent('MakeId9');
 
+		//requestページはキャッシュさせない
+		header( 'Expires: Sat, 26 Jul 1997 05:00:00 GMT');
+		header( 'Last-Modified:' . gmdate( 'D, d M Y H:i:s' ) . 'GMT' );
+		header( 'Cache-Control: no-store, no-cache, must-revalidate' );
+		header( 'Cache-Control: post-check=0, pre-check=0', false );
+		header( 'Pragma: no-cache' );
+		//ここまで
+
 		$session = $this->request->session();
-		if (!$session->read('loginFlg')) {
-			$this->redirect(['controller' => 'login']);
+		if (empty($session->read('Auth'))) {
+			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
 		}
     }
 
@@ -169,15 +177,16 @@ class RequestController extends AppController
 		->execute();
 
 
-			echo "データが送信されました";
 
-			header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' ) ;
+			//nu
+			//header( 'Location: http://'.$_SERVER['HTTP_HOST'] ) ;
+			$this->redirect(['controller'=>'toppage']);
 			$this->Flash->success(__('依頼データが送信されました。'));
 			unset($_SESSION['facility']);
 			unset($_SESSION['request']);
 			unset($_SESSION['select_flg']);
 			unset($_SESSION['p_detail']);
-			exit();
+
 
 		}
 	}
@@ -291,8 +300,9 @@ class RequestController extends AppController
 
 
 		public function select(){
+			header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/request/select' );
 			$_SESSION['edit_flg'] = 0;
-
+			unset($_SESSION['req_edit']);
 			$query = $this->Users->find()
 			->select(['id','facilities_id'])
 			->where(['id'=>$_SESSION['Auth']['User']['id']]);
@@ -341,7 +351,7 @@ class RequestController extends AppController
 
 			  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/request/edit_ploof/' );
 			  exit();
-		  }
+		    }
 
 
 

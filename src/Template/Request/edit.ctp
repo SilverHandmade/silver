@@ -31,7 +31,7 @@
 
 			<br>
 			<button type="submit" class="btn btn-primary" id="edit_con" name ="nextbtn">次へ</button>
-			<button type="button" class="btn btn-primary" onclick="location.href='<?= $this->Url->build(["controller" => "Request","action" => "select"])?>'">戻る</button>
+			<?= $this->Html->link('戻る',["controller" => "Request","action" => "select"],['class'=>'btn btn-primary'])?>
 		</form>
 	</div>
 </div>

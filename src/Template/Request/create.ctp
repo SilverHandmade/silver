@@ -34,7 +34,7 @@ var test = <?php echo $results; ?>;
 
 				<div class="right">
 					<button type="submit" class="btn btn-primary" name="createReq" onclick="return nextpage()">次へ</button>
-					<button type="button" class="btn btn-primary" onclick="location.href='/silver/request'">戻る</button>
+					<?= $this->Html->link('戻る',["controller" => "Request","action" => "index"],['class'=>'btn btn-primary'])?>
 				</div>
 			</form>
 		</div>
