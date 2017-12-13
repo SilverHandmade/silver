@@ -27,3 +27,14 @@ $(function(){
 	});
 
 });
+$(function(){
+	$('#answerbtn').bind("click",function(){
+		var answertxt = $('#answertxt').val();
+		if (answertxt == "") {
+			alert("本文を入力してください");
+			return false;
+		}
+
+	});
+
+});

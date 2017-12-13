@@ -13,8 +13,7 @@
 	<div class="">
 		<input type="text" id="indextxt" value="" class="ans-text form-control">
 		<input type="text" name="dummy" style="display:none;">
-		<input type="button" id="indexbtn" value="検索" class="btn btn-success">
-
+		<button type="button" id="indexbtn" class="btn btn-success">検索</button>
 	</div>
 </form>
 <br><br>

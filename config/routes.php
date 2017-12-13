@@ -22,6 +22,14 @@ Router::scope("/request", function ( RouteBuilder $routes ) {
 		['id' => '\d{10}']
 	);
 });
+Router::scope("/answers", function ( RouteBuilder $routes ) {
+	$routes->connect(
+		'/:id',
+		['controller' => 'answers', 'action'=> 'detail'],
+		// 10桁の数字に制限、0始まりに対応
+		['id' => '\d{4}']
+	);
+});
 
 // Router::scope("/workshop", function ( RouteBuilder $routes ) {
 // 	$routes->connect(
