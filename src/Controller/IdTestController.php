@@ -29,7 +29,6 @@ class IdTestController extends AppController
 		$cnt = 1;
 		$gazo_name = 'upload_gazo'.$cnt;
 		echo "<br><br><br><br><br><br>".$gazo_name."<br>";
-		echo "_".$_POST['text'.$cnt];
 		while (isset($_POST['text'.$cnt])) {
 			if(isset($_FILES)&& isset($_FILES['upload_gazo'.$cnt]) && is_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'])){
 			    $a = 'img/workshop/' . basename($_FILES['upload_gazo'.$cnt]['name']);
