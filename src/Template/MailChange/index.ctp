@@ -4,7 +4,7 @@
 	<form action="<?= $this->Url->build(["controller" => "mailchange","action" => "mailsend"])?>" method="post">
 		<p class="font-color">現在のメールアドレス</p>
 		<p class="">
-			<?php echo $meado;?>
+			<?= $meado;?>
 		</p>
 		<br>
 		<p class="font-color">変更したいメールアドレス</p>

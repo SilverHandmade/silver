@@ -26,12 +26,14 @@ class MailchangeController extends AppController
 	public function index()
     {
 		if($this->request->is('post')) {
-			if($this->request->getData('flg') == 2) {
+			if($this->request->getData('flg') == 1){
+				$this->Flash->error(__('ドメインが入力されていません'));
+			}elseif($this->request->getData('flg') == 2) {
 				$this->Flash->error(__('リンクの消費期限が切れています'));
 			}
 		}
 		$session = $this->request->session();
-		$Uid = $session->read('id');
+		$Uid = $session->read('Auth.User.id');
 		$Tb = TableRegistry::get('users');
 		$query = $Tb->find();
 		$ret = $query->select(['id','email'])
@@ -43,20 +45,20 @@ public function mailsend()
 	{
 
 		if(strpos($_POST['new_email'],'@') !== false){
-			$link = 'action="https://sh-ml.mybluemix.net/change"';
-			$link.= 'target="form1">';
+			$link = 'https://sh-ml.mybluemix.net/change';
+			$target = 'form1';
 		}else {
-			$link = 'action="http://localhost/silver/mailchange"';
-			$link.= 'target="_parent">';
-			$link.= '<input type="hidden" name="flg" value="1">';
+			$link = $this->referer();
+			$e_flg = '<input type="hidden" name="flg" value="1">';
+			$target = '_parent';
 		}
-		$this->set("link", $link);
+		$this->set(compact('link', 'target','e_flg'));
 		// UUIDの作成
 		$uuid = Uuid::uuid4();
 		$this->set("a", $uuid);
 
 		$session = $this->request->session();
-		$Uid = $session->read('id');
+		$Uid = $session->read('Auth.User.id');
 		$Tb = TableRegistry::get('users');
 		$query = $Tb->find();
 		$ret = $query->select(['id','cnt' => $query->func()->count('*'),'email'])
