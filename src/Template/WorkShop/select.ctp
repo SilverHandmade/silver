@@ -5,6 +5,8 @@
 			<input type="text" name="S_text" id="select_t">
 			<input type="button" name="S_button" id="select_t" value="検索">
 		</form>
+		
+		<?= $this->Html->link(">>戻る",['controller' => 'workshop', "action" => "index"]);?>
 
 		<?php foreach ($query as $key): ?>
 			<div class = "row cneter">

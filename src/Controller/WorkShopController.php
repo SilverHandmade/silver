@@ -24,9 +24,6 @@ class WorkShopController extends AppController
 //作成画面
     public function create()
 	{
-		//Table登録
-
-
 		if ($this->request->is('post')) {
 
 			$id = $this->MakeId9->id9('pro');
@@ -50,7 +47,7 @@ class WorkShopController extends AppController
 			]);
 			//->execute();
 
-			//詳細画面
+			//詳細
 			$query = $this->product_detailses->query();
 			$query->insert(['product_id','description','photo_url'])
 			->values([
@@ -74,8 +71,8 @@ echo"<br><br><br><br><br>";
 			$this->request->data[$cnt2]['name'];
 			if(isset($_POST[$cnt1])){
 				while ($_POST[$cnt1] != "") {
-						"<br>".$cnt1.$_POST[$cnt1];
-						"<br>".$cnt2.$this->request->data[$cnt2]['name'];
+						echo"<br>".$cnt1.$_POST[$cnt1];
+						echo"<br>".$cnt2.$this->request->data[$cnt2]['name'];
 						$query = $this->product_detailses->query();
 						$query->insert(['product_id','ren','description','photo_url'])
 						->values([
@@ -97,7 +94,6 @@ echo"<br><br><br><br><br>";
 							$gazo_name = 'upload_gazo'.$cnt;
 							$cnt1 = "text".$cnt;
 							$cnt2 = "upload_gazo".$cnt;
-
 				}
 			}
 		}
@@ -133,6 +129,8 @@ echo"<br><br><br><br><br>";
 //編集選択
 	public function select()
 	{
+		$_SESSION['edit_flg'] = 0;
+
 		$query = $this->Products->find();
 		if ($this->request->is('post')) {
 			$query->contain();
@@ -151,6 +149,8 @@ echo"<br><br><br><br><br>";
 //編集入力画面
  	public function edit()
 	{
+		$_SESSION['dateCheck'] = 0;
+
 		if (isset($_POST['Pdtcancelbtn'])) {
 			$query = $this->Products->query();
 			$query->update()
@@ -158,11 +158,23 @@ echo"<br><br><br><br><br>";
 		  ->where(['id' => $_SESSION['id']])
 		  ->execute();
 
+		  //田口と同じにする
 		  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' );
 		  unset($_SESSION['id']);
 		  $this->Flash->success('ワークショップを削除しました。');
 		  exit();
 		}
+
+		$get_id = $this->request->getQuery('id');
+		  if ($get_id != ""){
+			  $query = $this->Products->find()
+			  ->where(['id'=> $get_id]);
+			  $edit_req = $query->all()->ToArray();
+			  $this->set(compact('edit_req'));
+			  $_SESSION['sel_id'] = $edit_req[0]['id'];
+			  $_SESSION['req_edit']['moto_date'] = date("Y-n-j", strtotime($edit_req[0]['To_date']));
+
+		  }
 
  	}
 }
