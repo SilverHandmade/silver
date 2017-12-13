@@ -11,45 +11,41 @@
 
 <form class="" id="ansForm" method="post">
 	<div class="">
-		<br><br><br>
-		<input type="text" id="indextxt" value="">
+		<input type="text" id="indextxt" value="" class="ans-text form-control">
 		<input type="text" name="dummy" style="display:none;">
 		<input type="button" id="indexbtn" value="検索" class="btn btn-success">
 
 	</div>
 </form>
 <br><br>
-<table id="reqseltable" align="" class="table">
+<table id="reqseltable" align="" class="table row">
 	<thead>
 		<tr>
-			<th>タイトル</th>
-			<th>内容</th>
-			<th>投稿日</th>
+			<th class="col-md-3">タイトル</th>
+			<th class="col-md-6">内容</th>
+			<th class="col-md-3">投稿日</th>
 		</tr>
 	</thead>
-
+</table>
 <?php foreach ($witsesArray as $witseslist) {?>
-<tbody>
-	<tr class="panel"　id="indextable">
-		<td>
-			<a href="<?= $this->Url->build(["controller" => "answers","action" => "detail",'id' => $witseslist['id']])?>"><?php echo $witseslist['name']?>
-				<div id="wtitle">
+	<div class="panel row">
+		<a href="<?= $this->Url->build(["controller" => "answers","action" => "detail",'id' => $witseslist['id']])?>">
+			<div id="wtitle" class="col-md-3">
+				<p>
 					<?= $witseslist['title'];?>
-				</div>
-			</td>
-				<td>
-				<div id="wcontent">
+				</p>
+			</div>
+			<div id="wcontent" class="col-md-6">
+				<p>
 					<?= $witseslist['content'];?>
-				</div>
-				</td>
-				<td>
-				<div id="wdate">
+				</p>
+			</div>
+			<div id="wdate" class="col-md-3">
+				<p>
 					<?= $witseslist['Postdate'];?>
-				</div>
-				</td>
-			</a>
-		</td>
-	</tr>
-</tbody>
+				</p>
+			</div>
+		</a>
+	</div>
 <?php } ?>
 <?= $this->Html->link('投稿',['controller'=>'Answers','action'=>'create'],['class'=>'btn btn-primary']); ?>

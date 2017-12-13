@@ -6,11 +6,11 @@
 <?php $this->end(); ?>
 
 <div class="col-md-offset-1 col-md-10">
+	<h2>ワークショップ作成画面</h2>
 	<form action="" method="post" enctype="multipart/form-data">
 		<?php $this->form->create('sakusei'); ?>
 		<div class="form-group">
-			<label for="title">タイトル</label>
-			<input class="form-control" type="text" name="name" id="title">
+			<input class="form-control" type="text" name="name" id="title" placeholder="タイトル">
 		</div>
 		<div class="form-group" id="plus" name="plus">
 			<div class="row">
@@ -20,7 +20,7 @@
 					<div class="div-btn">
 						<input type="file" class="input-file none file" name="upload_gazo" id="G_upload" accept="image/*"/>
 						<div class="button">
-							<button type="button" name="upload" id="G_upload" class="button">画像選択</button>
+							<button type="button" name="upload" id="G_upload" class="btn btn-info">画像選択</button>
 						</div>
 					</div>
 					<span id="fake_input_file" class="margin-left span">NOT FILE</span>
@@ -28,7 +28,7 @@
 
 
 				<div class="col-md-9">
-					<p>手順説明</p><input class="form-control" type="text" name="text" id="Stext">
+					<input class="form-control" type="text" name="text" id="Stext" placeholder="手順説明">
 				</div>
 			</div>
 		</div>
@@ -43,7 +43,8 @@
 		</div>
 		<div class="row right btn-margin">
 			<button type="submit" name="button" class="btn btn-success" id="Trans" onfocus="this.blur();">送信</button>
-			<button type="button" name="search-back" id="back" class="btn btn-primary" onfocus="this.blur();">検索画面へ</button>
+			<!-- <button type="button" name="search-back" id="back" class="btn btn-primary" onfocus="this.blur();">検索画面へ</button> -->
+			<?= $this->Html->link('検索画面へ', ['controller' => 'workshop', 'action' => 'index'], ['class' => 'btn btn-primary'])?>
 		</div>
 	</form>
 </div>

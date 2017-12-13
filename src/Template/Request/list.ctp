@@ -13,7 +13,6 @@
 
 <div class="col-md-12">
 	<div class="row center">
-
 		<h2>依頼一覧</h2>
 		<form class="form-inline" action="" method="GET" onsubmit="doSomething();return false;">
 			<div class="sear-lay">
@@ -32,15 +31,15 @@
 			<table id="request-tab"class="row table">
 				<thead>
 					<tr>
-						<td class="col-md-4">件名</td>
-						<td class="col-md-7">依頼元施設名</td>
-						<td class="col-md-1">依頼状況</td>
+						<th class="col-md-4">件名</th>
+						<th class="col-md-6">依頼元施設名</th>
+						<th class="col-md-2">受注状況</th>
 					</tr>
 				</thead>
 			</table>
 			<?php foreach ($reqs as $req) : ?>
 				<div class="row panel list-panel">
-					<a href="<?= $this->Url->build(["controller" => "request","action" => "detail",'id' => $req['id']])?>">
+					<a href="<?= $this->url->build(["controller" => "request","action" => "detail",'id' => $req['id']])?>">
 						<div id="rtitle" class="col-md-4">
 							<?= $req['title'];?>
 						</div>
@@ -77,7 +76,7 @@
 			</table>
 			<?php foreach ($reqs_hoiku as $req) : ?>
 				<div class="row panel list-panel">
-					<a href="<?= $this->Url->build(["controller" => "request","action" => "detail",'id' => $req['id']])?>">
+					<a href="<?= $this->url->build(["controller" => "request","action" => "detail",'id' => $req['id']])?>">
 						<div id="rtitle" class="col-md-4">
 							<p><?php echo $req['title']?></p>
 						</div>

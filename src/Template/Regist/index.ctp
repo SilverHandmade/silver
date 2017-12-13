@@ -16,12 +16,12 @@
 				<div class="username">
 					<!-- $postname-->
 					<p class="font-color">氏名</p>
-					<input type="text" id="username" name="name" value="" required>
+					<input type="text" id="username" name="name" value="" required class="form-control">
 				</div>
 				<div class="furigana">
 					<!-- $posthurigana-->
 					<p class="font-color">フリガナ</p>
-					<input type="text" id="hurigana" name="hurigana" value=""required>
+					<input type="text" id="hurigana" name="hurigana" value=""required class="form-control">
 				</div>
 				<div class="checkbox checkbox-layout">
 					<?php foreach ($fClassArray as $key =>$value)
@@ -48,16 +48,16 @@
 				<div class="mailadress">
 					<!-- $postmail-->
 					<p class="font-color">メールアドレス</p>
-					<input type="email" id="regM" name="email" value="" required>
+					<input type="email" id="regM" name="email" value="" required class="form-control">
 					<!-- $postremail-->
-					<input type="email" id="regRM" name="reemail" placeholder="再入力" required>
+					<input type="email" id="regRM" name="reemail" placeholder="再入力" required class="form-control">
 				</div>
 				<div class="password">
 					<!-- $postpass-->
 					<p class="font-color">パスワード</p>
-					<input type="password" id="regP" name="password" value="" required>
+					<input type="password" id="regP" name="password" value="" required class="form-control">
 					<!-- $postrepass-->
-					<input type="password" id="regRP" name="repassword" placeholder="再入力" required>
+					<input type="password" id="regRP" name="repassword" placeholder="再入力" required class="form-control">
 				</div>
 				<!--送信ボタン-->
 				<div class="submit">

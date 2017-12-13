@@ -11,10 +11,13 @@
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
 		<h2>修正依頼選択</h2>
-			<input type="text" name="dummy" style="display:none;">
-		<!-- <form class="" action="" method="GET" onsubmit="doSomething();return false;"> -->
-			<input type="text" id="rsearch" name="search" value="" class="search"/><button type="button" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
-		<!-- </form> -->
+		<div class="form-inline sear-lay">
+			<div class="form-group">
+				<input type="text" name="dummy" style="display:none;">
+				<input type="text" id="rsearch" name="search" value="" class="search"/>
+				<button type="button" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
+			</div>
+		</div>
 
 		<?php if ($reqlist == NULL): ?>
 			<br>

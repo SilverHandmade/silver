@@ -92,3 +92,9 @@ input[type="text"] {
 	vertical-align: bottom;
 	padding-bottom: 1px;
 }
+
+h2 {
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
