@@ -28,21 +28,25 @@
 	<?php foreach ($query as $key): ?>
 		<div class="col-md-12">
 			<div class="row panel ws-man" >
-				<a href="<?= $this->Url->build(["controller" => "workshop","action" => "detailses", 'id' => $key['id']])?>">
-					<div class="col-md-3">
-						<div align="center">
-							<img src="<?= $this->Url->image('workshop/'.$key['midasi_url'])?>" width="500" height="325">
-						</div>
-					</div>
-					<div class="col-md-9">
-						<div class="row">
-							<div class="col-md-12">
-								<label for="update">投稿日<?= $key['Postdate'];?></label>
+				<a href="<?= $this->Url->build(["controller" => "WorkShop","action" => "detail", 'id' => $key['id']])?>">
+					<div class="row">
+						<div class="col-md-3">
+							<div align="center">
+								<?= $key['midasi_url'] ?>
+								<img src="<?= $this->Url->image(file_exists('workshop/'.$key['midasi_url'])?'workshop/'.$key['midasi_url']:"no_image.png");?>" width="500" height="325">
+
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<h3><?=$key['name']?></h3>
+						<div class="col-md-9">
+							<div class="row">
+								<div class="col-md-12">
+									<label for="update">投稿日<?= $key['Postdate'];?></label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h3><?=$key['name']?></h3>
+								</div>
 							</div>
 						</div>
 					</div>

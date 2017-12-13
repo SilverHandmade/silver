@@ -31,14 +31,18 @@ Router::scope("/answers", function ( RouteBuilder $routes ) {
 	);
 });
 
-// Router::scope("/workshop", function ( RouteBuilder $routes ) {
-// 	$routes->connect(
-// 		'/:id',
-// 		['controller' => 'WorkShop', 'action'=> ''],
-// //		 10桁の数字に制限、0始まりに対応
-// 		['id' => '\d{9}']
-// 	);
-// });
+Router::scope("/WorkShop", function ( RouteBuilder $routes ) {
+	$routes->connect(
+		'/:id',
+		['controller' => 'WorkShop', 'action'=> 'detail'],
+//		 10桁の数字に制限、0始まりに対応
+		['id' => '\d{9}']
+	);
+	$routes->connect(
+		'/',
+		['controller' => 'WorkShop', 'action'=> 'index']
+	);
+});
 // Router::scope('/Silver', function (RouteBuilder $routes) {
 // 	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
 // });
