@@ -1,4 +1,4 @@
-<?= $this->Html->css('/private/css/kota/resetpass.css') ?>
+<?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>
 <div id="form">
 	<p class="form-title">メールアドレス変更</p>
 	<form action="<?= $this->Url->build(["controller" => "mailchange","action" => "mailsend"])?>" method="post">

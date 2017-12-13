@@ -1,4 +1,4 @@
-<?= $this->Html->css('/private/css/kota/login.css') ?>
+<?= $this->Html->css('/private/css/login/login.css') ?>
 <?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
 <?= $this->Html->css('login.css') ?>
 
