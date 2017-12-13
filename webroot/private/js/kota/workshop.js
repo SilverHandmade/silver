@@ -39,7 +39,7 @@ $(function(){
 			if (Nseisaku == "") {
 				alert("制作物名の入力がされていません");
 				return false;
-			}else if (Nseisaku.length > 25) {
+			}else if (Nseisaku.length > 40) {
 				alert("制作物名は25文字以内で入力してください");
 				return false;
 			}
@@ -63,12 +63,4 @@ $(function(){
 			}
 		});
 	});
-
-	$(function(){
-		$('#syousaibtn1').click(function (){
-			location.href = "/localhost/silver/work-shop/detailses";
-
-		});
-	});
-
 });
