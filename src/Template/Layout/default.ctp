@@ -54,10 +54,10 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<?php if($user['registFlg']):?>
-								<?= $this->element('RegistAndLogin');?>
-							<?php else: ?>
+							<?php if($user['loginFlg']):?>
 								<?= $this->element('Logout');?>
+							<?php else: ?>
+								<?= $this->element('RegistAndLogin');?>
 							<?php endif; ?>
 						</ul>
 					</li>
@@ -87,10 +87,10 @@
 						<li><?= $this->Html->link("ワークショップ",['controller' => 'workshop', "action" => "index"]);?></li>
 						<li><?= $this->Html->link("動画",['controller' => 'video', "action" => "index"]);?></li>
 						<li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li>
-						<?php if($user['registFlg']):?>
-							<?= $this->element('RegistAndLogin');?>
-						<?php else: ?>
+						<?php if($user['loginFlg']):?>
 							<?= $this->element('Logout');?>
+						<?php else: ?>
+							<?= $this->element('RegistAndLogin');?>
 						<?php endif; ?>
 					</ul>
 					</ul>

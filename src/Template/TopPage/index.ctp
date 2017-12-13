@@ -3,7 +3,7 @@
 <?php $this->end() ?>
 
 <div class="col-md-12">
-	<?php if (!$user['registFlg']):?>
+	<?php if ($user['loginFlg']):?>
 		<h2 class="danger" >〆切マジか</h2>
 		<div class="row">
 			<?php foreach ($request as $key): ?>
@@ -16,6 +16,7 @@
 			</div>
 		</div>
 	<?php endif; ?>
+
 	<h2>新着ワークショップ</h2>
 	<div class="row">
 		<?php foreach ($workshop as $key): ?>
@@ -46,19 +47,21 @@
 			<div class="col-md-3">
 				<div class="panel">
 					<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $key['id']])?>">
-						<table class="table">
-							<tr>
-								<td><h3><?= $key['title'];?></h3></td>
-							</tr>
-							<tr>
-								<td>
-									<div><?= $key['Postdate'];?></div>
-								</td>
-							</tr>
-						</table>
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="list-group">
+									<li class="list-group-item">
+										<h3><?= $key['title'];?></h3>
+									</li>
+									<li class="list-group-item">
+										<?= $key['Postdate'];?>
+									</li>
+								</ul>
+							</div>
+						</div>
 						<div class="row">
 							<div class="col-md-12 right">
-								<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $key['id']])?>">詳細 >></a>
+								<button type="button" class="btn btn-link">詳細>></button>
 							</div>
 						</div>
 					</a>

@@ -21,6 +21,7 @@ class TopPageController extends AppController
 
 
     public function index() {
+		$user = $this->Userinfo->getuser();
 		$queryRequest = $this->Requests->find()->contain('Facilities')
 		->select(['id', 'Requests.title', 'Requests.To_date', 'Facilities.name'])
 		->order(['Requests.To_date' => 'DESC'])

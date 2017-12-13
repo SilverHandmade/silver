@@ -38,14 +38,14 @@ class LoginController extends AppController
 			],
 			'loginRedirect' => [ // ログイン後に遷移するアクションを指定
                 'controller' => 'TopPage',
-                'action' => 'index',
+                'action' => 'index'
             ],
 			'logoutRedirect' => [ // ログアウト後に遷移するアクションを指定
                 'controller' => 'TopPage',
-                'action' => 'index',
+                'action' => 'index'
             ]
 		]);
-		// Cache::clear(false);
+
     }
     // ログイン
     public function index()
@@ -55,21 +55,15 @@ class LoginController extends AppController
 			$user = $this->Auth->identify();
 			if ($user) {
 				$this->Auth->setUser($user);
-				$session->write([
-					'id' => $user['id'],
-					'username' => $user['name'],
-					'userID' => $user['email'],
-					'loginFlg' => True
-				]);
 				return $this->redirect(['controller' => $this->request->getQuery('ref')]);
 			}
-			$this->Flash->error(__('again'));
+			$this->Flash->error(__('ログインに失敗しました。'));
 		}
 	}
 	public function logout() {
 		$session = $this->request->session();
-		if(empty($session->read('username') ) || empty($session->read('userID'))){
-			$this->redirect($this->Auth->redirectUrl());
+		if(empty($session->read('Auth'))){
+			return $this->redirect($this->Auth->redirectUrl());
 		}
 		$session->destroy();
 		return $this->redirect($this->Auth->logout());
