@@ -72,10 +72,10 @@
 											</tr>
 											<tr>
 												<td>
-													<label for="kyeWord">キーワード</label>
+													<label for="kyeWord">説明文</label>
 												</td>
 												<td colspan="3">
-													<input class="form-control" type="text" name="kyeWord" id="kyeWord" placeholder="キーワード"/>
+													<input class="form-control" type="text" name="kyeWord" id="kyeWord" placeholder="説明文"/>
 												</td>
 											</tr>
 										</table>

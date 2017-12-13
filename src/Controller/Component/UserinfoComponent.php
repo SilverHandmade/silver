@@ -25,7 +25,7 @@ class UserinfoComponent extends Component {
 		}
 		return $user;
 	}
-	
+
 	public function getuser() {
 		$session = $this->request->session();
 		// セッション情報取得
@@ -33,7 +33,6 @@ class UserinfoComponent extends Component {
 			return $session->read('Auth.User');
 		} else {
 			return null;
-
 		}
 	}
 }
