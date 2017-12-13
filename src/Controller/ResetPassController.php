@@ -43,14 +43,14 @@ class ResetPassController extends AppController
 	{
 		// @があれば↑(進む)、なければ↓(返す)
 		if(strpos($this->request->getData('email'),'@') !== false ){
-			$link = 'action="https://sh-ml.mybluemix.net/mail"';
-			$link.= 'target="form1">';
+			$link = 'https://sh-ml.mybluemix.net/mail';
+			$target = 'form1';
 		}else {
-			$link = 'action="http://localhost/silver/resetpass/mailpass"';
-			$link.= 'target="_parent">';
-			$link.= '<input type="hidden" name="flg" value="1">';
+			$link = $this->referer();
+			$target = '_parent';
+			$e_flg = '<input type="hidden" name="flg" value="1">';
 		}
-		$this->set("link", $link);
+		$this->set(compact('link', 'target','e_flg'));
 
 		// UUIDの作成
 		$uuid = Uuid::uuid4();
@@ -108,16 +108,19 @@ class ResetPassController extends AppController
 				echo "リンクが正しくありません1";
 			}
 		}elseif ($this->request->is('post')) {
+			$sa = 1501;
 			$uuid = $this->request->getData('uu');
 			$Tb = TableRegistry::get('unique_ids');
 			$query = $Tb->find();
 			$ret = $query->select(['user_id','sendtime'])
 	        			->where(['uuid'=> $uuid ])->first();
 			// 時間計算(15分)
-			$tmp = $ret->sendtime;
-			$DBtime = date("YmdHis", strtotime($ret->sendtime));
-			$NowTime = date("YmdHis");
-			$sa = $NowTime - $DBtime;
+			if(isset($ret->sendtime)){
+				$tmp = $ret->sendtime;
+				$DBtime = date("YmdHis", strtotime($ret->sendtime));
+				$NowTime = date("YmdHis");
+				$sa = $NowTime - $DBtime;
+			}
 			IF($sa <= 1500){
 				echo $sa_flg = 1;
 			}else {
@@ -153,13 +156,12 @@ class ResetPassController extends AppController
 					// $this->set("temp", $temp);
 
 				}
-			}else {
-				$this->Flash->error(__('リンクの消費期限が切れています＾＾'));
-			}
+			}//else {
+			// 	$this->Flash->error(__('リンクの消費期限が切れています＾＾'));
+			// }
 		}else {
 			echo "リンクが正しくありません2";
 		}
-
 	}
 
 
@@ -167,7 +169,7 @@ class ResetPassController extends AppController
     {
 		if ($this->request->is('post')) {
 			$session = $this->request->session();
-			$Uid = $session->read('id');
+			$Uid = $session->read('Auth.User.id');
 			// 現在のパス比較
 			$OPas = $this->request->getData('oldpassword');
 			$Tb = TableRegistry::get('users');

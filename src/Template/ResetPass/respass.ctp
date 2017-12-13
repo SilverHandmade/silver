@@ -1,7 +1,9 @@
 <?= $this->Html->css('/private/css/kota/resetpass.css') ?>
 <body onload="document.F.submit();">
-	<form METHOD="POST"  name="F"
-	 <?php echo $link; ?>
+	<form METHOD="POST"  name="F" action="<?= $link; ?>" target="<?= $target ?>">
+		<?php if(isset($e_flg)){
+			echo $e_flg;
+		}?>
 		<input type="hidden" name="mail"
 		value="<?php echo $_POST['email']?>">
 		<input type="hidden" name="uu" value="<?php echo $a;?>">
