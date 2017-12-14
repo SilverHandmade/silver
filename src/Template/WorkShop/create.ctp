@@ -41,7 +41,7 @@
 			</div>
 		</div>
 		<div class="row right btn-margin">
-			<button type="submit" name="button" class="btn btn-success" id="Trans" onfocus="this.blur();">送信</button>
+			<button type="submit" class="btn btn-success" id="Trans" onfocus="this.blur();">送信</button>
 			<!-- <button type="button" name="search-back" id="back" class="btn btn-primary" onfocus="this.blur();">検索画面へ</button> -->
 			<?= $this->Html->link('検索画面へ', ['controller' => 'workshop', 'action' => 'index'], ['class' => 'btn btn-primary'])?>
 		</div>
