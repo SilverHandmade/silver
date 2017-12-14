@@ -32,9 +32,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div align="center">
-								<?= $key['midasi_url'] ?>
-								<img src="<?= $this->Url->image(file_exists('workshop/'.$key['midasi_url'])?'workshop/'.$key['midasi_url']:"no_image.png");?>" width="500" height="325">
-
+								<img src="<?= $this->Url->image('workshop/'.$key['midasi_url']);?>" width="500" height="325">
 							</div>
 						</div>
 						<div class="col-md-9">

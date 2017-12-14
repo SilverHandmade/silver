@@ -37,7 +37,7 @@
 	</div>
 	<div class="row right" id="linkTo">
 		<div class="col-md-12">
-			<?= $this->Html->link('>>ワークショップ一覧へ',['controller' => 'request', 'action' => 'index']);?>
+			<?= $this->Html->link('>>ワークショップ一覧へ',['controller' => 'WorkShop', 'action' => 'index']);?>
 		</div>
 	</div>
 
@@ -71,7 +71,7 @@
 	</div>
 	<div class="row right" id="linkTo">
 		<div class="col-md-12">
-			<?= $this->Html->link('>>知恵袋一覧へ',['controller' => 'answers', 'action' => 'list']);?>
+			<?= $this->Html->link('>>知恵袋一覧へ',['controller' => 'answers', 'action' => 'index']);?>
 		</div>
 	</div>
 </div>

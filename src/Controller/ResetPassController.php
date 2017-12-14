@@ -55,6 +55,7 @@ class ResetPassController extends AppController
 		// UUIDの作成
 		$uuid = Uuid::uuid4();
 		$this->set("a", $uuid);
+		$this->set("ip",$_SERVER["HTTP_HOST"]);
 
 		// 入力されているemailで登録してるユーザがあるか
 		$Tb = TableRegistry::get('users');

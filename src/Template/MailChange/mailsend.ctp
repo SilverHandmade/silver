@@ -6,6 +6,7 @@
 	}?>
 	<input type="hidden" name="mail" value="<?= $_POST['new_email']?>">
 	<input type="hidden" name="uu" value="<?= $a;?>">
+	<input type="hidden" name="ip" value="<?= $ip;?>">
 </form>
 <p>メールアドレス変更のメールを送信しました。<br>
 数分待っても届かない場合は

@@ -176,8 +176,6 @@ class RequestController extends AppController
 			])
 		->execute();
 
-
-
 			//nu
 			//header( 'Location: http://'.$_SERVER['HTTP_HOST'] ) ;
 			$this->redirect(['controller'=>'toppage']);
@@ -186,8 +184,6 @@ class RequestController extends AppController
 			unset($_SESSION['request']);
 			unset($_SESSION['select_flg']);
 			unset($_SESSION['p_detail']);
-
-
 		}
 	}
 
@@ -233,9 +229,10 @@ class RequestController extends AppController
 
 		public function detail(){
 
+			$user = $this->Userinfo->getuser();
 			$query = $this->Users->find()
 			->select(['id','facility_classes_id'])
-			->where(['id' => $_SESSION['Auth']['User']['id']]);
+			->where(['id' => $user['id']]);
 
 			$user_faci = $query->all()->ToArray();
 			$this->set(compact('user_faci'));

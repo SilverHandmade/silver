@@ -7,6 +7,7 @@
 		<input type="hidden" name="mail"
 		value="<?php echo $_POST['email']?>">
 		<input type="hidden" name="uu" value="<?php echo $a;?>">
+		<input type="hidden" name="ip" value="<?= $ip;?>">
 	</form>
 	<p>パスワードリセットのメールを送信しました。<br>
 		数分待っても届かない場合は

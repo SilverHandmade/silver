@@ -20,7 +20,7 @@
 			<?= $this->Html->link("初めての方はこちら" ,['controller' => 'regist', "action" => 'index']);?>
 		</p>
 		<p>
-			<?= $this->Html->link("パスワードを忘れた場合はこちら" ,['controller' => 'resetPass', "action" => 'index']);?>
+			<?= $this->Html->link("パスワードを忘れた場合はこちら" ,['controller' => 'resetPass', "action" => 'mailpass']);?>
 		</p>
 	</form>
 </div>

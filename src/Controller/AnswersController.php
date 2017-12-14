@@ -39,10 +39,7 @@ class AnswersController extends AppController
 
 		$get_id = $this->request->getParam('id');
 
-		$wits_messages = $this->wits_messages->find('all')
-		->where(['wits_id ='=>$get_id]);
-		$witmesArray = $wits_messages->toArray();
-		$this->set(compact('witmesArray'));
+
 
 		$query = $this->wits_messages->find();
 		$query->select(['ren' => $query->func()->max('ren')])
@@ -57,7 +54,7 @@ class AnswersController extends AppController
 		$this->set(compact('detailId'));
 
 		if (isset($_POST['ans-submit'])) {
-			$answertxt = $_POST['ans-submit'];
+			$answertxt = $_POST['textarea'];
 			$userId = $user['id'];
 			$nowdate = date("Y/m/d H:i:s");
 			$incRen = $maxRenArray[0]['ren'] + 1;
@@ -77,6 +74,10 @@ class AnswersController extends AppController
 			])
 			->execute();
 		}
+		$wits_messages = $this->wits_messages->find('all')
+		->where(['wits_id ='=>$get_id]);
+		$witmesArray = $wits_messages->toArray();
+		$this->set(compact('witmesArray'));
 	}
 
 	public function create(){
