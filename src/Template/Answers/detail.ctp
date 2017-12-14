@@ -1,6 +1,6 @@
 <?php
 	$this->start('css');
-	echo $this->Html->css('/private/css/kota/answers.css');
+	echo $this->Html->css('/private/css/answers/answers.css');
 	$this->end();
 
 	$this->start('script');
@@ -28,26 +28,12 @@
 						<textarea name="textarea" rows="6" cols="80" class="tarea form-control" placeholder="回答してね" id="answertxt"></textarea>
 					</div>
 					<div class="ans-btn">
-						<button type="submit" name="ans-submit" class="btn btn-success" id="answerbtn" onclick="insertRow('sample1_table')">回答</button>
+						<button type="submit" name="ans-submit" class="btn btn-success" id="answerbtn" onclick="return ">回答</button>
 					</div>
 				</div>
-				<?php if ($_SESSION['Auth']['User']['id'] == $detailId[0]['user_id']): ?>
-					<button type="submit" class="btn btn-primary" name="edit">編集</button>
-				<?php else: ?>
-					<button type="button" class="btn btn-primary" onclick="location.href='/silver/answers'">トップへ</button>
-				<?php endif; ?>
 
-
-		<table>
-			<tr>
-				<input type="text" name="answertxt" id="answertxt" value="">
-				<input type="submit" name="answerbtn" value="回答する"  class="btn btn-success">
-
-			</tr>
-		</table>
-
-		<?php if ($_SESSION['Auth']['User']['id'] == $detailId[0]['user_id']): ?>
-			<button type="submit" class="button" name="edit">編集</button>
+		<?php if ($user['id'] == $detailId[0]['user_id']): ?>
+			<button type="submit" name="edit" class="btn btn-primary">編集</button>
 		<?php else: ?>
 			<?= $this->Html->link('トップへ',['controller'=>'Answers','action'=>'index'],['class'=>'btn btn-primary']); ?>
 		<?php endif; ?>
@@ -62,7 +48,7 @@
 						</div>
 					<?php endforeach; ?>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>

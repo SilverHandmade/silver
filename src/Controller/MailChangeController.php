@@ -56,6 +56,7 @@ public function mailsend()
 		// UUIDの作成
 		$uuid = Uuid::uuid4();
 		$this->set("a", $uuid);
+		$this->set("ip",$_SERVER["HTTP_HOST"]);
 
 		$session = $this->request->session();
 		$Uid = $session->read('Auth.User.id');

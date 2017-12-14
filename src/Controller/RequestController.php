@@ -176,8 +176,6 @@ class RequestController extends AppController
 			])
 		->execute();
 
-
-
 			//nu
 			//header( 'Location: http://'.$_SERVER['HTTP_HOST'] ) ;
 			$this->redirect(['controller'=>'toppage']);
@@ -186,8 +184,6 @@ class RequestController extends AppController
 			unset($_SESSION['request']);
 			unset($_SESSION['select_flg']);
 			unset($_SESSION['p_detail']);
-
-
 		}
 	}
 
@@ -233,9 +229,10 @@ class RequestController extends AppController
 
 		public function detail(){
 
+			$user = $this->Userinfo->getuser();
 			$query = $this->Users->find()
 			->select(['id','facility_classes_id'])
-			->where(['id' => $_SESSION['Auth']['User']['id']]);
+			->where(['id' => $user['id']]);
 
 			$user_faci = $query->all()->ToArray();
 			$this->set(compact('user_faci'));
@@ -248,10 +245,9 @@ class RequestController extends AppController
 			  ->where(['id' => $_SESSION['id']])
 			  ->execute();
 
-			  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' );
+			  $this->redirect(['controller'=>'toppage']);
 			  unset($_SESSION['id']);
 			  $this->Flash->success('依頼を受けました。');
-			  exit();
 			}
 
 			//依頼完了ボタンが押されたとき
@@ -262,10 +258,10 @@ class RequestController extends AppController
 			  ->where(['id' => $_SESSION['id']])
 			  ->execute();
 
-			  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' );
+			  $this->redirect(['controller'=>'toppage']);
 			  unset($_SESSION['id']);
 			  $this->Flash->success('依頼が完了されました。');
-			  exit();
+
 			}
 
 			//TOPページから詳細へ飛んだ場合の処理
@@ -300,7 +296,7 @@ class RequestController extends AppController
 
 
 		public function select(){
-			header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/request/select' );
+
 			$_SESSION['edit_flg'] = 0;
 			unset($_SESSION['req_edit']);
 			$query = $this->Users->find()
@@ -334,10 +330,10 @@ class RequestController extends AppController
 			  ->where(['id' => $_SESSION['sel_id']])
 			  ->execute();
 
-			  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' );
+			  $this->redirect(['controller'=>'toppage']);
 			  unset($_SESSION['sel_id']);
 			  $this->Flash->success('依頼をキャンセルしました。');
-			  exit();
+
 			}
 
 			if (isset($_POST['nextbtn'])) {
@@ -349,8 +345,9 @@ class RequestController extends AppController
 					$_SESSION['dateCheck'] = $_POST['Dcheck'];
 				}
 
-			  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/request/edit_ploof/' );
-			  exit();
+			  //header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/request/edit_ploof/' );
+			  $this->redirect(['controller'=>'request','action'=>'edit_ploof']);
+
 		    }
 
 
@@ -387,7 +384,7 @@ class RequestController extends AppController
 
 
 
-				header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' ) ;
+				$this->redirect(['controller'=>'toppage']);
 				$this->Flash->success(__('データが更新されました。'));
 				unset($_SESSION['facility']);
 				unset($_SESSION['request']);
@@ -396,7 +393,7 @@ class RequestController extends AppController
 				unset($_SESSION['req_edit']);
 				unset($_SESSION['dateCheck']);
 				unset($_SESSION['sel_id']);
-				exit();
+
 			}
 		}
 

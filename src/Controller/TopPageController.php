@@ -22,10 +22,17 @@ class TopPageController extends AppController
 
     public function index() {
 		$user = $this->Userinfo->getuser();
+
 		$queryRequest = $this->Requests->find()->contain('Facilities')
-		->select(['id', 'Requests.title', 'Requests.To_date', 'Facilities.name'])
-		->order(['Requests.To_date' => 'DESC'])
+		->select(['id', 'Requests.title', 'Requests.To_date', 'Facilities.name', 'Requests.kan_flg', 'Requests.Del_flg'])
+		->where(['Requests.kan_flg' => 0, 'Requests.Del_flg' => 0])
+		// ->order(['Requests.To_date' => 'DESC'])
 		->limit(4);
+		if ($user['facility_classes_id'] == 1) {
+			$queryRequest->where(['Requests.F_moto_id' => $user['facilities_id']]);
+		} else {
+			$queryRequest->where(['Requests.F_saki_id' => $user['facilities_id']]);
+		}
 		$request = $queryRequest->toArray();
 		$this->set(compact('request'));
 

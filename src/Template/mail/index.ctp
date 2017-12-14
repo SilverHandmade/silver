@@ -1,5 +1,5 @@
 <?php $this->start('css'); ?>
-	<?= $this->Html->css('/private/css/kota/mail.css') ?>
+	<?= $this->Html->css('/private/css/mail/mail.css') ?>
 <?php $this->end(); ?>
 
 <script>

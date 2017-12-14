@@ -7,12 +7,12 @@
 		<h2 class="danger" >〆切マジか</h2>
 		<div class="row">
 			<?php foreach ($request as $key): ?>
-				<?= $this->element('DeadlineRequest', ["key" => $key]);?>
+				<?= $this->element('DeadlineRequest', ['key' => $key]);?>
 			<?php endforeach; ?>
 		</div>
 		<div class="row right" id="linkTo">
 			<div class="col-md-12">
-				<?= $this->Html->link(">>依頼一覧へ",['controller' => 'request', "action" => "list"]);?>
+				<?= $this->Html->link('>>依頼一覧へ',['controller' => 'request', 'action' => 'list']);?>
 			</div>
 		</div>
 	<?php endif; ?>
@@ -22,12 +22,12 @@
 		<?php foreach ($workshop as $key): ?>
 			<div class="col-md-3">
 				<div class="panel">
-					<a href="">
-						<img src="<?= $this->Url->image(file_exists($key['midasi_url'])?$key['midasi_url']:"no_image.png");?>">
+					<a href="<?= $this->Url->build(['controller' => 'WorkShop', 'action' => 'detail', 'id' => $key['id']])?>">
+						<img src="<?= $this->Url->image(file_exists($key['midasi_url'])?$key['midasi_url']:'no_image.png');?>">
 						<h3><?= $key['name'];?></h3>
 						<div class="row">
 							<div class="col-md-12 right">
-								<button class="btn btn-link" type="button" >詳細 >></button>
+								<button class="btn btn-link">詳細 >></button>
 							</div>
 						</div>
 					</a>
@@ -37,7 +37,7 @@
 	</div>
 	<div class="row right" id="linkTo">
 		<div class="col-md-12">
-			<?= $this->Html->link(">>ワークショップ一覧へ",['controller' => 'request', "action" => "index"]);?>
+			<?= $this->Html->link('>>ワークショップ一覧へ',['controller' => 'WorkShop', 'action' => 'index']);?>
 		</div>
 	</div>
 
@@ -46,7 +46,7 @@
 		<?php foreach ($witses as $key): ?>
 			<div class="col-md-3">
 				<div class="panel">
-					<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $key['id']])?>">
+					<a href="<?= $this->Url->build(['controller' => 'answers', 'action' => 'detail', 'id' => $key['id']])?>">
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="list-group">
@@ -71,7 +71,7 @@
 	</div>
 	<div class="row right" id="linkTo">
 		<div class="col-md-12">
-			<?= $this->Html->link(">>知恵袋一覧へ",['controller' => 'request', "action" => "list"]);?>
+			<?= $this->Html->link('>>知恵袋一覧へ',['controller' => 'answers', 'action' => 'index']);?>
 		</div>
 	</div>
 </div>

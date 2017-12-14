@@ -1,1 +1,1 @@
-<?= $this->Html->css('/private/css/kota/resetpass.css') ?>
+<?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>

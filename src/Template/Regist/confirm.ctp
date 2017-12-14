@@ -55,5 +55,5 @@
 	</table>
 	<input type="hidden" name="facilities" value="<?= $_POST['facilities']?>">
 	<input type="hidden" name="flg" value="true">
-	<input type="submit" name="" value="確定" class="btn btn-success">
+	<button type="submit" name="" value="" class="btn btn-success">確定</button>
 </form>

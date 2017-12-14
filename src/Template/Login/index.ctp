@@ -1,4 +1,4 @@
-<?= $this->Html->css('/private/css/kota/login.css') ?>
+<?= $this->Html->css('/private/css/login/login.css') ?>
 <?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
 <?= $this->Html->css('login.css') ?>
 
@@ -20,7 +20,7 @@
 			<?= $this->Html->link("初めての方はこちら" ,['controller' => 'regist', "action" => 'index']);?>
 		</p>
 		<p>
-			<?= $this->Html->link("パスワードを忘れた場合はこちら" ,['controller' => 'resetPass', "action" => 'index']);?>
+			<?= $this->Html->link("パスワードを忘れた場合はこちら" ,['controller' => 'resetPass', "action" => 'mailpass']);?>
 		</p>
 	</form>
 </div>

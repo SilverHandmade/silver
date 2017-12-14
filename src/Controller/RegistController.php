@@ -51,6 +51,7 @@ class RegistController extends AppController
 		if($this->request->is('post')) {
 
 		$postname = $_POST['name'];
+		
 			$posthurigana	= $_POST['hurigana'];
 			$postmail	= $_POST['email'];
 			$postremail	= $_POST['reemail'];
@@ -95,7 +96,7 @@ class RegistController extends AppController
 			if (!empty($_POST['flg'])) {
 				$query = $this->users->query();
 				$query->insert([
-					'id','email','name','facilities_id','facility_classes_id','hurigana','password'
+					'id','email','name','facilities_id','facility_classes_id','hurigana','password','Del_flg'
 				])
 				->values([
 					'id' => '',
@@ -104,7 +105,8 @@ class RegistController extends AppController
 					'facilities_id' => $postfacilitie,
 					'facility_classes_id' => $postfClassId,
 					'hurigana' => $posthurigana,
-					'password' => $postpass
+					'password' => $postpass,
+					'Del_flg' => 0
 				])
 				->execute();
 				$this->redirect(['controller' => 'login', 'action' => 'index']);

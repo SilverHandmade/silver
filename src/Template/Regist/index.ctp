@@ -3,7 +3,7 @@
 	echo $this->Html->script('/private/js/regist/regist.js');
 	$this->end();
 	$this->start('css');
-	echo $this->Html->css('/private/css/kota/regist.css');
+	echo $this->Html->css('/private/css/regist/regist.css');
 	$this->end();
 ?>
 <!-- -->
@@ -61,7 +61,7 @@
 				</div>
 				<!--送信ボタン-->
 				<div class="submit">
-					<button type="submit" value="" class="success btn btn-success">送信</button>
+					<button type="submit" id="transmit" value="" class="success btn btn-success">送信</button>
 				</div>
 			</form>
 		</div>

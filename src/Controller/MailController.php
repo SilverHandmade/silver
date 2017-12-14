@@ -25,7 +25,7 @@ class MailController extends AppController
 
 		//ログインチェック
 		if (empty($session->read('Auth'))) {
-			$this->redirect(['controller' => 'login']);
+			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
 		}
     }
 

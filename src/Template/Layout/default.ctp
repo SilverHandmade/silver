@@ -73,7 +73,6 @@
 					<li><?= $this->Html->link("ワークショップ",['controller' => 'WorkShop', "action" => "index"]);?></li>
 					<li><?= $this->Html->link("動画",['controller' => 'Video', "action" => "index"]);?></li>
 					<li><?= $this->Html->link("知恵袋",['controller' => 'answers', "action" => "index"]);?></li>
-					<!-- <li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li> -->
 				</ul>
 			</div>
 		</div>
@@ -84,9 +83,9 @@
 				<div class="col-md-offset-1 col-md-10">
 					<ul class="center">
 						<li><?= $this->Html->link("依頼",['controller' => 'request', "action" => "index"]);?></li>
-						<li><?= $this->Html->link("ワークショップ",['controller' => 'workshop', "action" => "index"]);?></li>
+						<li><?= $this->Html->link("ワークショップ",['controller' => 'WorkShop', "action" => "index"]);?></li>
 						<li><?= $this->Html->link("動画",['controller' => 'video', "action" => "index"]);?></li>
-						<li><a href="https://chiebukuro.yahoo.co.jp/" target="_blank">知恵袋</a></li>
+						<li><?= $this->Html->link("知恵袋",['controller' => 'answers', "action" => "index"]);?></li>
 						<?php if($user['loginFlg']):?>
 							<?= $this->element('Logout');?>
 						<?php else: ?>
@@ -125,8 +124,8 @@
 <footer class="container-fluid">
 	<div class="row">
 		<div class="center">
-			Copyright &copy; 2017 Taguchi Corporation All rights reserved.
-			　ご意見・ご質問は<a class="btn btn-link" href="<?= $this->request->getAttribute("webroot") ?>mail">こちら</a>から
+			Copyright &copy; 2017 Taguchi Corporation All rights reserved.br
+			　ご意見・ご質問は<?= $this->Html->link("こちら",['controller' => 'mail', "action" => "index"], ['class' => 'btn btn-link']);?>から
 		</div>
 	</div>
 </footer>

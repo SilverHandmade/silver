@@ -44,18 +44,18 @@ class WorkShopController extends AppController
 				'description' => $Model,
 				'midasi_url'=> $images,
 				'user_id' => $user,
-			]);
-			//->execute();
+			])
+			->execute();
 
 			//詳細
 			$query = $this->product_detailses->query();
 			$query->insert(['product_id','description','photo_url'])
 			->values([
-			'product_id' => $product_id,
-			'description' => $Model_detailses,
-			'photo_url'=> $images_detailses,
-		]);//->execute();
-		if(isset($_FILES)&& isset($_FILES['upload_gazo']) && is_uploaded_file($_FILES['upload_gazo']['tmp_name'])){
+				'product_id' => $product_id,
+				'description' => $Model_detailses,
+				'photo_url'=> $images_detailses
+			])->execute();
+		if(isset($_FILES) && isset($_FILES['upload_gazo']) && is_uploaded_file($_FILES['upload_gazo']['tmp_name'])){
 		    $a = 'img/workshop/' . basename($_FILES['upload_gazo']['name']);
 		    if(move_uploaded_file($_FILES['upload_gazo']['tmp_name'], $a)){
 		        $msg = $a. 'のアップロードに成功しました';
@@ -80,7 +80,7 @@ echo"<br><br><br><br><br>";
 							'ren' => $cnt,
 							'description' => $_POST[$cnt1],
 							'photo_url' => $this->request->data[$cnt2]['name'],
-						]);//->execute();
+						])->execute();
 
 					if(isset($_FILES)&& isset($_FILES['upload_gazo'.$cnt]) && is_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'])){
 					    $a = 'img/workshop/' . basename($_FILES['upload_gazo'.$cnt]['name']);
@@ -118,9 +118,9 @@ echo"<br><br><br><br><br>";
 			}
 	}
 //詳細画面
-	public function detailses()
+	public function detail()
 	{
-		$query = $this->request->getQuery('id');
+		$query = $this->request->getParam('id');
 
 		$detailses = $this->product_detailses->find();
 		$detailses->where(['product_id'=>$query]);

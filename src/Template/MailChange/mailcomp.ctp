@@ -1,4 +1,4 @@
-<?= $this->Html->css('/private/css/kota/resetpass.css') ?>
+<?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>
 <?php if($sa_flg == 1){?>
 	<p>メールの変更が完了しました。</p>
 	<span style="border-bottom: solid 1px;">

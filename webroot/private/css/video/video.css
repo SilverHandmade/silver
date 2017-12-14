@@ -22,7 +22,11 @@ button span {
 	height: 1em;
 	overflow: hidden;
 }
-
+@media (max-width: 992px) {
+	#ModeTogle {
+		display: none;
+	}
+}
 /*search終わり*/
 
 /*view*/
