@@ -57,7 +57,7 @@ class AnswersController extends AppController
 		$this->set(compact('detailId'));
 
 		if (isset($_POST['ans-submit'])) {
-			$answertxt = $_POST['ans-submit'];
+			$answertxt = $_POST['textarea'];
 			$userId = $user['id'];
 			$nowdate = date("Y/m/d H:i:s");
 			$incRen = $maxRenArray[0]['ren'] + 1;
