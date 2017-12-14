@@ -1,4 +1,4 @@
-<div　class="row">
+<div class="row">
 	<h2>詳細画面</h2>
 	<table id="detailtbl" align="" class="table">
 		<tr>
