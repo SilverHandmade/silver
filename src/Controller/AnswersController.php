@@ -30,7 +30,7 @@ class AnswersController extends AppController
 
 		$user = $this->Userinfo->getuser();
 		if (empty($user)) {
-			$this->redirect(['controller' => 'login']);
+			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
 		}
 
 		$witses = $this->witses->find('all');
@@ -82,7 +82,7 @@ class AnswersController extends AppController
 	public function create(){
 		$user = $this->Userinfo->getuser();
 		if (empty($user)) {
-			$this->redirect(['controller' => 'login']);
+			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
 		}
 
 		//施設情報の取得
