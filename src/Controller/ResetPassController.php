@@ -41,16 +41,7 @@ class ResetPassController extends AppController
 
 	public function respass()
 	{
-		// @があれば↑(進む)、なければ↓(返す)
-		if(strpos($this->request->getData('email'),'@') !== false ){
-			$link = 'https://sh-ml.mybluemix.net/mail';
-			$target = 'form1';
-		}else {
-			$link = $this->referer();
-			$target = '_parent';
-			$e_flg = '<input type="hidden" name="flg" value="1">';
-		}
-		$this->set(compact('link', 'target','e_flg'));
+
 
 		// UUIDの作成
 		$uuid = Uuid::uuid4();
@@ -62,20 +53,38 @@ class ResetPassController extends AppController
 		$query = $Tb->find();
 		$ret = $query->select(['id','cnt' => $query->func()->count('*')])
 					->where(['email'=>$this->request->getData('email')])->first();
-		// 存在すれば、再設定用テーブルに挿入
-		if($ret->cnt >= 1){
-			$Uid = $ret->id;
-			$Tb = TableRegistry::get('unique_ids');
-			$query = $Tb->query();
-			$query->insert([
-				'user_id','uuid'
-			])
-			->values([
-				'user_id' => $Uid,
-				'uuid' => $uuid
-			])
-			->execute();
+
+
+		// @があれば↑(進む)、なければ↓(返す)
+		if(strpos($this->request->getData('email'),'@') !== false ){
+			$link = 'https://sh-ml.mybluemix.net/mail';
+			$target = 'form1';
+			// 存在すれば、再設定用テーブルに挿入
+			if($ret->cnt >= 1){
+
+				$Uid = $ret->id;
+				$Tb = TableRegistry::get('unique_ids');
+				$query = $Tb->query();
+				$query->insert([
+					'user_id','uuid'
+				])
+				->values([
+					'user_id' => $Uid,
+					'uuid' => $uuid
+				])
+				->execute();
+			}
+		}else {
+			$link = $this->referer();
+			$target = '_parent';
+			$e_flg = '<input type="hidden" name="flg" value="1">';
+		}else {
+			$link = '';
+			$target = '_parent';
+			$e_flg = '<input type="hidden" name="flg" value="3">';
 		}
+
+		$this->set(compact('link', 'target','e_flg'));
 	}
 
 	public function passchange()
