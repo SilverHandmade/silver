@@ -36,13 +36,14 @@ class IdTestController extends AppController
 				$name_ren = $ret_d->id;
 			}
 			// $asd = basename($_FILES['upload_gazo']['name']);
+			$name_id = $name_id;
 			$path_parts = pathinfo(basename($_FILES['upload_gazo']['name']));
 			echo $asd = ".".$path_parts['extension'], "\n"."<br>";
 			echo $zxc = $name_id."x".$name_ren.$asd."<br>";
 
 
 
-			$a = 'img/workshop/' . basename($_FILES['upload_gazo']['name']);
+			$a = 'img/workshop/' . $name_id."x".$name_ren.$asd;
 		    if(move_uploaded_file($_FILES['upload_gazo']['tmp_name'], $a)){
 		        $msg = $a. 'のアップロードに成功しました';
 		    }else {
@@ -54,7 +55,8 @@ class IdTestController extends AppController
 		echo $gazo_name."<br>";
 		while (isset($_POST['text'.$cnt])) {
 			if(isset($_FILES)&& isset($_FILES['upload_gazo'.$cnt]) && is_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'])){
-			    $a = 'img/workshop/' . basename($_FILES['upload_gazo'.$cnt]['name']);
+
+				$a = 'img/workshop/' . basename($_FILES['upload_gazo'.$cnt]['name']);
 			    if(move_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'], $a)){
 			        $msg = $a. 'のアップロードに成功しました';
 			    }else {
