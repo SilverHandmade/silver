@@ -24,7 +24,10 @@
 					echo $_SESSION['req_edit']['number'];}else{ echo $edit_req[0]['su'];}?>>
 				<p class="font-p">
 					締切日
-					<input type="checkbox" id="dateCheck" name="Dcheck" value="1">
+					<label>
+						<input type="checkbox" id="dateCheck" name="Dcheck" value="1" class="checkbox">
+						<span class="checkbox-parts"></span>
+					</label>
 				</p>
 				<input type="date" id="selreqD_con" class="form-control" name="selrequestD_con" required value=<?php if ($_SESSION['edit_flg'] == 1) {
 					echo $_SESSION['req_edit']['moto_date'];}else{ echo date("Y-n-j", strtotime($edit_req[0]['To_date']));}?>>
