@@ -224,6 +224,29 @@ $(function(){
 });
 });
 
+//メッセージの送信ボタンが押されたとき
+$(function(){
+	$('#messagebtn').bind("click",function(){
+		var mestxt = document.getElementById( "messagetxt" ).value;
+		mestxt = mestxt.trim();
+		
+		if (mestxt != "") {
+			var myRet = confirm("確定後は編集できません。この内容でよろしいですか？\n" + mestxt);
+			if ( myRet == true ){
+
+			}else{
+				return false;
+			}
+		}else{
+			alert("本文が入力されていません。");
+			document.getElementById( "messagetxt" ).value = "";
+			return false;
+		}
+
+});
+});
+
+
 //list画面のステータスセレクトボックスの処理
 function select_state(){
 	var sel_st = new RegExp($('#selectbox').val());

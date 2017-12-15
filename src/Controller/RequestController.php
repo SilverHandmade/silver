@@ -20,7 +20,12 @@ class RequestController extends AppController
 		$this->loadmodel('Users');
 		$this->loadmodel('Request_detailses');
 		$this->loadmodel('Product_detailses');
+		$this->loadmodel('request_messages');
 		$this->loadComponent('MakeId9');
+		//仮
+		$this->loadModel('witses');
+		$this->loadModel('wits_messages');
+		//
 
 		//requestページはキャッシュさせない
 		header( 'Expires: Sat, 26 Jul 1997 05:00:00 GMT');
@@ -93,9 +98,6 @@ class RequestController extends AppController
 		$jsonResults = json_encode($results);
 		$this->set(compact('results'));
 		$_SESSION['create_flg'] = 1;
-
-
-
 
 
 		if (isset($_POST['requestT'])){
@@ -186,7 +188,6 @@ class RequestController extends AppController
 			unset($_SESSION['p_detail']);
 		}
 	}
-
 
 
 	public function list(){
@@ -322,7 +323,6 @@ class RequestController extends AppController
 			$_SESSION['dateCheck'] = 0;
 
 
-
 			if (isset($_POST['Reqcancelbtn'])) {
 				$query = $this->Requests->query();
 				$query->update()
@@ -333,7 +333,6 @@ class RequestController extends AppController
 			  $this->redirect(['controller'=>'toppage']);
 			  unset($_SESSION['sel_id']);
 			  $this->Flash->success('依頼をキャンセルしました。');
-
 			}
 
 			if (isset($_POST['nextbtn'])) {
@@ -349,7 +348,6 @@ class RequestController extends AppController
 			  $this->redirect(['controller'=>'request','action'=>'edit_ploof']);
 
 		    }
-
 
 
 		  $get_id = $this->request->getQuery('id');
@@ -383,7 +381,6 @@ class RequestController extends AppController
 			  ->execute();
 
 
-
 				$this->redirect(['controller'=>'toppage']);
 				$this->Flash->success(__('データが更新されました。'));
 				unset($_SESSION['facility']);
@@ -395,6 +392,80 @@ class RequestController extends AppController
 				unset($_SESSION['sel_id']);
 
 			}
+		}
+
+		public function message(){
+
+			$user = $this->Userinfo->getuser();
+			if (empty($user)) {
+				$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
+			}
+			//依頼ID取得
+			$get_id = $this->request->getQuery('id');
+
+			//依頼タイトル取得
+			$query = $this->Requests->find()
+			->select(['title'])
+			->where(['id ='=>$get_id]);
+			$request_info = $query->all()->ToArray();
+			$this->set(compact('request_info'));
+
+			//連番
+			$query = $this->request_messages->find();
+			$query->select(['ren' => $query->func()->max('ren')])
+			->where(['request_id ='=>$get_id]);
+			$maxRenArray = $query->all()->ToArray();
+			$this->set(compact('maxRenArray'));
+
+			if (isset($_POST['mes-submit'])) {
+				$answertxt = $_POST['textarea'];
+				$answertxt = htmlentities($answertxt);
+				$userId = $user['id'];
+				$nowdate = date("Y/m/d H:i:s");
+				$incRen = $maxRenArray[0]['ren'] + 1;
+
+
+				$query = $this->request_messages->query();
+				$query->insert([
+					'request_id','ren','user_id','message','transmit','Del_flg'
+				])
+				->values([
+					'request_id' => $get_id,
+					'ren' => $incRen,
+					'user_id' => $userId,
+					'message' => $answertxt,
+					'transmit' => $nowdate,
+					'Del_flg' => '0'
+				])
+				->execute();
+				$this->redirect(['controller'=>'Request','action'=>'message','id'=>$get_id]);
+				$this->Flash->success(__('データが送信されました。'));
+			}
+
+
+			//メッセージの取得
+			$query = $this->request_messages->find()
+			->where(['request_id'=> $get_id])
+			->order(['ren' => 'DESC']);
+			$message_array = $query->all()->ToArray();
+			$this->set(compact('message_array'));
+
+
+			$query = $this->request_messages->find()
+			->select(['user_id','ren','message','users.name','facilities.name'])
+			->join([
+				'table' => 'users',
+				'type' => 'INNER',
+				'conditions' => 'user_id = users.id'])
+			->join([
+				'table' => 'facilities',
+				'type' => 'INNER',
+				'conditions' => 'facilities.id = users.facilities_id'])
+			->where(['request_id' => $get_id])
+			->order(['ren' => 'DESC']);
+			$mes_namelist = $query->all()->ToArray();
+			$this->set(compact('mes_namelist'));
+
 		}
 
 

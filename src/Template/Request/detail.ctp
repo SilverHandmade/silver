@@ -77,6 +77,8 @@
 
 
 </table>
+<?= $this->Html->link('メッセージを送る',["controller" => "Request","action" => "message",'id' => $this->request->getParam('id')],['class'=>'btn btn-primary'])?>
+<br>
 <?php if ($user_faci[0]['facility_classes_id'] == 2 && $req_info[0]['ju_flg'] == 0): ?>
 	<button type="submit" class="btn btn-success" name="order" id="order">依頼を受ける</button>
 	<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "list"],['class'=>'btn btn-primary'])?>
