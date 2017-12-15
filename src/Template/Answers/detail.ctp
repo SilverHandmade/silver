@@ -33,7 +33,7 @@
 				</div>
 
 		<?php if ($user['id'] == $detailId[0]['user_id']): ?>
-			<button type="submit" name="edit" class="btn btn-primary">編集</button>
+			<?= $this->Html->link('編集',["controller" => "answers","action" => "edit",'id' => $witsesId[0]['id'] ],['class'=>'btn btn-primary'])?>
 		<?php else: ?>
 			<?= $this->Html->link('トップへ',['controller'=>'Answers','action'=>'index'],['class'=>'btn btn-primary']); ?>
 		<?php endif; ?>
