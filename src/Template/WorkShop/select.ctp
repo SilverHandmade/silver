@@ -2,8 +2,10 @@
 	<div class="row center">
 		<h2>ワークショップ編集画面</h2>
 		<form action=""method="post">
-			<input type="text" name="S_text" id="select_t">
-			<button type="button" name="S_button" id="select_t" value="">検索</button>
+			<div class="sear-lay">
+				<input type="text" name="S_text" id="select_t">
+				<button type="button" name="S_button" id="select_t" value="" class="btn btn-success">検索</button>
+			</div>
 		</form>
 
 		<?= $this->Html->link(">>戻る",['controller' => 'WorkShop', "action" => "index"]);?>

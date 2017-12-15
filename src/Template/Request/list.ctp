@@ -18,7 +18,7 @@
 			<div class="sear-lay">
 				<input type="text" name="dummy" style="display:none;">
 				<input type="text" id="rsearch" name="search" value="" class="search form-control"/>
-				<button type="button" id="Reqsearchbutton" name="sbutton" class="btn-search btn btn-success">検索</button>
+				<button type="button" id="Reqsearchbutton" name="sbutton" class="btn btn-success">検索</button>
 			</div>
 		</form>
 		<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>
@@ -28,7 +28,7 @@
 				<option value="2">受注可能のみ</option>
 			</select>
 
-			<table id="request-tab"class="row table">
+			<table id="request-tab"class="row table none-table">
 				<thead>
 					<tr>
 						<th class="col-md-4">件名</th>
@@ -48,7 +48,7 @@
 						</div>
 						<div id="req_state" class="col-md-2">
 							<?php if ($req['ju_flg'] != NULL): ?>
-								<p class="p-jutyu">受注中</p>
+								<p class="p-color">受注中</p>
 							<?php endif; ?>
 							<?php if ($req['ju_flg'] == NULL): ?>
 								<p>受注可能</p>
@@ -65,7 +65,7 @@
 				<option value="2">依頼中のみ</option>
 			</select>
 
-			<table id="request-tab"class="row table">
+			<table id="request-tab"class="row table none-table">
 				<thead>
 					<tr>
 						<td class="col-md-4">件名</td>
@@ -85,7 +85,7 @@
 						</div>
 						<div id="req_state" class="col-md-1">
 							<?php if ($req['ju_flg'] != NULL): ?>
-								<p class="p-jutyu">受注中</p>
+								<p class="p-color">受注中</p>
 							<?php endif; ?>
 							<?php if ($req['ju_flg'] == NULL): ?>
 								<p>依頼中</p>
@@ -94,7 +94,9 @@
 					</a>
 				</div>
 			<?php endforeach; ?>
-			<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
+			<div class="btn-sub">
+					<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
+			</div>
 		<?php endif; ?>
 	</div>
 </div>

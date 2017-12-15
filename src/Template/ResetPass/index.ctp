@@ -5,17 +5,17 @@
 	<form action="" method="post">
 		<p class="font-color">現在のパスワード</p>
 		<p class="password">
-			<input type="password" name="oldpassword" value="">
+			<input type="password" name="oldpassword" value="" class="form-control">
 		</p>
 		<p class="font-color">新しいパスワード</p>
 		<p class="password">
-			<input type="password" name="password" value="">
+			<input type="password" name="password" value="" class="form-control">
 		</p>
 		<p class="password">
-			<input type="password" name="repassword" value="" placeholder="再入力">
+			<input type="password" name="repassword" value="" class="form-control" placeholder="再入力">
 		</p>
 		<p class="submit">
-			<button type="submit" name="reset" class="submit btn btn-success">変更</button><br>
+			<button type="submit" name="reset" class="submit btn btn-primary">変更</button><br>
 		</p>
 	</form>
 </div>

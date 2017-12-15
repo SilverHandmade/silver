@@ -2,28 +2,27 @@
 	$this->start('script');
 		echo $this->Html->script('/private/js/answer/answer.js');
 	$this->end();
+
+	$this->start('css');
+		echo $this->Html->css('/private/css/answers/answers.css');
+	$this->end();
 ?>
-<div id="createtbl" class="">
-	<form action="" method="POST" >
-		<div>
+<div id="createtbl" class="col-md-offset-2 col-md-8 center">
+	<h2>投稿</h2>
+	<div class="row">
+		<form action="" method="POST" >
 			<div>
-				<p>タイトル：</p>
-			</div>
-			<div>
+				<p class="font-p">タイトル</p>
 				<input type="text" name="titletxt" value="" class="form-control">
 			</div>
-		</div>
-		<div>
 			<div>
-				<p>内容：</p>
+				<p class="font-p">内容</p>
+				<textarea name="textarea" rows="10" cols="80" class="tarea form-control" placeholder="内容入力してね！！"></textarea>
 			</div>
-			<div>
-				<textarea name="textarea" rows="6" cols="80" class="tarea form-control" placeholder="内容入力してね！！"></textarea>
+			<div class="ans-btn">
+				<input type="hidden" name="flg" value="true">
+				<button type="submit" name="Completebtn" id="completebtn" class="btn btn-success">完了</button>
 			</div>
-		</div>
-		<div class="">
-			<input type="hidden" name="flg" value="true">
-			<button type="submit" name="Completebtn" id="completebtn" class="btn btn-success">完了</button>
-		</div>
-	</form>
+		</form>
+	</div>
 </div>
