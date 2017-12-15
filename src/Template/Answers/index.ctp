@@ -11,7 +11,7 @@
 
 <form class="" id="ansForm" method="post">
 	<div class="form-group">
-		<div class="form-inline sear-lay">
+		<div class="form-inline sear-lay search-inline">
 			<input type="text" name="dummy" style="display:none;">
 			<input type="text" id="indextxt" value="" class="ans-text form-control">
 			<button type="button" id="indexbtn" class="btn btn-success">検索</button>
@@ -19,7 +19,7 @@
 	</div>
 </form>
 <br><br>
-<table id="reqseltable" align="" class="table row">
+<table id="reqseltable" align="" class="none-table table row">
 	<thead>
 		<tr>
 			<th class="col-md-3">タイトル</th>

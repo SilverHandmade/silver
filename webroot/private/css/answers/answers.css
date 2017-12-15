@@ -10,6 +10,13 @@
 	float: left;
 }
 
+.font-p {
+	text-align: left;
+	color: #497937;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
 .date {
 	text-align: left;
 	vertical-align: top;
@@ -17,7 +24,6 @@
 }
 
 .sisetu-date {
-	/*display: inline-block;*/
 	display: block;
 	height: auto;
 }
@@ -36,6 +42,7 @@
 .tarea {
 	resize: none;
 	outline: none;
+
 }
 
 .ans p {
@@ -45,9 +52,8 @@
 .ans-btn {
 	margin-top: 5px;
 	text-align: right;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
 }
+
 
 .ans-text {
 	width: 100%;
@@ -61,6 +67,8 @@
 .answers2 {
 	height: auto;
 }
+
+
 
 #wtitle p {
 	overflow: hidden;

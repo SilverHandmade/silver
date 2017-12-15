@@ -269,3 +269,12 @@ body {
 	font-size:14px;
 	line-height: 1.5;
 }
+
+@media (max-width: 992px) {
+	.none-table{
+		display: none;
+	}
+	.search-inline {
+		display: inline;
+	}
+}

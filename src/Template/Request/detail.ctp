@@ -4,7 +4,7 @@
 	$this->end();
 
 	$this->start('css');
-	echo $this->Html->css('/private/css/request/detail.css');
+	echo $this->Html->css('/private/css/request/request.css');
 	// echo $this->Html->css('/private/css/kota/request.css');
 	$this->end();
 ?>
@@ -72,30 +72,33 @@
 						</td>
 			</tr>
 		<?php endforeach; ?>
-
-
-
-
-</table>
-<?php if ($user_faci[0]['facility_classes_id'] == 2 && $req_info[0]['ju_flg'] == 0): ?>
-	<button type="submit" class="btn btn-success" name="order" id="order">依頼を受ける</button>
-	<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "list"],['class'=>'btn btn-primary'])?>
-	<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
-<?php endif; ?>
-<?php if ($user_faci[0]['facility_classes_id'] == 2 && $req_info[0]['ju_flg'] == 1): ?>
-	<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "list"],['class'=>'btn btn-primary'])?>
-	<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
-<?php endif; ?>
-<?php if ($user_faci[0]['facility_classes_id'] == 1 && $req_info[0]['ju_flg'] == 0): ?>
-	<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "list"],['class'=>'btn btn-primary'])?>
-	<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
-<?php endif; ?>
-<?php if ($user_faci[0]['facility_classes_id'] == 1 && $req_info[0]['ju_flg'] == 1): ?>
-	<button type="submit" class="btn btn-success" name="kanryo" id="kanryo">依頼完了</button>
-	<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "list"],['class'=>'btn btn-primary'])?>
-	<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
-<?php endif; ?>
-
-	</form>
-</div>
+		</table>
+		<?php if ($user_faci[0]['facility_classes_id'] == 2 && $req_info[0]['ju_flg'] == 0): ?>
+			<div class="btn-sub">
+				<button type="submit" class="btn btn-success" name="order" id="order">依頼を受ける</button>
+				<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "list"],['class'=>'btn btn-primary'])?>
+				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
+			</div>
+		<?php endif; ?>
+		<?php if ($user_faci[0]['facility_classes_id'] == 2 && $req_info[0]['ju_flg'] == 1): ?>
+			<div class="btn-sub">
+				<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "list"],['class'=>'btn btn-primary'])?>
+				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
+			</div>
+		<?php endif; ?>
+		<?php if ($user_faci[0]['facility_classes_id'] == 1 && $req_info[0]['ju_flg'] == 0): ?>
+			<div class="btn-sub">
+				<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "list"],['class'=>'btn btn-primary'])?>
+				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
+			</div>
+		<?php endif; ?>
+		<?php if ($user_faci[0]['facility_classes_id'] == 1 && $req_info[0]['ju_flg'] == 1): ?>
+			<div class="btn-sub">
+				<button type="submit" class="btn btn-success" name="kanryo" id="kanryo">依頼完了</button>
+				<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "list"],['class'=>'btn btn-primary'])?>
+				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
+			</div>
+		<?php endif; ?>
+			</form>
+	</div>
 </div>

@@ -25,7 +25,7 @@
 			<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 
 		<?php else: ?>
-			<table id="reqseltable" align="" class="table">
+			<table id="reqseltable" align="" class="table none-table">
 				<thead>
 					<tr>
 						<th>件名</th>
@@ -51,8 +51,10 @@
 				</div>
 
 			<?php endforeach; ?>
-			<?= $this->Html->link('戻る',["controller" => "Request","action" => "index"],['class'=>'btn btn-primary'])?>
-			<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
+			<div class="btn-sub">
+				<?= $this->Html->link('戻る',["controller" => "Request","action" => "index"],['class'=>'btn btn-primary'])?>
+				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
+			</div>
 		<?php endif; ?>
 	</div>
 </div>

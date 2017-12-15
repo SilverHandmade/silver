@@ -1,7 +1,3 @@
-<?php $this->start('css'); ?>
-	<?= $this->Html->css('/private/css/request/create.css') ?>
-<?php $this->end(); ?>
-
 <script>
 var test = <?php echo $results; ?>;
 </script>
@@ -12,12 +8,12 @@ var test = <?php echo $results; ?>;
 	$this->end();
 
 	$this->start('css');
-		echo $this->Html->css('/private/css/request/create.css');
+		echo $this->Html->css('/private/css/request/request.css');
 	$this->end();
 ?>
 
 <div class="col-md-offset-2 col-md-8 center">
-	<p class="font-title">依頼作成</p>
+	<h2>依頼作成</h2>
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6">
 			<form action=<?= $this->Url->build(["controller" => "Request","action" => "proof"])?> method="post">
@@ -36,9 +32,9 @@ var test = <?php echo $results; ?>;
 				<input type="date" id="reqD" class="form-control" name="requestD" required value=<?php if ($_SESSION['create_flg'] == 1) {
 					echo $_SESSION['request']['date'];}?>>
 
-				<div class="right btn-margin">
-					<button type="submit" class="btn btn-primary" name="createReq" onclick="return nextpage()">次へ</button>
-					<?= $this->Html->link('戻る',["controller" => "Request","action" => "index"],['class'=>'btn btn-primary'])?>
+				<div class="btn-sub">
+					<button type="submit" class="btn-margin btn btn-primary" name="createReq" onclick="return nextpage()">次へ</button>
+					<?= $this->Html->link('戻る',["controller" => "Request","action" => "index"],['class'=>'btn btn-primary btn-margin'])?>
 				</div>
 			</form>
 		</div>
