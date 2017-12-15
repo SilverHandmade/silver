@@ -4,6 +4,11 @@ $(function(){
 	var $canvas = $('#poster');
 
 	$(window).on('load',function(){
+		if (video.networkState == 3) {
+			$('#img_no_video').removeClass('none');
+			$('#screen').addClass('none');
+			exit();
+		}
 		// 動画の再生時間表示
 		$('#allTime').html(formatTime(video.duration));
 		$("#seekbar").slider({
@@ -15,9 +20,9 @@ $(function(){
 		});
 
 		// サムネイルの表示
-		$canvas.attr('width', $('#video').width());
-		$canvas.attr('height', $('#video').height());
-		$canvas[0].getContext('2d').drawImage(video, 0, 0, $canvas.width(), $canvas.height());
+		// $canvas.attr('width', $('#video').width());
+		// $canvas.attr('height', $('#video').height());
+		// $canvas[0].getContext('2d').drawImage(video, 0, 0, $canvas.width(), $canvas.height());
 		// サムネイルの表示
 	});
 	$("#progressbar").progressbar({
@@ -138,10 +143,11 @@ $(function(){
 		$('.glyphicon-resize-full').toggle();
 		$('.glyphicon-resize-small').toggle();
 		if ($('#controls').css('margin-top') == '0px') {
-			$('#controls').css('margin-top',)
 			$('#controls').css({'margin-top':$('#controls').get(0).scrollHeight * -1 + 'px','opacity': '0.65'})
+			$('#start').css({'max-height':'calc(100% - ' + $('#controls').get(0).scrollHeight + 'px)'})
 		} else {
 			$('#controls').css({'margin-top':'0','opacity': '1'})
+			$('#start').css({'max-height':'100%'})
 		}
 	}
 
