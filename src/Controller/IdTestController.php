@@ -22,7 +22,7 @@ class IdTestController extends AppController
 
     public function index() {
 
-		if(isset($_FILES)&& isset($_FILES['upload_gazo']) && is_uploaded_file($_FILES['upload_gazo']['tmp_name'])){
+		if(isset($_FILES)&& isset($_FILES['upload_gazo']) ){
 			echo "<br><br><br><br><br><br>";
 			$Tb = TableRegistry::get('products');
 			$query = $Tb->find();
@@ -38,12 +38,12 @@ class IdTestController extends AppController
 			// $asd = basename($_FILES['upload_gazo']['name']);
 			$name_id = $name_id;
 			$path_parts = pathinfo(basename($_FILES['upload_gazo']['name']));
-			echo $asd = ".".$path_parts['extension'], "\n"."<br>";
-			echo $zxc = $name_id."x".$name_ren.$asd."<br>";
+			echo $filename = ".".$path_parts['extension'], "\n"."<br>";
+			echo $zxc = $name_id."_".$name_ren.$filename."<br>";
 
 
 
-			$a = 'img/workshop/' . $name_id."x".$name_ren.$asd;
+			$a = 'img/workshop/' . $name_id."_".$name_ren.$filename;
 		    if(move_uploaded_file($_FILES['upload_gazo']['tmp_name'], $a)){
 		        $msg = $a. 'のアップロードに成功しました';
 		    }else {
@@ -51,12 +51,12 @@ class IdTestController extends AppController
 		    }
 		}
 		$cnt = 1;
-		$gazo_name = 'upload_gazo'.$cnt;
-		echo $gazo_name."<br>";
+		$name_ren = $name_ren + 1;
 		while (isset($_POST['text'.$cnt])) {
 			if(isset($_FILES)&& isset($_FILES['upload_gazo'.$cnt]) && is_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'])){
-
-				$a = 'img/workshop/' . basename($_FILES['upload_gazo'.$cnt]['name']);
+				$path_parts = pathinfo(basename($_FILES['upload_gazo'.$cnt]['name']));
+				$filename = ".".$path_parts['extension'];
+				$a = 'img/workshop/' . $name_id."_".$name_ren.$filename;
 			    if(move_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'], $a)){
 			        $msg = $a. 'のアップロードに成功しました';
 			    }else {
@@ -64,10 +64,38 @@ class IdTestController extends AppController
 			    }
 			}
 			$cnt = $cnt + 1;
-			$gazo_name = 'upload_gazo'.$cnt;
-			echo $gazo_name;
+			$name_ren = $name_ren + 1;
 		}
 
+
+		if (isset($_FILES['upfile']['error']) && is_int($_FILES['upfile']['error'])) {
+        // バッファリングを開始
+        ob_start();
+	        try {
+	            switch ($_FILES['upfile']['error']) {
+	                case UPLOAD_ERR_OK: // OK
+	                    break;
+	                case UPLOAD_ERR_NO_FILE:   // 未選択
+	                    throw new RuntimeException('ファイルが選択されていません', 400);
+	                case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズ超過
+	                    throw new RuntimeException('ファイルサイズが大きすぎます', 400);
+	                default:
+	                    throw new RuntimeException('その他のエラーが発生しました', 500);
+	            }
+	            if (!$info = @__**getimagesize**__($_FILES['upfile']['tmp_name'])) {
+	                throw new RuntimeException('有効なファイルを指定してください', 400);
+	            }
+				// file_get_contents($_FILES['upfile']['tmp_name']);
+			} catch (RuntimeException $e) {
+
+	            while (ob_get_level()) {
+	                ob_end_clean(); // バッファをクリア
+	            }
+	            http_response_code($e instanceof PDOException ? 500 : $e->getCode());
+	            $msgs[] = ['red', $e->getMessage()];
+
+	        }
+		}
     }
 
 }

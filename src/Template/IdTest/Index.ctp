@@ -5,6 +5,12 @@
 	<?= $this->Html->script('/private/js/workshop/workshop.js') ?>
 <?php $this->end(); ?>
 
+<form action="" method="post" enctype="multipart/form-data" accept="video/*">
+        <label for="upfile">動画 </label>
+        <input type="file" name="upfile">
+        <input type="submit" value="アップロード">
+</form>
+
 <div class="col-md-offset-1 col-md-10">
 	<form action="" method="post" enctype="multipart/form-data">
 		<div class="form-group">
