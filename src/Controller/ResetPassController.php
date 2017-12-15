@@ -73,15 +73,15 @@ class ResetPassController extends AppController
 					'uuid' => $uuid
 				])
 				->execute();
+			}else {
+				$link = '';
+				$target = '_parent';
+				$e_flg = '<input type="hidden" name="flg" value="3">';
 			}
 		}else {
 			$link = $this->referer();
 			$target = '_parent';
 			$e_flg = '<input type="hidden" name="flg" value="1">';
-		}else {
-			$link = '';
-			$target = '_parent';
-			$e_flg = '<input type="hidden" name="flg" value="3">';
 		}
 
 		$this->set(compact('link', 'target','e_flg'));
