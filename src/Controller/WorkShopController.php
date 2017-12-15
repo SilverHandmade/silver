@@ -18,6 +18,7 @@ class WorkShopController extends AppController
 				$this->loadmodel('product_detailses');
 				$this->loadmodel('Products');
 				$this->loadComponent('MakeId9');
+				$this->loadmodel('Users');
     }
 
 
@@ -33,7 +34,7 @@ class WorkShopController extends AppController
 			$images = $this->request->getData('upload_gazo')['name'];
 			$Model_detailses = $this->request->getData('text');
 			$images_detailses = $this->request->getData('upload_gazo')['name'];
-			$user = $this->MakeId9->id9('pro');
+			$user = $_SESSION['Auth']['User']['id'];
 			//$this->set(compact('user'));
 
 			$query = $this->Products->query();
@@ -102,7 +103,18 @@ echo"<br><br><br><br><br>";
 //検索画面
 	public function index()
 	{
-		$query = $this->Products->find();
+		$query = $this->Users->find()
+			->select(['id','facility_classes_id'])
+			->where(['id' => $_SESSION['Auth']['User']['id']]);
+
+		$user_faci = $query->all()->ToArray();
+		$this->set(compact('user_faci'));
+
+
+
+		$query = $this->Products->find()
+		->where(['Del_flg' => 0]);
+
 		if ($this->request->is('post')) {
 			$query->contain();
 
@@ -120,8 +132,14 @@ echo"<br><br><br><br><br>";
 //詳細画面
 	public function detail()
 	{
-		$query = $this->request->getParam('id');
+		$query = $this->Users->find()
+			->select(['id','facility_classes_id'])
+			->where(['id' => $_SESSION['Auth']['User']['id']]);
 
+		$user_faci = $query->all()->ToArray();
+		$this->set(compact('user_faci'));
+
+		$query = $this->request->getParam('id');
 		$detailses = $this->product_detailses->find();
 		$detailses->where(['product_id'=>$query]);
 		$this->set('detailses',$detailses);
@@ -131,20 +149,10 @@ echo"<br><br><br><br><br>";
 	{
 		$_SESSION['edit_flg'] = 0;
 
-		$query = $this->Products->find();
-		if ($this->request->is('post')) {
-			$query->contain();
-
-			if (!empty($this->request->getData('S_text'))) {
-				$query->where(['name LIKE' => '%'. $this->request->getData('S_text') . '%']);
-			}
-			$query->all();
-			$this->set('query', $query->all()->toArray());
-
-			} else {
-			$query->all();
-			$this->set('query', $query->all()->toArray());
-			}
+		$query = $this->Products->find()
+		->where(['user_id'=>$_SESSION['Auth']['User']['id']]);
+		$login_user = $query->all()->ToArray();
+		$this->set(compact('login_user'));
 	}
 //編集入力画面
  	public function edit()
@@ -155,24 +163,17 @@ echo"<br><br><br><br><br>";
 			$query = $this->Products->query();
 			$query->update()
 		  ->set(['Del_flg' => 1])
-		  ->where(['id' => $_SESSION['id']])
+		  ->where(['id' => $_SESSION['sel_id']])
 		  ->execute();
 
-		  //田口と同じにする
-		  header( 'Location: http://'.$_SERVER['HTTP_HOST'].'/silver/' );
-		  unset($_SESSION['id']);
-		  $this->Flash->success('ワークショップを削除しました。');
-		  exit();
-		}
 
+		}
 		$get_id = $this->request->getQuery('id');
 		  if ($get_id != ""){
-			  $query = $this->Products->find()
-			  ->where(['id'=> $get_id]);
-			  $edit_req = $query->all()->ToArray();
-			  $this->set(compact('edit_req'));
-			  $_SESSION['sel_id'] = $edit_req[0]['id'];
-			  $_SESSION['req_edit']['moto_date'] = date("Y-n-j", strtotime($edit_req[0]['To_date']));
+			  $query = $this->product_detailses->find()
+			  ->where(['product_id'=> $get_id]);
+			  $edit_pdt = $query->all()->ToArray();
+			  $this->set(compact('edit_pdt'));
 
 		  }
 
