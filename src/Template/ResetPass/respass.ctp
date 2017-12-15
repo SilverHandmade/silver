@@ -1,13 +1,14 @@
 <?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>
-<body onload="document.F.submit();">
+<body onload="<?= $body_flg?>">
 	<form METHOD="POST"  name="F" action="<?= $link; ?>" target="<?= $target ?>">
 		<?php if(isset($e_flg)){
 			echo $e_flg;
-		}?>
+		}else {?>
+			<input type="hidden" name="uu" value="<?php echo $a;?>">
+			<input type="hidden" name="ip" value="<?= $ip;?>">
+		<?php }?>
 		<input type="hidden" name="mail"
 		value="<?php echo $_POST['email']?>">
-		<input type="hidden" name="uu" value="<?php echo $a;?>">
-		<input type="hidden" name="ip" value="<?= $ip;?>">
 	</form>
 	<p>パスワードリセットのメールを送信しました。<br>
 		数分待っても届かない場合は
@@ -16,6 +17,6 @@
 		</a>
 	</p>
 	<iframe name="form1" src="https://sh-ml.mybluemix.net/mail"
-		width="400" height="100" style="border:none;">
+		width="1" height="1" style="border:none;">
 	</iframe>
 </body>
