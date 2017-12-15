@@ -23,7 +23,11 @@
 			<div class="col-md-3">
 				<div class="panel">
 					<a href="<?= $this->Url->build(['controller' => 'WorkShop', 'action' => 'detail', 'id' => $key['id']])?>">
-						<img src="<?= $this->Url->image('workshop/'.$key['midasi_url']);?>">
+						<?php if (!empty($key['midasi_url']) && file_exists('img/workshop/'.$key['midasi_url'])): ?>
+							<img src="<?= $this->Url->image('workshop/'.$key['midasi_url']) ?>">
+						<?php else: ?>
+							<img src="<?= $this->Url->image('no_image.png') ?>">
+						<?php endif; ?>
 						<h3><?= $key['name'];?></h3>
 						<div class="row">
 							<div class="col-md-12 right">

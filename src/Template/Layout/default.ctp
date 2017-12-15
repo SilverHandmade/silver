@@ -18,6 +18,7 @@
 	<!-- 自作CSS -->
 	<?= $this->Html->css('/private/css/overwrite.css') ?>
 	<?= $this->Html->css('/private/css/default.css') ?>
+	<?= $this->Html->css('/private/css/check_radio.css') ?>
 
 	<?= $this->fetch('css') ?>
 
