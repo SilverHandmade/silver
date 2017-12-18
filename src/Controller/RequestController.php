@@ -13,6 +13,7 @@ class RequestController extends AppController
 
     public function initialize()
     {
+
         parent::initialize();
         $this->loadmodel('Products');
         $this->loadmodel('Facilities');
@@ -71,6 +72,12 @@ class RequestController extends AppController
     public function create()
     {
 		$get_id = $this->request->getQuery('id');
+
+		$query = $this->Products->find();
+		$Products = $query->all()->ToArray();
+		$this->set(compact('Products'));
+
+
 			if ($_SESSION['select_flg'] == 0) {
 				//セッションに依頼先データを保存する
 				$query = $this->Facilities->find()
@@ -114,15 +121,7 @@ class RequestController extends AppController
 					  $p_detail = $query->ToArray();
 					  $this->set(compact('p_detail'));
 					  $_SESSION['p_detail'] = $p_detail;
-					break;
-				  }
-				  if(!next($results)){
-					// 一致しなかった場合
-					$uri = $_SERVER['HTTP_REFERER'];
-					//一つ前の画面へ遷移
-					header( "Location: ".$uri ) ;
-					$this->Flash->error(__('ワークショップIDが間違っています。'));
-					exit;
+					  break;
 				  }
 			  }
 			}
@@ -161,6 +160,7 @@ class RequestController extends AppController
 			$moto_id = $_SESSION['Auth']['User']['facilities_id'];
 			$saki_id = $_SESSION['facility']['facility_id'];
 			$title = $_POST['requestT_con'];
+			$title = htmlentities($title);
 			$kosu = $_POST['requestN_con'];
 			$now_date = date("Y/m/d");
 			$to_date = $_POST['requestD_con'];
@@ -336,7 +336,7 @@ class RequestController extends AppController
 			}
 
 			if (isset($_POST['nextbtn'])) {
-				$_SESSION['req_edit']['title'] = $_POST['requestselT_con'];
+				$_SESSION['req_edit']['title'] = htmlentities($_POST['requestselT_con']);
 				$_SESSION['req_edit']['number'] = $_POST['requestselN_con'];
 				$_SESSION['req_edit']['date'] = $_POST['selrequestD_con'];
 

@@ -42,12 +42,10 @@
 								<p>所属施設：
 								<?php echo $mes_namelist[$i]['facilities']['name'];
 								$i = $i + 1; ?></p>
-								<p>投稿日時：<?=$message['transmit']?></p>
+								<p>投稿日時：<?=$message['transmit'];?></p>
 							</div>
 						<?php endforeach; ?>
 					</div>
-
-
 
 
 			<?= $this->Html->link('戻る',['controller'=>'Request','action'=>'detail','id' => $this->request->getQuery('id')],['class'=>'btn btn-primary']); ?>

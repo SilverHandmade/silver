@@ -229,7 +229,7 @@ $(function(){
 	$('#messagebtn').bind("click",function(){
 		var mestxt = document.getElementById( "messagetxt" ).value;
 		mestxt = mestxt.trim();
-		
+
 		if (mestxt != "") {
 			var myRet = confirm("確定後は編集できません。この内容でよろしいですか？\n" + mestxt);
 			if ( myRet == true ){
@@ -287,6 +287,21 @@ function select_state(){
 
 
 }
+
+//依頼作成画面でワークショップpanel押されたとき
+$(function(){
+	$('.panel').click(function(){
+		var ws = $(this).attr('value');
+		$('#wsID').val(ws);
+	});
+});
+
+//依頼作成画面でws欄をクリア
+$(function(){
+	$('#clear').click(function(){
+		document.getElementById( "wsID" ).value = "";
+	});
+});
 
 
 
