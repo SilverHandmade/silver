@@ -171,7 +171,7 @@ echo"<br><br><br><br><br>";
 
 
 		}
-		$get_id = $this->request->getQuery('id');
+		$get_id = $this->request->getParam('id');
 		  if ($get_id != ""){
 			  $query = $this->product_detailses->find()
 			  ->where(['product_id'=> $get_id]);

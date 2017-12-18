@@ -350,7 +350,7 @@ class RequestController extends AppController
 		    }
 
 
-		  $get_id = $this->request->getQuery('id');
+		  $get_id = $this->request->getParam('id');
 			if ($get_id != ""){
 				$query = $this->Requests->find()
 				->where(['id'=> $get_id]);
