@@ -51,11 +51,12 @@ class RegistController extends AppController
 		if($this->request->is('post')) {
 
 		$postname = $_POST['name'];
-		
+
 			$posthurigana	= $_POST['hurigana'];
 			$postmail	= $_POST['email'];
 			$postremail	= $_POST['reemail'];
-			$postpass	= $this->PassHash->hash($_POST['password']);
+			$postpass = $_POST['password'];
+ 			$posthashpass	= $this->PassHash->hash($postpass);
 			$postfacilitie = $_POST['facilities'];
 			$postfClassId = $_POST['fClassId'];
 			$postrepass	= $_POST['repassword'];
@@ -80,9 +81,9 @@ class RegistController extends AppController
 		$this->set(compact('userarray'));
 
 		if ($this->request->is('post')) {
-			$postname = $_POST['name'];
-			$posthurigana = $_POST['hurigana'];
-			$postmail = $_POST['email'];
+			$postname = htmlentities($_POST['name']);
+			$posthurigana = htmlentities($_POST['hurigana']);
+			$postmail = htmlentities($_POST['email']);
 			$postpass = $this->PassHash->hash($_POST['password']);
 			$postfacilitie = $_POST['facilities'];
 			$postfClassId = $_POST['fClassId'];

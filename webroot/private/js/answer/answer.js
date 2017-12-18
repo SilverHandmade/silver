@@ -20,6 +20,7 @@ $(function(){
 	$('#completebtn').bind("click",function(){
 		var yesno = confirm("この内容で投稿してもよろしいですか？");
 		if (yesno == true) {
+			
 		}else{
 			return false;
 		}

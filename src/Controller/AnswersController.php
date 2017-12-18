@@ -15,12 +15,16 @@ class AnswersController extends AppController
         parent::initialize();
 		$this->loadModel('witses');
 		$this->loadModel('wits_messages');
+		$this->loadModel('facilities');
+		$this->loadModel('users');
 
 
 
     }
     public function index() {
-		$witses = $this->witses->find('all');
+		$witses = $this->witses->find('all')
+		->where(['Del_flg ='=> 0])
+		->order(['id' => 'DESC']);
         $witsesArray = $witses->toArray();
         $this->set(compact('witsesArray'));
 
@@ -39,6 +43,10 @@ class AnswersController extends AppController
 
 		$get_id = $this->request->getParam('id');
 
+		$witId = $this->witses->find('all')
+		->where(['id ='=> $get_id]);
+        $witsesId = $witId->toArray();
+        $this->set(compact('witsesId'));
 
 
 		$query = $this->wits_messages->find();
@@ -53,8 +61,24 @@ class AnswersController extends AppController
 		$detailId = $query->all()->ToArray();
 		$this->set(compact('detailId'));
 
+
+		$query = $this->wits_messages->find()
+		->select(['wits_id','ren','transmit','message','users.name','facilities.name'])
+		->join([
+			'table' => 'users',
+			'type' => 'INNER',
+			'conditions' => 'user_id = users.id'])
+		->join([
+			'table' => 'facilities',
+			'type' => 'INNER',
+			'conditions' => 'facilities.id = users.facilities_id'])
+		->where(['wits_id' => $get_id])
+		->order(['ren' => 'DESC']);
+		$mes_namelist = $query->all()->ToArray();
+		$this->set(compact('mes_namelist'));
+
 		if (isset($_POST['ans-submit'])) {
-			$answertxt = $_POST['textarea'];
+			$answertxt = htmlentities($_POST['textarea']);
 			$userId = $user['id'];
 			$nowdate = date("Y/m/d H:i:s");
 			$incRen = $maxRenArray[0]['ren'] + 1;
@@ -80,6 +104,57 @@ class AnswersController extends AppController
 		$this->set(compact('witmesArray'));
 	}
 
+	public function edit(){
+
+		$user = $this->Userinfo->getuser();
+		if (empty($user)) {
+			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
+		}
+
+		$get_id = $this->request->getQuery('id');
+
+		$query = $this->witses->find()
+		->select(['user_id','title','content','Postdate'])
+		->where(['id ='=>$get_id]);
+		$detailId = $query->all()->ToArray();
+		$this->set(compact('detailId'));
+
+		if (isset($_POST['editbtn'])) {
+
+			$editTitle = htmlentities($_POST['edittitle']);
+			$editContent = htmlentities($_POST['editcontent']);
+			$nowdate = date("Y/m/d H:i:s");
+
+			$query = $this->witses->query();
+				$query->update()
+			->set([
+				'title' => $editTitle,
+  				'content' => $editContent,
+  				'Postdate' => $nowdate
+			])
+			->where(['id =' =>$get_id])
+			->execute();
+
+			$this->redirect(['controller'=>'answers']);
+			$this->Flash->success('変更した内容を保存しました');
+		}
+		if (isset($_POST['editdelete'])) {
+
+			$query = $this->witses->query();
+				$query->update()
+			->set([
+				'Del_flg' => 1
+			])
+			->where(['id =' =>$get_id])
+			->execute();
+
+			$this->redirect(['controller'=>'answers']);
+			$this->Flash->success('削除しました');
+		}
+
+
+	}
+
 	public function create(){
 		$user = $this->Userinfo->getuser();
 		if (empty($user)) {
@@ -98,11 +173,11 @@ class AnswersController extends AppController
 		// $postUid = $_POST[''];
 
 		if ($this->request->is('post')) {
-			$posttitle = $_POST['titletxt'];
-			$postcontent = $_POST['textarea'];
+			$posttitle = htmlentities($_POST['titletxt']);
+			$postcontent = htmlentities($_POST['textarea']);
 		}
 
-		if (!empty($_POST['flg'])) {
+		if ($this->request->is('post')) {
 			$query = $this->witses->query();
 			$query->insert([
 				'id','title','content','user_id','Postdate'
@@ -115,9 +190,10 @@ class AnswersController extends AppController
 				'Postdate' => $nowdate
 			])
 			->execute();
-		}
 
-		// id 知恵ID title タイトル content お悩み内容 user_id 投稿者 Postdate 投稿日 kan_flg 完了フラグ Del_flg
+			$this->redirect(['controller'=>'answers']);
+			$this->Flash->success('投稿されました');
+		}
 
 		// $this->redirect(['controller' => 'answers', 'action' => 'index']);
 
