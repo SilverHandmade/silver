@@ -8,7 +8,7 @@
 
 		<?= $this->Html->link(">>戻る",['controller' => 'WorkShop', "action" => "index"]);?>
 
-			<?php foreach ($query as $key): ?>
+			<?php foreach ($login_user as $key): ?>
 				<div class="col-md-12">
 					<div class = "row panel">
 						<a href="<?= $this->Url->build(["controller" => "WorkShop","action" => "edit", 'id' => $key['id']])?>">
