@@ -3,12 +3,12 @@
 		<div id="title">
 			<h2>詳細画面</h2>
 		</div>
-		<div id="detailtbl" class="table">
 			<?php if ($user_faci[0]['facility_classes_id'] == 1): ?>
 			<div class="col-md-12">
 				<?= $this->Html->link(">>ワークショップ編集画面へ",['controller' => 'WorkShop', "action" => "select"]);?>
 			</div>
-				<?php foreach ($detailses as $key) : ?>
+			<?php foreach ($detailses as $key) : ?>
+				<div id="detailtbl" class="">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">
@@ -27,13 +27,14 @@
 								</div>
 							</div>
 						</div>
-						<div align="center">
+						<div>
 							<?php if (!empty($key['photo_url']) && file_exists('img/workshop/'.$key['photo_url'])): ?>
 								<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>"width="500" height="325">
 							<?php else: ?>
 								<img src="<?= $this->Url->image('no_image.png') ?>"width="500" height="325">
-							<?php endif; ?>					</div>
-						<div align="center">
+							<?php endif; ?>
+						</div>
+						<div>
 							<p><?php echo $key['description'] ?></p>
 						</div>
 					</div>

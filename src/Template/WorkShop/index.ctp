@@ -54,6 +54,9 @@
 			</div>
 		<?php endforeach; ?>
 	<?php else: ?>
+		<div id="title-index">
+			<h2>検索結果</h2>
+		</div>
 		<?php foreach ($query as $key): ?>
 			<div class="col-md-12">
 				<div class="row panel ws-man" >
