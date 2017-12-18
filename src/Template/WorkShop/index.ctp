@@ -1,14 +1,11 @@
-
 <?php
 	$this->start('css');
-		echo $this->Html->css('/private/css/workshop/index.css');
+		echo $this->Html->css('/private/css/workshop/workshop.css');
 	$this->end();
 	$this->start('script');
 		echo $this->Html->script('/private/js/workshop/workshop.js');
 	$this->end();
-
 ?>
-
 	<form action="" method="Post" class="form-inline">
 		<div class="ws-margin">
 			<input type="text" name="searchtext" id="searchtext1" class="input-search form-control"/>
@@ -88,4 +85,3 @@
 		<?php endforeach; ?>
 	<?php endif; ?>
 </div>
-<div>

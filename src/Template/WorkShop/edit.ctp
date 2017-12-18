@@ -1,6 +1,19 @@
+<?php
+
+	$this->start('css');
+	echo $this->Html->css('/private/css/workshop/workshop.css');
+	$this->end();
+
+	$this->start('script');
+	echo $this->Html->script('/private/js/workshop/workshop.js');
+	$this->end();
+
+ ?>
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
-		<h2>編集入力画面</h2>
+		<div id="title">
+			<h2>編集入力画面</h2>
+		</div>
 		<form class="" action="" method="post">
 			<button type="submit" id="cancel" name="Pdtcancelbtn" class="btn btn-primary ">ワークショップを削除</button>
 			<div>

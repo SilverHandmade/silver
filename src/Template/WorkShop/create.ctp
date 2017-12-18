@@ -5,16 +5,17 @@
 	<?= $this->Html->script('/private/js/workshop/workshop.js') ?>
 <?php $this->end(); ?>
 
+
 <div class="col-md-offset-1 col-md-10">
-	<h2>ワークショップ作成画面</h2>
+	<div id="title">
+		<h2>ワークショップ作成画面</h2>
+	</div>
 	<form action="" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<input class="form-control" type="text" name="name" id="title" placeholder="タイトル">
 		</div>
 		<div class="form-group" id="plus" name="plus">
 			<div class="row">
-
-
 				<div class="col-md-3">
 					<div class="div-btn">
 						<input type="file" class="input-file none file" name="upload_gazo" id="G_upload" accept="image/*"/>

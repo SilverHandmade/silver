@@ -35,6 +35,9 @@
 	background: #DDDDDD;
 	border: none;
 }*/
+.ws-detail {
+	position: inherit;
+}
 
 .input-file {
 	opacity: 0;
@@ -49,11 +52,12 @@
 }
 
 input[type="text"] {
-	width: 100%;
 	padding: 3px;
 	font-size: 14px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
+	width: 100%;
+	height: 100%;
+	padding: 2px 12px;
+	outline: none;
 }
 
 .div-margin-top {
@@ -93,8 +97,42 @@ input[type="text"] {
 	padding-bottom: 1px;
 }
 
-h2 {
+#title h2 {
 	text-align: center;
 	margin-top: 5px;
 	margin-bottom: 15px;
+}
+
+#title-index h2 {
+	padding: 0.4em 0.4em;/*文字の上下 左右の余白*/
+	color: inherit;/*文字色*/
+	background: #e3fabe;/*背景色*/
+	border-left: solid 5px #497937;/*左線*/
+	border-bottom: solid 3px #b3c695;/*下線*/
+}
+#title-index h2.danger {
+	border-left: solid 5px #e2041b;/*左線*/
+	border-bottom: solid 3px #bc878e;
+	background: #f5aab4;
+	color: #FFF;
+}
+
+#linkTo {
+	margin-top: 10px;
+}
+
+.btn {
+	padding: 2px 5px;
+}
+.ws-man {
+	margin-top: 30px;
+}
+
+.ws-margin {
+	margin-bottom: 10px;
+}
+
+img.img-size {
+	max-width: 100%;
+	max-height: 100%;
 }
