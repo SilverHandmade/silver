@@ -5,17 +5,18 @@ use Cake\Controller\ErrorController;
 use Cake\Event\Event;
 
 class AppErrorController extends ErrorController {
-    public function beforeRender(Event $event)
+	public function initialize()
     {
-      //ＰＣ用とモバイル用のLayoutを切り替える
-      //「src/Template/Layout/」の下にあるLayoutファイルを参照している
-      if($this->request->is('mobile')){
-        $this->viewBuilder()->layout('mobile');
-      }else{
-        $this->viewBuilder()->layout('normal');
-      }
+		parent::initialize();
+		$this->loadComponent('Userinfo');
+		$user = $this->Userinfo->setname();
+		$this->set(compact('user'));
+    }
 
-      //Templateファイルのあるパスを指定(src/Template/Error/)
-      $this->viewBuilder()->templatePath('Error');
+	public function beforeRender(Event $event)
+    {
+		$this->viewBuilder()->layout('error');
+		//Templateファイルのあるパスを指定(src/Template/Error/)
+		$this->viewBuilder()->templatePath('Error');
     }
 }
