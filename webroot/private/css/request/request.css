@@ -1,83 +1,32 @@
-button,
-button[type="submit"],
-button[type="button"] {
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-}
 .button,
 .button:hover,
 .button:focus {
 	outline: none;
 }
 
-input[type="text"] {
-	outline: none;
-}
-
 h2 {
-	margin-top: 10px;
-}
-
-.btn-sear {
-	vertical-align: middle;
-}
-
-.btn-l {
-	margin-top: 30px;
-	margin-left: 30px;
-}
-
-
-.submit {
-	background-color:transparent;
-	border-style:none;
-	text-decoration:underline;
-	/*width: 16em;*/
-	text-align: justify;
+	margin: 10px 0;
+	text-align: center;
 }
 
 .search {
 	width: 100%;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	/*margin-bottom: 15px;*/
 }
+
 * {
 	outline: none;
-	/*font-size: 16px;*/
-}
-
-.type-text {
-	width: 350px;
-	height: 30px;
-	padding: 3px;
-	font-size: 14px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-}
-
-.type-search {
-	margin-top: 3px;
-	width: 350px;
-	height: 33px;
-	padding-top: 0;
-	/*margin-bottom: 10px;*/
-	font-size: 14px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	vertical-align: middle;
 }
 
 .btn-sub {
 	text-align: right;
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 .font-p {
 	text-align: left;
 	color: #497937;
 	margin-top: 5px;
-	margin-bottom: 0px;
+	margin-bottom: 5px;
 }
 
 #form {
@@ -89,16 +38,8 @@ h2 {
 	font-size:30px;
 }
 
-.p-jutyu {
+.p-color {
 	color:#e2041b;
-}
-
-.typesubmit {
-	word-wrap: normal;
-	text-align: left;
-	width: 200px;
-	height: 3em;
-	overflow: hidden;
 }
 
 #request-tab,
@@ -106,19 +47,36 @@ h2 {
 	margin: 0;
 }
 
-/*.list-panel {
-	margin-bottom: 5px;
-}*/
-
-.btn-search {
-	margin-left: 0;
-}
-
 .sear-lay {
 	margin-bottom: 10px;
 }
 
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+	width: 100%;
+	padding: 3px;
+	font-size: 14px;
+	outline: none;
+}
 
-/*#reqtable thead tr td:414 {
-	visibility : hidden;
-}*/
+input[type="checkbox"] {
+	margin-top: 0;
+	/* display: inline; */
+}
+
+
+/* detail */
+/* p {
+	width: 300px;
+	margin: 0;
+}
+
+th {
+	width: 250px;
+}
+
+td {
+	text-align: left;
+	width: 300px;
+} */

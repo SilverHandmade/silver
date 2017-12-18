@@ -23,7 +23,7 @@
 
 		<!-- <h2 class="center">依頼先一覧</h2> -->
 
-		<table id="facitable" class="table">
+		<table id="facitable" class="none-table table">
 			<thead>
 				<tr>
 					<th>施設名</th>
@@ -43,7 +43,7 @@
 					</a>
   				</div>
   				<?php endforeach; ?>
-			<div class="center">
+			<div class="btn-sub">
 				<?= $this->Html->link('依頼編集・取り消し画面はこちら',["controller" => "Request","action" => "select"],['class'=>'btn btn-primary'])?>
 				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 			</div>

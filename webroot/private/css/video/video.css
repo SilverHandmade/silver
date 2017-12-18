@@ -54,6 +54,11 @@ button span {
 	top: 0;
     left: 0;
 }
+#videos #img_no_video {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+}
 #videos #poster {
 	background-color: black;
 	position: absolute;

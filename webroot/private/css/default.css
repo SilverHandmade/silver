@@ -208,7 +208,7 @@ footer .btn-link, footer .btn-link:hover {
 }
 .panel ul li {
 	overflow: hidden;
-	text-overflow: ellipsis;
+	/* text-overflow: ellipsis; */
 	padding-left: 5px;
 	padding-right: 5px;
 	border-left: none;
@@ -222,6 +222,10 @@ footer .btn-link, footer .btn-link:hover {
 .panel img {
 	width: 100%;
 	height: auto;
+}
+.panel h3 {
+	height: 1em;
+	overflow: hidden;
 }
 /*panel 終わり*/
 
@@ -268,4 +272,13 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
 	font-size:14px;
 	line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+	.none-table{
+		display: none;
+	}
+	.search-inline {
+		display: inline;
+	}
 }

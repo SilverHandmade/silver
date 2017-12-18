@@ -12,6 +12,8 @@ class TopPageController extends AppController
 
     public function initialize()
     {
+		// throw new ForbiddenException();
+
         parent::initialize();
 		$this->loadmodel('Requests');
 		$this->loadmodel('Facilities');

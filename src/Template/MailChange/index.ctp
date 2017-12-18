@@ -12,11 +12,11 @@
 		<br>
 		<p class="font-color">変更したいメールアドレス</p>
 		<p class="password">
-			<input type="text" name="new_email" value="">
+			<input type="text" name="new_email" value="" class="form-control">
 		</p>
 		<br>
 		<p class="submit">
-			<button type="submit" name="reset" class="submit">変更</button><br>
+			<button type="submit" name="reset" class="submit btn btn-primary">変更</button><br>
 		</p>
 	</form>
 </div>

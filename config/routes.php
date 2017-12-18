@@ -21,6 +21,12 @@ Router::scope("/request", function ( RouteBuilder $routes ) {
 		// 10桁の数字に制限、0始まりに対応
 		['id' => '\d{10}']
 	);
+	$routes->connect(
+		'/edit/:id',
+		['controller' => 'request', 'action'=> 'edit'],
+		// 10桁の数字に制限、0始まりに対応
+		['id' => '\d{10}']
+	);
 });
 Router::scope("/answers", function ( RouteBuilder $routes ) {
 	$routes->connect(
@@ -35,6 +41,12 @@ Router::scope("/WorkShop", function ( RouteBuilder $routes ) {
 	$routes->connect(
 		'/:id',
 		['controller' => 'WorkShop', 'action'=> 'detail'],
+//		 10桁の数字に制限、0始まりに対応
+		['id' => '\d{9}']
+	);
+	$routes->connect(
+		'/edit/:id',
+		['controller' => 'WorkShop', 'action'=> 'edit'],
 //		 10桁の数字に制限、0始まりに対応
 		['id' => '\d{9}']
 	);

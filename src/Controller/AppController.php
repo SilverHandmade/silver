@@ -41,8 +41,7 @@ class AppController extends Controller
     {
         parent::initialize();
 		// 検索→遷移→戻る で起こる有効期限切れ対策
-		// session_cache_limiter('private_no_expire');
-		// session_cache_limiter('nocache');
+		session_cache_limiter("none");
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');

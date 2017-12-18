@@ -1,5 +1,5 @@
  <?php $this->start('css') ?>
-	<?= $this->Html->css('/private/css/TopPage/index.css') ?>
+	<?= $this->Html->css('/private/css/TopPage/TopPage.css') ?>
 <?php $this->end() ?>
 
 <div class="col-md-12">
@@ -12,7 +12,7 @@
 		</div>
 		<div class="row right" id="linkTo">
 			<div class="col-md-12">
-				<?= $this->Html->link('>>依頼一覧へ',['controller' => 'request', 'action' => 'list']);?>
+				<?= $this->Html->link('依頼一覧へ >>',['controller' => 'request', 'action' => 'list']);?>
 			</div>
 		</div>
 	<?php endif; ?>
@@ -23,7 +23,11 @@
 			<div class="col-md-3">
 				<div class="panel">
 					<a href="<?= $this->Url->build(['controller' => 'WorkShop', 'action' => 'detail', 'id' => $key['id']])?>">
-						<img src="<?= $this->Url->image(file_exists($key['midasi_url'])?$key['midasi_url']:'no_image.png');?>">
+						<?php if (!empty($key['midasi_url']) && file_exists('img/workshop/'.$key['midasi_url'])): ?>
+							<img src="<?= $this->Url->image('workshop/'.$key['midasi_url']) ?>">
+						<?php else: ?>
+							<img src="<?= $this->Url->image('no_image.png') ?>">
+						<?php endif; ?>
 						<h3><?= $key['name'];?></h3>
 						<div class="row">
 							<div class="col-md-12 right">
@@ -35,9 +39,10 @@
 			</div>
 		<?php endforeach; ?>
 	</div>
+
 	<div class="row right" id="linkTo">
 		<div class="col-md-12">
-			<?= $this->Html->link('>>ワークショップ一覧へ',['controller' => 'WorkShop', 'action' => 'index']);?>
+			<?= $this->Html->link('ワークショップ一覧へ >>',['controller' => 'WorkShop', 'action' => 'index']);?>
 		</div>
 	</div>
 
@@ -61,7 +66,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12 right">
-								<button type="button" class="btn btn-link">詳細>></button>
+								<button type="button" class="btn btn-link">詳細 >></button>
 							</div>
 						</div>
 					</a>
@@ -71,7 +76,7 @@
 	</div>
 	<div class="row right" id="linkTo">
 		<div class="col-md-12">
-			<?= $this->Html->link('>>知恵袋一覧へ',['controller' => 'answers', 'action' => 'index']);?>
+			<?= $this->Html->link('知恵袋一覧へ >>',['controller' => 'answers', 'action' => 'index']);?>
 		</div>
 	</div>
 </div>

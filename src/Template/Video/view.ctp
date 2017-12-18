@@ -8,10 +8,10 @@
 <div class="col-md-offset-2 col-md-8" id="player">
 	<h2><?= $video['title'] ?></h2>
 	<div class="row" id="videos">
+		<img src="<?= $this->Url->image("no_video.png") ?>" class="none" id="img_no_video">
 		<div class="col-md-12" id="screen">
-			<!-- <canvas id="poster"></canvas> -->
 			<video id="video">
-				<source src="<?= $this->request->getAttribute("webroot") ?>mov/sample2.mp4" preload="metadata" type='video/mp4;'>
+				<source src="<?= $this->request->getAttribute("webroot") ?>mov/<?= $video['movie_url']?>" preload="metadata" type='video/mp4;'>
 				<p>video要素がサポートされていないブラウザでご覧になっています。</p>
 			</video>
 			<button type="button" class="btn trance" id="start">
@@ -52,7 +52,7 @@
 		</div>
 	</div>
 
-	<div id="nextVideo">
+	<!-- <div id="nextVideo">
 		<div id="Carousel" class="carousel slide" data-ride="carousel" data-interval="false">
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
@@ -93,5 +93,5 @@
 				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			</a>
 		</div>
-	</div>
+	</div> -->
 </div>

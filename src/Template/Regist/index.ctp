@@ -24,14 +24,12 @@
 					<input type="text" id="hurigana" name="hurigana" value=""required class="form-control">
 				</div>
 				<div class="checkbox checkbox-layout">
-					<?php foreach ($fClassArray as $key =>$value)
-						{ ?>
-							<input type="radio" name="fClassId" value="<?= $value['id'] ?>" <?php if ($key == 0){
-								?>checked<?php
-							} ?>><?= $value['name'] ?>
-							<?php
-						}
-						?>
+					<?php foreach ($fClassArray as $key => $value): ?>
+						<span>
+							<input type="radio" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $key==0?'checked':'';?> id="radio-<?= $value['id'] ?>">
+							<label for="radio-<?= $value['id'] ?>"><?= $value['name'] ?></label>
+						</span>
+					<?php endforeach; ?>
 				</div>
 				<div class="pulldown facilityname">
 					<!-- $postfacilitie-->
