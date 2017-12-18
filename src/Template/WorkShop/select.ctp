@@ -32,7 +32,7 @@
 					</div>
 				</div>
 			<?php endforeach; ?>
-			<div class="">
+			<div class="right">
 				<?= $this->Html->link("戻る",['controller' => 'WorkShop', "action" => "index"], ['class'=>'btn btn-primary']);?>
 			</div>
 	</div>
