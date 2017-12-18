@@ -15,11 +15,17 @@
 						<img src="<?= $this->Url->image('no_image.png') ?>"width="500" height="325">
 					<?php endif; ?>
 				</div>
+				<div class="" type="file">
+
+				</div>
 
 				<p>手順説明</p>
 				<input type="text" id="" name="requestselT_con"  required value=<?php if ($_SESSION['edit_flg'] == 1) {
 					echo $_SESSION['req_edit']['description'];}else{ echo $key['description'];}?>>
 			<?php endforeach; ?>
+				<br>
+				<button type="submit" class="btn btn-primary" id="edit_con" name ="nextbtn">次へ</button>
+				<?= $this->Html->link('戻る',["controller" => "workshop","action" => "select"],['class'=>'btn btn-primary'])?>
 		</form>
 	</div>
 </div>

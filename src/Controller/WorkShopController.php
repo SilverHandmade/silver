@@ -149,8 +149,11 @@ echo"<br><br><br><br><br>";
 	{
 		$_SESSION['edit_flg'] = 0;
 
-		$query = $this->Products->find()
-		->where(['user_id'=>$_SESSION['Auth']['User']['id']]);
+		$query = $this->Products->find('all',array(
+		  'conditions' =>array('user_id'=>$_SESSION['Auth']['User']['id'],
+		  'and' => array(['Del_flg' => 0])
+	  )));
+
 		$login_user = $query->all()->ToArray();
 		$this->set(compact('login_user'));
 	}
@@ -175,6 +178,7 @@ echo"<br><br><br><br><br>";
 			  $edit_pdt = $query->all()->ToArray();
 			  $this->set(compact('edit_pdt'));
 
+			  $_SESSION['sel_id'] = $edit_pdt[0]['product_id'];
 		  }
 
  	}

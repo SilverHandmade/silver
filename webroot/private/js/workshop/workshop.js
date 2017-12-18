@@ -15,9 +15,6 @@ $(function(){
 		});
 	});
 
-	// $('#back').click(function() {
-	// 	location.href = "http://localhost/silver/work-shop";
-	// });
 
 	$('#upload').click(function() {
 		$('.file').click();
@@ -63,12 +60,4 @@ $(function(){
 			}
 		});
 	});
-
-	// $(function(){
-	// 	$('#syousaibtn1').click(function (){
-	// 		location.href = "/localhost/silver/work-shop/detailses";
-	//
-	// 	});
-	// });
-
 });
