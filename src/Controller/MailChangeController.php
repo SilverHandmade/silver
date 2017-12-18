@@ -45,59 +45,65 @@ public function mailsend()
 	{
 
 		if(strpos($_POST['new_email'],'@') !== false){
+			// UUIDの作成
+			$uuid = Uuid::uuid4();
+			$this->set("a", $uuid);
+			$this->set("ip",$_SERVER["HTTP_HOST"]);
+
 			$link = 'https://sh-ml.mybluemix.net/change';
 			$target = 'form1';
+
+
+			$session = $this->request->session();
+			$Uid = $session->read('Auth.User.id');
+			$Tb = TableRegistry::get('users');
+			$query = $Tb->find();
+			$ret = $query->select(['id','cnt' => $query->func()->count('*'),'email'])
+						->where(['id'=> $Uid])->first();
+			$cnt = 1;
+			$Tb = TableRegistry::get('change_mails');
+			$query = $Tb->find();
+			$ret_cnt = $query->select(['change_id','cnt' => $query->func()->count('*'),'m_mail'])
+						->where(['user_id'=> $Uid])->first();
+			if($ret_cnt->cnt >= 1){
+				// 2回目以上の変更の場合
+				$cnt = $ret_cnt->cnt + 1;
+			}
+			$ret_kan = $query->select(['change_id','cnt' => $query->func()->count('*'),'m_mail'])
+						->where(['user_id'=> $Uid ,'kan_flg'=> 0])->first();
+
+			if($ret_kan->cnt == 0){
+				// kan_flg=0が0つなら
+				$Tb = TableRegistry::get('change_mails');
+				$query = $Tb->query();
+				$query->insert([
+					'user_id','change_id','m_mail','c_mail','uuid'
+				])
+				->values([
+					'user_id' => $Uid,
+					'change_id' => $cnt,
+					'm_mail' => $ret->email,
+					'c_mail' => $this->request->getData('new_email'),
+					'uuid' => $uuid
+				])
+				->execute();
+			}else {
+				// kan_flg=0が1つ以上あったら
+				$query = ConnectionManager::get('default');
+				$query->update('change_mails',
+					['uuid' => $uuid ,'c_mail' => $this->request->getData('new_email'),'change_time' => null],
+					['user_id' => $Uid ,'kan_flg'=> 0]);
+			}
 		}else {
 			$link = $this->referer();
 			$e_flg = '<input type="hidden" name="flg" value="1">';
 			$target = '_parent';
 		}
 		$this->set(compact('link', 'target','e_flg'));
-		// UUIDの作成
-		$uuid = Uuid::uuid4();
-		$this->set("a", $uuid);
-		$this->set("ip",$_SERVER["HTTP_HOST"]);
 
-		$session = $this->request->session();
-		$Uid = $session->read('Auth.User.id');
-		$Tb = TableRegistry::get('users');
-		$query = $Tb->find();
-		$ret = $query->select(['id','cnt' => $query->func()->count('*'),'email'])
-					->where(['id'=> $Uid])->first();
 
-		$cnt = 1;
-		$Tb = TableRegistry::get('change_mails');
-		$query = $Tb->find();
-		$ret_cnt = $query->select(['change_id','cnt' => $query->func()->count('*'),'m_mail'])
-					->where(['user_id'=> $Uid])->first();
-		if($ret_cnt->cnt >= 1){
-			// 2回目以上の変更の場合
-			$cnt = $ret_cnt->cnt + 1;
-		}
-		$ret_kan = $query->select(['change_id','cnt' => $query->func()->count('*'),'m_mail'])
-					->where(['user_id'=> $Uid ,'kan_flg'=> 0])->first();
-		if($ret_kan->cnt == 0){
-			// kan_flg=0が0つなら
-			$Tb = TableRegistry::get('change_mails');
-			$query = $Tb->query();
-			$query->insert([
-				'user_id','change_id','m_mail','c_mail','uuid'
-			])
-			->values([
-				'user_id' => $Uid,
-				'change_id' => $cnt,
-				'm_mail' => $ret->email,
-				'c_mail' => $this->request->getData('new_email'),
-				'uuid' => $uuid
-			])
-			->execute();
-		}else {
-			// kan_flg=0が1つ以上あったら
-			$query = ConnectionManager::get('default');
-			$query->update('change_mails',
-				['uuid' => $uuid ,'c_mail' => $this->request->getData('new_email'),'change_time' => null],
-				['user_id' => $Uid ,'kan_flg'=> 0]);
-		}
+
+
 
 	}
 

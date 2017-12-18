@@ -41,24 +41,22 @@ class ResetPassController extends AppController
 
 	public function respass()
 	{
-
-
-		// UUIDの作成
-		$uuid = Uuid::uuid4();
-		$this->set("a", $uuid);
-		$this->set("ip",$_SERVER["HTTP_HOST"]);
-
 		// 入力されているemailで登録してるユーザがあるか
 		$Tb = TableRegistry::get('users');
 		$query = $Tb->find();
 		$ret = $query->select(['id','cnt' => $query->func()->count('*')])
 					->where(['email'=>$this->request->getData('email')])->first();
 
-
 		// @があれば↑(進む)、なければ↓(返す)
 		if(strpos($this->request->getData('email'),'@') !== false ){
+			// UUIDの作成
+			$uuid = Uuid::uuid4();
+			$this->set("a", $uuid);
+			$this->set("ip",$_SERVER["HTTP_HOST"]);
+
 			$link = 'https://sh-ml.mybluemix.net/mail';
 			$target = 'form1';
+			$body_flg ='document.F.submit();';
 			// 存在すれば、再設定用テーブルに挿入
 			if($ret->cnt >= 1){
 
@@ -77,14 +75,16 @@ class ResetPassController extends AppController
 				$link = '';
 				$target = '_parent';
 				$e_flg = '<input type="hidden" name="flg" value="3">';
+				$body_flg ='';
 			}
 		}else {
 			$link = $this->referer();
 			$target = '_parent';
 			$e_flg = '<input type="hidden" name="flg" value="1">';
+			$body_flg ='document.F.submit();';
 		}
 
-		$this->set(compact('link', 'target','e_flg'));
+		$this->set(compact('link', 'target','e_flg','body_flg'));
 	}
 
 	public function passchange()
@@ -112,10 +112,9 @@ class ResetPassController extends AppController
 			if(isset($ret->cnt)){
 				$Uid = $ret->user_id;
 				$this->set("b", $Uid);
-				// echo "ok";
 			}else {
 				// 一つもなければ
-				echo "リンクが正しくありません1";
+				$this->Flash->error(__('リンクが正しくありません'));
 			}
 		}elseif ($this->request->is('post')) {
 			$sa = 1501;
@@ -160,17 +159,13 @@ class ResetPassController extends AppController
 						'user_id' => $Uid,
 					])
 					->execute();
-					$this->Flash->error(__('パスワードが変更されました。'));
+					$this->Flash->success(__('パスワードが変更されました。'));
 				}else {
 					$this->Flash->error(__('入力が正しくありません。再度入力してください。'));
-					// $this->set("temp", $temp);
-
 				}
-			}//else {
-			// 	$this->Flash->error(__('リンクの消費期限が切れています＾＾'));
-			// }
+			}
 		}else {
-			echo "リンクが正しくありません2";
+			$this->Flash->error(__('リンクが正しくありません'));
 		}
 	}
 
@@ -215,7 +210,7 @@ class ResetPassController extends AppController
 				// echo '<br>'.'変更おk';
 				$query = ConnectionManager::get('default');
 				$query->update('users',['password' => $HHs],['id' => $Uid]);
-				$this->Flash->error(__('パスワードが変更されました。'));
+				$this->Flash->success(__('パスワードが変更されました。'));
 			}else {
 			// echo '<br>'.'変更NG';
 			$this->Flash->error(__('入力が正しくありません。再度入力してください。'));
