@@ -23,7 +23,8 @@ class AnswersController extends AppController
     }
     public function index() {
 		$witses = $this->witses->find('all')
-		->where(['Del_flg ='=> 0]);
+		->where(['Del_flg ='=> 0])
+		->order(['id' => 'DESC']);
         $witsesArray = $witses->toArray();
         $this->set(compact('witsesArray'));
 
@@ -62,7 +63,7 @@ class AnswersController extends AppController
 
 
 		$query = $this->wits_messages->find()
-		->select(['user_id','ren','message','users.name','facilities.name'])
+		->select(['wits_id','ren','transmit','message','users.name','facilities.name'])
 		->join([
 			'table' => 'users',
 			'type' => 'INNER',
@@ -71,13 +72,13 @@ class AnswersController extends AppController
 			'table' => 'facilities',
 			'type' => 'INNER',
 			'conditions' => 'facilities.id = users.facilities_id'])
-		->where(['id' => $get_id])
+		->where(['wits_id' => $get_id])
 		->order(['ren' => 'DESC']);
 		$mes_namelist = $query->all()->ToArray();
 		$this->set(compact('mes_namelist'));
 
 		if (isset($_POST['ans-submit'])) {
-			$answertxt = $_POST['textarea'];
+			$answertxt = htmlentities($_POST['textarea']);
 			$userId = $user['id'];
 			$nowdate = date("Y/m/d H:i:s");
 			$incRen = $maxRenArray[0]['ren'] + 1;
@@ -120,8 +121,8 @@ class AnswersController extends AppController
 
 		if (isset($_POST['editbtn'])) {
 
-			$editTitle = $_POST['edittitle'];
-			$editContent = $_POST['editcontent'];
+			$editTitle = htmlentities($_POST['edittitle']);
+			$editContent = htmlentities($_POST['editcontent']);
 			$nowdate = date("Y/m/d H:i:s");
 
 			$query = $this->witses->query();
@@ -172,11 +173,11 @@ class AnswersController extends AppController
 		// $postUid = $_POST[''];
 
 		if ($this->request->is('post')) {
-			$posttitle = $_POST['titletxt'];
-			$postcontent = $_POST['textarea'];
+			$posttitle = htmlentities($_POST['titletxt']);
+			$postcontent = htmlentities($_POST['textarea']);
 		}
 
-		if (!empty($_POST['Completebtn'])) {
+		if ($this->request->is('post')) {
 			$query = $this->witses->query();
 			$query->insert([
 				'id','title','content','user_id','Postdate'

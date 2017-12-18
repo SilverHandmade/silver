@@ -200,6 +200,7 @@ class ResetPassController extends AppController
 			$inte = preg_match("/[0-9]/",$Pas);
 			$lit = preg_match("/[a-z]/",$Pas);
 			$lag = preg_match("/[A-Z]/",$Pas);
+			
 			// 文字種が何種類あるか
 			$mozisyu = $inte + $lit + $lag;
 					// デバッグ用

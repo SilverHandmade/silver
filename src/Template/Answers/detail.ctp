@@ -40,11 +40,13 @@
 
 			<div id="sample1_table">
 				<div>
-					<?php foreach ($witmesArray as $witmesdiv): ?>
+					<?php foreach ($mes_namelist as $witmesdiv): ?>
 						<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
 							<?= $witmesdiv['message'];?>
 							<br><br>
-							<?= $witmesdiv['transmit'] ?>
+							<p>投稿者:<?= $witmesdiv['users']['name']; ?></p>
+							<p>所属施設:<?= $witmesdiv['facilities']['name']; ?></p>
+							<p>投稿日時:<?= $witmesdiv['transmit'] ?></p>
 						</div>
 					<?php endforeach; ?>
 				</div>
