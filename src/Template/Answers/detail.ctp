@@ -13,11 +13,11 @@
 			<form action="" method="POST" >
 				<div class="answers">
 					<div class="title2">
-						<p class="title"><?php echo $detailId[0]['title'] ?></p>
+						<p class="title"><?= $detailId[0]['title'] ?></p>
 					</div>
 					<div class="sisetu-date">
-						<p class="sisetu">○○園さん</p>
-						<p class="date"><?php echo $detailId[0]['Postdate'] ?></p>
+						<p class="sisetu"><?= $[''] ?></p>
+						<p class="date"><?= $detailId[0]['Postdate'] ?></p>
 					</div>
 					<div class="main">
 						<p><?php echo $detailId[0]['content'] ?></p>
