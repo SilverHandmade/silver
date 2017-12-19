@@ -50,6 +50,7 @@ $(function() {
 $(function(){
 	$('[name=fClassId]').click(function(){
 		alert("a");
+		
 	});
 });
 

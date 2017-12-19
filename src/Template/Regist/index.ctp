@@ -29,10 +29,7 @@
 							<?php if ($fClassArray[$key]['id'] == 1) {?>
 								<input type="radio" onclick="hihyoji()" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $key==0?'checked':'';?> id="radio-<?= $value['id'] ?>">
 								<label for="radio-<?= $value['id'] ?>"><?= $value['name'] ?></label>
-							<?php }else {?>
-								<input type="radio" onclick="hyoji()" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $key==0?'checked':'';?> id="radio-<?= $value['id'] ?>">
-								<label for="radio-<?= $value['id'] ?>"><?= $value['name'] ?></label>
-							<?php } ?>
+							<?php }?>
 
 
 						</span>
