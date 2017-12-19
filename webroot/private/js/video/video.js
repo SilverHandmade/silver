@@ -50,7 +50,7 @@ $(function(){
 		}
 		return result;
 	}
-	$('#tag').on('DOMSubtreeModified propertychange', function() {
+	$('#result').on('DOMSubtreeModified propertychange', function() {
 		var mode = GetCookie('videoViewMode');
 		if (mode === null) {
 			document.cookie = 'videoViewMode=list';
