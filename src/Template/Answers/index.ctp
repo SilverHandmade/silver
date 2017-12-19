@@ -9,12 +9,12 @@
 
 ?>
 
-<form class="" id="ansForm" method="post">
+<form class="" id="ansForm" action="" method="post">
 	<div class="form-group">
 		<div class="form-inline sear-lay search-inline">
 			<input type="text" name="dummy" style="display:none;">
-			<input type="text" id="indextxt" value="" class="ans-text form-control">
-			<button type="button" id="indexbtn" class="btn btn-success">検索</button>
+			<input type="text" name="indextxt" id="indextxt" value="" class="ans-text form-control">
+			<button type="submit" id="indexbtn" class="btn btn-success">検索</button>
 		</div>
 	</div>
 </form>
@@ -28,25 +28,5 @@
 		</tr>
 	</thead>
 </table>
-<?php foreach ($witsesArray as $witseslist) {?>
-	<div class="panel row">
-		<a href="<?= $this->Url->build(["controller" => "answers","action" => "detail",'id' => $witseslist['id']])?>">
-			<div id="wtitle" class="col-md-3">
-				<p>
-					<?= $witseslist['title'];?>
-				</p>
-			</div>
-			<div id="wcontent" class="col-md-6">
-				<p>
-					<?= $witseslist['content'];?>
-				</p>
-			</div>
-			<div id="wdate" class="col-md-3">
-				<p>
-					<?= date('Y年m月d日', strtotime($witseslist['Postdate']));?>
-				</p>
-			</div>
-		</a>
-	</div>
-<?php } ?>
+<?= $this->element('answers') ?>
 <?= $this->Html->link('投稿',['controller'=>'Answers','action'=>'create'],['class'=>'btn btn-primary']); ?>
