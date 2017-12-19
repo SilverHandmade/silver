@@ -61,6 +61,20 @@ class AnswersController extends AppController
 		$detailId = $query->all()->ToArray();
 		$this->set(compact('detailId'));
 
+		$query = $this->witses->find()
+		->select(['facilities.name',])
+		->join([
+			'table' => 'users',
+			'type' => 'INNER',
+			'conditions' => 'user_id = users.id'])
+		->join([
+			'table' => 'facilities',
+			'type' => 'INNER',
+			'conditions' => 'facilities.id = users.facilities_id'])
+		->where(['witses.id ' => $get_id]);
+		$facilitiesname = $query->all()->ToArray();
+		$this->set(compact('facilitiesname'));
+
 
 		$query = $this->wits_messages->find()
 		->select(['wits_id','ren','transmit','message','users.name','facilities.name'])

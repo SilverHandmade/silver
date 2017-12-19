@@ -26,8 +26,15 @@
 				<div class="radio-layout">
 					<?php foreach ($fClassArray as $key => $value): ?>
 						<span>
-							<input type="radio" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $key==0?'checked':'';?> id="radio-<?= $value['id'] ?>">
-							<label for="radio-<?= $value['id'] ?>"><?= $value['name'] ?></label>
+							<?php if ($fClassArray[$key]['id'] == 1) {?>
+								<input type="radio" onclick="hihyoji()" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $key==0?'checked':'';?> id="radio-<?= $value['id'] ?>">
+								<label for="radio-<?= $value['id'] ?>"><?= $value['name'] ?></label>
+							<?php }else {?>
+								<input type="radio" onclick="hyoji()" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $key==0?'checked':'';?> id="radio-<?= $value['id'] ?>">
+								<label for="radio-<?= $value['id'] ?>"><?= $value['name'] ?></label>
+							<?php } ?>
+
+
 						</span>
 					<?php endforeach; ?>
 				</div>
@@ -36,7 +43,7 @@
 					<p class="font-color">施設名</p>
 					<select name="facilities">
 						<?php foreach ($results as $key => $value): ?>
-							<option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
+								<option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>
@@ -62,3 +69,15 @@
 		</div>
 	</div>
 </div>
+
+<div id="message">こんにちは</div>
+
+<script>
+function hyoji() {
+    document.getElementById("message").style.display="block";
+}
+
+function hihyoji() {
+    document.getElementById("message").style.display="none";
+}
+</script>

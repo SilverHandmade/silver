@@ -43,7 +43,7 @@
 			</div>
 			<div id="wdate" class="col-md-3">
 				<p>
-					<?= $witseslist['Postdate'];?>
+					<?= date('Y年m月d日', strtotime($witseslist['Postdate']));?>
 				</p>
 			</div>
 		</a>

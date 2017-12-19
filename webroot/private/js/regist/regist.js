@@ -46,6 +46,13 @@ $(function() {
 	});
 
 });
+
+$(function(){
+	$('[name=fClassId]').click(function(){
+		alert("a");
+	});
+});
+
 $(function(){
 	$('#transmit').bind("click",function(){
 		var username = $('#username').val();
