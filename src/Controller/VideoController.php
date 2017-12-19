@@ -22,7 +22,7 @@ class VideoController extends AppController
 	public function index()
 	{
 		$queryMov = $this->Movies->find();
-		if ($this->request->is('POST')) {
+		if ($this->request->is('ajax')) {
 			// $queryMov->contain();
 			// ->select('title');
 			if (!empty($this->request->getData('title'))) {
@@ -47,10 +47,12 @@ class VideoController extends AppController
 					});
 			}
 			$this->set('results', $queryMov->toArray());
+        	$this->render("/Element/videoSerchResult");
 		} else {
 			$this->set('results', $queryMov->limit(20)->toArray());
 		}
 	}
+
 	public function view()
 	{
 		$geVideo = $this->Movies->get($this->request->getParam('id'));
