@@ -52,13 +52,21 @@ class RequestController extends AppController
 
 	$user_faci = $query->all()->ToArray();
 	$this->set(compact('user_faci'));
+	$query = $this->Facilities->find()
+	->select(['id','name','address'])
+	->where(['facility_classes_id ='=>2]);
+	if ($this->request->is('post')) {
+		if (!empty($this->request->getData('search'))) {
+			$query->where(['name LIKE' => '%' . $this->request->getData('search') . '%'])
+			->orWhere(['address LIKE' => '%' . $this->request->getData('search') . '%']);
+		}
 
-
-      $query = $this->Facilities->find()
-      ->select(['id','name','address'])
-      ->where(['facility_classes_id ='=>2]);
-      $facilities = $query->all()->ToArray();
+	}else {
+		$query->limit(20);
+	}
+      $facilities = $query->ToArray();
       $this->set(compact('facilities'));
+
 	  $_SESSION['select_flg'] = 0;
 	  $_SESSION['create_flg'] = 0;
 	  unset($_SESSION['req_edit']);
