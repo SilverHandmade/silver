@@ -52,7 +52,7 @@ class MakeId9Component extends Component {
 
 	public function ymdate()
     {
-      	date_default_timezone_set('UTC');
+      	date_default_timezone_set('Asia/Tokyo');
       	$dt = date("ym");//yymm生成
       	return $dt;
     }
