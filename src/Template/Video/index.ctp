@@ -2,14 +2,13 @@
 	<?= $this->Html->css('/private/css/video/video.css') ?>
 <?php $this->end() ?>
 <?php $this->start('script') ?>
-	<?= $this->Html->script('/private/js/video/open.js') ?>
 	<?= $this->Html->script('/private/js/video/video.js') ?>
 <?php $this->end() ?>
 
 <div class="col-md-offset-1 col-md-10">
 	<div class="row">
 		<div class="col-md-12">
-			<form action="" method="post">
+			<form action="" method="post" id="conditions">
 				<div class="row">
 					<div class="col-md-offset-2 col-md-8">
 						<div class="row" id="inputTitle">
@@ -21,7 +20,7 @@
 									詳細
 									<span class="glyphicon glyphicon-option-vertical"></span>
 								</button>
-								<button class="btn btn-success" type="submit">
+								<button class="btn btn-success" type="submit" id="serach">
 									検索
 									<span class="glyphicon glyphicon-search"></span>
 								</button>
@@ -108,54 +107,7 @@
 		</div>
 	</div>
 
-	<div class="row" id="videoList">
-		<?php foreach ($results as $key): ?>
-			<div class="col-md-12">
-				<div class="panel">
-					<a href="<?= $this->Url->build(["controller" => "video","action" => "view", 'id' => $key['id']])?>">
-						<div class="row">
-							<div class="col-md-3">
-								投稿日:<?=$key['contribution']?>
-								<img src="<?= $this->Url->image(file_exists($key['movie_url'])?$key['movie_url']:"no_image.png");?>">
-							</div>
-							<div class="col-md-9">
-								<div class="row">
-									<div class="col-md-12">
-										<h3><?= $key['title']; ?></h3>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<p>
-											<?= $key['description']; ?>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-		<?php endforeach; ?>
-	</div>
-
-	<div id="videoPanel" class="row">
-		<?php $i = 0; foreach ($results as $key): ?>
-			<?php if ($i++ % 4 == 0): ?>
-				<!-- <div class="row"> -->
-			<?php endif; ?>
-					<div class="col-md-3">
-						<div class="panel">
-							<a href="<?= $this->Url->build(["controller" => "video","action" => "view", 'id' => $key['id']])?>">
-								<?=$key['contribution']?>
-								<img src="<?= $this->Url->image(file_exists($key['movie_url'])?$key['movie_url']:"no_image.png");?>">
-								<h3><?=$key['title']?></h3>
-							</a>
-						</div>
-					</div>
-			<?php if ($i % 4 == 0): ?>
-				<!-- </div> -->
-			<?php endif; ?>
-		<?php endforeach; ?>
+	<div id="result">
+		<?= $this->element('videoSerchResult');?>
 	</div>
 </div>
