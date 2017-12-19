@@ -23,7 +23,7 @@
 					<p class="font-color">フリガナ</p>
 					<input type="text" id="hurigana" name="hurigana" value=""required class="form-control">
 				</div>
-				<div class="checkbox checkbox-layout">
+				<div class="radio-layout">
 					<?php foreach ($fClassArray as $key => $value): ?>
 						<span>
 							<input type="radio" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $key==0?'checked':'';?> id="radio-<?= $value['id'] ?>">
@@ -35,12 +35,9 @@
 					<!-- $postfacilitie-->
 					<p class="font-color">施設名</p>
 					<select name="facilities">
-						<?php foreach ($results as $value)
-							{ ?>
-								<option value="<?= $value['id'] ?> "><?= $value['name'] ?></option>
-							<?php
-							}
-							?>
+						<?php foreach ($results as $key => $value): ?>
+							<option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
+						<?php endforeach; ?>
 					</select>
 				</div>
 				<div class="mailadress">

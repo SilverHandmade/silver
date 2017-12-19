@@ -1,12 +1,13 @@
-.radio	{
+.radio {
 	display: none;
 }
-.radio + label	{
+.radio + label {
 	padding-left: 20px;
 	position:relative;
 	margin-right: 20px;
+	cursor: pointer;
 }
-.radio + label::before	{
+.radio + label::before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -17,7 +18,7 @@
 	border: 1px solid #999;
 	border-radius: 50%;
 }
-.radio:checked + label::after	{
+.radio:checked + label::after {
 	content: "";
 	display: block;
 	position: absolute;
@@ -37,6 +38,7 @@
 	padding-left: 20px;
 	position:relative;
 	margin-right: 20px;
+	cursor: pointer;
 }
 .checkbox-parts::before {
 	content: "";

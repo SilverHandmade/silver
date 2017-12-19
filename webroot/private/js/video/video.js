@@ -50,4 +50,20 @@ $(function(){
 		}
 		return result;
 	}
+	$('#result').on('DOMSubtreeModified propertychange', function() {
+		var mode = GetCookie('videoViewMode');
+		if (mode === null) {
+			document.cookie = 'videoViewMode=list';
+			$(".glyphicon-th-list").addClass("none");
+			$("#videoPanel").addClass("none");
+		} else {
+			if (mode === 'list') {
+				$(".glyphicon-th-list").addClass("none");
+				$("#videoPanel").addClass("none");
+			} else {
+				$(".glyphicon-th-large").addClass("none");
+				$("#videoList").addClass("none");
+			}
+		}
+    });
 });
