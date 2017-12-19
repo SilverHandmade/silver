@@ -208,8 +208,8 @@ class RequestController extends AppController
 			'type' => 'LEFT',
 			'conditions' => ['facilities.id = Requests.F_moto_id']
             ])
-		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki]);
-
+		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki])
+		->order(['From_date' => 'DESC']);
 		$reqs = $query->all()->ToArray();
 		$this->set(compact('reqs'));
 	}elseif ($user_faci[0]['facility_classes_id'] == 1) {
@@ -220,8 +220,8 @@ class RequestController extends AppController
 			'type' => 'LEFT',
 			'conditions' => ['facilities.id = Requests.F_saki_id']
             ])
-		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki]);
-
+		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki])
+		->order(['From_date' => 'DESC']);
 		$reqs_hoiku = $query->all()->ToArray();
 		$this->set(compact('reqs_hoiku'));
 	}

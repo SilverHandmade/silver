@@ -24,11 +24,11 @@
 				</tr>
 				<tr>
 					<th class="center"><p>依頼日：</p></th>
-					<td><p><?php echo $req_info[0]['From_date'] ?></p></td>
+					<td><p><?php echo date('Y年m月d日',  strtotime($req_info[0]['From_date'])) ?></p></td>
 				</tr>
 				<tr>
 					<th class="center"><p>締め切り日：</p></th>
-					<td><p><?php echo $req_info[0]['To_date'] ?></p></td>
+					<td><p><?php echo date('Y年m月d日',  strtotime($req_info[0]['To_date'])) ?></p></td>
 				</tr>
 				<?php if ($user_faci[0]['facility_classes_id'] == 1): ?>
 				<tr>
