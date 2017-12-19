@@ -7,7 +7,7 @@
 		<h2 class="danger" >〆切マジか</h2>
 		<div class="row">
 			<?php foreach ($request as $key): ?>
-				<?= $this->element('DeadlineRequest', ['key' => $key]);?>
+				<?= $this->element('TopPage/DeadlineRequest', ['key' => $key]);?>
 			<?php endforeach; ?>
 		</div>
 		<div class="row right" id="linkTo">
