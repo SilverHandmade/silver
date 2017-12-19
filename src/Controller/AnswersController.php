@@ -27,17 +27,19 @@ class AnswersController extends AppController
 		->where(['Del_flg ='=> 0])
 		->order(['id' => 'DESC']);
 
-		if ($this->request->is('post')) {
+		if ($this->request->is('ajax')) {
 			if (!empty($this->request->getData('indextxt'))) {
 				$query->where(['title LIKE' => '%' . $this->request->getData('indextxt') . '%']);
 			}
-
 		}else {
 			$query->limit(20);
 		}
 
 		$witsesArray = $query->toArray();
         $this->set(compact('witsesArray'));
+		if ($this->request->is('ajax')) {
+			$this->render('/Element/answers');
+		}
 
     }
 	public function detail(){

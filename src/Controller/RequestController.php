@@ -201,34 +201,34 @@ class RequestController extends AppController
 
 
 		if ($user_faci[0]['facility_classes_id'] == 2) {
-		$query = $this->Requests->find()
-		->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
-		->join([
-			'table' => 'facilities',
-			'type' => 'LEFT',
-			'conditions' => ['facilities.id = Requests.F_moto_id']
-            ])
-		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki]);
+			$query = $this->Requests->find()
+			->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
+			->join([
+				'table' => 'facilities',
+				'type' => 'LEFT',
+				'conditions' => ['facilities.id = Requests.F_moto_id']
+	            ])
+			->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki]);
 
-		$reqs = $query->all()->ToArray();
-		$this->set(compact('reqs'));
-	}elseif ($user_faci[0]['facility_classes_id'] == 1) {
-		$query = $this->Requests->find()
-		->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
-		->join([
-			'table' => 'facilities',
-			'type' => 'LEFT',
-			'conditions' => ['facilities.id = Requests.F_saki_id']
-            ])
-		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki]);
+			$reqs = $query->all()->ToArray();
+			$this->set(compact('reqs'));
+		}else if ($user_faci[0]['facility_classes_id'] == 1) {
+			$query = $this->Requests->find()
+			->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
+			->join([
+				'table' => 'facilities',
+				'type' => 'LEFT',
+				'conditions' => ['facilities.id = Requests.F_saki_id']
+	            ])
+			->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki]);
 
-		$reqs_hoiku = $query->all()->ToArray();
-		$this->set(compact('reqs_hoiku'));
+			$reqs_hoiku = $query->all()->ToArray();
+			$this->set(compact('reqs_hoiku'));
+		}
 	}
-	}
 
 
-		public function detail(){
+	public function detail(){
 
 			$user = $this->Userinfo->getuser();
 			$query = $this->Users->find()

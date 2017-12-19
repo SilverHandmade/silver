@@ -10,18 +10,6 @@ use Cake\View\Exception\MissingTemplateException;
 class RegistController extends AppController
 {
 
-	public function add() {
-		if($this->request->is('get')) {
-			if($this->NewRegist->save($this->request->data)) {
-				$this->Session->setFlash('入力完了');
-				$this->redirect(array('action'=>'lists'));
-			}
-			else {
-				$this->Session->setFlash('入力失敗');
-			}
-		}
-	}
-
 	public function initialize()
 	{
 		parent::initialize();

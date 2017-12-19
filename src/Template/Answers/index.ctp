@@ -1,7 +1,10 @@
 <?php
 	$this->start('script');
 		echo $this->Html->script('/private/js/answer/answer.js');
+		echo $this->Html->script('/private/js/serchAjax.js');
 	$this->end();
+
+
 
 	$this->start('css');
 		echo $this->Html->css('/private/css/answers/answers.css');
@@ -14,7 +17,7 @@
 		<div class="form-inline sear-lay search-inline">
 			<input type="text" name="dummy" style="display:none;">
 			<input type="text" name="indextxt" id="indextxt" value="" class="ans-text form-control">
-			<button type="submit" id="indexbtn" class="btn btn-success">検索</button>
+			<button type="button" id="indexbtn" class="btn btn-success">検索</button>
 		</div>
 	</div>
 </form>
@@ -28,5 +31,7 @@
 		</tr>
 	</thead>
 </table>
-<?= $this->element('answers') ?>
+<div id="result" class="">
+	<?= $this->element('answers') ?>
+</div>
 <?= $this->Html->link('投稿',['controller'=>'Answers','action'=>'create'],['class'=>'btn btn-primary']); ?>
