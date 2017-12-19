@@ -1,10 +1,12 @@
 <?php
 	$this->start('script');
 		echo $this->Html->script('/private/js/request/request.js');
+		echo $this->Html->script('/private/js/serchAjax.js');
 	$this->end();
 	$this->start('css');
 		echo $this->Html->css('/private/css/request/request.css');
 	$this->end();
+
 ?>
 
 <div class="col-md-offset-2 col-md-8">
@@ -16,7 +18,7 @@
 			<div class="form-group">
 				<div class="form-inline sear-lay">
 					<input type="text" id="fsearch" name="search" value="" class="form-control"/>
-					<button type="submit" id="searchbutton" name="sbutton" class="btn btn-success">検索</button>
+					<button type="button" id="searchbutton" name="sbutton" class="btn btn-success">検索</button>
 				</div>
 			</div>
 		</form>
@@ -31,7 +33,7 @@
 				</tr>
 			</thead>
 		</table>
-		<?= $this->element('request');?>
+		<div id='result'><?= $this->element('request');?></div>
 			<div class="btn-sub">
 				<?= $this->Html->link('依頼編集・取り消し画面はこちら',["controller" => "Request","action" => "select"],['class'=>'btn btn-primary'])?>
 				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>

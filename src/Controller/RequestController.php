@@ -55,10 +55,11 @@ class RequestController extends AppController
 	$query = $this->Facilities->find()
 	->select(['id','name','address'])
 	->where(['facility_classes_id ='=>2]);
-	if ($this->request->is('post')) {
+	if ($this->request->is('ajax')) {
 		if (!empty($this->request->getData('search'))) {
 			$query->where(['name LIKE' => '%' . $this->request->getData('search') . '%'])
-			->orWhere(['address LIKE' => '%' . $this->request->getData('search') . '%']);
+			->orWhere(['address LIKE' => '%' . $this->request->getData('search') . '%'])
+			->where(['facility_classes_id ='=>2]);
 		}
 
 	}else {
@@ -66,7 +67,9 @@ class RequestController extends AppController
 	}
       $facilities = $query->ToArray();
       $this->set(compact('facilities'));
-
+	  if ($this->request->is('ajax')) {
+	  	$this->render('/Element/request');
+	  }
 	  $_SESSION['select_flg'] = 0;
 	  $_SESSION['create_flg'] = 0;
 	  unset($_SESSION['req_edit']);
@@ -198,7 +201,7 @@ class RequestController extends AppController
 	}
 
 
-	public function list(){
+	public function lists(){
 		$query = $this->Users->find()
 		->select(['id','facilities_id','facility_classes_id'])
 		->where(['id' => $_SESSION['Auth']['User']['id']]);
