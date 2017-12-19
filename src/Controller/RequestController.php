@@ -52,13 +52,24 @@ class RequestController extends AppController
 
 	$user_faci = $query->all()->ToArray();
 	$this->set(compact('user_faci'));
+	$query = $this->Facilities->find()
+	->select(['id','name','address'])
+	->where(['facility_classes_id ='=>2]);
+	if ($this->request->is('ajax')) {
+		if (!empty($this->request->getData('search'))) {
+			$query->where(['name LIKE' => '%' . $this->request->getData('search') . '%'])
+			->orWhere(['address LIKE' => '%' . $this->request->getData('search') . '%'])
+			->where(['facility_classes_id ='=>2]);
+		}
 
-
-      $query = $this->Facilities->find()
-      ->select(['id','name','address'])
-      ->where(['facility_classes_id ='=>2]);
-      $facilities = $query->all()->ToArray();
+	}else {
+		$query->limit(20);
+	}
+      $facilities = $query->ToArray();
       $this->set(compact('facilities'));
+	  if ($this->request->is('ajax')) {
+	  	$this->render('/Element/request');
+	  }
 	  $_SESSION['select_flg'] = 0;
 	  $_SESSION['create_flg'] = 0;
 	  unset($_SESSION['req_edit']);
@@ -190,7 +201,7 @@ class RequestController extends AppController
 	}
 
 
-	public function list(){
+	public function lists(){
 		$query = $this->Users->find()
 		->select(['id','facilities_id','facility_classes_id'])
 		->where(['id' => $_SESSION['Auth']['User']['id']]);
@@ -201,30 +212,30 @@ class RequestController extends AppController
 
 
 		if ($user_faci[0]['facility_classes_id'] == 2) {
-			$query = $this->Requests->find()
-			->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
-			->join([
-				'table' => 'facilities',
-				'type' => 'LEFT',
-				'conditions' => ['facilities.id = Requests.F_moto_id']
-	            ])
-			->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki]);
-
-			$reqs = $query->all()->ToArray();
-			$this->set(compact('reqs'));
-		}else if ($user_faci[0]['facility_classes_id'] == 1) {
-			$query = $this->Requests->find()
-			->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
-			->join([
-				'table' => 'facilities',
-				'type' => 'LEFT',
-				'conditions' => ['facilities.id = Requests.F_saki_id']
-	            ])
-			->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki]);
-
-			$reqs_hoiku = $query->all()->ToArray();
-			$this->set(compact('reqs_hoiku'));
-		}
+		$query = $this->Requests->find()
+		->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
+		->join([
+			'table' => 'facilities',
+			'type' => 'LEFT',
+			'conditions' => ['facilities.id = Requests.F_moto_id']
+            ])
+		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki])
+		->order(['From_date' => 'DESC']);
+		$reqs = $query->all()->ToArray();
+		$this->set(compact('reqs'));
+	}elseif ($user_faci[0]['facility_classes_id'] == 1) {
+		$query = $this->Requests->find()
+		->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
+		->join([
+			'table' => 'facilities',
+			'type' => 'LEFT',
+			'conditions' => ['facilities.id = Requests.F_saki_id']
+            ])
+		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki])
+		->order(['From_date' => 'DESC']);
+		$reqs_hoiku = $query->all()->ToArray();
+		$this->set(compact('reqs_hoiku'));
+	}
 	}
 
 

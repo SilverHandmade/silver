@@ -37,30 +37,30 @@ if (d < 7) {
 }
 }
 
-
-//依頼先一覧絞り込み
-$(function(){
-	$('#searchbutton').bind("click",function(){
-		var re = new RegExp($('#fsearch').val());
-		$('.list-panel').each(function(){
-			var Ntxt = $(this).find("#fname:eq(0)").html();
-			var Atxt = $(this).find("#faddress:eq(0)").html();
-
-
-			// Ntxt = Ntxt.replace("<a href=\"/silver/request/create\?","");
-			// Ntxt = Ntxt.replace(/id=\d*/,"");
-			// Ntxt = Ntxt.replace("\">","");
-			// Ntxt = Ntxt.replace("</a>","");
-
-
-			if(Atxt.match(re) != null || Ntxt.match(re) != null){
-				$(this).show();
-			}else{
-				$(this).hide();
-			}
-		});
-	});
-});
+// 
+// //依頼先一覧絞り込み
+// $(function(){
+// 	$('#searchbutton').bind("click",function(){
+// 		var re = new RegExp($('#fsearch').val());
+// 		$('.list-panel').each(function(){
+// 			var Ntxt = $(this).find("#fname:eq(0)").html();
+// 			var Atxt = $(this).find("#faddress:eq(0)").html();
+//
+//
+// 			// Ntxt = Ntxt.replace("<a href=\"/silver/request/create\?","");
+// 			// Ntxt = Ntxt.replace(/id=\d*/,"");
+// 			// Ntxt = Ntxt.replace("\">","");
+// 			// Ntxt = Ntxt.replace("</a>","");
+//
+//
+// 			if(Atxt.match(re) != null || Ntxt.match(re) != null){
+// 				$(this).show();
+// 			}else{
+// 				$(this).hide();
+// 			}
+// 		});
+// 	});
+// });
 
 //依頼一覧絞り込み
 $(function(){
