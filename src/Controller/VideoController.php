@@ -23,8 +23,6 @@ class VideoController extends AppController
 	{
 		$queryMov = $this->Movies->find();
 		if ($this->request->is('ajax')) {
-			// $queryMov->contain();
-			// ->select('title');
 			if (!empty($this->request->getData('title'))) {
 				$queryMov->where(['title LIKE' => '%' . $this->request->getData('title') . '%']);
 			}

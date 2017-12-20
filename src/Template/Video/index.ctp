@@ -21,7 +21,7 @@
 									詳細
 									<span class="glyphicon glyphicon-option-vertical"></span>
 								</button>
-								<button class="btn btn-success" type="submit" id="serach">
+								<button class="btn btn-success" type="button" id="serach">
 									検索
 									<span class="glyphicon glyphicon-search"></span>
 								</button>
