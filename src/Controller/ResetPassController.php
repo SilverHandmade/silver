@@ -102,7 +102,7 @@ class ResetPassController extends AppController
 	{
 		// GETにデータがあれば(メールから来ている)
 		if ($this->request->is('get')) {
-			date_default_timezone_set('UTC');
+			// date_default_timezone_set('UTC');
 			$uuid = $_GET['uu'];
 			$Tb = TableRegistry::get('unique_ids');
 			$query = $Tb->find();
@@ -113,11 +113,9 @@ class ResetPassController extends AppController
 
 			// 時間計算(15分)
 			$tmp = $ret->sendtime;
-				echo "<br><br><br><br><br><br>";
-			echo $DBtime = date("YmdHis", strtotime($ret->sendtime));
-			echo "<br>".$ret->sendtime."<br>";
-			echo $NowTime = date("YmdHis");
-			echo "<br>".date_default_timezone_get();
+			$DBtime = date("YmdHis", strtotime($ret->sendtime));
+			$NowTime = date("YmdHis");
+			// echo "<br>".date_default_timezone_get();
 			$sa = $NowTime - $DBtime;
 			IF($sa <= 1500){
 				$sa_flg = 1;
