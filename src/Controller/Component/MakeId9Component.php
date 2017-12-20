@@ -31,7 +31,13 @@ class MakeId9Component extends Component {
 		}elseif($tbl == 'wit'){
 			$kt = 5;
 			$MTb = TableRegistry::get('witses');
-		}else {
+		}elseif($tbl == 'ans'){
+			$kt = 5;
+			$MTb = TableRegistry::get('answers');
+		}elseif($tbl == 'fac'){
+			$kt = 4;
+			$MTb = TableRegistry::get('facilities');
+		}else{
 			$flg = False;
 		}
 		if($flg){
@@ -39,20 +45,29 @@ class MakeId9Component extends Component {
 	      	$ret = $query->select(['max_id' => $query->func()->max('id')])->first();
 	      	$showtbl = $ret->max_id;
 			$ym = $this->ymdate();//yymm取得
-			if(round($showtbl/10**$kt,0) == $ym){
-        		$showtbl = $showtbl +1;
-    		}elseif($kt == 6){
-    			$showtbl = $ym.'000001';
-    		}else {
-    			$showtbl = $ym.'00001';
-    		}
+			if($tbl == 'fac'){
+				if(round($showtbl/10**$kt,0) == $ym/100){
+					$showtbl = $showtbl +1;
+				}else {
+					$ym = $ym/100;
+	    			$showtbl = $ym.'0001';
+	    		}
+			}else {
+				if(round($showtbl/10**$kt,0) == $ym){
+					$showtbl = $showtbl +1;
+				}elseif($kt == 6){
+					$showtbl = $ym.'000001';
+				}else {
+					$showtbl = $ym.'00001';
+				}
+			}
 		}
     return $showtbl;
 	}
 
 	public function ymdate()
     {
-      	date_default_timezone_set('UTC');
+      	date_default_timezone_set('Asia/Tokyo');
       	$dt = date("ym");//yymm生成
       	return $dt;
     }

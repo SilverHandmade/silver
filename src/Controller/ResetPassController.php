@@ -29,12 +29,23 @@ class ResetPassController extends AppController
     {
 		// 返された理由の表示
 		if($this->request->is('post')) {
-			if($this->request->getData('flg') == 1){
-				$this->Flash->error(__('ドメインが入力されていません'));
-			}elseif ($this->request->getData('flg') == 2) {
-				$this->Flash->error(__('リンクの消費期限が切れています'));
-				// UPDATE `unique_ids` SET sendtime='2017-12-07 14:07:46' WHERE user_id = 'id入力'
+			switch ($this->request->getData('flg')) {
+				case 1:
+					$this->Flash->error(__('ドメインが入力されていません'));
+					break;
+				case 2:
+					$this->Flash->error(__('リンクの消費期限が切れています'));
+					break;
+				default:
+					# code...
+					break;
 			}
+			// if($this->request->getData('flg') == 1){
+			// 	$this->Flash->error(__('ドメインが入力されていません'));
+			// }elseif ($this->request->getData('flg') == 2) {
+			// 	$this->Flash->error(__('リンクの消費期限が切れています'));
+			// 	// UPDATE `unique_ids` SET sendtime='2017-12-07 14:07:46' WHERE user_id = 'id入力'
+			// }
 		}
 
 	}
@@ -91,21 +102,25 @@ class ResetPassController extends AppController
 	{
 		// GETにデータがあれば(メールから来ている)
 		if ($this->request->is('get')) {
-
+			// date_default_timezone_set('UTC');
 			$uuid = $_GET['uu'];
 			$Tb = TableRegistry::get('unique_ids');
 			$query = $Tb->find();
 			$ret = $query->select(['user_id','cnt' => $query->func()->count('*'),'sendtime'])
 	        			->where(['uuid'=> $uuid ])->first();
+			// date_default_timezone_set('UTC');
+
+
 			// 時間計算(15分)
 			$tmp = $ret->sendtime;
 			$DBtime = date("YmdHis", strtotime($ret->sendtime));
 			$NowTime = date("YmdHis");
+			// echo "<br>".date_default_timezone_get();
 			$sa = $NowTime - $DBtime;
 			IF($sa <= 1500){
-				echo $sa_flg = 1;
+				$sa_flg = 1;
 			}else {
-				echo $sa_flg = 2;
+				$sa_flg = 2;
 			}
 			$this->set("sa", $sa_flg);
 			// 1つ以上あればpostようにset
@@ -195,7 +210,7 @@ class ResetPassController extends AppController
 			$inte = preg_match("/[0-9]/",$Pas);
 			$lit = preg_match("/[a-z]/",$Pas);
 			$lag = preg_match("/[A-Z]/",$Pas);
-			
+
 			// 文字種が何種類あるか
 			$mozisyu = $inte + $lit + $lag;
 					// デバッグ用
