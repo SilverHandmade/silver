@@ -21,6 +21,25 @@ class RegistController extends AppController
 
 	public function index()
 	{
+
+		$query = $this->facilities->find()
+		->where(['Del_flg ='=> 0])
+		->order(['id' => 'DESC']);
+
+		if ($this->request->is('ajax')) {
+			if (!empty($this->request->getData('fClassId'))) {
+				$query->where(['facility_classes_id =' => $this->request->getData('fClassId')]);
+			}
+		} else {
+			$query->where(['facility_classes_id =' => 1]);
+		}
+
+		$facilitiesArray = $query->toArray();
+		$this->set(compact('facilitiesArray'));
+		if ($this->request->is('ajax')) {
+			$this->render('/Element/Regist/facilities');
+		}
+
 		//facilities->nameの値を取得
 		$facname = $this->facilities->find('all');
 		$results = $facname->toArray();
@@ -35,20 +54,6 @@ class RegistController extends AppController
 		$user = $this->users->find('all');
 		$userarray = $user->toArray();
 		$this->set(compact('userarray'));
-
-		if($this->request->is('post')) {
-
-		$postname = $_POST['name'];
-
-			$posthurigana	= $_POST['hurigana'];
-			$postmail	= $_POST['email'];
-			$postremail	= $_POST['reemail'];
-			$postpass = $_POST['password'];
- 			$posthashpass	= $this->PassHash->hash($postpass);
-			$postfacilitie = $_POST['facilities'];
-			$postfClassId = $_POST['fClassId'];
-			$postrepass	= $_POST['repassword'];
-		}
 	}
 	public function confirm(){
 

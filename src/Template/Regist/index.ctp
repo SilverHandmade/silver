@@ -26,23 +26,19 @@
 				<div class="radio-layout">
 					<?php foreach ($fClassArray as $key => $value): ?>
 						<span>
-							<?php if ($fClassArray[$key]['id'] == 1) {?>
-								<input type="radio" onclick="hihyoji()" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $key==0?'checked':'';?> id="radio-<?= $value['id'] ?>">
-								<label for="radio-<?= $value['id'] ?>"><?= $value['name'] ?></label>
-							<?php }?>
-
-
+							<input type="radio" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $key==0?'checked':'';?> id="radio-<?= $value['id'] ?>">
+							<label for="radio-<?= $value['id'] ?>"><?= $value['name'] ?></label>
 						</span>
 					<?php endforeach; ?>
 				</div>
 				<div class="pulldown facilityname">
 					<!-- $postfacilitie-->
 					<p class="font-color">施設名</p>
-					<select name="facilities">
-						<?php foreach ($results as $key => $value): ?>
-								<option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
-						<?php endforeach; ?>
-					</select>
+
+						<div id="result">
+							<?= $this->element('Regist/facilities') ?>
+						</div>
+
 				</div>
 				<div class="mailadress">
 					<!-- $postmail-->
