@@ -1,6 +1,7 @@
 <?php
 	$this->start('script');
 	echo $this->Html->script('/private/js/request/request.js');
+	echo $this->Html->script('/private/js/serchAjax.js');
 	$this->end();
 
 	$this->start('css');
@@ -13,9 +14,11 @@
 		<h2>修正依頼選択</h2>
 		<div class="form-group">
 			<div class="form-inline sear-lay">
-				<input type="text" name="dummy" style="display:none;">
-				<input type="text" id="rsearch" name="search" value="" class="form-control"/>
-				<button type="button" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
+				<form class="form-inline center" action="" method="POST" onsubmit="doSomething();return false;">
+					<input type="text" name="dummy" style="display:none;">
+					<input type="text" id="rsearch" name="search" value="" class="form-control"/>
+					<button type="button" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
+				</form>
 			</div>
 		</div>
 		<?php if ($reqlist == NULL): ?>
@@ -37,20 +40,7 @@
 					</tr>
 				</thead>
 			</table>
-			<?php foreach ($reqlist as $req) : ?>
-
-				<div class="row panel req_li list-panel">
-					<a href="<?= $this->Url->build(["controller" => "request","action" => "edit",'id' => $req['id']])?>">
-						<div id="rtitle" class="col-md-6">
-							<?php echo $req['title']?>
-						</div>
-						<div id="rfaci_name" class="col-md-6">
-							<p><?php echo $req['facilities']['name']?></p>
-						</div>
-					</a>
-				</div>
-
-			<?php endforeach; ?>
+			<div id='result'><?= $this->element('Request/reqSelect');?></div>
 			<div class="btn-sub">
 				<?= $this->Html->link('戻る',["controller" => "Request","action" => "index"],['class'=>'btn btn-primary'])?>
 				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>

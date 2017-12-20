@@ -68,7 +68,7 @@ class RequestController extends AppController
       $facilities = $query->ToArray();
       $this->set(compact('facilities'));
 	  if ($this->request->is('ajax')) {
-	  	$this->render('/Element/request');
+	  	$this->render('/Element/Request/reqIndex');
 	  }
 	  $_SESSION['select_flg'] = 0;
 	  $_SESSION['create_flg'] = 0;
@@ -219,10 +219,25 @@ class RequestController extends AppController
 			'type' => 'LEFT',
 			'conditions' => ['facilities.id = Requests.F_moto_id']
             ])
-		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki])
-		->order(['From_date' => 'DESC']);
-		$reqs = $query->all()->ToArray();
+		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki]);
+
+		if ($this->request->is('ajax')) {
+			if (!empty($this->request->getData('search'))) {
+				$query->where(['title LIKE' => '%' . $this->request->getData('search') . '%'])
+				->orWhere(['facilities.name LIKE' => '%' . $this->request->getData('search') . '%'])
+				->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki]);
+			}
+
+		}else {
+			$query->limit(20);
+		}
+		$query->order(['From_date' => 'DESC']);
+		$reqs = $query->ToArray();
 		$this->set(compact('reqs'));
+		if ($this->request->is('ajax')) {
+		  $this->render('/Element/Request/reqLigg');
+		}
+
 	}elseif ($user_faci[0]['facility_classes_id'] == 1) {
 		$query = $this->Requests->find()
 		->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
@@ -231,10 +246,27 @@ class RequestController extends AppController
 			'type' => 'LEFT',
 			'conditions' => ['facilities.id = Requests.F_saki_id']
             ])
-		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki])
-		->order(['From_date' => 'DESC']);
+		->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki]);
+
+		if ($this->request->is('ajax')) {
+			if (!empty($this->request->getData('search'))) {
+				$query->where(['title LIKE' => '%' . $this->request->getData('search') . '%'])
+				->orWhere(['facilities.name LIKE' => '%' . $this->request->getData('search') . '%'])
+				->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki]);
+			}
+
+		}else {
+			$query->limit(20);
+		}
+		$query->order(['From_date' => 'DESC']);
+
 		$reqs_hoiku = $query->all()->ToArray();
 		$this->set(compact('reqs_hoiku'));
+
+		if ($this->request->is('ajax')) {
+		  $this->render('/Element/Request/reqLihoiku');
+		}
+
 	}
 	}
 
@@ -324,9 +356,23 @@ class RequestController extends AppController
 				'type' => 'LEFT',
 				'conditions' => 'facilities.id = Requests.F_saki_id'])
 			->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $loginuser[0]['facilities_id']]);
+			if ($this->request->is('ajax')) {
+				if (!empty($this->request->getData('search'))) {
+					$query->where(['title LIKE' => '%' . $this->request->getData('search') . '%'])
+					->orWhere(['facilities.name LIKE' => '%' . $this->request->getData('search') . '%'])
+					->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $loginuser[0]['facilities_id']]);
+				}
+
+			}else {
+				$query->limit(20);
+			}
+
 			$reqlist = $query->all()->ToArray();
 			$this->set(compact('reqlist'));
 
+			if ($this->request->is('ajax')) {
+	  	  	$this->render('/Element/Request/reqSelect');
+	  	  }
 		}
 
 
@@ -478,6 +524,5 @@ class RequestController extends AppController
 			$this->set(compact('mes_namelist'));
 
 		}
-
 
 }

@@ -1,6 +1,7 @@
 <?php
 	$this->start('script');
 	echo $this->Html->script('/private/js/request/request.js');
+	echo $this->Html->script('/private/js/serchAjax.js');
 	$this->end();
 ?>
 
@@ -14,7 +15,7 @@
 <div class="col-md-12">
 	<div class="row center">
 		<h2>依頼一覧</h2>
-		<form class="form-inline" action="" method="GET" onsubmit="doSomething();return false;">
+		<form class="form-inline" action="" method="POST" onsubmit="doSomething();return false;">
 			<div class="sear-lay">
 				<input type="text" name="dummy" style="display:none;">
 				<input type="text" id="rsearch" name="search" value="" class="search form-control"/>
@@ -37,26 +38,9 @@
 					</tr>
 				</thead>
 			</table>
-			<?php foreach ($reqs as $req) : ?>
-				<div class="row panel list-panel">
-					<a href="<?= $this->url->build(["controller" => "request","action" => "detail",'id' => $req['id']])?>">
-						<div id="rtitle" class="col-md-4">
-							<?= $req['title'];?>
-						</div>
-						<div id="rfaci_name" class="col-md-6">
-							<p><?= $req['facilities']['name'];?></p>
-						</div>
-						<div id="req_state" class="col-md-2">
-							<?php if ($req['ju_flg'] != NULL): ?>
-								<p class="p-color">受注中</p>
-							<?php endif; ?>
-							<?php if ($req['ju_flg'] == NULL): ?>
-								<p>受注可能</p>
-							<?php endif; ?>
-						</div>
-					</a>
-				</div>
-			<?php endforeach; ?>
+
+			<div id='result'><?= $this->element('Request/reqLigg');?></div>
+
 
 		<?php else: ?>
 			<select id="selectbox" onchange="select_state()">
@@ -74,26 +58,8 @@
 					</tr>
 				</thead>
 			</table>
-			<?php foreach ($reqs_hoiku as $req) : ?>
-				<div class="row panel list-panel">
-					<a href="<?= $this->url->build(["controller" => "request","action" => "detail",'id' => $req['id']])?>">
-						<div id="rtitle" class="col-md-4">
-							<p><?php echo $req['title']?></p>
-						</div>
-						<div id="rfaci_name" class="col-md-7">
-							<p class="left"><?php echo $req['facilities']['name']?></p>
-						</div>
-						<div id="req_state" class="col-md-1">
-							<?php if ($req['ju_flg'] != NULL): ?>
-								<p class="p-color">受注中</p>
-							<?php endif; ?>
-							<?php if ($req['ju_flg'] == NULL): ?>
-								<p>依頼中</p>
-							<?php endif; ?>
-						</div>
-					</a>
-				</div>
-			<?php endforeach; ?>
+			<div id='result'><?= $this->element('Request/reqLihoiku');?></div>
+
 			<div class="btn-sub">
 					<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 			</div>

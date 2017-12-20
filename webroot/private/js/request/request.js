@@ -37,7 +37,7 @@ if (d < 7) {
 }
 }
 
-// 
+//
 // //依頼先一覧絞り込み
 // $(function(){
 // 	$('#searchbutton').bind("click",function(){
@@ -63,48 +63,48 @@ if (d < 7) {
 // });
 
 //依頼一覧絞り込み
-$(function(){
-	$('#Reqsearchbutton').bind("click",function(){
-		var re = new RegExp($('#rsearch').val());
-		$('.panel').each(function(){
-			var Ttxt = $(this).find("#rtitle:eq(0)").html();
-			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
+// $(function(){
+// 	$('#Reqsearchbutton').bind("click",function(){
+// 		var re = new RegExp($('#rsearch').val());
+// 		$('.panel').each(function(){
+// 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
+// 			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
+//
+// 			Ttxt = Ttxt.replace("<p>","");
+// 			Ttxt = Ttxt.replace("</p>","");
+// 			FNtxt = FNtxt.replace("<p class=\"left\">","");
+// 			FNtxt = FNtxt.replace("</p>","");
+// 			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
+// 				$(this).show();
+// 			}else{
+// 				$(this).hide();
+// 			}
+// 		});
+// 		$('#selectbox').val("0");
+// 	});
+// });
 
-			Ttxt = Ttxt.replace("<p>","");
-			Ttxt = Ttxt.replace("</p>","");
-			FNtxt = FNtxt.replace("<p class=\"left\">","");
-			FNtxt = FNtxt.replace("</p>","");
-			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
-				$(this).show();
-			}else{
-				$(this).hide();
-			}
-		});
-		$('#selectbox').val("0");
-	});
-});
 
-
-//編集依頼一覧絞り込み
-$(function(){
-	$('#editReqbutton').bind("click",function(){
-		var re = new RegExp($('#rsearch').val());
-
-		$('.req_li').each(function(){
-			var Ttxt = $(this).find("#rtitle:eq(0)").html();
-			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
-			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
-			Ttxt = Ttxt.replace("</button>","");
-			FNtxt = FNtxt.replace("<p>","");
-			FNtxt = FNtxt.replace("</p>","");
-			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
-				$(this).show();
-			}else{
-				$(this).hide();
-			}
-		});
-	});
-});
+ //編集依頼一覧絞り込み
+// $(function(){
+// 	$('#editReqbutton').bind("click",function(){
+// 		var re = new RegExp($('#rsearch').val());
+//
+// 		$('.req_li').each(function(){
+// 			var Ttxt = $(this).find("#rtitle:eq(0)").html();
+// 			var FNtxt = $(this).find("#rfaci_name:eq(0)").html();
+// 			Ttxt = Ttxt.replace("<button type=\"submit\" class=\"submit-button\">","");
+// 			Ttxt = Ttxt.replace("</button>","");
+// 			FNtxt = FNtxt.replace("<p>","");
+// 			FNtxt = FNtxt.replace("</p>","");
+// 			if(Ttxt.match(re) != null || FNtxt.match(re) != null){
+// 				$(this).show();
+// 			}else{
+// 				$(this).hide();
+// 			}
+// 		});
+// 	});
+// });
 
 
 
@@ -231,7 +231,7 @@ $(function(){
 		mestxt = mestxt.trim();
 
 		if (mestxt != "") {
-			var myRet = confirm("確定後は編集できません。この内容でよろしいですか？\n" + mestxt);
+			var myRet = confirm("確定後は編集できません。この内容でよろしいですか？\n「" + mestxt + "」");
 			if ( myRet == true ){
 
 			}else{
