@@ -20,9 +20,6 @@
 				</div>
 			</div>
 		</form>
-
-		<!-- <h2 class="center">依頼先一覧</h2> -->
-
 		<table id="facitable" class="none-table table">
 			<thead>
 				<tr>

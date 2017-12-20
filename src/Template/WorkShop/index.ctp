@@ -14,7 +14,7 @@
 	</form>
 	<?php if ($user_faci[0]['facility_classes_id'] == 1): ?>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12 right">
 				<?= $this->Html->link(">>ワークショップ作成画面へ",['controller' => 'workshop', "action" => "create"]);?>
 				<?= $this->Html->link(">>ワークショップ編集画面へ",['controller' => 'workshop', "action" => "select"]);?>
 			</div>
@@ -28,23 +28,21 @@
 					<a href="<?= $this->Url->build(["controller" => "WorkShop","action" => "detail", 'id' => $key['id']])?>">
 						<div class="row">
 							<div class="col-md-3">
-								<div align="center">
-									<?php if (!empty($key['midasi_url']) && file_exists('img/workshop/'.$key['midasi_url'])): ?>
-										<img src="<?= $this->Url->image('workshop/'.$key['midasi_url']) ?>"width="500" height="325">
-									<?php else: ?>
-										<img src="<?= $this->Url->image('no_image.png') ?>"width="500" height="325">
-									<?php endif; ?>
-								</div>
-								<div class="col-md-9">
-									<div class="row">
-										<div class="col-md-12">
-											<label for="update">投稿日<?= $key['Postdate'];?></label>
-										</div>
+								<?php if (!empty($key['midasi_url']) && file_exists('img/workshop/'.$key['midasi_url'])): ?>
+									<img src="<?= $this->Url->image('workshop/'.$key['midasi_url']) ?>">
+								<?php else: ?>
+									<img src="<?= $this->Url->image('no_image.png') ?>">
+								<?php endif; ?>
+							</div>
+							<div class="col-md-9">
+								<div class="row">
+									<div class="col-md-12">
+										<label for="update">投稿日<?= $key['Postdate'];?></label>
 									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<h3><?=$key['name']?></h3>
-										</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<h3><?=$key['name']?></h3>
 									</div>
 								</div>
 							</div>

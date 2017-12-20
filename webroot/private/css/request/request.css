@@ -65,7 +65,18 @@ input[type="checkbox"] {
 	/* display: inline; */
 }
 
+.tarea {
+	resize: none;
+	outline: none;
+}
 
+.ans-btn {
+	margin: 10px 0;
+}
+
+.button-right {
+	float: right;
+}
 /* detail */
 /* p {
 	width: 300px;

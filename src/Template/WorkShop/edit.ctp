@@ -15,30 +15,32 @@
 			<h2>編集入力画面</h2>
 		</div>
 		<form class="" action="" method="post">
-			<button type="submit" id="cancel" name="Pdtcancelbtn" class="btn btn-primary ">ワークショップを削除</button>
-			<div>
-				<?= $this->Html->link(">>戻る",['controller' => 'workshop', "action" => "select"]);?>
-			</div>
 			<?php foreach ($edit_pdt as $key): ?>
-				<p>添付画像</p>
-				<div align="center">
+				<p class="left">添付画像</p>
+				<div class="row img-margin">
 					<?php if (!empty($key['photo_url']) && file_exists('img/workshop/'.$key['photo_url'])): ?>
-						<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>"width="500" height="325">
+						<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>"width="450" height="300">
 					<?php else: ?>
-						<img src="<?= $this->Url->image('no_image.png') ?>"width="500" height="325">
+						<img src="<?= $this->Url->image('no_image.png') ?>"width="450" height="300">
 					<?php endif; ?>
 				</div>
-				<div class="" type="file">
-
+				<div class="div-btn">
+					<button type="button" name="bbupload" id="" class="btn btn-info ws-detail">画像選択
+						<input type="file" id="" name="requestselT_con" class="input-file none file" required accept="image/*" value="">
+					</button>
+					<span id="fake_input_file" class="margin-left span">NOT FILE</span>
 				</div>
-
-				<p>手順説明</p>
-				<input type="text" id="" name="requestselT_con"  required value=<?php if ($_SESSION['edit_flg'] == 1) {
-					echo $_SESSION['req_edit']['description'];}else{ echo $key['description'];}?>>
+				<div class="margin-bottom">
+					<p class="left">手順説明</p>
+					<input type="text" id="" name="requestselT_con" class="form-control" required value=<?php if ($_SESSION['edit_flg'] == 1) {
+						echo $_SESSION['req_edit']['description'];}else{ echo $key['description'];}?>>
+				</div>
 			<?php endforeach; ?>
-				<br>
+			<div class="right margin-top">
 				<button type="submit" class="btn btn-primary" id="edit_con" name ="nextbtn">次へ</button>
 				<?= $this->Html->link('戻る',["controller" => "workshop","action" => "select"],['class'=>'btn btn-primary'])?>
+				<button type="submit" id="cancel" name="Pdtcancelbtn" class="btn btn-primary">削除</button>
+			</div>
 		</form>
 	</div>
 </div>

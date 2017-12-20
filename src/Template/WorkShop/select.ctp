@@ -3,15 +3,12 @@
 		<div id="title">
 			<h2>ワークショップ編集画面</h2>
 		</div>
-		<form action=""method="post">
-			<div class="sear-lay">
+		<form action=""method="post" class="form-inline sear-lay">
+			<div class="">
 				<input type="text" name="S_text" id="select_t" class="form-control">
 				<button type="button" name="S_button" id="select_t" value="" class="btn btn-success">検索</button>
 			</div>
 		</form>
-
-		<?= $this->Html->link(">>戻る",['controller' => 'WorkShop', "action" => "index"]);?>
-
 			<?php foreach ($login_user as $key): ?>
 				<div class="col-md-12">
 					<div class = "row panel">

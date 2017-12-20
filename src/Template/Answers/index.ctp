@@ -8,7 +8,6 @@
 	$this->end();
 
 ?>
-
 <form class="" id="ansForm" method="post">
 	<div class="form-group">
 		<div class="form-inline sear-lay search-inline">

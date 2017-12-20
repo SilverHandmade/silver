@@ -11,33 +11,44 @@
 	<div class="row">
 		<div id="detailtbl">
 			<form action="" method="POST" >
-				<div class="answers">
-					<div class="title2">
-						<p class="title"><?php echo $detailId[0]['title'] ?></p>
+				<div class="answers col-md-12">
+					<div class="row title2">
+						<div class="col-md-10">
+							<p class="title"><?php echo $detailId[0]['title'] ?></p>
+						</div>
+						<div class="col-md-2">
+							<?php if ($user['id'] == $detailId[0]['user_id']): ?>
+								<div class="button-right">
+									<?= $this->Html->link('編集',["controller" => "answers","action" => "edit",'id' => $witsesId[0]['id'] ],['class'=>'btn btn-primary'])?>
+								</div>
+							<?php endif; ?>
+						</div>
 					</div>
-					<div class="sisetu-date">
-						<p class="sisetu">○○園さん</p>
-						<p class="date"><?php echo $detailId[0]['Postdate'] ?></p>
+					<div class="row sisetu-date">
+						<div class="6">
+							<p class="sisetu">○○園さん</p>
+						</div>
+						<div class="6">
+							<p class="date"><?php echo $detailId[0]['Postdate'] ?></p>
+						</div>
 					</div>
-					<div class="main">
-						<p><?php echo $detailId[0]['content'] ?></p>
+					<div class="row main">
+						<div class="col-md-12">
+							<p><?php echo $detailId[0]['content'] ?></p>
+						</div>
 					</div>
 				</div>
-				<div class="answers2">
-					<div class="ans">
+				<div class="row answers2">
+					<div class="ans col-md-12">
 						<textarea name="textarea" rows="6" cols="80" class="tarea form-control" placeholder="回答してね" id="answertxt"></textarea>
 					</div>
-					<div class="ans-btn">
-						<button type="submit" name="ans-submit" class="btn btn-success" id="answerbtn" onclick="return ">回答</button>
+					<div class="ans-btn row">
+						<div class="col-md-12">
+							<?= $this->Html->link('検索画面へ',['controller'=>'Answers','action'=>'index'],['class'=>'btn btn-primary ']); ?>
+							<button type="submit" name="ans-submit" class="btn btn-success" id="answerbtn" onclick="return ">回答</button>
+						</div>
 					</div>
 				</div>
-
-		<?php if ($user['id'] == $detailId[0]['user_id']): ?>
-			<?= $this->Html->link('編集',["controller" => "answers","action" => "edit",'id' => $witsesId[0]['id'] ],['class'=>'btn btn-primary'])?>
-		<?php else: ?>
-			<?= $this->Html->link('トップへ',['controller'=>'Answers','action'=>'index'],['class'=>'btn btn-primary']); ?>
-		<?php endif; ?>
-
 			<div id="sample1_table">
 				<div>
 					<?php foreach ($mes_namelist as $witmesdiv): ?>

@@ -1,6 +1,7 @@
 .title {
 	font-size: 35px;
 	margin-bottom: 12px;
+	display: inline-block;
 }
 .title2 {
 	height: auto;
@@ -42,7 +43,6 @@
 .tarea {
 	resize: none;
 	outline: none;
-
 }
 
 .ans p {
@@ -50,7 +50,7 @@
 }
 
 .ans-btn {
-	margin-top: 5px;
+	margin: 10px 0;
 	text-align: right;
 }
 
@@ -68,12 +68,21 @@
 	height: auto;
 }
 
+.button-right {
+	display: inline-block;
+	float: right;
+	margin-top: 5px;
+}
 
+.margin-bottom {
+	margin-bottom: 10px;
+}
 
 #wtitle p {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
 
 #wcontent p {
 	overflow: hidden;

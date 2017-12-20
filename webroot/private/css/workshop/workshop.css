@@ -10,8 +10,6 @@
 }
 
 .button-submit {
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
 	text-align: right;
 	margin-top: 5px;
 }
@@ -20,21 +18,16 @@
 }
 
 .button	{
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
 	outline: none;
 }
 
 .div-btn {
  	position: relative;
 	display: inline-block;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
+	margin: 10px 0;
+
 }
-/*#Upload {
-	background: #DDDDDD;
-	border: none;
-}*/
+
 .ws-detail {
 	position: inherit;
 }
@@ -50,6 +43,8 @@
 	display: none;
 
 }
+
+
 
 input[type="text"] {
 	padding: 3px;
@@ -132,7 +127,36 @@ input[type="text"] {
 	margin-bottom: 10px;
 }
 
-img.img-size {
-	max-width: 100%;
-	max-height: 100%;
+.img-size {
+	width: 262px;
+	height: 174px;
+}
+
+.img-margin {
+	margin: 15px 0;
+}
+
+@media (max-width: 992px) {
+	.img-size {
+		max-width: 100%;
+		max-height: 100%;
+	}
+}
+
+.left {
+	text-align: left;
+	font-size: 20px;
+}
+
+.margin-top {
+	margin-top: 10px;
+}
+
+.sear-lay {
+	margin-bottom: 10px;
+}
+
+
+.margin-bottom {
+	margin-bottom: 25px;
 }

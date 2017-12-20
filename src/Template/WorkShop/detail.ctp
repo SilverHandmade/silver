@@ -4,7 +4,7 @@
 			<h2>詳細画面</h2>
 		</div>
 			<?php if ($user_faci[0]['facility_classes_id'] == 1): ?>
-			<div class="col-md-12">
+			<div class="col-md-12 right">
 				<?= $this->Html->link(">>ワークショップ編集画面へ",['controller' => 'WorkShop', "action" => "select"]);?>
 			</div>
 			<?php foreach ($detailses as $key) : ?>
@@ -17,8 +17,16 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12">
-									<img src="<?= $this->Url->image('workshop/'.$key['photo_url'])?>" class="img-size">
+								<div class="col-md-12 img-size">
+									<?php if (!empty($key['photo_url']) && file_exists('img/workshop/'.$key['photo_url'])): ?>
+										<div class="img-size">
+											<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" width="500" height="325">
+										</div>
+									<?php else: ?>
+										<div class="img-size">
+											<img src="<?= $this->Url->image('no_image.png') ?>" width="500" height="325">
+										</div>
+									<?php endif; ?>
 								</div>
 							</div>
 							<div class="row">
@@ -26,16 +34,6 @@
 									<p><?php echo $key['description'] ?></p>
 								</div>
 							</div>
-						</div>
-						<div>
-							<?php if (!empty($key['photo_url']) && file_exists('img/workshop/'.$key['photo_url'])): ?>
-								<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>"width="500" height="325">
-							<?php else: ?>
-								<img src="<?= $this->Url->image('no_image.png') ?>"width="500" height="325">
-							<?php endif; ?>
-						</div>
-						<div>
-							<p><?php echo $key['description'] ?></p>
 						</div>
 					</div>
 				</div>
@@ -51,8 +49,8 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12">
-									<img src="<?= $this->Url->image('workshop/'.$key['photo_url'])?>" class="img-size">
+								<div class="col-md-12 img-size">
+									<img src="<?= $this->Url->image('workshop/'.$key['photo_url'])?>" width="500" height="325">
 								</div>
 							</div>
 							<div class="row">
