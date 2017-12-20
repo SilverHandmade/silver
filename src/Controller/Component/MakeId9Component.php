@@ -31,7 +31,10 @@ class MakeId9Component extends Component {
 		}elseif($tbl == 'wit'){
 			$kt = 5;
 			$MTb = TableRegistry::get('witses');
-		}else {
+		}elseif($tbl == 'fac'){
+			$kt = 4;
+			$MTb = TableRegistry::get('facilities');
+		} {
 			$flg = False;
 		}
 		if($flg){
@@ -39,6 +42,13 @@ class MakeId9Component extends Component {
 	      	$ret = $query->select(['max_id' => $query->func()->max('id')])->first();
 	      	$showtbl = $ret->max_id;
 			$ym = $this->ymdate();//yymm取得
+			if($tbl == 'fac'){
+				if(round($showtbl/10**$kt,0) == $ym/100){
+					$showtbl = $showtbl +1;
+				}else {
+	    			$showtbl = $ym/100.'0001';
+	    		}
+			}
 			if(round($showtbl/10**$kt,0) == $ym){
         		$showtbl = $showtbl +1;
     		}elseif($kt == 6){
