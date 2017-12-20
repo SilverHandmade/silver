@@ -17,8 +17,8 @@
 						<input type="text" class="title" name="edittitle" value="<?php echo $detailId[0]['title'] ?>"></input>
 					</div>
 					<div class="sisetu-date">
-						<p class="sisetu">○○園さん</p>
-						<p class="date" value=""><?php echo $detailId[0]['Postdate'] ?></p>
+						<p class="sisetu"><?= $facilitiesname[0]['facilities']['name'] ?></p>
+						<p class="date" value=""><?= date('Y年m月d日　H時i分',strtotime($detailId[0]['Postdate'])) ?></p>
 					</div>
 					<div class="main">
 						<p>内容:</p>
