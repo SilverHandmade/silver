@@ -256,7 +256,7 @@ class RequestController extends AppController
 			}
 
 		}else {
-			
+
 		}
 		$query->order(['From_date' => 'DESC']);
 
@@ -366,7 +366,7 @@ class RequestController extends AppController
 			}else {
 				$query->limit(20);
 			}
-
+			$query->order(['From_date' => 'DESC']);
 			$reqlist = $query->all()->ToArray();
 			$this->set(compact('reqlist'));
 
