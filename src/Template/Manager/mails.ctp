@@ -1,8 +1,7 @@
 <?php $this->start('css') ?>
-	<?= $this->Html->css('/private/css/video/video.css') ?>
+	<?= $this->Html->css('/private/css/video/.css') ?>
 <?php $this->end() ?>
 <?php $this->start('script') ?>
-	<?= $this->Html->script('/private/js/video/video.js') ?>
 	<?= $this->Html->script('/private/js/searchAjax.js') ?>
 <?php $this->end() ?>
 
@@ -34,23 +33,7 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-6">
-			<button class="btn btn-info" type="button" id="ModeTogle">
-				<span class="glyphicon glyphicon-th-large"></span>
-				<span class="glyphicon glyphicon-th-list"></span>
-			</button>
-		</div>
-		<div class="col-md-6 right">
-			<button type="button" class="btn btn-primary right">
-				アップロード
-				<span class="glyphicon glyphicon-cloud-upload"></span>
-			</button>
-
-		</div>
-	</div>
-
 	<div id="result">
-		<?= $this->element('video/videoSerchResult');?>
+		<?= $this->element('Manager/mailsSearchResult');?>
 	</div>
 </div>

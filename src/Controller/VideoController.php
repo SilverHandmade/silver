@@ -47,7 +47,7 @@ class VideoController extends AppController
 					});
 			}
 			$this->set('results', $queryMov->toArray());
-        	$this->render("/Element/videoSerchResult");
+        	$this->render("/Element/video/videoSerchResult");
 		} else {
 			$this->set('results', $queryMov->limit(20)->toArray());
 		}
