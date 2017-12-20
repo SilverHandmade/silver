@@ -4,6 +4,10 @@
 <?php $this->start('script'); ?>
 	<?= $this->Html->script('/private/js/workshop/workshop.js') ?>
 <?php $this->end(); ?>
+<?= phpinfo() ?>
+<form METHOD="POST" action="" >
+	e-mail : <input style="width:500px" type="text" name="email">
+</form>
 
 <div class="col-md-offset-1 col-md-10">
 	<form action="" method="post" enctype="multipart/form-data" >

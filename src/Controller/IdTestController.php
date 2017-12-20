@@ -21,7 +21,14 @@ class IdTestController extends AppController
     }
 
     public function index() {
-echo "<br><br><br><br><br><br>";
+		echo "<br><br><br><br><br><br>";
+		if(!$this->request->is('email')){
+			echo mb_substr_count(strstr($this->request->getData('email'),'@'),".");
+			echo "<br>".$this->request->getData('email');
+
+		}
+
+
 		if(isset($_FILES)&& isset($_FILES['upload_gazo']) && is_uploaded_file($_FILES['upload_gazo']['tmp_name'])){
 
 			// 名前変更のためのIDと連番の取得(各テーブルで自由に変更を)

@@ -1,6 +1,6 @@
 <?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>
 <?php $this->start('script') ?>
-	<?= $this->Html->script('/private/js/passcheck/pass.js' ?>
+	<?= $this->Html->script('/private/js/passcheck/pass.js') ?>
 <?php $this->end() ?>
 <div id="form">
 	<p class="form-title">メールアドレス変更</p>
