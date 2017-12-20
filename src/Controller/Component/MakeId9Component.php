@@ -49,16 +49,18 @@ class MakeId9Component extends Component {
 				if(round($showtbl/10**$kt,0) == $ym/100){
 					$showtbl = $showtbl +1;
 				}else {
-	    			$showtbl = $ym/100.'0001';
+					$ym = $ym/100;
+	    			$showtbl = $ym.'0001';
 	    		}
+			}else {
+				if(round($showtbl/10**$kt,0) == $ym){
+					$showtbl = $showtbl +1;
+				}elseif($kt == 6){
+					$showtbl = $ym.'000001';
+				}else {
+					$showtbl = $ym.'00001';
+				}
 			}
-			if(round($showtbl/10**$kt,0) == $ym){
-        		$showtbl = $showtbl +1;
-    		}elseif($kt == 6){
-    			$showtbl = $ym.'000001';
-    		}else {
-    			$showtbl = $ym.'00001';
-    		}
 		}
     return $showtbl;
 	}
