@@ -28,13 +28,23 @@
 						<img src="<?= $this->Url->image('no_image.png') ?>"width="500" height="325">
 					<?php endif; ?>
 				</div>
-				<div class="" type="file">
 
+				<div class="col-md-3">
+					<div class="div-btn">
+						<input type="file" class="input-file none file" name="upload_gazo" id="G_upload" accept="image/*"/>
+						<div class="button">
+							<button type="button" name="upload" id="G_upload" class="btn btn-info">画像選択</button>
+						</div>
+					</div>
+					<span id="fake_input_file" class="margin-left span">NOT FILE</span>
 				</div>
 
-				<p>手順説明</p>
-				<input type="text" id="" name="requestselT_con"  required value=<?php if ($_SESSION['edit_flg'] == 1) {
-					echo $_SESSION['req_edit']['description'];}else{ echo $key['description'];}?>>
+				<div align="center">
+					<p>手順説明</p>
+					<input type="text" id="" name="requestselT_con"  required value=<?php if ($_SESSION['edit_flg'] == 1) {
+						echo $_SESSION['req_edit']['description'];}else{ echo $key['description'];}?>>
+
+				</div>
 			<?php endforeach; ?>
 				<br>
 				<button type="submit" class="btn btn-primary" id="edit_con" name ="nextbtn">次へ</button>

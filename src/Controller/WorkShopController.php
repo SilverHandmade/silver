@@ -180,6 +180,14 @@ echo"<br><br><br><br><br>";
 
 			  $_SESSION['sel_id'] = $edit_pdt[0]['product_id'];
 		  }
-
+		  if (isset($_POST['nextbtn'])) {
+		  	# code...
+		  }
  	}
+//編集確認画面
+	public function Confirmation(){
+		if(isset($_POST['nextbtn'])){
+
+		}
+	}
 }

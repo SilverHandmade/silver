@@ -8,8 +8,9 @@
 	$this->end();
 
 ?>
-<div class="col-md-offset-2 col-md-8">
-	<div class="row center">
-		<h2>確認画面</h2>
-		<form class="" action="" method="POST">
-		</form>
+
+	<?php
+	 	if ($this->request->is('post')) {
+	 		# code...
+	 	}
+ 	?>
