@@ -36,6 +36,26 @@
 						echo $_SESSION['req_edit']['description'];}else{ echo $key['description'];}?>>
 				</div>
 			<?php endforeach; ?>
+
+			<p class="left">追加フォーム</p>
+			<form action="" method="post" enctype="multipart/form-data">
+				<div class="form-group" id="plus" name="plus">
+					<div class="row"
+						<div class="col-md-9">
+							<input class="form-control" type="text" name="text" id="Stext" placeholder="手順説明">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<button class="btn btn-info" type="button" id="add">
+						<span class="glyphicon glyphicon-plus-sign" name="add"></span>
+							画像を追加
+						</button>
+					</div>
+				</div>
+
 			<div class="right margin-top">
 				<button type="submit" class="btn btn-primary" id="edit_con" name ="nextbtn">次へ</button>
 				<?= $this->Html->link('戻る',["controller" => "workshop","action" => "select"],['class'=>'btn btn-primary'])?>
