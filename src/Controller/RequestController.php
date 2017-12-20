@@ -26,6 +26,7 @@ class RequestController extends AppController
 		//仮
 		$this->loadModel('witses');
 		$this->loadModel('wits_messages');
+
 		//
 
 		//requestページはキャッシュさせない
@@ -45,7 +46,6 @@ class RequestController extends AppController
 
 
 	public function index(){
-
 	$query = $this->Users->find()
 	->select(['id','facility_classes_id'])
 	->where(['id' => $_SESSION['Auth']['User']['id']]);
@@ -63,7 +63,7 @@ class RequestController extends AppController
 		}
 
 	}else {
-		$query->limit(20);
+
 	}
       $facilities = $query->ToArray();
       $this->set(compact('facilities'));
@@ -229,7 +229,7 @@ class RequestController extends AppController
 			}
 
 		}else {
-			$query->limit(20);
+
 		}
 		$query->order(['From_date' => 'DESC']);
 		$reqs = $query->ToArray();
@@ -256,7 +256,7 @@ class RequestController extends AppController
 			}
 
 		}else {
-			$query->limit(20);
+			
 		}
 		$query->order(['From_date' => 'DESC']);
 

@@ -1,7 +1,7 @@
 <?php
 	$this->start('script');
 	echo $this->Html->script('/private/js/request/request.js');
-	echo $this->Html->script('/private/js/serchAjax.js');
+	echo $this->Html->script('/private/js/searchAjax.js');
 	$this->end();
 
 	$this->start('css');
