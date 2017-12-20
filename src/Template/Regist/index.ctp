@@ -34,11 +34,11 @@
 				<div class="pulldown facilityname">
 					<!-- $postfacilitie-->
 					<p class="font-color">施設名</p>
-					<select name="facilities">
-						<?php foreach ($results as $key => $value): ?>
-							<option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
-						<?php endforeach; ?>
-					</select>
+
+						<div id="result">
+							<?= $this->element('Regist/facilities') ?>
+						</div>
+
 				</div>
 				<div class="mailadress">
 					<!-- $postmail-->
@@ -62,3 +62,15 @@
 		</div>
 	</div>
 </div>
+
+<div id="message">こんにちは</div>
+
+<script>
+function hyoji() {
+    document.getElementById("message").style.display="block";
+}
+
+function hihyoji() {
+    document.getElementById("message").style.display="none";
+}
+</script>

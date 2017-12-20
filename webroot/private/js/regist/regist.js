@@ -46,6 +46,27 @@ $(function() {
 	});
 
 });
+
+$(function(){
+	$('input[name=fClassId]').click(function(){
+		// alert("a");
+
+		var $radio = $(this);
+		$.ajax({
+			url: location.href,
+			type: "post",
+			dataType: "html",
+			data: $radio.serialize(),
+		}).done(function (response) {
+			$("#result").html(response);
+		}).fail(function () {
+			alert("failed");
+		});
+
+	});
+
+});
+
 $(function(){
 	$('#transmit').bind("click",function(){
 		var username = $('#username').val();

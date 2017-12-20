@@ -271,7 +271,7 @@ class RequestController extends AppController
 	}
 
 
-		public function detail(){
+	public function detail(){
 
 			$user = $this->Userinfo->getuser();
 			$query = $this->Users->find()

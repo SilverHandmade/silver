@@ -22,11 +22,24 @@ class AnswersController extends AppController
 
     }
     public function index() {
-		$witses = $this->witses->find('all')
+		$query = $this->witses->find()
+		->select(['title','content'])
 		->where(['Del_flg ='=> 0])
 		->order(['id' => 'DESC']);
-        $witsesArray = $witses->toArray();
+
+		if ($this->request->is('ajax')) {
+			if (!empty($this->request->getData('indextxt'))) {
+				$query->where(['title LIKE' => '%' . $this->request->getData('indextxt') . '%']);
+			}
+		}else {
+			$query->limit(20);
+		}
+
+		$witsesArray = $query->toArray();
         $this->set(compact('witsesArray'));
+		if ($this->request->is('ajax')) {
+			$this->render('/Element/answers');
+		}
 
     }
 	public function detail(){
@@ -60,6 +73,20 @@ class AnswersController extends AppController
 		->where(['id ='=>$get_id]);
 		$detailId = $query->all()->ToArray();
 		$this->set(compact('detailId'));
+
+		$query = $this->witses->find()
+		->select(['facilities.name',])
+		->join([
+			'table' => 'users',
+			'type' => 'INNER',
+			'conditions' => 'user_id = users.id'])
+		->join([
+			'table' => 'facilities',
+			'type' => 'INNER',
+			'conditions' => 'facilities.id = users.facilities_id'])
+		->where(['witses.id ' => $get_id]);
+		$facilitiesname = $query->all()->ToArray();
+		$this->set(compact('facilitiesname'));
 
 
 		$query = $this->wits_messages->find()
@@ -118,6 +145,20 @@ class AnswersController extends AppController
 		->where(['id ='=>$get_id]);
 		$detailId = $query->all()->ToArray();
 		$this->set(compact('detailId'));
+
+		$query = $this->witses->find()
+		->select(['facilities.name',])
+		->join([
+			'table' => 'users',
+			'type' => 'INNER',
+			'conditions' => 'user_id = users.id'])
+		->join([
+			'table' => 'facilities',
+			'type' => 'INNER',
+			'conditions' => 'facilities.id = users.facilities_id'])
+		->where(['witses.id ' => $get_id]);
+		$facilitiesname = $query->all()->ToArray();
+		$this->set(compact('facilitiesname'));
 
 		if (isset($_POST['editbtn'])) {
 
