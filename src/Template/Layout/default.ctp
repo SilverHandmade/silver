@@ -50,7 +50,7 @@
 			<div class="navbar-collapse collapse">
 				<div class="nav navbar-nav navbar-right" id="welcome-user">
 					<li class="dropdown navbar-buttton">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" style="font-weight: 500">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
 							ようこそ、<?= $user['name']; ?>さん
 							<span class="caret"></span>
 						</a>
@@ -70,10 +70,7 @@
 		<div class="pc">
 			<div class="col-md-offset-1 col-md-10">
 				<ul class="center">
-					<li><?= $this->Html->link("依頼",['controller' => 'Request', "action" => "index"]);?></li>
-					<li><?= $this->Html->link("ワークショップ",['controller' => 'WorkShop', "action" => "index"]);?></li>
-					<li><?= $this->Html->link("動画",['controller' => 'Video', "action" => "index"]);?></li>
-					<li><?= $this->Html->link("知恵袋",['controller' => 'answers', "action" => "index"]);?></li>
+					<?= $this->element('menubar');?>
 				</ul>
 			</div>
 		</div>
@@ -83,10 +80,7 @@
 				<button class="btn btn-hm glyphicon glyphicon-remove" id="cross"></button>
 				<div class="col-md-offset-1 col-md-10">
 					<ul class="center">
-						<li><?= $this->Html->link("依頼",['controller' => 'request', "action" => "index"]);?></li>
-						<li><?= $this->Html->link("ワークショップ",['controller' => 'WorkShop', "action" => "index"]);?></li>
-						<li><?= $this->Html->link("動画",['controller' => 'video', "action" => "index"]);?></li>
-						<li><?= $this->Html->link("知恵袋",['controller' => 'answers', "action" => "index"]);?></li>
+						<?= $this->element('menubar');?>
 						<?php if($user['loginFlg']):?>
 							<?= $this->element('Logout');?>
 						<?php else: ?>
