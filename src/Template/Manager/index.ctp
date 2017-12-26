@@ -8,7 +8,7 @@
 		<?php foreach ($mail as $key): ?>
 			<div class="col-md-3">
 				<div class="panel">
-					<a href="<?= $this->Url->build(["controller" => "request","action" => "detail", 'id' => $key['id']])?>">
+					<a href="<?= $this->Url->build(["controller" => "manager","action" => "MailDetail", 'id' => $key['id']])?>">
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="list-group">
@@ -45,7 +45,7 @@
 		<?php foreach ($facility as $key): ?>
 			<div class="col-md-3">
 				<div class="panel">
-					<a href="<?= $this->Url->build(["controller" => "manager","action" => "detail", 'id' => $key['id']])?>">
+					<a href="<?= $this->Url->build(["controller" => "manager","action" => "FacilityDetail", 'id' => $key['id']])?>">
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="list-group">
@@ -69,9 +69,9 @@
 		<?php endforeach; ?>
 	</div>
     <div class="row right" id="linkTo">
- 	   <div class="col-md-12">
- 		   <?= $this->Html->link('施設一覧へ >>',['controller' => 'request', 'action' => 'lists']);?>
- 	   </div>
+		<div class="col-md-12">
+			<?= $this->Html->link('施設一覧へ >>',['controller' => 'manager', 'action' => 'facilities']);?>
+		</div>
     </div>
 
 	<h2>ユーザー</h2>
@@ -79,7 +79,7 @@
 		<?php foreach ($User as $key): ?>
 			<div class="col-md-3">
 				<div class="panel">
-					<a href="<?= $this->Url->build(["controller" => "manager","action" => "detail", 'id' => $key['id']])?>">
+					<a href="<?= $this->Url->build(["controller" => "manager","action" => "user", 'id' => $key['id']])?>">
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="list-group">
@@ -107,7 +107,7 @@
 	</div>
     <div class="row right" id="linkTo">
  	   <div class="col-md-12">
- 		   <?= $this->Html->link('施設一覧へ >>',['controller' => 'request', 'action' => 'lists']);?>
+ 		   <?= $this->Html->link('施設一覧へ >>',['controller' => 'manager', 'action' => 'users']);?>
  	   </div>
     </div>
 </div>

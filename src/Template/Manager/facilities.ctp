@@ -13,13 +13,9 @@
 					<div class="col-md-offset-2 col-md-8">
 						<div class="row" id="inputTitle">
 							<div class="col-md-9">
-								<input class="form-control" type="text" name="title" id="title" placeholder="タイトル"/>
+								<input class="form-control" type="text" name="name" id="name" placeholder="タイトル"/>
 							</div>
 							<div class="col-md-3">
-								<button class="btn btn-info" type="button" id="openDetails" data-toggle="modal" data-target="#detailsModal">
-									詳細
-									<span class="glyphicon glyphicon-option-vertical"></span>
-								</button>
 								<button class="btn btn-success" type="submit" id="serach">
 									検索
 									<span class="glyphicon glyphicon-search"></span>
@@ -28,12 +24,11 @@
 						</div>
 					</div>
 				</div>
-				<?= $this->element('Manager/mailModal');?>
 			</form>
 		</div>
 	</div>
 
 	<div id="result">
-		<?= $this->element('Manager/mailsSearchResult');?>
+		<?= $this->element('Manager/facilitiesResult');?>
 	</div>
 </div>
