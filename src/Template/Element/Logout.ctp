@@ -5,5 +5,5 @@
 	<?= $this->Html->link("メールアドレス変更" ,['controller' => 'MailChange', "action" => 'index']);?>
 </li>
 <li>
-	<?= $this->Html->link($user['tranceName'] ,['controller' => 'login', "action" => $user['action']]);?>
+	<?= $this->Html->link($userinfo['tranceName'] ,['controller' => 'login', "action" => $userinfo['action']]);?>
 </li>

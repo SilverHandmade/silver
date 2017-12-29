@@ -71,7 +71,7 @@ class ManagerController extends AppController
 		$this->set('facility', $queryFacility);
 	}
 
-	public function user() {
+	public function users() {
 		$queryUser = $this->users->find()->limit(20);
 		$this->set('user', $queryUser);
 	}

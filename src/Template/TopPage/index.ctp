@@ -3,7 +3,7 @@
 <?php $this->end() ?>
 
 <div class="col-md-12">
-	<?php if ($user['loginFlg']):?>
+	<?php if ($userinfo['loginFlg']):?>
 		<h2 class="danger" >〆切マジか</h2>
 		<div class="row">
 			<?php foreach ($request as $key): ?>

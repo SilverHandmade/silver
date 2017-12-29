@@ -51,11 +51,11 @@
 				<div class="nav navbar-nav navbar-right" id="welcome-user">
 					<li class="dropdown navbar-buttton">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-							ようこそ、<?= $user['name']; ?>さん
+							ようこそ、<?= $userinfo['name']; ?>さん
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<?php if($user['loginFlg']):?>
+							<?php if($userinfo['loginFlg']):?>
 								<?= $this->element('Logout');?>
 							<?php else: ?>
 								<?= $this->element('RegistAndLogin');?>

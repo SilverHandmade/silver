@@ -47,8 +47,8 @@ class AppController extends Controller
         $this->loadComponent('Flash');
 
 		$this->loadComponent('Userinfo');
-		$user = $this->Userinfo->setname();
-		$this->set(compact('user'));
+		$userinfo = $this->Userinfo->setname();
+		$this->set(compact('userinfo'));
 
         /*
          * Enable the following components for recommended CakePHP security settings.
