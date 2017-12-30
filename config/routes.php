@@ -6,15 +6,23 @@ use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
-Router::scope("/video", function ( RouteBuilder $routes ) {
+Router::scope("/Video", function ( RouteBuilder $routes ) {
+	$routes->connect(
+		'/',
+		['controller' => 'Video']
+	);
 	$routes->connect(
 		'/:id',
-		['controller' => 'video', 'action'=> 'view'],
+		['controller' => 'Video', 'action'=> 'view'],
 		// 9桁の数字に制限、0始まりに対応
 		['id' => '\d{9}']
 	);
 });
-Router::scope("/request", function ( RouteBuilder $routes ) {
+Router::scope("/Request", function ( RouteBuilder $routes ) {
+	$routes->connect(
+		'/',
+		['controller' => 'Request']
+	);
 	$routes->connect(
 		'/:id',
 		['controller' => 'request', 'action'=> 'detail'],
@@ -28,24 +36,38 @@ Router::scope("/request", function ( RouteBuilder $routes ) {
 		['id' => '\d{10}']
 	);
 });
-Router::scope("/answers", function ( RouteBuilder $routes ) {
+Router::scope("/Answers", function ( RouteBuilder $routes ) {
+	$routes->connect(
+		'/',
+		['controller' => 'Answers']
+	);
 	$routes->connect(
 		'/:id',
-		['controller' => 'answers', 'action'=> 'detail'],
+		['controller' => 'Answers', 'action'=> 'detail'],
 		// 10桁の数字に制限、0始まりに対応
 		['id' => '\d{4}']
 	);
 });
-Router::scope("/manager", function ( RouteBuilder $routes ) {
+Router::scope("/Manager", function ( RouteBuilder $routes ) {
+	$routes->connect(
+		'/',
+		['controller' => 'Manager']
+	);
 	$routes->connect(
 		'/MailDetail/:id',
-		['controller' => 'manager', 'action'=> 'MailDetail'],
+		['controller' => 'Manager', 'action'=> 'MailDetail'],
 		// 10桁の数字に制限、0始まりに対応
 		['id' => '\d{9}']
 	);
 	$routes->connect(
 		'/FacilityDetail/:id',
-		['controller' => 'manager', 'action'=> 'FacilityDetail'],
+		['controller' => 'Manager', 'action'=> 'FacilityDetail'],
+		// 10桁の数字に制限、0始まりに対応
+		['id' => '\d{6}']
+	);
+	$routes->connect(
+		'/UserDetail/:id',
+		['controller' => 'Manager', 'action'=> 'UserDetail'],
 		// 10桁の数字に制限、0始まりに対応
 		['id' => '\d{9}']
 	);
@@ -55,13 +77,13 @@ Router::scope("/WorkShop", function ( RouteBuilder $routes ) {
 	$routes->connect(
 		'/:id',
 		['controller' => 'WorkShop', 'action'=> 'detail'],
-//		 10桁の数字に制限、0始まりに対応
+		// 10桁の数字に制限、0始まりに対応
 		['id' => '\d{9}']
 	);
 	$routes->connect(
 		'/edit/:id',
 		['controller' => 'WorkShop', 'action'=> 'edit'],
-//		 10桁の数字に制限、0始まりに対応
+		// 10桁の数字に制限、0始まりに対応
 		['id' => '\d{9}']
 	);
 	$routes->connect(

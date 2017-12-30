@@ -50,7 +50,7 @@ class ManagerController extends AppController
 			$this->render("/Element/Manager/mailsSearchResult");
 		}
 	}
-	public function Mail_detail() {
+	public function mailDetail() {
 		$mailId = $this->request->getParam('id');
 		$queryMail = $this->answers->get($mailId);
 		$this->set('mails', $queryMail);
@@ -67,7 +67,7 @@ class ManagerController extends AppController
 			$this->render("/Element/Manager/facilitiesResult");
 		}
 	}
-	public function facility_detail() {
+	public function facilityDetail() {
 		$queryFacility = $this->facilities->find()->limit(20);
 		$this->set('facility', $queryFacility);
 	}
@@ -83,7 +83,7 @@ class ManagerController extends AppController
 			$this->render("/Element/Manager/usersResult");
 		}
 	}
-	public function user_detail() {
+	public function userDetail() {
 		$queryUser = $this->users->find()->limit(20);
 		$this->set('user', $queryUser);
 	}

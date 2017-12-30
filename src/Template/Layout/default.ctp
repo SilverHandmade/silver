@@ -81,7 +81,7 @@
 				<div class="col-md-offset-1 col-md-10">
 					<ul class="center">
 						<?= $this->element('menubar');?>
-						<?php if($user['loginFlg']):?>
+						<?php if($userinfo['loginFlg']):?>
 							<?= $this->element('Logout');?>
 						<?php else: ?>
 							<?= $this->element('RegistAndLogin');?>

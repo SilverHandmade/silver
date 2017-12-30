@@ -8,7 +8,7 @@
 		<?php foreach ($mail as $key): ?>
 			<div class="col-md-3">
 				<div class="panel">
-					<a href="<?= $this->Url->build(["controller" => "manager","action" => "MailDetail", 'id' => $key['id']])?>">
+					<a href="<?= $this->Url->build(["controller" => "manager","action" => "mailDetail", 'id' => $key['id']])?>">
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="list-group">
@@ -80,7 +80,7 @@
 		<?php foreach ($User as $key): ?>
 			<div class="col-md-3">
 				<div class="panel">
-					<a href="<?= $this->Url->build(["controller" => "manager","action" => "user", 'id' => $key['id']])?>">
+					<a href="<?= $this->Url->build(["controller" => "manager","action" => "userDetail", 'id' => $key['id']])?>">
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="list-group">

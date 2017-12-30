@@ -46,14 +46,16 @@ class AnswersController extends AppController
 			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
 		}
 
-		$witses = $this->witses->find('all');
-		$witsesArray = $witses->toArray();
-		$this->set(compact('witsesArray'));
+		// $witses = $this->witses->find('all');
+		// $witsesArray = $witses->toArray();
+		// $this->set(compact('witsesArray'));
 
 		$get_id = $this->request->getParam('id');
+		// $witId = $this->witses->find('all')
+		// ->where(['id ='=> $get_id]);
+		// 下に置き換え　上田
+		$witId = $this->witses->get($get_id);
 
-		$witId = $this->witses->find('all')
-		->where(['id ='=> $get_id]);
 		$witsesId = $witId->toArray();
 		$this->set(compact('witsesId'));
 
@@ -110,7 +112,6 @@ class AnswersController extends AppController
 			$nowdate = date("Y/m/d H:i:s");
 			$incRen = $maxRenArray[0]['ren'] + 1;
 
-
 			$query = $this->wits_messages->query();
 			$query->insert([
 				'wits_id','ren','message','transmit','user_id','Del_flg'
@@ -125,6 +126,7 @@ class AnswersController extends AppController
 			])
 			->execute();
 		}
+
 		$wits_messages = $this->wits_messages->find('all')
 		->where(['wits_id ='=>$get_id]);
 		$witmesArray = $wits_messages->toArray();
