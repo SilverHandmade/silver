@@ -19,7 +19,7 @@
 			<div class="sear-lay">
 				<input type="text" name="dummy" style="display:none;">
 				<input type="text" id="rsearch" name="search" value="" class="search form-control"/>
-				<button type="button" id="Reqsearchbutton" name="sbutton" class="btn btn-success">検索</button>
+				<button type="submit" id="Reqsearchbutton" name="sbutton" class="btn btn-success">検索</button>
 			</div>
 		</form>
 		<?php if ($user_faci[0]['facility_classes_id'] == 2): ?>

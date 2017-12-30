@@ -15,7 +15,7 @@
 		<div class="form-inline sear-lay search-inline">
 			<input type="text" name="dummy" style="display:none;">
 			<input type="text" name="indextxt" id="indextxt" value="" class="ans-text form-control">
-			<button type="button" id="indexbtn" class="btn btn-success">検索</button>
+			<button type="submit" id="indexbtn" class="btn btn-success">検索</button>
 		</div>
 	</div>
 </form>

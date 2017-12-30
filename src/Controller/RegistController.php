@@ -22,9 +22,10 @@ class RegistController extends AppController
 	public function index()
 	{
 		$user = $this->Userinfo->getuser();
-		if (empty($user) || $user['facility_classes_id'] != 9) {
-
-		}
+		// 内容不明のためコメントアウト　上田
+		// if (empty($user) || $user['facility_classes_id'] != 9) {
+        //
+		// }
 
 		$query = $this->facilities->find()
 		->where(['Del_flg ='=> 0])

@@ -17,7 +17,7 @@
 				<form class="form-inline center" action="" method="POST" onsubmit="doSomething();return false;">
 					<input type="text" name="dummy" style="display:none;">
 					<input type="text" id="rsearch" name="search" value="" class="form-control"/>
-					<button type="button" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
+					<button type="submit" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
 				</form>
 			</div>
 		</div>

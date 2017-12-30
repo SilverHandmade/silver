@@ -18,7 +18,7 @@
 			<div class="form-group">
 				<div class="form-inline sear-lay">
 					<input type="text" id="fsearch" name="search" value="" class="form-control"/>
-					<button type="button" id="searchbutton" name="sbutton" class="btn btn-success">検索</button>
+					<button type="submit" id="searchbutton" name="sbutton" class="btn btn-success">検索</button>
 				</div>
 			</div>
 		</form>

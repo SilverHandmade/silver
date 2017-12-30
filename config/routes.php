@@ -38,7 +38,7 @@ Router::scope("/answers", function ( RouteBuilder $routes ) {
 });
 Router::scope("/manager", function ( RouteBuilder $routes ) {
 	$routes->connect(
-		'/M1ailDetail/:id',
+		'/MailDetail/:id',
 		['controller' => 'manager', 'action'=> 'MailDetail'],
 		// 10桁の数字に制限、0始まりに対応
 		['id' => '\d{9}']

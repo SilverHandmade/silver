@@ -6,23 +6,23 @@ use Cake\Event\Event;
 
 class ErrorController extends AppController
 {
-    public function initialize()
-    {
+	public function initialize()
+	{
 		parent::initialize();
-        $this->loadComponent('RequestHandler');
-    }
+		$this->loadComponent('RequestHandler');
+	}
 
 	function beforeFilter(Event $event)
-    {
-    }
+	{
+	}
 
-    public function beforeRender(Event $event)
-    {
-        parent::beforeRender($event);
-        $this->viewBuilder()->setTemplatePath('Error');
-    }
+	public function beforeRender(Event $event)
+	{
+		parent::beforeRender($event);
+		$this->viewBuilder()->setTemplatePath('Error');
+	}
 
-    public function afterFilter(Event $event)
-    {
-    }
+	public function afterFilter(Event $event)
+	{
+	}
 }

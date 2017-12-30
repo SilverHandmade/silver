@@ -10,18 +10,16 @@ use Cake\View\Exception\MissingTemplateException;
 class AnswersController extends AppController
 {
 
-    public function initialize()
-    {
-        parent::initialize();
+	public function initialize()
+	{
+		parent::initialize();
 		$this->loadModel('witses');
 		$this->loadModel('wits_messages');
 		$this->loadModel('facilities');
 		$this->loadModel('users');
+	}
 
-
-
-    }
-    public function index() {
+	public function index() {
 		$query = $this->witses->find()
 		->where(['Del_flg ='=> 0])
 		->order(['id' => 'DESC']);
@@ -35,30 +33,29 @@ class AnswersController extends AppController
 		}
 
 		$witsesArray = $query->toArray();
-        $this->set(compact('witsesArray'));
+		$this->set(compact('witsesArray'));
 		if ($this->request->is('ajax')) {
 			$this->render('/Element/answers');
 		}
 
-    }
+	}
+
 	public function detail(){
-
-
 		$user = $this->Userinfo->getuser();
 		if (empty($user)) {
 			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
 		}
 
 		$witses = $this->witses->find('all');
-        $witsesArray = $witses->toArray();
-        $this->set(compact('witsesArray'));
+		$witsesArray = $witses->toArray();
+		$this->set(compact('witsesArray'));
 
 		$get_id = $this->request->getParam('id');
 
 		$witId = $this->witses->find('all')
 		->where(['id ='=> $get_id]);
-        $witsesId = $witId->toArray();
-        $this->set(compact('witsesId'));
+		$witsesId = $witId->toArray();
+		$this->set(compact('witsesId'));
 
 
 		$query = $this->wits_messages->find();
@@ -74,15 +71,17 @@ class AnswersController extends AppController
 		$this->set(compact('detailId'));
 
 		$query = $this->witses->find()
-		->select(['facilities.name',])
+		->select(['facilities.name'])
 		->join([
 			'table' => 'users',
 			'type' => 'INNER',
-			'conditions' => 'user_id = users.id'])
+			'conditions' => 'user_id = users.id'
+		])
 		->join([
 			'table' => 'facilities',
 			'type' => 'INNER',
-			'conditions' => 'facilities.id = users.facilities_id'])
+			'conditions' => 'facilities.id = users.facilities_id'
+		])
 		->where(['witses.id ' => $get_id]);
 		$facilitiesname = $query->all()->ToArray();
 		$this->set(compact('facilitiesname'));
@@ -93,11 +92,13 @@ class AnswersController extends AppController
 		->join([
 			'table' => 'users',
 			'type' => 'INNER',
-			'conditions' => 'user_id = users.id'])
+			'conditions' => 'user_id = users.id'
+		])
 		->join([
 			'table' => 'facilities',
 			'type' => 'INNER',
-			'conditions' => 'facilities.id = users.facilities_id'])
+			'conditions' => 'facilities.id = users.facilities_id'
+		])
 		->where(['wits_id' => $get_id])
 		->order(['ren' => 'DESC']);
 		$mes_namelist = $query->all()->ToArray();
@@ -154,7 +155,8 @@ class AnswersController extends AppController
 		->join([
 			'table' => 'facilities',
 			'type' => 'INNER',
-			'conditions' => 'facilities.id = users.facilities_id'])
+			'conditions' => 'facilities.id = users.facilities_id'
+		])
 		->where(['witses.id ' => $get_id]);
 		$facilitiesname = $query->all()->ToArray();
 		$this->set(compact('facilitiesname'));
@@ -191,8 +193,6 @@ class AnswersController extends AppController
 			$this->redirect(['controller'=>'answers']);
 			$this->Flash->success('削除しました');
 		}
-
-
 	}
 
 	public function create(){

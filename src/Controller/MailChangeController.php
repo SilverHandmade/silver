@@ -16,15 +16,15 @@ use Moontoast\Math\BigNumber;
 class MailchangeController extends AppController
 {
 
-    public function initialize()
-    {
-        parent::initialize();
+	public function initialize()
+	{
+		parent::initialize();
 		$this->loadmodel('Users');
 		$this->loadmodel('change_mails');
-    }
+	}
 
 	public function index()
-    {
+	{
 		if($this->request->is('post')) {
 			if($this->request->getData('flg') == 1){
 				$this->Flash->error(__('ドメインが入力されていません'));
@@ -39,9 +39,9 @@ class MailchangeController extends AppController
 		$ret = $query->select(['id','email'])
 					->where(['id'=> $Uid])->first();
 		$this->set("meado", $ret->email);
-    }
+	}
 
-public function mailsend()
+	public function mailsend()
 	{
 
 		if(strpos($_POST['new_email'],'@') !== false){
@@ -101,10 +101,6 @@ public function mailsend()
 		}
 		$this->set(compact('link', 'target','e_flg'));
 
-
-
-
-
 	}
 
 	public function mailcomp()
@@ -114,7 +110,7 @@ public function mailsend()
 			$Tb = TableRegistry::get('change_mails');
 			$query = $Tb->find();
 			$ret = $query->select(['user_id','c_mail','change_time'])
-	        			->where(['uuid'=> $uuid ,'kan_flg'=> 0])->first();
+						->where(['uuid'=> $uuid ,'kan_flg'=> 0])->first();
 			$sa_flg = 2;
 			if(isset($ret)){
 				$Uid = $ret->user_id;
@@ -126,17 +122,19 @@ public function mailsend()
 					$sa_flg = 1;
 				}
 				if($sa_flg == 1){
-						$query = ConnectionManager::get('default');
-						$query->update('users',
-							['email' => $ret->c_mail],
-							['id' => $Uid ]);
-						$query->update('change_mails',
-							['uuid' => null ,'kan_flg' => 1],
-							['uuid' => $uuid ]);
-						$session = $this->request->session();
-						$session->write([
-							'userID' => $ret->c_mail
-						]);
+					$query = ConnectionManager::get('default');
+					$query->update('users',
+						['email' => $ret->c_mail],
+						['id' => $Uid ]
+					);
+					$query->update('change_mails',
+						['uuid' => null ,'kan_flg' => 1],
+						['uuid' => $uuid ]
+					);
+					$session = $this->request->session();
+					$session->write([
+						'userID' => $ret->c_mail
+					]);
 				}else {
 					$this->Flash->error(__('リンクの使用期限が切れています。'));
 				}

@@ -1,4 +1,4 @@
-<div class="row" id="videoList">
+<div class="row" id="modeList">
 	<?php foreach ($results as $key): ?>
 		<div class="col-md-12">
 			<div class="panel">
@@ -29,7 +29,7 @@
 	<?php endforeach; ?>
 </div>
 
-<div id="videoPanel" class="row">
+<div id="modePanel" class="row">
 	<?php $i = 0; foreach ($results as $key): ?>
 		<div class="col-md-3">
 			<div class="panel">

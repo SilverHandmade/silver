@@ -6,7 +6,7 @@
 		<form action=""method="post" class="form-inline sear-lay">
 			<div class="">
 				<input type="text" name="S_text" id="select_t" class="form-control">
-				<button type="button" name="S_button" id="select_t" value="" class="btn btn-success">検索</button>
+				<button type="submit" name="S_button" id="select_t" value="" class="btn btn-success">検索</button>
 			</div>
 		</form>
 			<?php foreach ($login_user as $key): ?>

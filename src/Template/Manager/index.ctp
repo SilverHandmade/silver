@@ -1,5 +1,5 @@
 <?php $this->start('css') ?>
-   <?= $this->Html->css('/private/css/TopPage/TopPage.css') ?>
+	<?= $this->Html->css('/private/css/TopPage/TopPage.css') ?>
 <?php $this->end() ?>
 
 <div class="col-md-12">
@@ -60,7 +60,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12 right">
-								<button class="btn btn-link" type="button" >詳細 >></button>
+								<button class="btn btn-link" type="button">詳細 >></button>
 							</div>
 						</div>
 					</a>
@@ -68,11 +68,12 @@
 			</div>
 		<?php endforeach; ?>
 	</div>
-    <div class="row right" id="linkTo">
+
+	<div class="row right" id="linkTo">
 		<div class="col-md-12">
 			<?= $this->Html->link('施設一覧へ >>',['controller' => 'manager', 'action' => 'facilities']);?>
 		</div>
-    </div>
+	</div>
 
 	<h2>ユーザー</h2>
 	<div class="row">
@@ -105,9 +106,11 @@
 			</div>
 		<?php endforeach; ?>
 	</div>
-    <div class="row right" id="linkTo">
+
+	<div class="row right" id="linkTo">
  	   <div class="col-md-12">
  		   <?= $this->Html->link('施設一覧へ >>',['controller' => 'manager', 'action' => 'users']);?>
  	   </div>
-    </div>
+	</div>
+
 </div>

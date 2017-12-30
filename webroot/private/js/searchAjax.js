@@ -1,7 +1,7 @@
 $(function() {
 	$('form').submit(function(event) {
 		// HTMLでの送信をキャンセル
-    	// event.preventDefault();
+    	event.preventDefault();
 
 	    var $form = $(this);
 

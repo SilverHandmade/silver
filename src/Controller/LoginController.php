@@ -14,9 +14,9 @@ use Cake\Cache\Cache;
  */
 class LoginController extends AppController
 {
-    public function initialize()
-    {
-        parent::initialize();
+	public function initialize()
+	{
+		parent::initialize();
 		$session = $this->request->session();
 		// セッション情報取得
 		// if ($session->read('loginFlg')) {
@@ -37,19 +37,19 @@ class LoginController extends AppController
 				'action' => 'index'
 			],
 			'loginRedirect' => [ // ログイン後に遷移するアクションを指定
-                'controller' => 'TopPage',
-                'action' => 'index'
-            ],
+				'controller' => 'TopPage',
+				'action' => 'index'
+			],
 			'logoutRedirect' => [ // ログアウト後に遷移するアクションを指定
-                'controller' => 'TopPage',
-                'action' => 'index'
-            ]
+				'controller' => 'TopPage',
+				'action' => 'index'
+			]
 		]);
 
-    }
-    // ログイン
-    public function index()
-    {
+	}
+	// ログイン
+	public function index()
+	{
 		if ($this->request->is('post')) {
 			$session = $this->request->session();
 			$user = $this->Auth->identify();

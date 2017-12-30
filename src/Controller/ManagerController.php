@@ -39,17 +39,18 @@ class ManagerController extends AppController
 	}
 
 	public function mails() {
-		$queryMail = $this->answers->find()->limit(20);
+		$queryMail = $this->answers->find('all')->contain('users')->limit(20);
 		$this->set('mails', $queryMail);
+
 		if ($this->request->is('ajax')) {
 			if (!empty($this->request->getData('name'))) {
 				$queryMail->where(['name LIKE' => '%' . $this->request->getData('name') . '%']);
 			}
 			$this->set('mails', $queryMail->toArray());
-        	$this->render("/Element/Manager/mailsSearchResult");
+			$this->render("/Element/Manager/mailsSearchResult");
 		}
 	}
-	public function MailDetail() {
+	public function Mail_detail() {
 		$mailId = $this->request->getParam('id');
 		$queryMail = $this->answers->get($mailId);
 		$this->set('mails', $queryMail);
@@ -63,7 +64,7 @@ class ManagerController extends AppController
 				$queryFacility->where(['name LIKE' => '%' . $this->request->getData('name') . '%']);
 			}
 			$this->set('facilities', $queryFacility->toArray());
-        	$this->render("/Element/Manager/facilitiesResult");
+			$this->render("/Element/Manager/facilitiesResult");
 		}
 	}
 	public function facility_detail() {
@@ -79,5 +80,4 @@ class ManagerController extends AppController
 		$queryUser = $this->users->find()->limit(20);
 		$this->set('user', $queryUser);
 	}
-
 }

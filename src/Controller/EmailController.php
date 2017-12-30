@@ -10,16 +10,15 @@ use Cake\Mailer\Email;
 
 class EmailController extends AppController
 {
-    public function initialize()
-    {
-        parent::initialize();
-		
-    }
-    public function index() {
+	public function initialize()
+	{
+		parent::initialize();
+	}
+	public function index() {
 		$email = new Email('default');
 		$email->from(['Taguchi.SilverHandmade@gmail.com' => 'OIC'])
 			->to('nagiyan15@gmail.com')
 			->subject('About')
 			->send('My message');
-    }
+	}
 }

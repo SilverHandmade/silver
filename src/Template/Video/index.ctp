@@ -1,8 +1,9 @@
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/video/video.css') ?>
+	<?= $this->Html->css('/private/css/modeToggle.css') ?>
 <?php $this->end() ?>
 <?php $this->start('script') ?>
-	<?= $this->Html->script('/private/js/video/video.js') ?>
+	<?= $this->Html->script('/private/js/modeToggle.js') ?>
 	<?= $this->Html->script('/private/js/searchAjax.js') ?>
 <?php $this->end() ?>
 
@@ -21,7 +22,7 @@
 									詳細
 									<span class="glyphicon glyphicon-option-vertical"></span>
 								</button>
-								<button class="btn btn-success" type="button" id="serach">
+								<button class="btn btn-success" type="submit" id="serach">
 									検索
 									<span class="glyphicon glyphicon-search"></span>
 								</button>
