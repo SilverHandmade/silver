@@ -4,8 +4,6 @@
 		echo $this->Html->script('/private/js/searchAjax.js');
 	$this->end();
 
-
-
 	$this->start('css');
 		echo $this->Html->css('/private/css/answers/answers.css');
 	$this->end();

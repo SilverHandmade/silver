@@ -42,30 +42,8 @@
 						</div>
 					<?php endforeach; ?>
 				</div>
-
-				<div id="sample1_table">
-					<div>
-						<?php
-						$i = 0;
-						foreach ($message_array as $message): ?>
-							<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
-								<p><?= $message['message'];?></p>
-								<br><br>
-								<p>投稿者：
-								<?php echo $mes_namelist[$i]['users']['name'];?></p>
-								<p>所属施設：
-								<?php echo $mes_namelist[$i]['facilities']['name'];
-								$i = $i + 1; ?></p>
-								<p>投稿日時：<?= date('Y年m月d日  Ag:i',  strtotime($message['transmit']));?></p>
-							</div>
-						<?php endforeach; ?>
-					</div>
-
-
-			<?= $this->Html->link('戻る',['controller'=>'Request','action'=>'detail','id' => $this->request->getQuery('id')],['class'=>'btn btn-primary']); ?>
-
-
-		<?= $this->Html->link('戻る',['controller'=>'Request','action'=>'detail','id' => $this->request->getQuery('id')],['class'=>'btn btn-primary']); ?>
+				<?= $this->Html->link('戻る',['controller'=>'Request','action'=>'detail','id' => $this->request->getQuery('id')],['class'=>'btn btn-primary']); ?>
+			</div>
 		</form>
 	</div>
 </div>
