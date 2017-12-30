@@ -8,6 +8,9 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">
+								<div class="">
+									<?php echo $key['name'] ?>
+								</div>
 								<div class="col-md-12">
 									<h3>手順<?php echo $key['ren'] + 1 ?></h3>
 								</div>

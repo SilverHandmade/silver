@@ -156,6 +156,21 @@ echo"<br><br><br><br><br>";
 
 		$login_user = $query->all()->ToArray();
 		$this->set(compact('login_user'));
+
+		if ($this->request->is('post')) {
+			$query->contain();
+
+			if (!empty($this->request->getData('S_text'))) {
+				$query->where(['name LIKE' => '%'. $this->request->getData('S_text') . '%']);
+			}
+			$query->all();
+			$this->set('login_user', $query->all()->toArray());
+
+			} else {
+			$query->all();
+			$this->set('login_user', $query->all()->toArray());
+			}
+
 	}
 //編集入力画面
  	public function edit()
@@ -180,9 +195,7 @@ echo"<br><br><br><br><br>";
 
 			  $_SESSION['sel_id'] = $edit_pdt[0]['product_id'];
 		  }
-		  if (isset($_POST['nextbtn'])) {
-		  	# code...
-		  }
+
  	}
 //編集確認画面
 	public function Confirmation(){
