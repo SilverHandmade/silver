@@ -54,6 +54,7 @@
 					<!-- $postrepass-->
 					<input type="password" id="regRP" name="repassword" placeholder="再入力" required class="form-control">
 				</div>
+				<p align="center">※数字・小文字・大文字のうち2種類以上で、6～20文字のパスワードを設定してください。</p>
 				<!--送信ボタン-->
 				<div class="submit">
 					<button type="submit" id="transmit" value="" class="success btn btn-success">送信</button>
@@ -62,15 +63,3 @@
 		</div>
 	</div>
 </div>
-
-<div id="message">こんにちは</div>
-
-<script>
-function hyoji() {
-    document.getElementById("message").style.display="block";
-}
-
-function hihyoji() {
-    document.getElementById("message").style.display="none";
-}
-</script>

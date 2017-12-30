@@ -23,7 +23,6 @@ class AnswersController extends AppController
     }
     public function index() {
 		$query = $this->witses->find()
-		->select(['title','content'])
 		->where(['Del_flg ='=> 0])
 		->order(['id' => 'DESC']);
 
