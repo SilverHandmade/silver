@@ -73,8 +73,15 @@ class ManagerController extends AppController
 	}
 
 	public function users() {
-		$queryUser = $this->users->find()->limit(20);
-		$this->set('user', $queryUser);
+		$queryUser = $this->users->find('all')->contain('facilities')->limit(20);
+		$this->set('users', $queryUser);
+		if ($this->request->is('ajax')) {
+			if (!empty($this->request->getData('name'))) {
+				$queryUser->where(['users.name LIKE' => '%' . $this->request->getData('name') . '%']);
+			}
+			$this->set('users', $queryUser);
+			$this->render("/Element/Manager/usersResult");
+		}
 	}
 	public function user_detail() {
 		$queryUser = $this->users->find()->limit(20);

@@ -1,5 +1,5 @@
 <?php $this->start('css') ?>
-	<?= $this->Html->css('/private/css/TopPage/TopPage.css') ?>
+	<?= $this->Html->css('/private/css/manager/manager.css') ?>
 <?php $this->end() ?>
 
 <div class="col-md-12">

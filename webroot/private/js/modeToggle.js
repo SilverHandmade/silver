@@ -2,12 +2,12 @@ $(function(){
 	$(document).ready(function(){
 		// 表示モードの設定
 		var mode = GetCookie('ViewMode');
-		if (mode === null) {
-			document.cookie = 'ViewMode=list';
+		if (mode == null) {
+			// document.cookie = 'ViewMode=list';
 			$(".glyphicon-th-list").addClass("none");
 			$("#modePanel").addClass("none");
 		} else {
-			if (mode === 'list') {
+			if (mode == 'list') {
 				$(".glyphicon-th-list").addClass("none");
 				$("#modePanel").addClass("none");
 			} else {
@@ -16,6 +16,22 @@ $(function(){
 			}
 		}
 	});
+	$('#result').on('DOMSubtreeModified propertychange', function() {
+		var mode = GetCookie('ViewMode');
+		if (mode == null) {
+			// document.cookie = 'ViewMode=list';
+			$(".glyphicon-th-list").addClass("none");
+			$("#modePanel").addClass("none");
+		} else {
+			if (mode == 'list') {
+				$(".glyphicon-th-list").addClass("none");
+				$("#modePanel").addClass("none");
+			} else {
+				$(".glyphicon-th-large").addClass("none");
+				$("#modeList").addClass("none");
+			}
+		}
+    });
 
 	$('#ModeTogle').click(function (){
 		Modetoggle();
@@ -26,7 +42,7 @@ $(function(){
 		$('.glyphicon-th-list').toggle();
 		$('#modeList').fadeToggle();
 		$('.glyphicon-th-large').toggle();
-		if (document.cookie == 'ViewMode=list') {
+		if (GetCookie('ViewMode') == 'list') {
 			document.cookie = 'ViewMode=panel';
 		} else {
 			document.cookie = 'ViewMode=list';
@@ -50,20 +66,5 @@ $(function(){
 		}
 		return result;
 	}
-	$('#result').on('DOMSubtreeModified propertychange', function() {
-		var mode = GetCookie('ViewMode');
-		if (mode === null) {
-			document.cookie = 'ViewMode=list';
-			$(".glyphicon-th-list").addClass("none");
-			$("#modePanel").addClass("none");
-		} else {
-			if (mode === 'list') {
-				$(".glyphicon-th-list").addClass("none");
-				$("#modePanel").addClass("none");
-			} else {
-				$(".glyphicon-th-large").addClass("none");
-				$("#modeList").addClass("none");
-			}
-		}
-    });
+
 });

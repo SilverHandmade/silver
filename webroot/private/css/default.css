@@ -203,12 +203,10 @@ footer .btn-link, footer .btn-link:hover {
 	padding: 10px;
 	color: inherit;
 }
-.panel ul {
-
-}
 .panel ul li {
+	white-space: nowrap;
 	overflow: hidden;
-	/* text-overflow: ellipsis; */
+	text-overflow: ellipsis;
 	padding-left: 5px;
 	padding-right: 5px;
 	border-left: none;
@@ -218,14 +216,9 @@ footer .btn-link, footer .btn-link:hover {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-
 .panel img {
 	width: 100%;
 	height: auto;
-}
-.panel h3 {
-	height: 1em;
-	overflow: hidden;
 }
 /*panel 終わり*/
 

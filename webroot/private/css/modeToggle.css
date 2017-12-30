@@ -2,10 +2,6 @@
 #modePanel.row {
 	padding-top: 15px;
 }
-.panel h3 {
-	height: 1em;
-	overflow: hidden;
-}
 @media (max-width: 992px) {
 	#ModeTogle {
 		display: none;
