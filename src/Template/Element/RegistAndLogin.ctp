@@ -1,5 +1,5 @@
 <li>
-	<?= $this->Html->link($user['tranceName'] ,['controller' => 'login', "action" => $user['action']]);?>
+	<?= $this->Html->link($userinfo['tranceName'] ,['controller' => 'login', "action" => $userinfo['action']]);?>
 </li>
 <li>
 	<?= $this->Html->link("新規登録" ,['controller' => 'regist', "action" => 'index']);?>

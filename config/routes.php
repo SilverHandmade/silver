@@ -36,6 +36,20 @@ Router::scope("/answers", function ( RouteBuilder $routes ) {
 		['id' => '\d{4}']
 	);
 });
+Router::scope("/manager", function ( RouteBuilder $routes ) {
+	$routes->connect(
+		'/M1ailDetail/:id',
+		['controller' => 'manager', 'action'=> 'MailDetail'],
+		// 10桁の数字に制限、0始まりに対応
+		['id' => '\d{9}']
+	);
+	$routes->connect(
+		'/FacilityDetail/:id',
+		['controller' => 'manager', 'action'=> 'FacilityDetail'],
+		// 10桁の数字に制限、0始まりに対応
+		['id' => '\d{9}']
+	);
+});
 
 Router::scope("/WorkShop", function ( RouteBuilder $routes ) {
 	$routes->connect(

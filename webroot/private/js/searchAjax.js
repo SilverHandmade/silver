@@ -1,5 +1,5 @@
 $(function() {
-	$('form').change(function(event) {
+	$('form').submit(function(event) {
 		// HTMLでの送信をキャンセル
     	// event.preventDefault();
 

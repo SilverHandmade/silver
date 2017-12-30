@@ -5,7 +5,7 @@
 				<a href="<?= $this->Url->build(["controller" => "video","action" => "view", 'id' => $key['id']])?>">
 					<div class="row">
 						<div class="col-md-3">
-							投稿日:<?=$key['contribution']?>
+							投稿日:<?= date('Y年n月j日 H時i分', strtotime($key['contribution']));?>
 							<img src="<?= $this->Url->image(file_exists($key['movie_url'])?$key['movie_url']:"no_image.png");?>">
 						</div>
 						<div class="col-md-9">
