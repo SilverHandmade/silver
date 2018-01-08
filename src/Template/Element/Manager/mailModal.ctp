@@ -11,9 +11,6 @@
 					<div class="col-md-12">
 						<table class="table table-bordered" id="details">
 							<tr>
-								<td class="col-md-2">
-									<label for="videoId">動画ID</label>
-								</td>
 								<td class="col-md-4">
 									<input class="form-control" type="text" name="videoId" id="videoId" placeholder="動画id"/>
 								</td>
@@ -40,9 +37,6 @@
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<label for="kyeWord">説明文</label>
-								</td>
 								<td colspan="3">
 									<input class="form-control" type="text" name="kyeWord" id="kyeWord" placeholder="説明文"/>
 								</td>
