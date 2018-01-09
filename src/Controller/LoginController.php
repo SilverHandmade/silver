@@ -16,12 +16,16 @@ class LoginController extends AppController
 {
 	public function initialize()
 	{
-		parent::initialize();
+		session_cache_limiter("none");
+
+        $this->loadComponent('RequestHandler');
+        $this->loadComponent('Flash');
+		$this->loadComponent('Userinfo');
+
+		$userinfo = $this->Userinfo->setname();
+		$this->set(compact('userinfo'));
+
 		$session = $this->request->session();
-		// セッション情報取得
-		// if ($session->read('loginFlg')) {
-		// 	$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
-		// }
 		//認証
 		$this->loadComponent('Auth',[
 			'authenticate' => [
@@ -50,6 +54,11 @@ class LoginController extends AppController
 	// ログイン
 	public function index()
 	{
+		$user = $this->Userinfo->getuser();
+		if (!empty($user)) {
+			$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
+		}
+
 		if ($this->request->is('post')) {
 			$session = $this->request->session();
 			$user = $this->Auth->identify();

@@ -36,7 +36,7 @@
 	</div>
 	<div class="row right" id="linkTo">
 		<div class="col-md-12">
-			<?= $this->Html->link('お問い合わせ一覧へ >>',['controller' => 'manager', 'action' => 'mails']);?>
+			<?= $this->Html->link('お問い合わせ管理へ >>',['controller' => 'manager', 'action' => 'mails']);?>
 		</div>
 	</div>
 
@@ -71,7 +71,7 @@
 
 	<div class="row right" id="linkTo">
 		<div class="col-md-12">
-			<?= $this->Html->link('施設一覧へ >>',['controller' => 'manager', 'action' => 'facilities']);?>
+			<?= $this->Html->link('施設管理へ >>',['controller' => 'manager', 'action' => 'facilities']);?>
 		</div>
 	</div>
 
@@ -109,7 +109,7 @@
 
 	<div class="row right" id="linkTo">
  	   <div class="col-md-12">
- 		   <?= $this->Html->link('施設一覧へ >>',['controller' => 'manager', 'action' => 'users']);?>
+ 		   <?= $this->Html->link('ユーザ管理へ >>',['controller' => 'manager', 'action' => 'users']);?>
  	   </div>
 	</div>
 

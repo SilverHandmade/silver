@@ -45,8 +45,13 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-
 		$this->loadComponent('Userinfo');
+
+		$user = $this->Userinfo->getuser();
+		if (empty($user)) {
+			$this->redirect(['controller' => 'login', 'action' => 'index']);
+		}
+
 		$userinfo = $this->Userinfo->setname();
 		$this->set(compact('userinfo'));
 

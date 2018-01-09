@@ -223,6 +223,10 @@ footer .btn-link, footer .btn-link:hover {
 /*panel 終わり*/
 
 /*その他*/
+#linkTo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 h3 {
 	font-size: 20px;
 	color: inherit;

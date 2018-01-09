@@ -25,6 +25,9 @@
 				</div>
 				<div class="radio-layout">
 					<?php foreach ($fClassArray as $key => $value): ?>
+						<?php if ($value['id'] == 9 && !$userinfo['adminFlg']): ?>
+							<?php continue; ?>
+						<?php endif; ?>
 						<span>
 							<input type="radio" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $key==0?'checked':'';?> id="radio-<?= $value['id'] ?>">
 							<label for="radio-<?= $value['id'] ?>"><?= $value['name'] ?></label>
@@ -34,11 +37,9 @@
 				<div class="pulldown facilityname">
 					<!-- $postfacilitie-->
 					<p class="font-color">施設名</p>
-
 						<div id="result">
 							<?= $this->element('Regist/facilities') ?>
 						</div>
-
 				</div>
 				<div class="mailadress">
 					<!-- $postmail-->
