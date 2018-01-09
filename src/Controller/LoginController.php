@@ -55,9 +55,9 @@ class LoginController extends AppController
 	public function index()
 	{
 		$user = $this->Userinfo->getuser();
-		// if (!empty($user)) {
-		// 	$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
-		// }
+		if (!empty($user)) {
+			$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
+		}
 
 		if ($this->request->is('post')) {
 			$session = $this->request->session();

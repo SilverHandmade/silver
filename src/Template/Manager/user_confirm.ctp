@@ -1,4 +1,4 @@
-<form	action="" method="post">
+<form action="" method="post">
 	<table border>
 		<tr>
 			<td width=150 height=50>氏名</td>

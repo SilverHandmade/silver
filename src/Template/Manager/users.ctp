@@ -29,7 +29,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<?= $this->Html->link('ユーザー追加',['controller' => 'regist', 'action' => 'index'], ['class' => 'btn btn-primary']);?>
+			<?= $this->Html->link('ユーザー追加',['controller' => 'manager', 'action' => 'userRegist'], ['class' => 'btn btn-primary']);?>
 		</div>
 	</div>
 
