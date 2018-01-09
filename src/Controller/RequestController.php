@@ -62,8 +62,6 @@ class RequestController extends AppController
 				->where(['facility_classes_id ='=>2]);
 			}
 
-		} else {
-			// else がないなら削除　上田
 		}
 		$facilities = $query->ToArray();
 		$this->set(compact('facilities'));
@@ -247,8 +245,6 @@ class RequestController extends AppController
 					->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_moto_id' => $f_saki]);
 				}
 
-			}else {
-				// else がないなら削除　上田
 			}
 			$query->order(['From_date' => 'DESC']);
 
@@ -361,6 +357,11 @@ class RequestController extends AppController
 		$query->order(['From_date' => 'DESC']);
 		$reqlist = $query->all()->ToArray();
 		$this->set(compact('reqlist'));
+
+		$query = $this->Requests->find()
+		->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0]);
+		$alllist = $query->all()->ToArray();
+		$this->set(compact('alllist'));
 
 		if ($this->request->is('ajax')) {
 			$this->render('/Element/Request/reqSelect');

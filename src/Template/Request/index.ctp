@@ -14,7 +14,7 @@
 		<h2 class="center">依頼先一覧</h2>
 		<form class="form-inline center" action="" method="POST" onsubmit="doSomething();return false;">
 			<input type="text" name="dummy" style="display:none;"/>
-		<?php if ($user_faci[0]['facility_classes_id'] == 1): ?>
+		<?php if ($user_faci[0]['facility_classes_id'] == 1 || $user_faci[0]['facility_classes_id'] == 9): ?>
 			<div class="form-group">
 				<div class="form-inline sear-lay">
 					<input type="text" id="fsearch" name="search" value="" class="form-control"/>
@@ -35,7 +35,7 @@
 				<?= $this->Html->link('依頼編集・取り消し画面はこちら',["controller" => "Request","action" => "select"],['class'=>'btn btn-primary'])?>
 				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 			</div>
-			<?php else: ?>
+		<?php elseif($user_faci[0]['facility_classes_id'] == 2): ?>
 				<h2>介護施設の方は依頼の作成は出来ません<h2>
 				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 			<?php endif; ?>

@@ -21,7 +21,26 @@
 				</form>
 			</div>
 		</div>
-		<?php if ($reqlist == NULL): ?>
+		<?php if ($_SESSION['Auth']['User']['facility_classes_id'] == 9): ?>
+			<table id="reqseltable" align="" class="table none-table">
+				<thead>
+					<tr>
+						<th>件名</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+						<th>依頼先施設名</th>
+					</tr>
+				</thead>
+			</table>
+			<div id='result'><?= $this->element('Request/reqSelectall');?></div>
+			<div class="btn-sub">
+				<?= $this->Html->link('戻る',["controller" => "Request","action" => "index"],['class'=>'btn btn-primary'])?>
+				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
+			</div>
+
+		<?php elseif ($reqlist == NULL): ?>
 			<br>
 			<h>編集可能な依頼がありません。</h>
 			<br>
