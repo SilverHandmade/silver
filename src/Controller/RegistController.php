@@ -17,6 +17,7 @@ class RegistController extends AppController
 		$this ->loadmodel('facilities');
 		$this ->loadmodel('facility_classes');
 		$this->loadComponent('PassHash');
+		$this->loadComponent('MakeId9');
 	}
 
 	public function index()
@@ -98,7 +99,7 @@ class RegistController extends AppController
 					'id','email','name','facilities_id','facility_classes_id','hurigana','password','Del_flg'
 				])
 				->values([
-					'id' => '',
+					'id' => $this->MakeId9->id9('use'),
 					'email' => $postmail,
 					'name' => $postname,
 					'facilities_id' => $postfacilitie,
