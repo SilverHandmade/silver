@@ -16,12 +16,15 @@
 			<div class="form-inline sear-lay">
 				<form class="form-inline center" action="" method="POST" onsubmit="doSomething();return false;">
 					<input type="text" name="dummy" style="display:none;">
+					<?php if ($_SESSION['Auth']['User']['facility_classes_id'] != 9): ?>
 					<input type="text" id="rsearch" name="search" value="" class="form-control"/>
 					<button type="submit" id="editReqbutton" name="sbutton" class="btn btn-success">検索</button>
+					<?php endif; ?>
 				</form>
 			</div>
 		</div>
 		<?php if ($_SESSION['Auth']['User']['facility_classes_id'] == 9): ?>
+			<p>管理する依頼を選択してください。</p>
 			<table id="reqseltable" align="" class="table none-table">
 				<thead>
 					<tr>

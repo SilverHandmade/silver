@@ -359,7 +359,12 @@ class RequestController extends AppController
 		$this->set(compact('reqlist'));
 
 		$query = $this->Requests->find()
-		->where(['ju_flg IS NULL','kan_flg' => 0,'Requests.Del_flg' => 0]);
+		->select(['id','F_moto_id','F_saki_id','title','ju_flg','kan_flg','Requests.Del_flg','facilities.name'])
+		->join([
+			'table' => 'facilities',
+			'type' => 'LEFT',
+			'conditions' => 'facilities.id = Requests.F_saki_id'])
+		->where(['kan_flg' => 0,'Requests.Del_flg' => 0]);
 		$alllist = $query->all()->ToArray();
 		$this->set(compact('alllist'));
 
