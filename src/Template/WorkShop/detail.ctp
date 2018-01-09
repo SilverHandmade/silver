@@ -1,8 +1,13 @@
+<?php $this->start('css'); ?>
+	<?= $this->Html->css('/private/css/workshop/workshop.css') ?>
+<?php $this->end(); ?>
+
 <div class="col-md-offset-2 col-md-8">
 	<div class="row">
-		<div id="title">
-			<h2>詳細画面</h2>
-		</div>
+		<div class="col-md-12">
+			<div id="title">
+				<h2>詳細画面</h2>
+			</div>
 			<?php if ($user_faci[0]['facility_classes_id'] == 1): ?>
 				<?php foreach ($detailses as $key) : ?>
 					<div class="row">
@@ -16,22 +21,24 @@
 								</div>
 							</div>
 							<div class="row">
-								<div align="center">
+								<div align="center" class="col-md-12">
 									<?php if (!empty($key['photo_url']) && file_exists('img/workshop/'.$key['photo_url'])): ?>
-										<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>"width="500" height="325">
+										<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" width="500">
 									<?php else: ?>
-										<img src="<?= $this->Url->image('no_image.png') ?>"width="500" height="325">
-									<?php endif; ?>					</div>
-								<div align="center">
+										<img src="<?= $this->Url->image('no_image.png') ?>" width="500">
+									<?php endif; ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 ws-font">
 									<p><?php echo $key['description'] ?></p>
 								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			<?php endforeach; ?>
-
-		<?php else: ?>
-			<?php foreach ($detailses as $key) : ?>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<?php foreach ($detailses as $key) : ?>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">
@@ -40,26 +47,28 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12 img-size">
+								<div class="col-md-12">
 									<?php if (!empty($key['photo_url']) && file_exists('img/workshop/'.$key['photo_url'])): ?>
-										<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>"width="500" height="325">
+										<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" width="500">
 									<?php else: ?>
-										<img src="<?= $this->Url->image('no_image.png') ?>"width="500" height="325">
-									<?php endif; ?>					</div>
-									<div class="row">
-										<div class="col-md-12">
+										<img src="<?= $this->Url->image('no_image.png') ?>" width="500">
+									<?php endif; ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 ws-font">
 									<p><?php echo $key['description'] ?></p>
 								</div>
 							</div>
 						</div>
 					</div>
 				<?php endforeach; ?>
-		<?php endif; ?>
-	</div>
-		<div class="row">
-			<div class="col-md-12 right">
-				<?= $this->Html->link("戻る",['controller' => 'WorkShop', "action" => "index"], ['class'=>'btn btn-primary']);?>
-				<?= $this->Html->link("トップページへ",['controller' => 'TopPage', "action" => "index"], ['class'=>'btn btn-primary']);?>
+			<?php endif; ?>
+			<div class="row">
+				<div class="col-md-12 right">
+					<?= $this->Html->link("戻る",['controller' => 'WorkShop', "action" => "index"], ['class'=>'btn btn-primary']);?>
+					<?= $this->Html->link("トップページへ",['controller' => 'TopPage', "action" => "index"], ['class'=>'btn btn-primary']);?>
+				</div>
 			</div>
 		</div>
 	</div>

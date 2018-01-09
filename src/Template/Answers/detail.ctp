@@ -19,7 +19,7 @@
 						<div class="col-md-2">
 							<?php if ($userinfo['id'] == $detailId[0]['user_id']): ?>
 								<div class="button-right">
-									<?= $this->Html->link('編集',["controller" => "answers","action" => "edit",'id' => $witsesId[0]['id'] ],['class'=>'btn btn-primary'])?>
+									<?= $this->Html->link('編集',["controller" => "answers","action" => "edit",'id' => $witsesId['id'] ],['class'=>'btn btn-primary'])?>
 								</div>
 							<?php endif; ?>
 						</div>
