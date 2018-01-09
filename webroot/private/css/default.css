@@ -262,6 +262,19 @@ a:focus {
 	text-decoration: none;
 	border: none;
 }
+#inputStyleLabel {
+	width: 100%;
+	height: 30px;
+	padding: 3px;
+	font-size: 14px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	color: #555;
+	font-weight: normal;
+	text-align: left;
+}
 /*その他終わり*/
 
 body {

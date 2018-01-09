@@ -26,23 +26,17 @@ class RegistController extends AppController
 
 		$queryUsers = $this->users->get($user['id'], ['contain' => ['facilities', 'facilityClasses']]);
 		$this->set('user', $queryUsers->toArray());
+
+		if ($this->request->is('ajax')) {
+			$this->autoRender = FALSE;
+			$mailAddCount = $this->users->find('all')
+			->where(['email LIKE' => $this->request->getData('email')])
+			->toArray();
+			$mailAddCount = count($mailAddCount);
+			echo $mailAddCount;
+		}
 	}
 	public function confirm(){
-
-		//facilities->nameの値を取得
-		$facname = $this->facilities->find('all');
-		$results = $facname->toArray();
-		$this->set(compact('results'));
-
-		$fClass = $this->facility_classes->find('all');
-		$fClassArray = $fClass->toArray();
-		$this->set(compact('fClassArray'));
-
-		//usersのデータベースを取得
-		$user = $this->users->find('all');
-		$userarray = $user->toArray();
-		$this->set(compact('userarray'));
-
 		if ($this->request->is('post')) {
 			$postname = htmlentities($_POST['name']);
 			$posthurigana = htmlentities($_POST['hurigana']);
@@ -52,8 +46,9 @@ class RegistController extends AppController
 			$postfClassId = $_POST['fClassId'];
 
 			$query = $this->facilities->find()
-			->where(['name line' => $postfacilitie]);
-			$fnamearray = $query->toArray();
+			->where(['name like' => $postfacilitie])
+			->toArray();
+			$fnamearray = array_shift($fnamearray);
 			$this->set(compact('fnamearray'));
 
 			if (!empty($_POST['flg'])) {
@@ -70,11 +65,13 @@ class RegistController extends AppController
 					'hurigana' => $posthurigana,
 					'password' => $postpass,
 					'Del_flg' => 0
-				])
-				->execute();
-				$this->redirect(['controller' => 'login', 'action' => 'index']);
+				]);
+				$query->execute();
+
+				$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
 			}
 		}
+
 	}
 
 }

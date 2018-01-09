@@ -4,6 +4,7 @@
 	$this->end();
 	$this->start('css');
 	echo $this->Html->css('/private/css/regist/regist.css');
+	echo $this->Html->css('/private/css/loading.css');
 	$this->end();
 ?>
 <div class="col-md-offset-2 col-md-8 center" id="form">
@@ -28,14 +29,18 @@
 					</span>
 				</div>
 
-				<div class="pulldown facilityname">
+				<div class="facilityname">
 					<p class="font-color">施設名</p>
-					<input type="text" name="facilities" value="<?= $user['Facilities']['name'] ?>">
+					<input type="hidden" name="facilities" value="<?= $user['Facilities']['name'] ?>">
+					<label id="inputStyleLabel"><?= $user['Facilities']['name'] ?></label>
 				</div>
 
 				<div class="mailadress">
 					<p class="font-color">メールアドレス</p>
-					<input type="email" id="regM" name="email" value="" required class="form-control">
+					<div>
+						<input type="email" id="regM" name="email" value="" required class="form-control">
+						<div class="icon"></div>
+					</div>
 					<input type="email" id="regRM" name="reemail" placeholder="再入力" required class="form-control">
 				</div>
 
