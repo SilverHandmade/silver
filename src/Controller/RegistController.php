@@ -99,7 +99,7 @@ class RegistController extends AppController
 					'id','email','name','facilities_id','facility_classes_id','hurigana','password','Del_flg'
 				])
 				->values([
-					'id' => $this->MakeId9->id9('use');,
+					'id' => $this->MakeId9->id9('use'),
 					'email' => $postmail,
 					'name' => $postname,
 					'facilities_id' => $postfacilitie,
