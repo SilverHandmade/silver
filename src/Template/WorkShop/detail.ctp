@@ -23,9 +23,9 @@
 							<div class="row">
 								<div align="center" class="col-md-12">
 									<?php if (!empty($key['photo_url']) && file_exists('img/workshop/'.$key['photo_url'])): ?>
-										<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" width="500">
+										<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" class="img-size">
 									<?php else: ?>
-										<img src="<?= $this->Url->image('no_image.png') ?>" width="500">
+										<img src="<?= $this->Url->image('no_image.png') ?>" class="img-size">
 									<?php endif; ?>
 								</div>
 							</div>
@@ -47,11 +47,15 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12">
+								<div class="col-md-12 img-size">
 									<?php if (!empty($key['photo_url']) && file_exists('img/workshop/'.$key['photo_url'])): ?>
-										<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" width="500">
+										<?php if ():?>
+											<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" class="img-size">
+										<?php else: ?>
+											<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" class="img-size-2">
+										<?php endif;?>
 									<?php else: ?>
-										<img src="<?= $this->Url->image('no_image.png') ?>" width="500">
+										<img src="<?= $this->Url->image('no_image.png') ?>" class="img-size">
 									<?php endif; ?>
 								</div>
 							</div>
