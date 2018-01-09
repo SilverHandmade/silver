@@ -1,10 +1,8 @@
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/manager/manager.css') ?>
-	<?= $this->Html->css('/private/css/modeToggle.css') ?>
 <?php $this->end() ?>
 <?php $this->start('script') ?>
 	<?= $this->Html->script('/private/js/searchAjax.js') ?>
-	<?= $this->Html->script('/private/js/modeToggle.js') ?>
 <?php $this->end() ?>
 
 <div class="col-md-offset-1 col-md-10">
@@ -31,10 +29,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<button class="btn btn-info" type="button" id="ModeTogle">
-				<span class="glyphicon glyphicon-th-large"></span>
-				<span class="glyphicon glyphicon-th-list"></span>
-			</button>
+			<?= $this->Html->link('ユーザー追加',['controller' => 'regist', 'action' => 'index'], ['class' => 'btn btn-primary']);?>
 		</div>
 	</div>
 

@@ -24,16 +24,19 @@ class ManagerController extends AppController
 
 	public function index() {
 		$queryMail = $this->answers->find('all')->contain('users')
-		->where(['Answers.kan_flg' => 0, 'Answers.Del_flg' => 0])
+		->where(['answers.kan_flg' => 0, 'answers.Del_flg' => 0])
 		->limit(4);
 		$this->set('mail', $queryMail);
 
 		$queryFacility = $this->facilities->find('all')->limit(4)
-		->where(['Del_flg' => 0]);
+		->where(['Del_flg' => 0])
+		->where(['facilities.Del_flg' => 0])
+;
 		$this->set('facility', $queryFacility);
 
 		$queryUsers = $this->users->find('all')->contain('facilities')
-		->where(['Users.Del_flg' => 0])
+		->where(['users.Del_flg' => 0])
+		->order(['users.Registdate' => 'DESC'])
 		->limit(4);
 		$this->set('User', $queryUsers);
 	}
@@ -71,9 +74,15 @@ class ManagerController extends AppController
 		$queryFacility = $this->facilities->find()->limit(20);
 		$this->set('facility', $queryFacility);
 	}
+	public function facilityRegist() {
+		
+	}
+
 
 	public function users() {
-		$queryUser = $this->users->find('all')->contain('facilities')->limit(20);
+		$queryUser = $this->users->find('all')->contain('facilities')
+		->order(['users.Registdate' => 'DESC'])
+		->limit(20);
 		$this->set('users', $queryUser);
 		if ($this->request->is('ajax')) {
 			if (!empty($this->request->getData('name'))) {

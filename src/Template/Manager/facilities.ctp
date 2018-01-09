@@ -31,10 +31,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<button class="btn btn-info" type="button" id="ModeTogle">
-				<span class="glyphicon glyphicon-th-large"></span>
-				<span class="glyphicon glyphicon-th-list"></span>
-			</button>
+			<?= $this->Html->link('施設追加',['controller' => 'Manager', 'action' => 'index'], ['class' => 'btn btn-primary']);?>
 		</div>
 	</div>
 

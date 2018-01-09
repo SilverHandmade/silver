@@ -1,8 +1,4 @@
 /* all */
-
-/* all */
-
-/* index */
 h2 {
 	padding: 0.4em 0.4em;/*文字の上下 左右の余白*/
 	color: inherit;/*文字色*/
@@ -16,12 +12,20 @@ h2.danger {
 	background: #f5aab4;
 	color: #FFF;
 }
+/* all */
 
-#linkTo {
-	margin-top: 10px;
-}
+/* index */
+
 /* index 終わり*/
 
 /* mails */
 
 /* mails 終わり*/
+
+/* facilities */
+
+/* facilities 終わり*/
+
+/* users */
+
+/* users 終わり*/
