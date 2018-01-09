@@ -24,7 +24,7 @@
 .div-btn {
  	position: relative;
 	display: inline-block;
-	margin: 10px 0;
+	/* margin: 10px 0; */
 
 }
 
@@ -159,4 +159,8 @@ input[type="text"] {
 
 .margin-bottom {
 	margin-bottom: 25px;
+}
+
+.ws-font {
+	font-size: 18px;
 }
