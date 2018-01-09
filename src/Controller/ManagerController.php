@@ -12,19 +12,15 @@ class ManagerController extends AppController
 	public function initialize()
 	{
 		parent::initialize();
-		$user = $this->Userinfo->getuser();
-		if (empty($user) || $user['facility_classes_id'] != 9) {
-			$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
-		}
-
-		$this->loadmodel('answers');
+		
+		$this->loadmodel('questions');
 		$this->loadmodel('facilities');
 		$this->loadmodel('users');
 	}
 
 	public function index() {
-		$queryMail = $this->answers->find('all')->contain('users')
-		->where(['answers.kan_flg' => 0, 'answers.Del_flg' => 0])
+		$queryMail = $this->questions->find('all')->contain('users')
+		->where(['questions.kan_flg' => 0])
 		->limit(4);
 		$this->set('mail', $queryMail);
 
@@ -42,7 +38,7 @@ class ManagerController extends AppController
 	}
 
 	public function mails() {
-		$queryMail = $this->answers->find('all')->contain('users')->limit(20);
+		$queryMail = $this->questions->find('all')->contain('users')->limit(20);
 		$this->set('mails', $queryMail);
 
 		if ($this->request->is('ajax')) {
@@ -55,7 +51,7 @@ class ManagerController extends AppController
 	}
 	public function mailDetail() {
 		$mailId = $this->request->getParam('id');
-		$queryMail = $this->answers->get($mailId);
+		$queryMail = $this->questions->get($mailId);
 		$this->set('mails', $queryMail);
 	}
 
@@ -75,7 +71,7 @@ class ManagerController extends AppController
 		$this->set('facility', $queryFacility);
 	}
 	public function facilityRegist() {
-		
+
 	}
 
 

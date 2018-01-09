@@ -71,6 +71,10 @@ Router::scope("/Manager", function ( RouteBuilder $routes ) {
 		// 10桁の数字に制限、0始まりに対応
 		['id' => '\d{9}']
 	);
+	$routes->connect(
+		'/FacilityRegist',
+		['controller' => 'Manager', 'action'=> 'FacilityRegist']
+	);
 });
 
 Router::scope("/WorkShop", function ( RouteBuilder $routes ) {

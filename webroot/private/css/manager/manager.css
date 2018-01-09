@@ -12,6 +12,19 @@ h2.danger {
 	background: #f5aab4;
 	color: #FFF;
 }
+form  {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#inputTitle > div > * {
+	float: left;
+}
+#inputTitle button {
+	width: 50%;
+}
+#modePanel.row {
+	padding-top: 15px;
+}
 /* all */
 
 /* index */

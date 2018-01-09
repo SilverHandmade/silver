@@ -3,7 +3,7 @@
 <?php $this->end() ?>
 
 <div class="col-md-12">
-	<h2>新着お問い合わせ</h2>
+	<h2>お問い合わせ</h2>
 	<div class="row">
 		<?php foreach ($mail as $key): ?>
 			<div class="col-md-3">
@@ -19,7 +19,10 @@
 										<?= $key->Users['name'];?>
 									</li>
 									<li class="list-group-item">
-										<?= date('Y年n月j日 H時i分', strtotime($key['Postdate']));?>
+										<?= $key['questcont'];?>
+									</li>
+									<li class="list-group-item">
+										<?= date('Y年n月j日 H時i分', strtotime($key['transmit']));?>
 									</li>
 								</ul>
 							</div>
