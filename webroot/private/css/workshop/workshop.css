@@ -128,8 +128,13 @@ input[type="text"] {
 }
 
 .img-size {
-	width: 262px;
-	height: 174px;
+	width: 500px;
+	height: auto;
+}
+
+.img-size-2 {
+	width: auto;
+	height: 325px;
 }
 
 .img-margin {
