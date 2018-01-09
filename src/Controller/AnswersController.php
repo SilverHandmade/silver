@@ -42,9 +42,9 @@ class AnswersController extends AppController
 
 	public function detail(){
 		$user = $this->Userinfo->getuser();
-		if (empty($user)) {
-			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
-		}
+		// if (empty($user)) {
+		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
+		// }
 
 		// $witses = $this->witses->find('all');
 		// $witsesArray = $witses->toArray();
@@ -136,9 +136,9 @@ class AnswersController extends AppController
 	public function edit(){
 
 		$user = $this->Userinfo->getuser();
-		if (empty($user)) {
-			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
-		}
+		// if (empty($user)) {
+		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
+		// }
 
 		$get_id = $this->request->getQuery('id');
 
@@ -199,9 +199,9 @@ class AnswersController extends AppController
 
 	public function create(){
 		$user = $this->Userinfo->getuser();
-		if (empty($user)) {
-			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
-		}
+		// if (empty($user)) {
+		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
+		// }
 
 		//施設情報の取得
 		$query = $this->witses->find();

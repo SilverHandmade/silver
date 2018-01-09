@@ -37,10 +37,10 @@ class RequestController extends AppController
 		header( 'Pragma: no-cache' );
 		//ここまで
 
-		$session = $this->request->session();
-		if (empty($session->read('Auth'))) {
-			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
-		}
+		// $session = $this->request->session();
+		// if (empty($session->read('Auth'))) {
+		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
+		// }
 	}
 
 
@@ -445,9 +445,9 @@ class RequestController extends AppController
 	public function message(){
 
 		$user = $this->Userinfo->getuser();
-		if (empty($user)) {
-			$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
-		}
+		// if (empty($user)) {
+		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
+		// }
 		//依頼ID取得
 		$get_id = $this->request->getQuery('id');
 

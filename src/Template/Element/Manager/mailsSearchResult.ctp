@@ -1,25 +1,3 @@
-<div class="row" id="modeList">
-	<?php foreach ($mails as $key): ?>
-		<div class="col-md-12">
-			<div class="panel">
-				<a href="<?= $this->Url->build(["controller" => "manager", "action" => "MailDetail", 'id' => $key['id']])?>">
-					<div class="row">
-						<div class="col-md-12">
-							送信日:<?= date('Y年n月j日 H時i分', strtotime($key['Postdate']));?>
-						</div>
-						<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-12">
-									<h3><?= $key['title']; ?></h3>
-								</div>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-		</div>
-	<?php endforeach; ?>
-</div>
 <div class="row" id="modePanel">
 	<?php foreach ($mails as $key): ?>
 		<div class="col-md-3">
@@ -35,7 +13,10 @@
 									<?= $key->Users['name'];?>
 								</li>
 								<li class="list-group-item">
-									<?= date('Y年n月j日 H時i分', strtotime($key['Postdate']));?>
+									<?= $key['questcont'];?>
+								</li>
+								<li class="list-group-item">
+									<?= date('Y年n月j日 H時i分', strtotime($key['transmit']));?>
 								</li>
 							</ul>
 						</div>
