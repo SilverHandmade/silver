@@ -120,7 +120,7 @@ input[type="text"] {
 	padding: 2px 5px;
 }
 .ws-man {
-	margin-top: 30px;
+	/* margin-top: 30px; */
 }
 
 .ws-margin {
@@ -128,14 +128,14 @@ input[type="text"] {
 }
 
 .img-size {
-	width: 500px;
-	height: auto;
+	max-width: 500px;
+	max-height: 325px;
 }
 
-.img-size-2 {
+/* .img-size-2 {
 	width: auto;
 	height: 325px;
-}
+} */
 
 .img-margin {
 	margin: 15px 0;

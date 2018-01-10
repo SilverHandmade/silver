@@ -27,7 +27,7 @@
 				<div class="row panel ws-man" >
 					<a href="<?= $this->Url->build(["controller" => "WorkShop","action" => "detail", 'id' => $key['id']])?>">
 						<div class="row">
-							<div class="col-md-3">
+							<div class="col-md-3 center">
 								<?php if (!empty($key['midasi_url']) && file_exists('img/workshop/'.$key['midasi_url'])): ?>
 									<img src="<?= $this->Url->image('workshop/'.$key['midasi_url']) ?>">
 								<?php else: ?>

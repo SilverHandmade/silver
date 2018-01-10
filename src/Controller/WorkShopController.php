@@ -71,7 +71,7 @@ class WorkShopController extends AppController
 			$_POST[$cnt1];
 			$this->request->data[$cnt2]['name'];
 			if(isset($_POST[$cnt1])){
-				while ($_POST[$cnt1] != "") {
+				while (!empty($_POST[$cnt1])) {
 					echo"<br>".$cnt1.$_POST[$cnt1];
 					echo"<br>".$cnt2.$this->request->data[$cnt2]['name'];
 					$query = $this->product_detailses->query();
@@ -97,6 +97,7 @@ class WorkShopController extends AppController
 					$cnt2 = "upload_gazo".$cnt;
 				}
 			}
+			$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
 		}
 	}
 
