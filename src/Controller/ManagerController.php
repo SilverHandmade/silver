@@ -55,9 +55,6 @@ class ManagerController extends AppController
 	public function mailDetail() {
 		$queryMail = $this->questions->get($this->request->getParam('id'));
 		$this->set('mail', $queryMail);
-
-
-
 	}
 
 	public function facilities() {
@@ -76,7 +73,24 @@ class ManagerController extends AppController
 		$this->set('facility', $queryFacility);
 	}
 	public function facilityRegist() {
+		$fClass = $this->facility_classes->find('all');
+		$fClassArray = $fClass->toArray();
+		$this->set(compact('fClassArray'));
 
+		if ($this->request->is('post')) {
+			$query = $this->facilities->query();
+			$query->insert(['id', 'name', 'facility_classes_id', 'Post', 'address', 'Del_flg'])
+			->values([
+				'id' => $this->MakeId9->id9('fac'),
+				'name' => $this->request->getData('name'),
+				'facility_classes_id' => $this->request->getData('fClassId'),
+				'Post' => $this->request->getData('zip11'),
+				'address' => $this->request->getData('addr11'),
+				'Del_flg' => 0
+			]);
+			$query->execute();
+
+		}
 	}
 
 

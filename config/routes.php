@@ -94,6 +94,10 @@ Router::scope("/WorkShop", function ( RouteBuilder $routes ) {
 		'/',
 		['controller' => 'WorkShop', 'action'=> 'index']
 	);
+	$routes->connect(
+		'/',
+		['controller' => 'WorkShop', 'action'=> 'create']
+	);
 });
 // Router::scope('/Silver', function (RouteBuilder $routes) {
 // 	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);

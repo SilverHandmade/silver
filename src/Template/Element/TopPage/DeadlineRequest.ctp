@@ -11,7 +11,7 @@
 							<?= $key->facility['name'];?>
 						</li>
 						<li class="list-group-item">
-							<?= $key['To_date'];?>〆切!
+							<?= date('Y年n月j日 H時i分', strtotime($key['To_date']));?>〆切!
 						</li>
 					</ul>
 				</div>
