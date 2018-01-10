@@ -44,8 +44,8 @@ Router::scope("/Answers", function ( RouteBuilder $routes ) {
 	$routes->connect(
 		'/:id',
 		['controller' => 'Answers', 'action'=> 'detail'],
-		// 10桁の数字に制限、0始まりに対応
-		['id' => '\d{4}']
+		// 4桁の数字に制限、0始まりに対応
+		['id' => '\d{9}']
 	);
 });
 Router::scope("/Manager", function ( RouteBuilder $routes ) {
