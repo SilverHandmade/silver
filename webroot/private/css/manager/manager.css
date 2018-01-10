@@ -32,7 +32,10 @@ form  {
 /* index 終わり*/
 
 /* mails */
-
+#InputTextarea {
+	resize: none;
+	outline: none;
+}
 /* mails 終わり*/
 
 /* facilities */

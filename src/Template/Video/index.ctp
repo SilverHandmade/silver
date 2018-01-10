@@ -43,10 +43,10 @@
 			</button>
 		</div>
 		<div class="col-md-6 right">
-			<button type="button" class="btn btn-primary right">
+			<a href="<?= $this->Url->build(["controller" => "video", "action" => "upload"]);?>" class="btn btn-primary">
 				アップロード
 				<span class="glyphicon glyphicon-cloud-upload"></span>
-			</button>
+			</a>
 
 		</div>
 	</div>
