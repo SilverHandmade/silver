@@ -150,7 +150,7 @@ class ResetPassController extends AppController
 			}else {
 				echo $sa_flg = 2;
 			}
-			$this->set("sa", $sa_flg);
+
 			$Uid = $this->request->getData('id');
 			$Pas = $this->request->getData('password');
 			$RPas = $this->request->getData('repassword');
@@ -175,10 +175,12 @@ class ResetPassController extends AppController
 					])
 					->execute();
 					$this->Flash->success(__('パスワードが変更されました。'));
+					$sa_flg = 3;
 				}else {
 					$this->Flash->error(__('入力が正しくありません。再度入力してください。'));
 				}
 			}
+			$this->set("sa", $sa_flg);
 		}else {
 			$this->Flash->error(__('リンクが正しくありません'));
 		}
