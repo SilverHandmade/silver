@@ -53,9 +53,11 @@ class ManagerController extends AppController
 		}
 	}
 	public function mailDetail() {
-		$mailId = $this->request->getParam('id');
-		$queryMail = $this->questions->get($mailId);
-		$this->set('mails', $queryMail);
+		$queryMail = $this->questions->get($this->request->getParam('id'));
+		$this->set('mail', $queryMail);
+
+
+
 	}
 
 	public function facilities() {
@@ -96,64 +98,42 @@ class ManagerController extends AppController
 		$this->set('user', $queryUser);
 	}
 	public function userRegist() {
+		$fClass = $this->facility_classes->find('all');
+		$fClassArray = $fClass->toArray();
+		$this->set(compact('fClassArray'));
+
 		$query = $this->facilities->find()
 		->where(['Del_flg ='=> 0])
 		->order(['id' => 'DESC']);
 
+		$facility_classes_id = 1;
 		if ($this->request->is('ajax')) {
 			if (!empty($this->request->getData('fClassId'))) {
-				$query->where(['facility_classes_id =' => $this->request->getData('fClassId')]);
+				$facility_classes_id = $this->request->getData('fClassId');
 			}
-		} else {
-			$query->where(['facility_classes_id =' => 1]);
 		}
+
+		$query->where(['facility_classes_id =' => $facility_classes_id]);
 		$facilitiesArray = $query->toArray();
 		$this->set(compact('facilitiesArray'));
+
 		if ($this->request->is('ajax')) {
-			$this->render('/Element/Regist/facilities');
+			if (!empty($this->request->getData('fClassId'))) {
+				$this->render('/Element/Regist/facilities');
+			}
+			if (!empty($this->request->getData('email'))) {
+				$this->autoRender = FALSE;
+				$mailAddCount = $this->users->find('all')
+				->where(['email LIKE' => $this->request->getData('email')])
+				->toArray();
+				$mailAddCount = count($mailAddCount);
+				echo $mailAddCount;
+			}
 		}
-
-		//facilities->nameの値を取得
-		$facname = $this->facilities->find('all');
-		$results = $facname->toArray();
-		$this->set(compact('results'));
-
-		$fClass = $this->facility_classes->find('all');
-		$fClassArray = $fClass->toArray();
-		$this->set(compact('fClassArray'));
-
-		//usersのデータベースを取得
-		$user = $this->users->find('all');
-		$userarray = $user->toArray();
-		$this->set(compact('userarray'));
 	}
 
 	public function userConfirm(){
-
-		//facilities->nameの値を取得
-		$facname = $this->facilities->find('all');
-		// ->select(['name']);
-		$results = $facname->toArray();
-		$this->set(compact('results'));
-
-		$fClass = $this->facility_classes->find('all');
-		$fClassArray = $fClass->toArray();
-		$this->set(compact('fClassArray'));
-
-
-		//usersのデータベースを取得
-		$user = $this->users->find('all');
-		$userarray = $user->toArray();
-		$this->set(compact('userarray'));
-
 		if ($this->request->is('post')) {
-			$postname = htmlentities($_POST['name']);
-			$posthurigana = htmlentities($_POST['hurigana']);
-			$postmail = htmlentities($_POST['email']);
-			$postpass = $this->PassHash->hash($_POST['password']);
-			$postfacilitie = $_POST['facilities'];
-			$postfClassId = $_POST['fClassId'];
-
 			$query = $this->facilities->get($postfacilitie);
 			$fnamearray = $query->toArray();
 			$this->set(compact('fnamearray'));
@@ -165,12 +145,12 @@ class ManagerController extends AppController
 				])
 				->values([
 					'id' => $this->MakeId9->id9('use'),
-					'email' => $postmail,
-					'name' => $postname,
-					'facilities_id' => $postfacilitie,
-					'facility_classes_id' => $postfClassId,
-					'hurigana' => $posthurigana,
-					'password' => $postpass,
+					'email' => htmlentities($_POST['email']),
+					'name' => htmlentities($_POST['name']),
+					'facilities_id' => $_POST['facilities'],
+					'facility_classes_id' => $_POST['fClassId'],
+					'hurigana' => htmlentities($_POST['hurigana']),
+					'password' => $this->PassHash->hash($_POST['password']),
 					'Del_flg' => 0
 				])
 				->execute();

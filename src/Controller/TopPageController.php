@@ -47,6 +47,7 @@ class TopPageController extends AppController
 
 		$queryWitses = $this->Witses->find()
 		->select(['id', 'title', 'Postdate'])
+		->where(['Del_flg' => False])
 		->order(['Postdate' => 'DESC'])
 		->limit(4)->all();
 		$witses = $queryWitses->toArray();
