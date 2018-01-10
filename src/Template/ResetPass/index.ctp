@@ -1,21 +1,28 @@
-<?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>
+<?= //$this->Html->css('/private/css/resetpass/resetpass.css');
+	$this->start('script');
+	echo $this->Html->script('/private/js/resetpass/resetpass.js');
+	$this->end();
+	$this->start('css');
+	echo $this->Html->css('/private/css/resetpass/resetpass.css');
+	$this->end();
+?>
 
 <div id="form">
 	<p class="form-title">パスワード変更</p>
-	<form action="" method="post">
+	<form action="" id="regform" method="post">
 		<p class="font-color">現在のパスワード</p>
 		<p class="password">
 			<input type="password" name="oldpassword" value="" class="form-control">
 		</p>
 		<p class="font-color">新しいパスワード</p>
 		<p class="password">
-			<input type="password" name="password" value="" class="form-control">
+			<input type="password" id="regP" name="password" value="" class="form-control">
 		</p>
 		<p class="password">
-			<input type="password" name="repassword" value="" class="form-control" placeholder="再入力">
+			<input type="password" id="regRP" name="repassword" value="" class="form-control" placeholder="再入力">
 		</p>
 		<p class="submit">
-			<button type="submit" name="reset" class="submit btn btn-primary">変更</button><br>
+			<button type="submit" id="transmit" name="reset" class="submit btn btn-primary">変更</button><br>
 		</p>
 	</form>
 </div>
