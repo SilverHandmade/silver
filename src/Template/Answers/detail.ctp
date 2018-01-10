@@ -17,7 +17,7 @@
 							<p class="title"><?php echo $detailId[0]['title'] ?></p>
 						</div>
 						<div class="col-md-2">
-							<?php if ($userinfo['id'] == $detailId[0]['user_id']): ?>
+							<?php if ($userinfo['id'] == $detailId[0]['user_id'] || $_SESSION['Auth']['User']['facility_classes_id'] == 9): ?>
 								<div class="button-right">
 									<?= $this->Html->link('編集',["controller" => "answers","action" => "edit",'id' => $witsesId['id'] ],['class'=>'btn btn-primary'])?>
 								</div>

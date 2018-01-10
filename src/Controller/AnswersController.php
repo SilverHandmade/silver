@@ -42,13 +42,6 @@ class AnswersController extends AppController
 
 	public function detail(){
 		$user = $this->Userinfo->getuser();
-		// if (empty($user)) {
-		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
-		// }
-
-		// $witses = $this->witses->find('all');
-		// $witsesArray = $witses->toArray();
-		// $this->set(compact('witsesArray'));
 
 		$get_id = $this->request->getParam('id');
 		// $witId = $this->witses->find('all')
