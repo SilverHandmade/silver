@@ -47,13 +47,9 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12 img-size">
+								<div class="col-md-12">
 									<?php if (!empty($key['photo_url']) && file_exists('img/workshop/'.$key['photo_url'])): ?>
-										<?php if ():?>
-											<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" class="img-size">
-										<?php else: ?>
-											<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" class="img-size-2">
-										<?php endif;?>
+										<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" id="ws-img" class="img-js img-size">
 									<?php else: ?>
 										<img src="<?= $this->Url->image('no_image.png') ?>" class="img-size">
 									<?php endif; ?>
