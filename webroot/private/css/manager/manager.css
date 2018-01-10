@@ -71,5 +71,11 @@ input {
 /* facilities 終わり*/
 
 /* users */
-
+.icon {
+	width: 1.5em;
+	height: 1.5em;
+	position: absolute;
+	margin-top:-30px;
+	right: 1em;
+}
 /* users 終わり*/

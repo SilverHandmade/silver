@@ -1,8 +1,8 @@
 <div class="row" id="modePanel">
 	<?php foreach ($facilities as $key): ?>
 		<div class="col-md-3">
-			<div class="panel">
-				<a href="<?= $this->Url->build(["controller" => "manager","action" => "FacilityDetail", 'id' => $key['id']])?>">
+			<div class="panel <?= $key['Del_flg']?'deleted':'';?>">
+				<a data-toggle="modal" data-target="#fModal<?= $key['id'];?>">
 					<div class="row">
 						<div class="col-md-12">
 							<ul class="list-group">
@@ -25,3 +25,6 @@
 		</div>
 	<?php endforeach; ?>
 </div>
+<?php foreach ($facilities as $key): ?>
+	<?= $this->element('Manager/facilitiesModal', ['key' => $key]);?>
+<?php endforeach; ?>

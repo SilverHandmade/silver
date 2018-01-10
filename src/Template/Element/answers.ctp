@@ -1,4 +1,4 @@
-<?php foreach ($witsesArray as $witseslist) {?>
+<?php foreach ($witsesArray as $witseslist): ?>
 	<div class="panel row">
 		<a href="<?= $this->Url->build(["controller" => "answers","action" => "detail",'id' => $witseslist['id']])?>">
 			<div id="wtitle" class="col-md-3">
@@ -18,4 +18,4 @@
 			</div>
 		</a>
 	</div>
-<?php } ?>
+<?php endforeach; ?>

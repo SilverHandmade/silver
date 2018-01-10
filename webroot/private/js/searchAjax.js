@@ -1,5 +1,5 @@
 $(function() {
-	$('form').submit(function(event) {
+	$('.searchAjax').submit(function(event) {
 		// HTMLでの送信をキャンセル
     	event.preventDefault();
 

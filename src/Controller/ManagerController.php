@@ -58,6 +58,10 @@ class ManagerController extends AppController
 	}
 
 	public function facilities() {
+		$fClass = $this->facility_classes->find('all');
+		$fClassArray = $fClass->toArray();
+		$this->set(compact('fClassArray'));
+
 		$queryFacility = $this->facilities->find()->limit(20);
 		$this->set('facilities', $queryFacility);
 		if ($this->request->is('ajax')) {
@@ -69,8 +73,26 @@ class ManagerController extends AppController
 		}
 	}
 	public function facilityDetail() {
-		$queryFacility = $this->facilities->find()->limit(20);
-		$this->set('facility', $queryFacility);
+		if ($this->request->is('ajax')) {
+			$this->autoRender = FALSE;
+			$query = $this->facilities->query()->update()
+			->where(['id' => $this->request->getParam('id')]);
+
+			$query->set([
+				'name' => $this->request->getData('name'),
+				'facility_classes_id' => $this->request->getData('fClassId'),
+				'Post' => $this->request->getData('zip11'),
+				'address' => $this->request->getData('addr11'),
+				'Del_flg' => $this->request->getData('Del_flg')
+			]);
+			try {
+				$query->execute();
+				echo 'True';
+			} catch (\Exception $e) {
+				echo 'False';
+			}
+		}
+
 	}
 	public function facilityRegist() {
 		$fClass = $this->facility_classes->find('all');

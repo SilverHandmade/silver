@@ -79,12 +79,14 @@
 }
 
 #wtitle p {
+	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
 
 #wcontent p {
+	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
