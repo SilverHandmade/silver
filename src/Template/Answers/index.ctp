@@ -10,7 +10,7 @@
 
 ?>
 
-<form class="" id="ansForm" action="" method="post">
+<form class="searchAjax" id="ansForm" action="" method="post">
 	<div class="form-group">
 		<div class="form-inline sear-lay search-inline">
 			<input type="text" name="dummy" style="display:none;">

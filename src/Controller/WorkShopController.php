@@ -94,8 +94,6 @@ class WorkShopController extends AppController
 			}
 			$cnt1 = "text".$cnt;
 			$cnt2 = "upload_gazo".$cnt;
-			$_POST[$cnt1];
-			$this->request->data[$cnt2]['name'];
 			if(isset($_POST[$cnt1])){
 				while (!empty($_POST[$cnt1])) {
 					echo"<br>".$cnt1.$_POST[$cnt1];

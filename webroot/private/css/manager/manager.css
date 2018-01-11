@@ -39,9 +39,43 @@ form  {
 /* mails 終わり*/
 
 /* facilities */
-
+.form-title{
+	font-weight: bold;
+	text-align: center;
+	font-family: Arial;
+	font-size: 30px;
+	color: #497937;
+	padding-bottom: 6px;
+	border-bottom: 2px solid #497937;
+	margin-bottom: 20px;
+}
+.font-color {
+	text-align: left;
+}
+input {
+	margin-bottom: 20px;
+}
+#form{
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0px 1px 10px #ddd;
+	-moz-box-shadow: 0px 1px 10px #ddd;
+	box-shadow: 0px 1px 10px #ddd;
+	border: solid #ddd 1px;
+	background: #fafafa;
+	font-family: Arial;
+	margin-top: 30px;
+	padding: 20px;
+}
 /* facilities 終わり*/
 
 /* users */
-
+.icon {
+	width: 1.5em;
+	height: 1.5em;
+	position: absolute;
+	margin-top:-30px;
+	right: 1em;
+}
 /* users 終わり*/

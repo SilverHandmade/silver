@@ -38,7 +38,7 @@
 							<p>所属施設：
 							<?php echo $mes_namelist[$i]['facilities']['name'];
 							$i = $i + 1; ?></p>
-							<p>投稿日時：<?=$message['transmit'];?></p>
+							<p>投稿日時：<?=date('Y年m月d日 H時i分',  strtotime($message['transmit']));?></p>
 						</div>
 					<?php endforeach; ?>
 				</div>

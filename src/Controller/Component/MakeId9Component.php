@@ -49,7 +49,7 @@ class MakeId9Component extends Component {
 				if(round($showtbl/10**$kt,0) == $ym/100){
 					$showtbl = $showtbl +1;
 				}else {
-					$ym = $ym/100;
+					$ym = round($ym/100, 0);
 	    			$showtbl = $ym.'0001';
 	    		}
 			}else {

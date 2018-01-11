@@ -15,7 +15,7 @@
 <div class="col-md-12">
 	<div class="row center">
 		<h2>依頼一覧</h2>
-		<form class="form-inline" action="" method="POST" onsubmit="doSomething();return false;">
+		<form class="form-inline searchAjax" action="" method="POST" onsubmit="doSomething();return false;">
 			<div class="sear-lay">
 				<input type="text" name="dummy" style="display:none;">
 				<input type="text" id="rsearch" name="search" value="" class="search form-control"/>

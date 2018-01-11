@@ -15,8 +15,11 @@
 	<?php if ($user_faci[0]['facility_classes_id'] == 1): ?>
 		<div class="row">
 			<div class="col-md-12 right">
-				<?= $this->Html->link(">>ワークショップ作成画面へ",['controller' => 'workshop', "action" => "create"]);?>
-				<?= $this->Html->link(">>ワークショップ編集画面へ",['controller' => 'workshop', "action" => "select"]);?>
+				<div id="wlinks">
+					<?= $this->Html->link(">>ワークショップ作成画面へ",['controller' => 'workshop', "action" => "create"]);?>
+					<br class="br none">
+					<?= $this->Html->link(">>ワークショップ編集画面へ",['controller' => 'workshop', "action" => "select"]);?>
+				</div>
 			</div>
 		</div>
 		<div id="title-index">

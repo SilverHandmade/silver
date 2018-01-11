@@ -44,8 +44,8 @@ Router::scope("/Answers", function ( RouteBuilder $routes ) {
 	$routes->connect(
 		'/:id',
 		['controller' => 'Answers', 'action'=> 'detail'],
-		// 10桁の数字に制限、0始まりに対応
-		['id' => '\d{4}']
+		// 4桁の数字に制限、0始まりに対応
+		['id' => '\d{9}']
 	);
 });
 Router::scope("/Manager", function ( RouteBuilder $routes ) {
@@ -69,7 +69,7 @@ Router::scope("/Manager", function ( RouteBuilder $routes ) {
 		'/UserDetail/:id',
 		['controller' => 'Manager', 'action'=> 'UserDetail'],
 		// 10桁の数字に制限、0始まりに対応
-		['id' => '\d{9}']
+		['id' => '\d{10}']
 	);
 	$routes->connect(
 		'/FacilityRegist',
@@ -93,6 +93,10 @@ Router::scope("/WorkShop", function ( RouteBuilder $routes ) {
 	$routes->connect(
 		'/',
 		['controller' => 'WorkShop', 'action'=> 'index']
+	);
+	$routes->connect(
+		'/',
+		['controller' => 'WorkShop', 'action'=> 'create']
 	);
 });
 // Router::scope('/Silver', function (RouteBuilder $routes) {

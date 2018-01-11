@@ -19,9 +19,9 @@
 				<p class="left">添付画像</p>
 				<div class="row img-margin">
 					<?php if (!empty($key['photo_url']) && file_exists('img/workshop/'.$key['photo_url'])): ?>
-						<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>"width="450" height="300">
+						<img src="<?= $this->Url->image('workshop/'.$key['photo_url']) ?>" class="img-size">
 					<?php else: ?>
-						<img src="<?= $this->Url->image('no_image.png') ?>"width="450" height="300">
+						<img src="<?= $this->Url->image('no_image.png') ?>" class="img-size">
 					<?php endif; ?>
 				</div>
 				<div class="div-btn">
@@ -39,23 +39,14 @@
 
 			<p class="left">追加フォーム</p>
 			<form action="" method="post" enctype="multipart/form-data">
-				<div class="form-group" id="plus" name="plus">
-					<div class="row"
-						<div class="col-md-9">
-							<input class="form-control" type="text" name="text" id="Stext" placeholder="手順説明">
-						</div>
-					</div>
+			<div class="row">
+				<div class="col-md-12">
+					<button class="btn btn-info" type="button" id="add">
+					<span class="glyphicon glyphicon-plus-sign" name="add"></span>
+						手順を追加
+					</button>
 				</div>
-
-				<div class="row">
-					<div class="col-md-12">
-						<button class="btn btn-info" type="button" id="add">
-						<span class="glyphicon glyphicon-plus-sign" name="add"></span>
-							画像を追加
-						</button>
-					</div>
-				</div>
-
+			</div>
 			<div class="right margin-top">
 				<button type="submit" class="btn btn-primary" id="edit_con" name ="nextbtn">次へ</button>
 				<?= $this->Html->link('戻る',["controller" => "workshop","action" => "select"],['class'=>'btn btn-primary'])?>

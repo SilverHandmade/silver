@@ -49,7 +49,6 @@ $(function() {
 
 $(function(){
 	$('input[name=fClassId]').click(function(){
-		// alert("a");
 		var $radio = $(this);
 		$.ajax({
 			url: location.href,
@@ -67,27 +66,26 @@ $(function(){
 	$('input[name=email]').blur(function(){
 		var $email = $(this);
 		var $loading = $(".icon");
-
 		$.ajax({
 			url: location.href,
 			type: "post",
 			dataType: "html",
 			data: $email.serialize(),
 			beforeSend: function(xhr) {
-				$loading.removeClass().addClass("icon loading")
+				$loading.children('span').removeClass().addClass("loading")
 			}
 		})
 		.done(function (response) {
 			$.when(
 				$.when(
 					$loading.fadeToggle('fast', function() {
-						$loading.removeClass('loading');
+						$loading.children('span').removeClass('loading');
 					})
 				).done(function(){
-					if (response == 0) {
-						$loading.addClass("ok");
+					if (mailAddressCheck(response, $email.val())) {
+						$loading.children('span').addClass("ok");
 					} else {
-						$loading.addClass("denied");
+						$loading.children('span').addClass("denied");
 					}
 				})
 			).done(function(){
@@ -98,6 +96,15 @@ $(function(){
 			alert("failed");
 		});
 	});
+	function mailAddressCheck(count, address) {
+		if (count != 0) {
+			return false;
+		}
+		if(!address.match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)){
+			return false;
+		}
+		return true;
+	}
 });
 
 $(function(){
