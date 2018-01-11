@@ -130,8 +130,47 @@ class ManagerController extends AppController
 		}
 	}
 	public function userDetail() {
-		$queryUser = $this->users->find()->limit(20);
+		$fClass = $this->facility_classes->find('all');
+		$fClassArray = $fClass->toArray();
+		$this->set(compact('fClassArray'));
+
+		$queryUser = $this->users->get($this->request->getParam('id'))->toArray();
 		$this->set('user', $queryUser);
+
+		$query = $this->facilities->find()
+		->where(['Del_flg ='=> 0])
+		->order(['id' => 'DESC']);
+
+		$facility_classes_id = $queryUser['facility_classes_id'];
+		if ($this->request->is('ajax')) {
+			if (!empty($this->request->getData('fClassId'))) {
+				$facility_classes_id = $this->request->getData('fClassId');
+			}
+		}
+
+		$query->where(['facility_classes_id =' => $facility_classes_id]);
+		$facilitiesArray = $query->toArray();
+		$this->set(compact('facilitiesArray'));
+
+		if ($this->request->is('ajax')) {
+			if (!empty($this->request->getData('fClassId'))) {
+				$this->render('/Element/Manager/fClassResult');
+			}
+		}
+
+		if ($this->request->getData('updateFlg')) {
+			$query = $this->users->query()->update()
+			->where(['id' => $this->request->getParam('id')]);
+			$query->set([
+				'name' => htmlentities($_POST['name']),
+				'hurigana' => htmlentities($_POST['hurigana']),
+				'facilities_id' => $_POST['facilities'],
+				'facility_classes_id' => $_POST['fClassId'],
+				'Del_flg' => $this->request->getData('Del_flg')
+			])
+			->execute();
+			$this->redirect(['controller' => 'Manager', 'action' => 'users']);
+		}
 	}
 	public function userRegist() {
 		$fClass = $this->facility_classes->find('all');
@@ -170,6 +209,7 @@ class ManagerController extends AppController
 
 	public function userConfirm(){
 		if ($this->request->is('post')) {
+			$postfacilitie = $_POST['facilities'];
 			$query = $this->facilities->get($postfacilitie);
 			$fnamearray = $query->toArray();
 			$this->set(compact('fnamearray'));
@@ -183,14 +223,14 @@ class ManagerController extends AppController
 					'id' => $this->MakeId9->id9('use'),
 					'email' => htmlentities($_POST['email']),
 					'name' => htmlentities($_POST['name']),
-					'facilities_id' => $_POST['facilities'],
+					'facilities_id' => $postfacilitie,
 					'facility_classes_id' => $_POST['fClassId'],
 					'hurigana' => htmlentities($_POST['hurigana']),
 					'password' => $this->PassHash->hash($_POST['password']),
 					'Del_flg' => 0
 				])
 				->execute();
-				$this->redirect(['controller' => 'TopPage', 'action' => 'index']);
+				$this->redirect(['controller' => 'Manager', 'action' => 'user']);
 			}
 		}
 	}

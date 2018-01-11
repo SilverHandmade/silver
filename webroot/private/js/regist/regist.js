@@ -49,7 +49,6 @@ $(function() {
 
 $(function(){
 	$('input[name=fClassId]').click(function(){
-		// alert("a");
 		var $radio = $(this);
 		$.ajax({
 			url: location.href,
