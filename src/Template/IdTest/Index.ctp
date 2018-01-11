@@ -4,7 +4,6 @@
 <?php $this->start('script'); ?>
 	<?= $this->Html->script('/private/js/workshop/workshop.js') ?>
 <?php $this->end(); ?>
-<?= phpinfo() ?>
 <form METHOD="POST" action="" >
 	e-mail : <input style="width:500px" type="text" name="email">
 </form>
@@ -13,7 +12,7 @@
 	<form action="" method="post" enctype="multipart/form-data" >
 		<div class="form-group">
 			<label for="title">タイトル</label>
-			<input class="form-control" type="text" name="name" id="title">
+			<input style="height=50" class="form-control" type="text" name="name" id="title">
 		</div>
 		<div class="form-group" id="plus" name="plus">
 			<div class="row">

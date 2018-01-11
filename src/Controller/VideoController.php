@@ -19,6 +19,7 @@ class VideoController extends AppController
 		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
 		// }
 		$this->loadmodel('Movies');
+		$this->loadComponent('MakeId9');
 	}
 	public function index()
 	{
@@ -61,28 +62,25 @@ class VideoController extends AppController
 	{
 		if(isset($_FILES)&& isset($_FILES['upload_gazo']) && is_uploaded_file($_FILES['upload_gazo']['tmp_name'])){
 
-			// 名前変更のためのIDと連番の取得(各テーブルで自由に変更を)
-			$Tb = TableRegistry::get('products');
-			$query = $Tb->find();
-			$ret = $query->select(['max_id' => $query->func()->max('id')])->first();
-			$name_id = $ret->max_id;
-			$Tb_d = TableRegistry::get('product_detailses');
-			$query = $Tb_d->find();
-			$ret_d = $query->select(['id' => $query->func()->max('ren')])
-						->where(['product_id'=> $name_id])->first();
+			$MId = $this->MakeId9->id9('mov');
+			$user = $this->Userinfo->getuser();
 
 
-			if(isset($ret_d->id)){
-				$name_ren = $ret_d->id;
-			}
+			// // 名前変更のためのIDと連番の取得(各テーブルで自由に変更を)
+			// $Tb = TableRegistry::get('movies');
+			// $query = $Tb->find();
+			// $ret = $query->select(['max_id' => $query->func()->max('id')])->first();
+			// $name_id = $ret->max_id;
+
+
 			//ファイル名取得
 			$path_parts = pathinfo(basename($_FILES['upload_gazo']['name']));
 			// 拡張子の取得
 			$filename = ".".$path_parts['extension'];
 			// ID_連番.拡張子の文字結合
-			$rennketu_name = $name_id."_".$name_ren.$filename;
+			$rennketu_name = $MId.$filename;
 			// メディアの出力先
-			$a = 'img/workshop/' . $rennketu_name;
+			$a = 'mov/' . $rennketu_name;
 
 			// なくてもアップロードできる
 			if(move_uploaded_file($_FILES['upload_gazo']['tmp_name'], $a)){
@@ -90,29 +88,44 @@ class VideoController extends AppController
 			}else {
 				$msg = 'アップロードに失敗しました';
 			}
+
+			$Tb = TableRegistry::get('movies');
+			$query = $Tb->query();
+			$query->insert([
+				'id','title','description','movie_url','user_id'
+			])
+			->values([
+				'id' => $MId,
+				'title' => $this->request->getData('name'),
+				'description' => $this->request->getData('text'),
+				'movie_url' => $rennketu_name,
+				'user_id' =>$user['id']
+			])
+			->execute();
+
 		}
 
 
-		$cnt = 1;
-		if(isset($name_ren)){
-			$name_ren = $name_ren + 1;
-		}
-
-		// 複数ある場合の繰り返し
-		while (isset($_POST['text'.$cnt])) {
-			if(isset($_FILES)&& isset($_FILES['upload_gazo'.$cnt]) && is_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'])){
-				$path_parts = pathinfo(basename($_FILES['upload_gazo'.$cnt]['name']));
-				$filename = ".".$path_parts['extension'];
-				$rennketu_name = $name_id."_".$name_ren.$filename;
-				$a = 'img/workshop/' . $rennketu_name;
-				if(move_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'], $a)){
-					$msg = $a. 'のアップロードに成功しました';
-				}else {
-					$msg = 'アップロードに失敗しました';
-				}
-			}
-			$cnt = $cnt + 1;
-			$name_ren = $name_ren + 1;
-		}
+		// $cnt = 1;
+		// if(isset($name_ren)){
+		// 	$name_ren = $name_ren + 1;
+		// }
+        //
+		// // 複数ある場合の繰り返し
+		// while (isset($_POST['text'.$cnt])) {
+		// 	if(isset($_FILES)&& isset($_FILES['upload_gazo'.$cnt]) && is_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'])){
+		// 		$path_parts = pathinfo(basename($_FILES['upload_gazo'.$cnt]['name']));
+		// 		$filename = ".".$path_parts['extension'];
+		// 		$rennketu_name = $name_id."_".$name_ren.$filename;
+		// 		$a = 'img/workshop/' . $rennketu_name;
+		// 		if(move_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'], $a)){
+		// 			$msg = $a. 'のアップロードに成功しました';
+		// 		}else {
+		// 			$msg = 'アップロードに失敗しました';
+		// 		}
+		// 	}
+		// 	$cnt = $cnt + 1;
+		// 	$name_ren = $name_ren + 1;
+		// }
 	}
 }

@@ -15,9 +15,9 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div class="div-btn">
-						<input type="file" class="input-file none file" name="upload_gazo" id="G_upload"  accept="image/*,video/*"/>
+						<input type="file" class="input-file none file" name="upload_gazo" id="G_upload"  accept="video/*"/>
 						<div class="button">
-							<button type="button" name="upload" id="G_upload" class="btn btn-info">画像選択</button>
+							<button type="button" name="upload" id="G_upload" class="btn btn-info">動画選択</button>
 						</div>
 					</div>
 					<span id="fake_input_file" class="margin-left span">NOT FILE</span>
