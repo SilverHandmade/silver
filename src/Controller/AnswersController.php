@@ -17,6 +17,7 @@ class AnswersController extends AppController
 		$this->loadModel('wits_messages');
 		$this->loadModel('facilities');
 		$this->loadModel('users');
+		$this->loadComponent('MakeId9');
 	}
 
 	public function index() {
@@ -202,7 +203,7 @@ class AnswersController extends AppController
 		$detailId = $query->all()->ToArray();
 		$this->set(compact('detailId'));
 
-		$incId = $detailId[0]['id'] + 1;
+		$detailId = $this->MakeId9->id9('wit');
 		$sessionId = $user['id'];
 		$nowdate = date("Y-m-d H:i:s");
 		// $postUid = $_POST[''];
@@ -218,7 +219,7 @@ class AnswersController extends AppController
 				'id','title','content','user_id','Postdate'
 			])
 			->values([
-				'id' => $incId,
+				'id' => $detailId,
 				'title' => $posttitle,
 				'content' => $postcontent,
 				'user_id' => $sessionId,
