@@ -132,6 +132,12 @@ input[type="text"] {
 	max-height: 325px;
 }
 
+@media (max-width: 992px) {
+	.br {
+		display: block;
+	}
+}
+
 /* .img-size-2 {
 	width: auto;
 	height: 325px;
