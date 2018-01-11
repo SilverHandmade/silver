@@ -2,7 +2,7 @@ $(function(){
 	var name = 1;
 	var imagename = 1;
 	$('#add').click(function() {
-		var plusHtml = '<div class="row none div-margin-top" id="plusHtml"><div class="col-md-1"><button class="btn btn-danger" type="button" name="button" id="remove"><span class="glyphicon glyphicon-remove-sign"></span></button></div><div class="col-md-3"><div class="div-btn padding"><input type="file" class="input-file none file" name="upload_gazo' + imagename++ +'" accept="image/*"><button type="button" name="" id="upload" class="btn btn-info">画像選択</button></div><span id="fake_input_file" class="margin-left span">NO FILE</span></div><div class="col-md-8"><input class="form-control" type="text" placeholder="手順説明" name="text' + name++ +'"></div></div>';
+		var plusHtml = '<div class="row none div-margin-top" id="plusHtml"><div class="col-md-1"><button class="btn btn-danger" type="button" name="button" id="remove"><span class="glyphicon glyphicon-remove-sign"></span></button></div><div class="col-md-3"><div class="div-btn padding"><input type="file" class="input-file none file" name="upload_gazo' + imagename++ +'" accept="image/*"><button type="button" name="" id="upload" class="btn btn-info">画像選択</button></div><span id="fake_input_file" class="margin-left span">NOT FILE</span></div><div class="col-md-8"><input class="form-control" type="text" placeholder="手順説明" name="text' + name++ +'"></div></div>';
 
 		$(plusHtml).appendTo('#plus');
 		$('.none').slideDown();

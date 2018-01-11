@@ -50,6 +50,7 @@ $(function() {
 $(function(){
 	$('input[name=fClassId]').click(function(){
 		// alert("a");
+
 		var $radio = $(this);
 		$.ajax({
 			url: location.href,
@@ -61,43 +62,9 @@ $(function(){
 		}).fail(function () {
 			alert("failed");
 		});
-	});
-});
-$(function(){
-	$('input[name=email]').blur(function(){
-		var $email = $(this);
-		var $loading = $(".icon");
 
-		$.ajax({
-			url: location.href,
-			type: "post",
-			dataType: "html",
-			data: $email.serialize(),
-			beforeSend: function(xhr) {
-				$loading.removeClass().addClass("icon loading")
-			}
-		})
-		.done(function (response) {
-			$.when(
-				$.when(
-					$loading.fadeToggle('fast', function() {
-						$loading.removeClass('loading');
-					})
-				).done(function(){
-					if (response == 0) {
-						$loading.addClass("ok");
-					} else {
-						$loading.addClass("denied");
-					}
-				})
-			).done(function(){
-				$loading.fadeToggle('fast');
-			});
-
-		}).fail(function () {
-			alert("failed");
-		});
 	});
+
 });
 
 $(function(){
