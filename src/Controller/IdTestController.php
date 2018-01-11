@@ -22,6 +22,9 @@ class IdTestController extends AppController
 
     public function index() {
 		echo "<br><br><br><br><br><br>";
+
+		$v_path = 'mov/180100003.mp4';
+
 		if(!$this->request->is('email')){
 			echo mb_substr_count(strstr($this->request->getData('email'),'@'),".");
 			echo "<br>".$this->request->getData('email');

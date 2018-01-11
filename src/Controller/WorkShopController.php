@@ -37,25 +37,7 @@ class WorkShopController extends AppController
 			$user = $_SESSION['Auth']['User']['id'];
 			//$this->set(compact('user'));
 
-			$query = $this->Products->query();
-			$query->insert(['id', 'name', 'description','midasi_url','user_id'])
-			->values([
-				'id' => $id,
-				'name' => $name,
-				'description' => $Model,
-				'midasi_url'=> $images,
-				'user_id' => $user,
-			])
-			->execute();
 
-			//詳細
-			$query = $this->product_detailses->query();
-			$query->insert(['product_id','description','photo_url'])
-			->values([
-				'product_id' => $product_id,
-				'description' => $Model_detailses,
-				'photo_url'=> $images_detailses
-			])->execute();
 			if(isset($_FILES) && isset($_FILES['upload_gazo']) && is_uploaded_file($_FILES['upload_gazo']['tmp_name'])){
 			    // $a = 'img/workshop/' . basename($_FILES['upload_gazo']['name']);
 				// 名前変更のためのIDと連番の取得(各テーブルで自由に変更を)
@@ -85,7 +67,25 @@ class WorkShopController extends AppController
 			        $msg = $a. 'のアップロードに成功しました';
 			    }else {
 			        $msg = 'アップロードに失敗しました';
-			    }
+			    }$query = $this->Products->query();
+				$query->insert(['id', 'name', 'description','midasi_url','user_id'])
+				->values([
+					'id' => $id,
+					'name' => $name,
+					'description' => $Model,
+					'midasi_url'=> $rennketu_name,
+					'user_id' => $user,
+				])
+				->execute();
+
+				//詳細
+				$query = $this->product_detailses->query();
+				$query->insert(['product_id','description','photo_url'])
+				->values([
+					'product_id' => $product_id,
+					'description' => $Model_detailses,
+					'photo_url'=> $rennketu_name
+				])->execute();
 			}
 			echo"<br><br><br><br><br>";
 			$cnt = 1;
@@ -98,14 +98,7 @@ class WorkShopController extends AppController
 				while (!empty($_POST[$cnt1])) {
 					echo"<br>".$cnt1.$_POST[$cnt1];
 					echo"<br>".$cnt2.$this->request->data[$cnt2]['name'];
-					$query = $this->product_detailses->query();
-					$query->insert(['product_id','ren','description','photo_url'])
-					->values([
-						'product_id' => $product_id,
-						'ren' => $cnt,
-						'description' => $_POST[$cnt1],
-						'photo_url' => $this->request->data[$cnt2]['name'],
-					])->execute();
+
 
 					if(isset($_FILES)&& isset($_FILES['upload_gazo'.$cnt]) && is_uploaded_file($_FILES['upload_gazo'.$cnt]['tmp_name'])){
 					    // $a = 'img/workshop/' . basename($_FILES['upload_gazo'.$cnt]['name']);
@@ -118,6 +111,14 @@ class WorkShopController extends AppController
 					    }else {
 					        $msg = 'アップロードに失敗しました';
 					    }
+						$query = $this->product_detailses->query();
+						$query->insert(['product_id','ren','description','photo_url'])
+						->values([
+							'product_id' => $product_id,
+							'ren' => $cnt,
+							'description' => $_POST[$cnt1],
+							'photo_url' => $rennketu_name,
+						])->execute();
 					}
 					$cnt++;
 					$name_ren = $name_ren + 1;
