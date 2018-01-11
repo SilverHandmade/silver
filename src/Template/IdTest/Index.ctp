@@ -4,6 +4,11 @@
 <?php $this->start('script'); ?>
 	<?= $this->Html->script('/private/js/workshop/workshop.js') ?>
 <?php $this->end(); ?>
+
+<img src="<?= $this->Url->image('workshop/'.'180100001_0.jpg') ?>">
+<source src="<?= $this->Url->video('mov/'.'180100003.mp4') ?>">
+
+
 <form METHOD="POST" action="" >
 	e-mail : <input style="width:500px" type="text" name="email">
 </form>
@@ -12,7 +17,7 @@
 	<form action="" method="post" enctype="multipart/form-data" >
 		<div class="form-group">
 			<label for="title">タイトル</label>
-			<input style="height=50" class="form-control" type="text" name="name" id="title">
+			<input class="form-control" type="text" name="name" id="title">
 		</div>
 		<div class="form-group" id="plus" name="plus">
 			<div class="row">
