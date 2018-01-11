@@ -23,7 +23,6 @@ class RegistController extends AppController
 	public function index()
 	{
 		$user = $this->Userinfo->getuser();
-
 		$queryUsers = $this->users->get($user['id'], ['contain' => ['facilities', 'facilityClasses']]);
 		$this->set('user', $queryUsers->toArray());
 

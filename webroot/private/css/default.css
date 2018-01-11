@@ -186,6 +186,12 @@ footer .btn-link, footer .btn-link:hover {
 	margin-bottom: 10px;
 	/*cursor: pointer;*/
 }
+.panel.deleted {
+	/* background-color: gray; */
+	opacity: .6;
+	filter: grayscale(100%);
+}
+
 .panel:hover {
 	box-shadow: 3px 3px #ddd;
 	top: 1px;

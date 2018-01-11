@@ -39,7 +39,7 @@
 					<p class="font-color">メールアドレス</p>
 					<div>
 						<input type="email" id="regM" name="email" value="" required class="form-control">
-						<div class="icon"></div>
+						<div class="icon"><span></span></div>
 					</div>
 					<input type="email" id="regRM" name="reemail" placeholder="再入力" required class="form-control">
 				</div>

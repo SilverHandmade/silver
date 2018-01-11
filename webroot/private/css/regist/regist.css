@@ -1,21 +1,20 @@
-body,p,form,input{margin: 0}
+body, p, form, input {
+	margin: 0
+}
 #form {
 	margin-top: 30px;
 	padding: 20px;
 	border: 1px solid #555;
 }
 
-form p{
+form p {
 	font-size: 14px;
 }
 
-.form-title {
-	text-align: center;
-	font-size:50px;
-}
+
 
 .mailadress,.password,.username,
-.furigana,.facilityname,{
+.furigana,.facilityname {
 	margin-bottom:20px;
 }
 
@@ -56,11 +55,17 @@ select {
 #form #inputStyleLabel {
 	margin-bottom: 5px;
 }
-
+.form-title {
+	text-align: center;
+	font-size:50px;
+}
 #form .form-title{
 	font-family: Arial;
 	font-size: 30px;
 	color: #497937;
+	padding-bottom: 6px;
+	border-bottom: 2px solid #497937;
+	margin-bottom: 20px;
 }
 
 /*skin*/
@@ -76,14 +81,16 @@ select {
 	background: #fafafa;
 }
 
-#form .form-title{
-	padding-bottom: 6px;
-	border-bottom: 2px solid #497937;
-	margin-bottom: 20px;
-}
 
 #emailError {
 	background-color:#FFEFEF;
 	color:#C25338;
 	border:1px solid #D4440D;
+}
+.icon {
+	width: 1.5em;
+	height: 1.5em;
+	position: absolute;
+	margin-top:-30px;
+	right: 1em;
 }

@@ -36,7 +36,7 @@
 				<div class="mailadress">
 					<p class="font-color">メールアドレス</p>
 					<input type="email" id="regM" name="email" value="" required class="form-control">
-					<div class="icon"></div>
+					<div class="icon"><span></span></div>
 					<input type="email" id="regRM" name="reemail" placeholder="再入力" required class="form-control">
 				</div>
 				<div class="password">
