@@ -1,4 +1,4 @@
-<div class="row" id="modePanel">
+<div class="row modePanel">
 	<?php foreach ($mails as $key): ?>
 		<div class="col-md-3">
 			<div class="panel">

@@ -1,4 +1,4 @@
-<div class="row" id="modePanel">
+<div class="row modePanel">
 	<?php foreach ($facilities as $key): ?>
 		<div class="col-md-3">
 			<div class="panel <?= $key['Del_flg']?'deleted':'';?>">

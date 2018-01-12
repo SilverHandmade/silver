@@ -1,10 +1,16 @@
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/manager/manager.css') ?>
+	<?= $this->Html->css('/private/css/loading.css') ?>
+<?php $this->end() ?>
+<?php $this->start('script') ?>
+	<?= $this->Html->script('https://ajaxzip3.github.io/ajaxzip3.js') ?>
+	<?= $this->Html->script('/private/js/searchAjax.js') ?>
+	<?= $this->Html->script('/private/js/manager/facility.js') ?>
 <?php $this->end() ?>
 
 <div class="col-md-12">
 	<h2>お問い合わせ</h2>
-	<div class="row">
+	<div class="row modePanel">
 		<?php foreach ($mail as $key): ?>
 			<div class="col-md-3">
 				<div class="panel">
@@ -44,32 +50,11 @@
 	</div>
 
 	<h2>施設</h2>
-	<div class="row">
-		<?php foreach ($facility as $key): ?>
-			<div class="col-md-3">
-				<div class="panel">
-					<a href="<?= $this->Url->build(["controller" => "manager","action" => "FacilityDetail", 'id' => $key['id']])?>">
-						<div class="row">
-							<div class="col-md-12">
-								<ul class="list-group">
-									<li class="list-group-item">
-										<h3><?= $key['name'];?></h3>
-									</li>
-									<li class="list-group-item">
-										<?= $key['address'];?>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 right">
-								<button class="btn btn-link" type="button">詳細 >></button>
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-		<?php endforeach; ?>
+	<form class="searchAjax" action="" method="post">
+		<input type="hidden" name="name" value="">
+	</form>
+	<div id="result">
+		<?= $this->element('Manager/facilitiesResult');?>
 	</div>
 
 	<div class="row right" id="linkTo">
@@ -79,7 +64,7 @@
 	</div>
 
 	<h2>ユーザー</h2>
-	<div class="row">
+	<div class="row modePanel">
 		<?php foreach ($User as $key): ?>
 			<div class="col-md-3">
 				<div class="panel">

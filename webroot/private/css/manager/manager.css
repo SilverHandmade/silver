@@ -22,7 +22,7 @@ form  {
 #inputTitle button {
 	width: 50%;
 }
-#modePanel.row {
+.modePanel.row {
 	padding-top: 15px;
 }
 /* all */

@@ -282,6 +282,13 @@ a:focus {
 	font-weight: normal;
 	text-align: left;
 }
+.required {
+	background-color: #e2041b;
+	border-radius: 2px;
+	color: #FFF;
+	padding: 3px;
+	font-weight: bold;
+}
 /*その他終わり*/
 
 body {
