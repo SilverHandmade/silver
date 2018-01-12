@@ -32,7 +32,10 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<?= $this->Html->link('施設追加',['controller' => 'Manager', 'action' => 'FacilityRegist'], ['class' => 'btn btn-primary']);?>
+			<a href="<?= $this->Url->build(["controller" => "manager", "action" => "FacilityRegist"]);?>" class="btn btn-primary">
+				施設追加
+				<span class="glyphicon glyphicon-plus"></span>
+			</a>
 		</div>
 	</div>
 

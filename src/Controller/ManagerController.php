@@ -22,6 +22,10 @@ class ManagerController extends AppController
 	}
 
 	public function index() {
+		$fClass = $this->facility_classes->find('all');
+		$fClassArray = $fClass->toArray();
+		$this->set(compact('fClassArray'));
+
 		$queryMail = $this->questions->find('all')->contain('users')
 		->where(['questions.kan_flg' => 0])
 		->limit(4);
@@ -31,7 +35,14 @@ class ManagerController extends AppController
 		->where(['Del_flg' => 0])
 		->where(['facilities.Del_flg' => 0])
 ;
-		$this->set('facility', $queryFacility);
+		$this->set('facilities', $queryFacility);
+		if ($this->request->is('ajax')) {
+			if (!empty($this->request->getData('name'))) {
+				$queryFacility->where(['name LIKE' => '%' . $this->request->getData('name') . '%']);
+			}
+			$this->set('facilities', $queryFacility->toArray());
+			$this->render("/Element/Manager/facilitiesResult");
+		}
 
 		$queryUsers = $this->users->find('all')->contain('facilities')
 		->where(['users.Del_flg' => 0])

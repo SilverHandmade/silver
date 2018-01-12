@@ -1,5 +1,5 @@
 #modeList.row,
-#modePanel.row {
+.modePanel.row {
 	padding-top: 15px;
 }
 @media (max-width: 992px) {

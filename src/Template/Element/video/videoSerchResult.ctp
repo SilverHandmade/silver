@@ -29,7 +29,7 @@
 	<?php endforeach; ?>
 </div>
 
-<div id="modePanel" class="row">
+<div class="row modePanel">
 	<?php $i = 0; foreach ($results as $key): ?>
 		<div class="col-md-3">
 			<div class="panel">

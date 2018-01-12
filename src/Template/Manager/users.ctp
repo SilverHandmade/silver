@@ -29,7 +29,10 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<?= $this->Html->link('ユーザー追加',['controller' => 'manager', 'action' => 'userRegist'], ['class' => 'btn btn-primary']);?>
+			<a href="<?= $this->Url->build(["controller" => "manager", "action" => "userRegist"]);?>" class="btn btn-primary">
+				ユーザー追加
+				<span class="glyphicon glyphicon-plus"></span>
+			</a>
 		</div>
 	</div>
 
