@@ -32,12 +32,15 @@ class MailController extends AppController
 
     public function index() {
 
+		$user = $this->Userinfo->getuser();
 		if (isset($_POST['transmission'])) {
+			$sendText = $_POST['text'] . "\n\nの内容でお問い合わせを受け付けました。";
+			$sendText .= "\n2～4営業年以内に返信いたします。";
 			$email = new Email('default');
-			$email->from(['Taguchi.SilverHandmade@gmail.com' => '田口　恵太郎'])
-				->to($_SESSION['userID'])
+			$email->from(['Taguchi.SilverHandmade@gmail.com' => 'SilverHandmade'])
+				->to($user['email'])
 				->subject($_POST['subjectbox'])
-				->send($_POST['text']);
+				->send($sendText);
 		}
 
 		$question = $this->questions->find('all');
@@ -48,7 +51,7 @@ class MailController extends AppController
 			$postQId = $this->MakeId9->id9('que');
 			$postSub = htmlentities($_POST['subjectbox']);
 			$postText = htmlentities($_POST['text']);
-			$postUId = $_SESSION['id'];
+			$postUId = $user['id'];
 			//echo "<br><br><br><br>" . $;
 	  	}
 		if (!empty($_POST['flg'])) {

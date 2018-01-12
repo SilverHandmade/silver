@@ -54,12 +54,12 @@ class RequestController extends AppController
 		$this->set(compact('user_faci'));
 		$query = $this->Facilities->find()
 		->select(['id','name','address'])
-		->where(['facility_classes_id ='=>2]);
+		->where(['facility_classes_id ='=>2,'Del_flg ='=>0]);
 		if ($this->request->is('ajax')) {
 			if (!empty($this->request->getData('search'))) {
 				$query->where(['name LIKE' => '%' . $this->request->getData('search') . '%'])
 				->orWhere(['address LIKE' => '%' . $this->request->getData('search') . '%'])
-				->where(['facility_classes_id ='=>2]);
+				->where(['facility_classes_id ='=>2,'Del_flg ='=>0]);
 			}
 
 		}

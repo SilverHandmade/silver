@@ -254,7 +254,6 @@ function select_state(){
 		$('.panel').each(function(){
 			var req_st = $(this).find("#req_state:eq(0)").html();
 			$(this).show();
-
 		});
 	}else if (sel_st == "/1/") {
 		$('.panel').each(function(){
@@ -301,6 +300,20 @@ $(function(){
 	$('#clear').click(function(){
 		document.getElementById( "wsID" ).value = "";
 	});
+});
+
+//編集画面のチェックボックスのオンオフ
+$(function(){
+	$('#dateCheck').bind("change",function(){
+		if($(this).is(':checked')) {
+		   // チェックが入っていたら日付欄有効化
+		   document.getElementById("selreqD_con").disabled = false;
+		}
+		else {
+		   // チェックが入っていなかったら日付欄無効化
+		   document.getElementById("selreqD_con").disabled = true;
+		}
+});
 });
 
 

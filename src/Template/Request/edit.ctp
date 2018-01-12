@@ -19,7 +19,11 @@
 				<p class="font-p">制作物タイトル</p>
 				<input type="text" id="reqselT_con" class="form-control" name="requestselT_con"  required value=<?php if ($_SESSION['edit_flg'] == 1) {
 					echo $_SESSION['req_edit']['title'];}else{ echo $edit_req[0]['title'];}?>>
-				<p class="font-p">制作個数</p>
+				<p class="font-p">
+					制作個数
+					<br>
+					※1以上999以下の数値で入力してください。
+				</p>
 				<input type="number" id="reqselN_con" class="form-control" name="requestselN_con" min="1" max="999"  value=<?php if ($_SESSION['edit_flg'] == 1) {
 					echo $_SESSION['req_edit']['number'];}else{ echo $edit_req[0]['su'];}?>>
 				<p class="font-p">
@@ -29,7 +33,7 @@
 						<span class="checkbox-parts"></span>
 					</label>
 				</p>
-				<input type="date" id="selreqD_con" class="form-control" name="selrequestD_con" required value=<?php if ($_SESSION['edit_flg'] == 1) {
+				<input type="date" id="selreqD_con" class="form-control" name="selrequestD_con" required  disabled value=<?php if ($_SESSION['edit_flg'] == 1) {
 					echo $_SESSION['req_edit']['moto_date'];}else{ echo date("Y-n-j", strtotime($edit_req[0]['To_date']));}?>>
 				<div class="btn-sub">
 					<button type="submit" id="cancel" name="Reqcancelbtn" class="btn btn-primary ">依頼取り消し</button>
