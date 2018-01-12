@@ -16,10 +16,17 @@ var test = <?php echo $results; ?>;
 	<h2>依頼作成</h2>
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6">
+
 			<form action=<?= $this->Url->build(["controller" => "Request","action" => "proof"])?> method="post">
+				<span class="required">
+					必須
+				</span>
 				<p class="font-p">制作物タイトル</p>
 				<input type="text" id="reqT" class="form-control" name="requestT" maxlength="40" required value=<?php if ($_SESSION['create_flg'] == 1) {
 					echo $_SESSION['request']['title'];} ?>>
+				<span class="required">
+					必須
+				</span>
 				<p class="font-p">制作個数</p>
 				<div class="left">
 					<input type="number" class="form-control" id="reqN" name="requestN" min="1" max="999" required value=<?php if ($_SESSION['create_flg'] == 1) {
@@ -34,6 +41,9 @@ var test = <?php echo $results; ?>;
 					ワークショップ選択
 				</button>
 				<button class="btn btn-info" type="button" id="clear">クリア</button>
+				<span class="required">
+					必須
+				</span>
 				<p class="font-p">締切日</p>
 				<input type="date" id="reqD" class="form-control" name="requestD" required value=<?php if ($_SESSION['create_flg'] == 1) {
 					echo $_SESSION['request']['date'];}?>>
