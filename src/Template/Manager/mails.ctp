@@ -33,7 +33,7 @@
 		</div>
 	</div>
 
-	<div id="result">
+	<div id="searchAjaxResult">
 		<?= $this->element('Manager/mailsSearchResult');?>
 	</div>
 </div>

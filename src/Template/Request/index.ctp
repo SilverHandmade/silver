@@ -30,7 +30,7 @@
 				</tr>
 			</thead>
 		</table>
-		<div id='result'><?= $this->element('Request/reqIndex');?></div>
+		<div id='searchAjaxResult'><?= $this->element('Request/reqIndex');?></div>
 			<div class="btn-sub">
 				<?= $this->Html->link('依頼編集・取り消し画面はこちら',["controller" => "Request","action" => "select"],['class'=>'btn btn-primary'])?>
 				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>

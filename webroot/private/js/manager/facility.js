@@ -31,9 +31,6 @@ $(function(){
 		}
 		$(this).parents('form').submit();
 	});
-
-
-
 });
 
 function loadinig($loading, response){

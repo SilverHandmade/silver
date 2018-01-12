@@ -21,11 +21,13 @@ class ManagerController extends AppController
 		$this->loadComponent('MakeId9');
 	}
 
-	public function index() {
+	private function setFacilityClassArray() {
 		$fClass = $this->facility_classes->find('all');
 		$fClassArray = $fClass->toArray();
 		$this->set(compact('fClassArray'));
+	}
 
+	public function index() {
 		$queryMail = $this->questions->find('all')->contain('users')
 		->where(['questions.kan_flg' => 0])
 		->limit(4);
@@ -33,22 +35,14 @@ class ManagerController extends AppController
 
 		$queryFacility = $this->facilities->find('all')->limit(4)
 		->where(['Del_flg' => 0])
-		->where(['facilities.Del_flg' => 0])
-;
+		->where(['facilities.Del_flg' => 0]);
 		$this->set('facilities', $queryFacility);
-		if ($this->request->is('ajax')) {
-			if (!empty($this->request->getData('name'))) {
-				$queryFacility->where(['name LIKE' => '%' . $this->request->getData('name') . '%']);
-			}
-			$this->set('facilities', $queryFacility->toArray());
-			$this->render("/Element/Manager/facilitiesResult");
-		}
 
 		$queryUsers = $this->users->find('all')->contain('facilities')
 		->where(['users.Del_flg' => 0])
 		->order(['users.Registdate' => 'DESC'])
 		->limit(4);
-		$this->set('User', $queryUsers);
+		$this->set('users', $queryUsers);
 	}
 
 	public function mails() {
@@ -69,9 +63,7 @@ class ManagerController extends AppController
 	}
 
 	public function facilities() {
-		$fClass = $this->facility_classes->find('all');
-		$fClassArray = $fClass->toArray();
-		$this->set(compact('fClassArray'));
+		$this->setFacilityClassArray();
 
 		$queryFacility = $this->facilities->find()->limit(20);
 		$this->set('facilities', $queryFacility);
@@ -106,9 +98,7 @@ class ManagerController extends AppController
 
 	}
 	public function facilityRegist() {
-		$fClass = $this->facility_classes->find('all');
-		$fClassArray = $fClass->toArray();
-		$this->set(compact('fClassArray'));
+		$this->setFacilityClassArray();
 
 		if ($this->request->is('post')) {
 			$query = $this->facilities->query();
@@ -128,48 +118,36 @@ class ManagerController extends AppController
 
 
 	public function users() {
+		$this->setFacilityClassArray();
+
+		$query = $this->facilities->find()
+		->where(['Del_flg ='=> 0])
+		->order(['id' => 'DESC'])
+		->where(['facility_classes_id =' => $this->request->getData('fClassId')]);
+		$facilitiesArray = $query->toArray();
+		$this->set(compact('facilitiesArray'));
+
 		$queryUser = $this->users->find('all')->contain('facilities')
 		->order(['users.Registdate' => 'DESC'])
 		->limit(20);
 		$this->set('users', $queryUser);
-		if ($this->request->is('ajax')) {
-			if (!empty($this->request->getData('name'))) {
-				$queryUser->where(['users.name LIKE' => '%' . $this->request->getData('name') . '%']);
+
+		if ($this->request->is('ajax') && !$this->request->getData('updateFlg')) {
+			if ($this->request->is('ajax') && !is_null($this->request->getData('searchName'))) {
+				// searchAjax専用
+				$queryUser->where(['users.name LIKE' => '%' . $this->request->getData('searchName') . '%']);
+				$this->set('users', $queryUser);
+				$this->render("/Element/Manager/usersResult");
+			} else {
+				$this->set('FacilityId', $this->users->get($this->request->getData('id'))->toArray()['facilities_id']);
+				$this->render("/Element/Manager/fClassResult");
 			}
-			$this->set('users', $queryUser);
-			$this->render("/Element/Manager/usersResult");
 		}
+
 	}
 	public function userDetail() {
-		$fClass = $this->facility_classes->find('all');
-		$fClassArray = $fClass->toArray();
-		$this->set(compact('fClassArray'));
-
-		$queryUser = $this->users->get($this->request->getParam('id'))->toArray();
-		$this->set('user', $queryUser);
-
-		$query = $this->facilities->find()
-		->where(['Del_flg ='=> 0])
-		->order(['id' => 'DESC']);
-
-		$facility_classes_id = $queryUser['facility_classes_id'];
-		if ($this->request->is('ajax')) {
-			if (!empty($this->request->getData('fClassId'))) {
-				$facility_classes_id = $this->request->getData('fClassId');
-			}
-		}
-
-		$query->where(['facility_classes_id =' => $facility_classes_id]);
-		$facilitiesArray = $query->toArray();
-		$this->set(compact('facilitiesArray'));
-
-		if ($this->request->is('ajax')) {
-			if (!empty($this->request->getData('fClassId'))) {
-				$this->render('/Element/Manager/fClassResult');
-			}
-		}
-
-		if ($this->request->getData('updateFlg')) {
+		$this->autoRender = FALSE;
+		if ($this->request->is('ajax') && $this->request->getData('updateFlg')) {
 			$query = $this->users->query()->update()
 			->where(['id' => $this->request->getParam('id')]);
 			$query->set([
@@ -178,15 +156,17 @@ class ManagerController extends AppController
 				'facilities_id' => $_POST['facilities'],
 				'facility_classes_id' => $_POST['fClassId'],
 				'Del_flg' => $this->request->getData('Del_flg')
-			])
-			->execute();
-			$this->redirect(['controller' => 'Manager', 'action' => 'users']);
+			]);
+			try {
+				$query->execute();
+				echo 'True';
+			} catch (\Exception $e) {
+				echo 'False';
+			}
 		}
 	}
 	public function userRegist() {
-		$fClass = $this->facility_classes->find('all');
-		$fClassArray = $fClass->toArray();
-		$this->set(compact('fClassArray'));
+		$this->setFacilityClassArray();
 
 		$query = $this->facilities->find()
 		->where(['Del_flg ='=> 0])

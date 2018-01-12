@@ -11,7 +11,7 @@ $(function() {
 			dataType: "html",
 			data: $form.serialize()
 		}).done(function (response) {
-			$("#result").html(response);
+			$("#searchAjaxResult").html(response);
 		}).fail(function () {
 			alert("failed");
 		});
