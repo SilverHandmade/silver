@@ -22,9 +22,7 @@ form  {
 #inputTitle button {
 	width: 50%;
 }
-.modePanel.row {
-	padding-top: 15px;
-}
+
 /* all */
 
 /* index */
@@ -71,6 +69,9 @@ input {
 /* facilities 終わり*/
 
 /* users */
+#UpdateButtons {
+	margin-top: 10px;
+}
 .icon {
 	width: 1.5em;
 	height: 1.5em;

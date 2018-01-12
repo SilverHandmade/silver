@@ -29,7 +29,7 @@
 		</tr>
 	</thead>
 </table>
-<div id="result" class="">
+<div id="searchAjaxResult">
 	<?= $this->element('answers') ?>
 </div>
 <?= $this->Html->link('投稿',['controller'=>'Answers','action'=>'create'],['class'=>'btn btn-primary']); ?>

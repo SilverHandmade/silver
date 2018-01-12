@@ -39,7 +39,7 @@
 				</thead>
 			</table>
 
-			<div id='result'><?= $this->element('Request/reqLigg');?></div>
+			<div id='searchAjaxResult'><?= $this->element('Request/reqLigg');?></div>
 
 
 		<?php else: ?>
@@ -58,7 +58,7 @@
 					</tr>
 				</thead>
 			</table>
-			<div id='result'><?= $this->element('Request/reqLihoiku');?></div>
+			<div id='searchAjaxResult'><?= $this->element('Request/reqLihoiku');?></div>
 
 			<div class="btn-sub">
 					<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>

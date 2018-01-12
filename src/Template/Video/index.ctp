@@ -36,13 +36,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-6">
-			<button class="btn btn-info" type="button" id="ModeTogle">
-				<span class="glyphicon glyphicon-th-large"></span>
-				<span class="glyphicon glyphicon-th-list"></span>
-			</button>
-		</div>
-		<div class="col-md-6 right">
+		<div class="col-md-12">
 			<a href="<?= $this->Url->build(["controller" => "video", "action" => "upload"]);?>" class="btn btn-primary">
 				アップロード
 				<span class="glyphicon glyphicon-cloud-upload"></span>
@@ -51,7 +45,7 @@
 		</div>
 	</div>
 
-	<div id="result">
+	<div id="searchAjaxResult">
 		<?= $this->element('video/videoSerchResult');?>
 	</div>
 </div>

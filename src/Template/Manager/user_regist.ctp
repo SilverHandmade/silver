@@ -12,11 +12,21 @@
 		<div class="col-md-offset-3 col-md-6">
 			<form action="<?= $this->Url->build(["controller" => "manager","action" => "user_confirm"])?>" id="regform" method="post">
 				<div class="username">
-					<p class="font-color">氏名</p>
+					<p class="font-color">
+						<span class="required">
+							必須
+						</span>
+						氏名
+					</p>
 					<input type="text" id="username" name="name" value="" required class="form-control">
 				</div>
 				<div class="furigana">
-					<p class="font-color">フリガナ</p>
+					<p class="font-color">
+						<span class="required">
+							必須
+						</span>
+						フリガナ
+					</p>
 					<input type="text" id="hurigana" name="hurigana" value=""required class="form-control">
 				</div>
 				<div class="radio-layout">
@@ -28,19 +38,34 @@
 					<?php endforeach; ?>
 				</div>
 				<div class="pulldown facilityname">
-					<p class="font-color">施設名</p>
+					<p class="font-color">
+						<span class="required">
+							必須
+						</span>
+						施設名
+					</p>
 					<div id="result">
 						<?= $this->element('Regist/facilities') ?>
 					</div>
 				</div>
 				<div class="mailadress">
-					<p class="font-color">メールアドレス</p>
+					<p class="font-color">
+						<span class="required">
+							必須
+						</span>
+						メールアドレス
+					</p>
 					<input type="email" id="regM" name="email" value="" required class="form-control">
 					<div class="icon"><span></span></div>
 					<input type="email" id="regRM" name="reemail" placeholder="再入力" required class="form-control">
 				</div>
 				<div class="password">
-					<p class="font-color">パスワード</p>
+					<p class="font-color">
+						<span class="required">
+							必須
+						</span>
+						パスワード
+					</p>
 					<input type="password" id="regP" name="password" value="" required class="form-control">
 					<input type="password" id="regRP" name="repassword" placeholder="再入力" required class="form-control">
 				</div>
