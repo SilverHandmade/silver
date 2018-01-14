@@ -28,13 +28,6 @@
 	<?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js') ?>
 	<?= $this->Html->script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') ?>
 
-	<!-- 自作JS -->
-	<?= $this->Html->script('/private/js/move_top.js') ?>
-	<?= $this->Html->script('/private/js/index.js') ?>
-
-	<?= $this->fetch('script') ?>
-
-
 
 </head>
 <body>
@@ -124,6 +117,12 @@
 		</div>
 	</div>
 </footer>
+
+<!-- 自作JS -->
+<?= $this->Html->script('/private/js/move_top.js') ?>
+<?= $this->Html->script('/private/js/index.js') ?>
+
+<?= $this->fetch('script') ?>
 
 </body>
 </html>
