@@ -10,6 +10,9 @@
 									<h3><?= $key['name'];?></h3>
 								</li>
 								<li class="list-group-item">
+									<?= $key['id'];?>
+								</li>
+								<li class="list-group-item">
 									<?= $key['address'];?>
 								</li>
 							</ul>

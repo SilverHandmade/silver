@@ -34,6 +34,10 @@
 									<?= $this->element('Manager/fClassResult') ?>
 								</div>
 							</div>
+
+							<p class="font-color">email</p>
+							<input type="email" name="email" value="<?= $key['email'] ?>" readonly class="form-control">
+
 							<input type="hidden" name="Del_flg" value="<?= $key['Del_flg']?>">
 							<input type="hidden" name="updateFlg" value="0" id="updateFlg">
 

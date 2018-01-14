@@ -114,4 +114,10 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+	public function findAuth(\Cake\ORM\Query $query, array $options)
+    {
+        $query->where(['Users.Del_flg' => 0]);
+        return $query;
+    }
 }
