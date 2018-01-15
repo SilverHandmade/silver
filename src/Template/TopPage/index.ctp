@@ -7,7 +7,30 @@
 		<h2 class="danger" >〆切間近</h2>
 		<div class="row">
 			<?php foreach ($request as $key): ?>
-				<?= $this->element('TopPage/DeadlineRequest', ['key' => $key]);?>
+				<div class="col-md-3">
+					<div class="panel">
+						<a href="<?= $this->Url->build(['controller' => 'Request', 'action' => 'detail', 'id' => $key['id']])?>">
+							<div class="row">
+								<div class="col-md-12">
+									<ul class="list-group">
+										<li class="list-group-item">
+											<h3><?= $key['title'];?></h3>
+										</li>
+										<li class="list-group-item">
+											<?= date("Y年m月d日 H時i分",strtotime($key['To_date']));?>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 right">
+									<button type="button" class="btn btn-link">詳細 >></button>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<!-- <?= $this->element('TopPage/DeadlineRequest', ['key' => $key]);?> -->
 			<?php endforeach; ?>
 		</div>
 		<div class="row right" id="linkTo">
@@ -59,7 +82,7 @@
 										<h3><?= $key['title'];?></h3>
 									</li>
 									<li class="list-group-item">
-										<?= $key['Postdate'];?>
+										<?= date("Y年m月d日 H時i分",strtotime($key['Postdate']));?>
 									</li>
 								</ul>
 							</div>
