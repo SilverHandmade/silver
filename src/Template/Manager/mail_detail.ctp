@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+管理者 お問い合わせ詳細-
+<?php $this->end(); ?>
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/manager/manager.css') ?>
 <?php $this->end() ?>
@@ -6,7 +9,7 @@
 
 <div class="col-md-offset-1 col-md-10">
 	<div class="row right">
-		<?= $this->Html->link('戻る',['controller' => 'manager', 'action' => 'mails'], ['class' => 'btn btn-primary']);?>	
+		<?= $this->Html->link('戻る',['controller' => 'manager', 'action' => 'mails'], ['class' => 'btn btn-primary']);?>
 	</div>
 	<div class="row">
 		<div class="col-md-12">

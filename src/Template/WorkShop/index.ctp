@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+ワークショップ-
+<?php $this->end(); ?>
 <?php
 	$this->start('css');
 		echo $this->Html->css('/private/css/workshop/workshop.css');

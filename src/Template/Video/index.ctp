@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+動画-
+<?php $this->end(); ?>
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/video/video.css') ?>
 	<?= $this->Html->css('/private/css/modeToggle.css') ?>

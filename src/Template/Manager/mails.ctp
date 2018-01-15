@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+管理者 お問い合わせ一覧-
+<?php $this->end(); ?>
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/manager/manager.css') ?>
 <?php $this->end() ?>

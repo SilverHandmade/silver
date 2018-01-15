@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+管理者 施設登録-
+<?php $this->end(); ?>
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/manager/manager.css') ?>
 <?php $this->end() ?>

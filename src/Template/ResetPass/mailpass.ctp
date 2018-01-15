@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+パスワード変更 パスワードリセット-
+<?php $this->end(); ?>
 <?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>
 
 <div>

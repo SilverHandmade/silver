@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+ワークショップ 編集-
+<?php $this->end(); ?>
 <?php
 
 	$this->start('css');

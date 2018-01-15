@@ -212,9 +212,6 @@ Router::scope("/WorkShop", function ( RouteBuilder $routes ) {
 		['controller' => 'WorkShop', 'action'=> 'Select']
 	);
 });
-// Router::scope('/Silver', function (RouteBuilder $routes) {
-// 	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
-// });
 Router::scope('/', function (RouteBuilder $routes) {
 	$routes->connect('/', ['controller' => 'TopPage', 'action' => 'index']);
 

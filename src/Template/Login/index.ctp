@@ -1,6 +1,12 @@
+<?php $this->start('title'); ?>
+ログイン-
+<?php $this->end(); ?>
+<?php $this->start('css'); ?>
 <?= $this->Html->css('/private/css/login/login.css') ?>
 <?= $this->Html->css('/webroot/css/src/bootstrap.css')?>
 <?= $this->Html->css('login.css') ?>
+<?php $this->end(); ?>
+
 
 <div id="form">
 	<p class="form-title">ログイン</p>

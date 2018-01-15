@@ -1,3 +1,7 @@
+<!-- 空白行消さないで! -->
+<?php $this->start('title'); ?>
+
+<?php $this->end(); ?>
  <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/TopPage/TopPage.css') ?>
 <?php $this->end() ?>

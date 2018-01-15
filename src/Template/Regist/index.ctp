@@ -1,10 +1,12 @@
+<?php $this->start('title'); ?>
+管理者 ユーザ登録-
+<?php $this->end(); ?>
 <?php
 	$this->start('script');
 	echo $this->Html->script('/private/js/regist/regist.js');
 	$this->end();
 	$this->start('css');
 	echo $this->Html->css('/private/css/regist/regist.css');
-	echo $this->Html->css('/private/css/loading.css');
 	$this->end();
 ?>
 <div class="col-md-offset-2 col-md-8 center" id="form">

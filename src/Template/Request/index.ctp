@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+依頼-
+<?php $this->end(); ?>
 <?php
 	$this->start('script');
 		echo $this->Html->script('/private/js/request/request.js');

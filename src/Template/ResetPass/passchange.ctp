@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+パスワード変更 パスワード再設定-
+<?php $this->end(); ?>
 <?= //$this->Html->css('/private/css/resetpass/resetpass.css');
 	$this->start('script');
 	echo $this->Html->script('/private/js/resetpass/resetpass.js');
@@ -26,7 +29,7 @@
 </div>
 <p align="center">数字・小文字・大文字のうち2種類以上で、6～20文字のパスワードを設定してください。</p>
 <?php }elseif($sa == 3) {?>
-	<?= $this->Html->link('編集',["controller" => "TopPage","action" => "index")?>
+	<?= $this->Html->link('編集',["controller" => "TopPage","action" => "index"])?>
 <?php }elseif($sa == 2) {?>
 	<body onload="document.F.submit();">
 		<form METHOD="POST"  name="F" action="<?= $this->Url->build(["controller" => "resetpass","action" => "mailpass"]);?>">

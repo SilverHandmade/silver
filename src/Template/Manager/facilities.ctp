@@ -1,6 +1,8 @@
+<?php $this->start('title'); ?>
+管理者 施設一覧-
+<?php $this->end(); ?>
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/manager/manager.css') ?>
-	<?= $this->Html->css('/private/css/loading.css') ?>
 <?php $this->end() ?>
 <?php $this->start('script') ?>
 	<?= $this->Html->script('https://ajaxzip3.github.io/ajaxzip3.js') ?>
