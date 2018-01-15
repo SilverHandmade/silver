@@ -78,6 +78,17 @@
 	margin-bottom: 10px;
 }
 
+.q-message {
+	padding: 10px;
+	margin-bottom: 10px;
+	border: solid 1px #33333333;
+	border-radius: 5px;
+}
+
+.q-create {
+	margin-top: 10px;
+}
+
 #wtitle p {
 	white-space: nowrap;
 	overflow: hidden;

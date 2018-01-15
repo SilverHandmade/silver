@@ -9,7 +9,7 @@
 	<form action="" method="Post" class="form-inline">
 		<div class="ws-margin">
 			<input type="text" name="searchtext" id="searchtext1" class="input-search form-control"/>
-			<button type="submit" class="btn btn-success" name="search" id="searchS" value="" onfocus="this.blur();"/>検索</button>
+			<button type="submit" class="btn btn-success media-btn" name="search" id="searchS" value="" onfocus="this.blur();"/>検索</button>
 		</div>
 	</form>
 	<?php if ($user_faci[0]['facility_classes_id'] == 1): ?>

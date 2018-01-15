@@ -15,11 +15,13 @@
 		<div class="form-inline sear-lay search-inline">
 			<input type="text" name="dummy" style="display:none;">
 			<input type="text" name="indextxt" id="indextxt" value="" class="ans-text form-control">
-			<button type="submit" id="indexbtn" class="btn btn-success">検索</button>
+			<button type="submit" id="indexbtn" class="btn btn-success media-btn">検索</button>
+		</div>
+		<div class="right q-create form-inline">
+			<?= $this->Html->link('投稿',['controller'=>'Answers','action'=>'create'],['class'=>'btn btn-primary']); ?>
 		</div>
 	</div>
 </form>
-<br><br>
 <table id="reqseltable" align="" class="none-table table row">
 	<thead>
 		<tr>
@@ -32,4 +34,3 @@
 <div id="result" class="">
 	<?= $this->element('answers') ?>
 </div>
-<?= $this->Html->link('投稿',['controller'=>'Answers','action'=>'create'],['class'=>'btn btn-primary']); ?>
