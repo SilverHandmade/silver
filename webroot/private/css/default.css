@@ -311,3 +311,9 @@ body {
 		display: inline;
 	}
 }
+
+@media (max-width: 992px) {
+	.media-btn{
+		text-align: right;
+	}
+}

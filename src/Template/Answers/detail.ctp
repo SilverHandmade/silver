@@ -52,7 +52,7 @@
 			<div id="sample1_table">
 				<div>
 					<?php foreach ($mes_namelist as $witmesdiv): ?>
-						<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+						<div class="q-message">
 							<?= $witmesdiv['message'];?>
 							<br><br>
 							<p>投稿者:<?= $witmesdiv['users']['name']; ?></p>
