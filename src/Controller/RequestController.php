@@ -183,7 +183,7 @@ class RequestController extends AppController
 
 			//nu
 			//header( 'Location: http://'.$_SERVER['HTTP_HOST'] ) ;
-			$this->redirect(['controller'=>'toppage']);
+			$this->redirect(['controller'=>'TopPage', 'action' => 'index']);
 			$this->Flash->success(__('依頼データが送信されました。'));
 			unset($_SESSION['facility']);
 			unset($_SESSION['request']);
@@ -194,6 +194,11 @@ class RequestController extends AppController
 
 
 	public function lists(){
+		$user = $this->Userinfo->getuser();
+		if ($user['facility_classes_id'] == '9') {
+			$this->redirect(['controller' => 'TopPage']);
+		}
+
 		$query = $this->Users->find()
 		->select(['id','facilities_id','facility_classes_id'])
 		->where(['id' => $_SESSION['Auth']['User']['id']]);
@@ -277,7 +282,7 @@ class RequestController extends AppController
 			->where(['id' => $_SESSION['id']])
 			->execute();
 
-			$this->redirect(['controller'=>'toppage']);
+			$this->redirect(['controller'=>'TopPage']);
 			unset($_SESSION['id']);
 			$this->Flash->success('依頼を受けました。');
 		}
@@ -290,7 +295,7 @@ class RequestController extends AppController
 			->where(['id' => $_SESSION['id']])
 			->execute();
 
-			$this->redirect(['controller'=>'toppage']);
+			$this->redirect(['controller'=>'TopPage']);
 			unset($_SESSION['id']);
 			$this->Flash->success('依頼が完了されました。');
 
@@ -385,7 +390,7 @@ class RequestController extends AppController
 			->where(['id' => $_SESSION['sel_id']])
 			->execute();
 
-			$this->redirect(['controller'=>'toppage']);
+			$this->redirect(['controller'=>'TopPage']);
 			unset($_SESSION['sel_id']);
 			$this->Flash->success('依頼をキャンセルしました。');
 		}
@@ -434,7 +439,7 @@ class RequestController extends AppController
 			->execute();
 
 
-			$this->redirect(['controller'=>'toppage']);
+			$this->redirect(['controller'=>'TopPage']);
 			$this->Flash->success(__('データが更新されました。'));
 			unset($_SESSION['facility']);
 			unset($_SESSION['request']);
