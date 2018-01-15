@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+動画 アップロード-
+<?php $this->end(); ?>
 <?php $this->start('css'); ?>
 	<?= $this->Html->css('/private/css/workshop/workshop.css') ?>
 <?php $this->end(); ?>

@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+パスワード変更-
+<?php $this->end(); ?>
 <?= //$this->Html->css('/private/css/resetpass/resetpass.css');
 	$this->start('script');
 	echo $this->Html->script('/private/js/resetpass/resetpass.js');

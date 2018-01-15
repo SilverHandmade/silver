@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+知恵袋-
+<?php $this->end(); ?>
 <?php
 	$this->start('script');
 		echo $this->Html->script('/private/js/answer/answer.js');

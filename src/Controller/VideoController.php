@@ -80,7 +80,7 @@ class VideoController extends AppController
 			// ID_連番.拡張子の文字結合
 			$rennketu_name = $MId.$filename;
 			// メディアの出力先
-			$a = 'mov/' . $rennketu_name;
+			$a = $_SERVER["HTTP_HOST"].'/'.'mov/' . $rennketu_name;
 
 			// なくてもアップロードできる
 			if(move_uploaded_file($_FILES['upload_gazo']['tmp_name'], $a)){

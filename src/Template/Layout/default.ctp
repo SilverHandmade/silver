@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<?= $this->Html->charset() ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?= $this->fetch('title')?></title>
+	<title><?= $this->fetch('title')?>SilverHandmade</title>
 
 	<?= $this->Html->meta('icon') ?>
 
@@ -19,6 +19,7 @@
 	<?= $this->Html->css('/private/css/overwrite.css') ?>
 	<?= $this->Html->css('/private/css/default.css') ?>
 	<?= $this->Html->css('/private/css/check_radio.css') ?>
+	<?= $this->Html->css('/private/css/loading.css') ?>
 
 	<?= $this->fetch('css') ?>
 

@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+依頼 詳細-
+<?php $this->end(); ?>
 <?php
 	$this->start('script');
 	echo $this->Html->script('/private/js/request/request.js');
@@ -74,7 +77,7 @@
 				<?php endforeach; ?>
 
 			</table>
-			
+
 			<div class="btn-sub">
 				<?= $this->Html->link('メッセージを送る',["controller" => "Request","action" => "message",'id' => $this->request->getParam('id')],['class'=>'btn btn-primary'])?>
 			</div>

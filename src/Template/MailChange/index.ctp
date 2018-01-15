@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+メールアドレス 変更-
+<?php $this->end(); ?>
 <?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>
 <?php $this->start('script') ?>
 	<?= $this->Html->script('/private/js/passcheck/pass.js') ?>

@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+パスワード変更 メール送信-
+<?php $this->end(); ?>
 <?= $this->Html->css('/private/css/resetpass/resetpass.css') ?>
 <body onload="<?= $body_flg?>">
 	<form METHOD="POST"  name="F" action="<?= $link; ?>" target="<?= $target ?>">

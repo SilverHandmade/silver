@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+依頼 作成-
+<?php $this->end(); ?>
 <script>
 var test = <?php echo $results; ?>;
 </script>

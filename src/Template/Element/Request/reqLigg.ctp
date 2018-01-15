@@ -1,6 +1,6 @@
 <?php foreach ($reqs as $req) : ?>
 	<div class="row panel list-panel">
-		<a href="<?= $this->url->build(["controller" => "request","action" => "detail",'id' => $req['id']])?>">
+		<a href="<?= $this->Url->build(["controller" => "request","action" => "detail",'id' => $req['id']])?>">
 			<div id="rtitle" class="col-md-4">
 				<?= $req['title'];?>
 			</div>

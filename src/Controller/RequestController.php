@@ -223,8 +223,6 @@ class RequestController extends AppController
 					->orWhere(['facilities.name LIKE' => '%' . $this->request->getData('search') . '%'])
 					->where(['kan_flg' => 0,'Requests.Del_flg' => 0,'F_saki_id' => $f_saki]);
 				}
-			}else {
-
 			}
 			$query->order(['From_date' => 'DESC']);
 			$reqs = $query->ToArray();

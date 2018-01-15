@@ -23,8 +23,8 @@
 							<div class="radio-layout">
 								<?php foreach ($fClassArray as $value): ?>
 									<span>
-										<input type="radio" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $value['id']==$key['facility_classes_id']?'checked':'';?> id="radio-<?= $value['id'] ?>">
-										<label for="radio-<?= $value['id'] ?>"><?= $value['name'] ?></label>
+										<input type="radio" name="fClassId" class="radio" value="<?= $value['id'] ?>" <?= $value['id']==$key['facility_classes_id']?'checked':'';?> id="radio-<?= $key['id'];?>-<?= $value['id'] ?>">
+										<label for="radio-<?= $key['id'];?>-<?= $value['id'] ?>"><?= $value['name'] ?></label>
 									</span>
 								<?php endforeach; ?>
 							</div>

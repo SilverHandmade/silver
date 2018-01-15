@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+ワークショップ 選択-
+<?php $this->end(); ?>
 <div class="col-md-offset-2 col-md-8">
 	<div class="row center">
 		<div id="title">

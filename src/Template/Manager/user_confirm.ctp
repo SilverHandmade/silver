@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+管理者 ユーザ登録 確認-
+<?php $this->end(); ?>
 <form action="" method="post">
 	<table border>
 		<tr>

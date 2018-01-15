@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+動画 閲覧-
+<?php $this->end(); ?>
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/video/video.css') ?>
 <?php $this->end() ?>

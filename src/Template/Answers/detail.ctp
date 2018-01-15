@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+知恵袋 詳細-
+<?php $this->end(); ?>
 <?php
 	$this->start('css');
 	echo $this->Html->css('/private/css/answers/answers.css');

@@ -1,6 +1,8 @@
+<?php $this->start('title'); ?>
+管理者 ユーザ一覧-
+<?php $this->end(); ?>
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/manager/manager.css') ?>
-	<?= $this->Html->css('/private/css/loading.css') ?>
 <?php $this->end() ?>
 <?php $this->start('script') ?>
 	<?= $this->Html->script('/private/js/searchAjax.js') ?>
