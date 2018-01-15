@@ -454,7 +454,7 @@ class RequestController extends AppController
 		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
 		// }
 		//依頼ID取得
-		$get_id = $this->request->getQuery('id');
+		$get_id = $this->request->getParam('id');
 
 		//依頼タイトル取得
 		$query = $this->Requests->find()
