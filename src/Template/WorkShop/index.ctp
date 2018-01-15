@@ -40,7 +40,7 @@
 							<div class="col-md-9">
 								<div class="row">
 									<div class="col-md-12">
-										<label for="update">投稿日<?= $key['Postdate'];?></label>
+										<label for="update">投稿日<?= date("Y年m月d日 H時i分",strtotime($key['Postdate']));?></label>
 									</div>
 								</div>
 								<div class="row">
