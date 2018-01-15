@@ -1,6 +1,6 @@
 <?php foreach ($reqs_hoiku as $req): ?>
 	<div class="row panel list-panel">
-		<a href="<?= $this->url->build(["controller" => "request","action" => "detail",'id' => $req['id']])?>">
+		<a href="<?= $this->Url->build(["controller" => "request","action" => "detail",'id' => $req['id']])?>">
 			<div id="rtitle" class="col-md-4">
 				<p><?php echo $req['title']?></p>
 			</div>

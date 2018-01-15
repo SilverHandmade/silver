@@ -15,8 +15,8 @@ $(function() {
 				$loading.removeClass('none')
 			}
 		}).done(function (response) {
-			$loading.addClass('none');
 			$("#searchAjaxResult").html(response);
+			$loading.addClass('none');
 		}).fail(function () {
 			alert("failed");
 		});
