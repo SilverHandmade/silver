@@ -25,7 +25,7 @@ class IdTestController extends AppController
 
 		// $v_path = 'mov/180100003.mp4';
 		echo '現在のリクエストのホスト'.$_SERVER["HTTP_HOST"];
-		echo '現在のサーバーのホスト名'.$_SERVER['SERVER_NAME']
+		echo '現在のサーバーのホスト名'.$_SERVER['SERVER_NAME'];
 
 		if(!$this->request->is('email')){
 			echo mb_substr_count(strstr($this->request->getData('email'),'@'),".");

@@ -12,7 +12,7 @@
 <div class="col-md-offset-2 col-md-8">
 	<div class="row">
 		<h2 class="center">依頼先一覧</h2>
-		<form class="form-inline center searchAjax" action="" method="POST" onsubmit="doSomething();return false;">
+		<form class="form-inline center searchAjax" action="" method="POST">
 			<input type="text" name="dummy" style="display:none;"/>
 		<?php if ($user_faci[0]['facility_classes_id'] == 1 || $user_faci[0]['facility_classes_id'] == 9): ?>
 			<div class="form-group">

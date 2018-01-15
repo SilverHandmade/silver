@@ -14,7 +14,7 @@
 		<h2>修正依頼選択</h2>
 		<div class="form-group">
 			<div class="form-inline sear-lay">
-				<form class="form-inline center searchAjax" action="" method="POST" onsubmit="doSomething();return false;">
+				<form class="form-inline center searchAjax" action="" method="POST">
 					<input type="text" name="dummy" style="display:none;">
 					<?php if ($_SESSION['Auth']['User']['facility_classes_id'] != 9): ?>
 					<input type="text" id="rsearch" name="search" value="" class="form-control"/>
