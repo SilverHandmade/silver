@@ -16,9 +16,9 @@
 		<div class="row">
 			<div class="col-md-12 right">
 				<div id="wlinks">
-					<?= $this->Html->link(">>ワークショップ作成画面へ",['controller' => 'workshop', "action" => "create"]);?>
+					<?= $this->Html->link(">>ワークショップ作成画面へ",['controller' => 'WorkShop', "action" => "create"]);?>
 					<br class="br none">
-					<?= $this->Html->link(">>ワークショップ編集画面へ",['controller' => 'workshop', "action" => "select"]);?>
+					<?= $this->Html->link(">>ワークショップ編集画面へ",['controller' => 'WorkShop', "action" => "select"]);?>
 				</div>
 			</div>
 		</div>

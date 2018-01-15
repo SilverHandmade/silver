@@ -4,7 +4,7 @@
 
 <div class="col-md-12">
 	<?php if ($userinfo['loginFlg'] && !empty($request)):?>
-		<h2 class="danger" >〆切マジか</h2>
+		<h2 class="danger" >〆切間近</h2>
 		<div class="row">
 			<?php foreach ($request as $key): ?>
 				<?= $this->element('TopPage/DeadlineRequest', ['key' => $key]);?>

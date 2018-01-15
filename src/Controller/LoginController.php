@@ -33,7 +33,8 @@ class LoginController extends AppController
 					'fields' => [
 						'username' => 'email',
 						'password' => 'password'
-					]
+					],
+					'finder' => 'Auth',
 				]
 			],
 			'loginAction' => [

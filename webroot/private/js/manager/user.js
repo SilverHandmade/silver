@@ -1,4 +1,6 @@
 $(function(){
+	var $loading = $('.over_window');
+
 	$(document).on('show.bs.modal', '[id^=uModal]',function(event) {
 		var $fclass = $(this).find('form');
 		getFacility($fclass);
@@ -16,7 +18,8 @@ $(function(){
 			data: $fclass.serialize()
 		})
 		.done(function (response) {
-			$("#fClassResult").html(response);
+			$loading.addClass('none');
+			$fclass.find('#fClassResult').html(response);
 		}).fail(function () {
 			alert("failed");
 		});
@@ -27,21 +30,21 @@ $(function(){
 	$(document).on('submit', '[id^=UChange]',function(event) {
 		// HTMLでの送信をキャンセル
 		event.preventDefault();
-		$("#updateFlg").attr('value', 1);
-
-		var $FacilityChange = $(this);
+		var $UserChange = $(this);
 		var $loading = $(".icon");
 
+		$UserChange.find('#updateFlg').attr('value', 1);
 		$.ajax({
 			type: "post",
 			dataType: "html",
-			url: $FacilityChange.attr('action'),
-			data: $FacilityChange.serialize(),
+			url: $UserChange.attr('action'),
+			data: $UserChange.serialize(),
 			beforeSend: function(xhr) {
 				$loading.children('span').removeClass().addClass("loading")
 			}
 		})
 		.done(function (response) {
+			console.log(response);
 			loadinig($loading, response);
 		}).fail(function () {
 			alert("failed");

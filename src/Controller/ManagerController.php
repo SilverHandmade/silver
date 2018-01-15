@@ -161,7 +161,8 @@ class ManagerController extends AppController
 				$query->execute();
 				echo 'True';
 			} catch (\Exception $e) {
-				echo 'False';
+				// echo 'False';
+				echo $e;
 			}
 		}
 	}

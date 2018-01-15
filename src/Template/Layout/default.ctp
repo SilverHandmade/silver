@@ -34,8 +34,6 @@
 
 	<?= $this->fetch('script') ?>
 
-
-
 </head>
 <body>
 <nav class="navbar navbar navbar-fixed-top" id="navbar">
@@ -100,6 +98,10 @@
 		<div class="col-md-1" id="side">
 		</div>
 
+		<div class="over_window none">
+			<span></span>
+		</div>
+
 		<!-- メインカラム -->
 		<div class="col-md-10" id="col-main">
 			<div class="row">
@@ -124,6 +126,5 @@
 		</div>
 	</div>
 </footer>
-
 </body>
 </html>
