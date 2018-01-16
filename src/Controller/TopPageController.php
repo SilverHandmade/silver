@@ -15,6 +15,10 @@ class TopPageController extends AppController
 		// throw new ForbiddenException();
 
         parent::initialize();
+		// ログイン確認
+		if (empty($this->Userinfo->getuser())) {
+			$this->redirect(['controller' => 'login', 'action' => 'index']);
+		}
 		$this->loadmodel('Requests');
 		$this->loadmodel('Facilities');
 		$this->loadmodel('Products');

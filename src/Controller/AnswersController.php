@@ -18,6 +18,11 @@ class AnswersController extends AppController
 		$this->loadModel('facilities');
 		$this->loadModel('users');
 		$this->loadComponent('MakeId9');
+
+		// ログイン確認
+		if (empty($this->Userinfo->getuser())) {
+			$this->redirect(['controller' => 'login', 'action' => 'index']);
+		}
 	}
 
 	public function index() {

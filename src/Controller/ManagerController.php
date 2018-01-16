@@ -12,6 +12,10 @@ class ManagerController extends AppController
 	public function initialize()
 	{
 		parent::initialize();
+		// ログイン確認
+		if (empty($this->Userinfo->getuser())) {
+			$this->redirect(['controller' => 'login', 'action' => 'index']);
+		}
 
 		$this->loadmodel('questions');
 		$this ->loadmodel('users');

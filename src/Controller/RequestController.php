@@ -15,6 +15,10 @@ class RequestController extends AppController
 	{
 
 		parent::initialize();
+		// ログイン確認
+		if (empty($this->Userinfo->getuser())) {
+			$this->redirect(['controller' => 'login', 'action' => 'index']);
+		}
 		$this->loadmodel('Products');
 		$this->loadmodel('Facilities');
 		$this->loadmodel('Requests');
@@ -36,11 +40,9 @@ class RequestController extends AppController
 		header( 'Cache-Control: post-check=0, pre-check=0', false );
 		header( 'Pragma: no-cache' );
 		//ここまで
-
-		// $session = $this->request->session();
-		// if (empty($session->read('Auth'))) {
-		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
-		// }
+		if (empty($this->Userinfo->getuser())) {
+			$this->redirect(['controller' => 'login', 'action' => 'index']);
+		}
 	}
 
 

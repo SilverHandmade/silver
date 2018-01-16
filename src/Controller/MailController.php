@@ -23,10 +23,10 @@ class MailController extends AppController
 		$this ->loadmodel('users');
 		$session = $this->request->session();
 
-		//ログインチェック
-		// if (empty($session->read('Auth'))) {
-		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
-		// }
+		// ログイン確認
+		if (empty($this->Userinfo->getuser())) {
+			$this->redirect(['controller' => 'login', 'action' => 'index']);
+		}
     }
 
 

@@ -14,10 +14,10 @@ class VideoController extends AppController
 	public function initialize()
 	{
 		parent::initialize();
-		$session = $this->request->session();
-		// if (empty($session->read('Auth'))) {
-		// 	$this->redirect(['controller' => 'login', 'action' => 'index', 'ref' => $this->name]);
-		// }
+		// ログイン確認
+		if (empty($this->Userinfo->getuser())) {
+			$this->redirect(['controller' => 'login', 'action' => 'index']);
+		}
 		$this->loadmodel('Movies');
 		$this->loadComponent('MakeId9');
 	}

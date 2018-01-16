@@ -16,11 +16,7 @@ class LoginController extends AppController
 {
 	public function initialize()
 	{
-		session_cache_limiter("none");
-
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
-		$this->loadComponent('Userinfo');
+		parent::initialize();
 
 		$userinfo = $this->Userinfo->setname();
 		$this->set(compact('userinfo'));

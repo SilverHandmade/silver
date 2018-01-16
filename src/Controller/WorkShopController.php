@@ -15,6 +15,10 @@ class WorkShopController extends AppController
     public function initialize()
     {
         parent::initialize();
+		// ログイン確認
+		if (empty($this->Userinfo->getuser())) {
+			$this->redirect(['controller' => 'login', 'action' => 'index']);
+		}
 		$this->loadmodel('product_detailses');
 		$this->loadmodel('Products');
 		$this->loadComponent('MakeId9');
