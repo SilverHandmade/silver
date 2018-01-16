@@ -10,9 +10,6 @@ use Cake\Mailer\Email;
 
 class MailController extends AppController
 {
-
-
-
     public function initialize()
     {
         parent::initialize();
@@ -29,7 +26,6 @@ class MailController extends AppController
 		}
     }
 
-
     public function index() {
 
 		$user = $this->Userinfo->getuser();
@@ -37,7 +33,8 @@ class MailController extends AppController
 			$sendText = $_POST['text'] . "\n\nの内容でお問い合わせを受け付けました。";
 			$sendText .= "\n2～4営業年以内に返信いたします。";
 			$email = new Email('default');
-			$email->from(['Taguchi.SilverHandmade@gmail.com' => 'SilverHandmade'])
+			$email
+				->from(['Taguchi.SilverHandmade@gmail.com' => 'SilverHandmade'])
 				->to($user['email'])
 				->subject($_POST['subjectbox'])
 				->send($sendText);
@@ -52,7 +49,6 @@ class MailController extends AppController
 			$postSub = htmlentities($_POST['subjectbox']);
 			$postText = htmlentities($_POST['text']);
 			$postUId = $user['id'];
-			//echo "<br><br><br><br>" . $;
 	  	}
 		if (!empty($_POST['flg'])) {
 			$query = $this->questions->query();

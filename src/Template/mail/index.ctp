@@ -1,3 +1,6 @@
+<?php $this->start('title'); ?>
+お問い合わせ-
+<?php $this->end(); ?>
 <?php $this->start('css'); ?>
 	<?= $this->Html->css('/private/css/mail/mail.css') ?>
 <?php $this->end(); ?>

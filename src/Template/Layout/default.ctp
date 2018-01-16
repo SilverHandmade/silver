@@ -123,7 +123,7 @@
 	<div class="row">
 		<div class="center">
 			Copyright &copy; 2017 Taguchi Corporation All rights reserved.br
-			　ご意見・ご質問は<?= $this->Html->link("こちら",['controller' => 'mail', "action" => "index"], ['class' => 'btn btn-link']);?>から
+			　ご意見・ご質問は<?= $this->Html->link("こちら",['controller' => 'Mail', "action" => "index"], ['class' => 'btn btn-link']);?>から
 		</div>
 	</div>
 </footer>
