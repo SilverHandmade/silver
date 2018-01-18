@@ -15,12 +15,16 @@ $(function(){
 			type: "post",
 			dataType: "html",
 			url: location.href,
-			data: $fclass.serialize()
+			data: $fclass.serialize(),
+			beforeSend: function(xhr) {
+				$loading.removeClass('none');
+			}
 		})
 		.done(function (response) {
-			$loading.addClass('none');
 			$fclass.find('#fClassResult').html(response);
+			$loading.addClass('none');
 		}).fail(function () {
+			$loading.addClass('none');
 			alert("failed");
 		});
 	}
@@ -40,11 +44,10 @@ $(function(){
 			url: $UserChange.attr('action'),
 			data: $UserChange.serialize(),
 			beforeSend: function(xhr) {
-				$loading.children('span').removeClass().addClass("loading")
+				$loading.removeClass('none');
 			}
 		})
 		.done(function (response) {
-			console.log(response);
 			loadinig($loading, response);
 		}).fail(function () {
 			alert("failed");
@@ -61,7 +64,7 @@ function loadinig($loading, response){
 				$loading.children('span').removeClass('loading');
 			})
 		).done(function(){
-			if (response) {
+			if (response == 'true') {
 				$loading.children('span').addClass("ok");
 			} else {
 				$loading.children('span').addClass("denied");

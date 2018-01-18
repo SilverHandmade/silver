@@ -18,6 +18,7 @@ $(function() {
 			$("#searchAjaxResult").html(response);
 			$loading.addClass('none');
 		}).fail(function () {
+			$loading.addClass('none');
 			alert("failed");
 		});
 	});
