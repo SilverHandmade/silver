@@ -3,7 +3,6 @@
 <?php $this->end(); ?>
 <?php $this->start('css') ?>
 	<?= $this->Html->css('/private/css/video/video.css') ?>
-	<?= $this->Html->css('/private/css/modeToggle.css') ?>
 <?php $this->end() ?>
 <?php $this->start('script') ?>
 	<?= $this->Html->script('/private/js/modeToggle.js') ?>
