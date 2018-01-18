@@ -18,24 +18,11 @@ h2 {
 }
 
 .btn-sub {
-	text-align: right;
 	margin-top: 10px;
-}
-
-.font-p {
-	text-align: left;
-	color: #497937;
-	margin-top: 5px;
-	margin-bottom: 5px;
 }
 
 #form {
 	width: 350px;
-}
-
-.font-title {
-	color: #497937;
-	font-size:30px;
 }
 
 .p-color {
@@ -45,10 +32,6 @@ h2 {
 #request-tab,
 #reqtable {
 	margin: 0;
-}
-
-.sear-lay {
-	margin-bottom: 10px;
 }
 
 input[type="text"],
@@ -62,32 +45,8 @@ input[type="number"] {
 
 input[type="checkbox"] {
 	margin-top: 0;
-	/* display: inline; */
-}
-
-.tarea {
-	resize: none;
-	outline: none;
-}
-
-.ans-btn {
-	margin: 10px 0;
 }
 
 .button-right {
 	float: right;
 }
-/* detail */
-/* p {
-	width: 300px;
-	margin: 0;
-}
-
-th {
-	width: 250px;
-}
-
-td {
-	text-align: left;
-	width: 300px;
-} */

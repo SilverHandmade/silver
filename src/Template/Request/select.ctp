@@ -63,7 +63,7 @@
 				</thead>
 			</table>
 			<div id='searchAjaxResult'><?= $this->element('Request/reqSelect');?></div>
-			<div class="btn-sub">
+			<div class="btn-sub right">
 				<?= $this->Html->link('戻る',["controller" => "Request","action" => "index"],['class'=>'btn btn-primary'])?>
 				<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 			</div>

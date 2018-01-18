@@ -56,7 +56,7 @@ var test = <?php echo $results; ?>;
 				<input type="date" id="reqD" class="form-control" name="requestD" required value=<?php if ($_SESSION['create_flg'] == 1) {
 					echo $_SESSION['request']['date'];}?>>
 
-				<div class="btn-sub">
+				<div class="btn-sub right">
 					<button type="submit" class="btn-margin btn btn-primary" name="createReq" onclick="return nextpage()">次へ</button>
 					<?= $this->Html->link('戻る',["controller" => "Request","action" => "index"],['class'=>'btn btn-primary btn-margin'])?>
 				</div>

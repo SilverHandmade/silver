@@ -27,7 +27,7 @@
 		</div>
 		<?php foreach ($query as $key): ?>
 			<div class="col-md-12">
-				<div class="row panel ws-man" >
+				<div class="row panel" >
 					<a href="<?= $this->Url->build(["controller" => "WorkShop","action" => "detail", 'id' => $key['id']])?>">
 						<div class="row">
 							<div class="col-md-3 center">
@@ -60,7 +60,7 @@
 		</div>
 		<?php foreach ($query as $key): ?>
 			<div class="col-md-12">
-				<div class="row panel ws-man" >
+				<div class="row panel" >
 					<a href="<?= $this->Url->build(["controller" => "WorkShop","action" => "detail", 'id' => $key['id']])?>">
 						<div class="row">
 							<div class="col-md-3">

@@ -19,7 +19,7 @@
 				<p class="font-p">内容</p>
 				<textarea name="textarea" id="textarea" rows="10" cols="80" class="tarea form-control" placeholder="内容入力してね！！"></textarea>
 			</div>
-			<div class="ans-btn">
+			<div class="ans-btn right">
 				<input type="hidden" name="flg" value="true">
 				<?= $this->Html->link('戻る',['controller'=>'Answers','action'=>'index'],['class'=>'btn btn-primary ']); ?>
 				<button type="submit" name="Completebtn" id="completebtn" class="btn btn-success">完了</button>

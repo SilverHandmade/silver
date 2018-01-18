@@ -32,7 +32,7 @@ $user_faci = $_SESSION['Auth']['User']['facilities_id'];
 				<p class="font-p">締切日</p>
 				<input type="text" id="reqD_con" class="form-control" name="requestD_con" readonly value=<?php if ($_SESSION['dateCheck'] == 1) {
 					echo $input_date;}else{ echo $_SESSION['req_edit']['moto_date'];}?>>
-				<div class="btn-sub">
+				<div class="btn-sub right">
 					<?= $this->Html->link('修正',["controller" => "request","action" => "edit",'id' => $_SESSION['sel_id']],['class'=>'btn btn-primary'])?>
 					<button type="submit" class="btn btn-success" name="edit_ok" id="edit_ok" onclick="">確定</button>
 				</div>
