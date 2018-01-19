@@ -56,7 +56,7 @@ if ($this->request->is('post')){
 				<p class="font-p">締切日</p>
 				<input type="text" id="reqD_con" class="form-control" name="requestD_con" readonly value=<?php echo $input_date?>>
 
-				<div class="btn-sub">
+				<div class="btn-sub right">
 					<?= $this->Html->link('修正',["controller" => "request","action" => "create",'id' => $_SESSION['facility']['facility_id']],['class'=>'btn btn-primary'])?>
 					<button type="submit" class="btn btn-success" name="ok" id="ok" onclick="">確定</button>
 				</div>

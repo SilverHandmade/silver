@@ -38,7 +38,7 @@
 				</p>
 				<input type="date" id="selreqD_con" class="form-control" name="selrequestD_con" required  disabled value=<?php if ($_SESSION['edit_flg'] == 1) {
 					echo $_SESSION['req_edit']['moto_date'];}else{ echo date("Y-n-j", strtotime($edit_req[0]['To_date']));}?>>
-				<div class="btn-sub">
+				<div class="btn-sub right">
 					<button type="submit" id="cancel" name="Reqcancelbtn" class="btn btn-primary ">依頼取り消し</button>
 					<button type="submit" class="btn btn-primary" id="edit_con" name ="nextbtn">次へ</button>
 					<?= $this->Html->link('戻る',["controller" => "Request","action" => "select"],['class'=>'btn btn-primary'])?>

@@ -1,6 +1,7 @@
 body, p, form, input {
 	margin: 0
 }
+
 #form {
 	margin-top: 30px;
 	padding: 20px;
@@ -10,8 +11,6 @@ body, p, form, input {
 form p {
 	font-size: 14px;
 }
-
-
 
 .mailadress,.password,.username,
 .furigana,.facilityname {
@@ -25,7 +24,6 @@ form p {
 	margin-top: 10px;
 }
 
-
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -36,7 +34,7 @@ select {
 	font-size: 14px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
- }
+}
 
 .font-color {
 	text-align: left;
@@ -45,20 +43,24 @@ select {
 .radio-layout {
 	text-align: left;
 }
+
 /*font*/
 
 #form p{
 	color: #497937;
 	font-weight: bold;
 }
+
 #form .form-control ,
 #form #inputStyleLabel {
 	margin-bottom: 5px;
 }
+
 .form-title {
 	text-align: center;
 	font-size:50px;
 }
+
 #form .form-title{
 	font-family: Arial;
 	font-size: 30px;
@@ -70,23 +72,12 @@ select {
 
 /*skin*/
 
-#form{
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
-	-webkit-box-shadow: 0px 1px 10px #ddd;
-	-moz-box-shadow: 0px 1px 10px #ddd;
-	box-shadow: 0px 1px 10px #ddd;
-	border: solid #ddd 1px;
-	background: #fafafa;
-}
-
-
 #emailError {
 	background-color:#FFEFEF;
 	color:#C25338;
 	border:1px solid #D4440D;
 }
+
 .icon {
 	width: 1.5em;
 	height: 1.5em;

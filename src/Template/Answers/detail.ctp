@@ -45,7 +45,7 @@
 					<div class="ans col-md-12">
 						<textarea name="textarea" rows="6" cols="80" class="tarea form-control" placeholder="回答してね" id="answertxt"></textarea>
 					</div>
-					<div class="ans-btn row">
+					<div class="ans-btn right row">
 						<div class="col-md-12">
 							<?= $this->Html->link('検索画面へ',['controller'=>'Answers','action'=>'index'],['class'=>'btn btn-primary ']); ?>
 							<button type="submit" name="ans-submit" class="btn btn-success" id="answerbtn" onclick="return ">回答</button>

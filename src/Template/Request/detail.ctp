@@ -78,30 +78,30 @@
 
 			</table>
 
-			<div class="btn-sub">
+			<div class="btn-sub right">
 				<?= $this->Html->link('メッセージを送る',["controller" => "Request","action" => "message",'id' => $this->request->getParam('id')],['class'=>'btn btn-primary'])?>
 			</div>
 			<?php if ($user_faci[0]['facility_classes_id'] == 2 && $req_info[0]['ju_flg'] == 0): ?>
-				<div class="btn-sub">
+				<div class="btn-sub right">
 					<button type="submit" class="btn btn-success" name="order" id="order">依頼を受ける</button>
 					<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "lists"],['class'=>'btn btn-primary'])?>
 					<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 				</div>
 			<?php endif; ?>
 			<?php if ($user_faci[0]['facility_classes_id'] == 2 && $req_info[0]['ju_flg'] == 1): ?>
-				<div class="btn-sub">
+				<div class="btn-sub right">
 					<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "lists"],['class'=>'btn btn-primary'])?>
 					<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 				</div>
 			<?php endif; ?>
 			<?php if ($user_faci[0]['facility_classes_id'] == 1 && $req_info[0]['ju_flg'] == 0): ?>
-				<div class="btn-sub">
+				<div class="btn-sub right">
 					<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "lists"],['class'=>'btn btn-primary'])?>
 					<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
 				</div>
 			<?php endif; ?>
 			<?php if ($user_faci[0]['facility_classes_id'] == 1 && $req_info[0]['ju_flg'] == 1): ?>
-				<div class="btn-sub">
+				<div class="btn-sub right">
 					<button type="submit" class="btn btn-success" name="kanryo" id="kanryo">依頼完了</button>
 					<?= $this->Html->link('依頼一覧へ',["controller" => "Request","action" => "lists"],['class'=>'btn btn-primary'])?>
 					<?= $this->Html->link('トップへ',["controller" => "TopPage","action" => "index"],['class'=>'btn btn-primary'])?>
