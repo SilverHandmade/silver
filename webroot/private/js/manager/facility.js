@@ -40,7 +40,7 @@ function loadinig($loading, response){
 				$loading.children('span').removeClass('loading');
 			})
 		).done(function(){
-			if (response) {
+			if (response == 'true') {
 				$loading.children('span').addClass("ok");
 			} else {
 				$loading.children('span').addClass("denied");
