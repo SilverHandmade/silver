@@ -190,8 +190,8 @@ class ResetPassController extends AppController
     public function index()
     {
 		if ($this->request->is('post')) {
-			$session = $this->request->session();
-			$Uid = $session->read('Auth.User.id');
+			$user = $this->userinfo->getuser();
+			$Uid = $user['id'];
 			// 現在のパス比較
 			$OPas = $this->request->getData('oldpassword');
 			$Tb = TableRegistry::get('users');

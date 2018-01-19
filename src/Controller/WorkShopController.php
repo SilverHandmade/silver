@@ -38,7 +38,7 @@ class WorkShopController extends AppController
 			$images = $this->request->getData('upload_gazo')['name'];
 			$Model_detailses = $this->request->getData('text');
 			$images_detailses = $this->request->getData('upload_gazo')['name'];
-			$user = $_SESSION['Auth']['User']['id'];
+			$user = $this->userinfo->getuser()['id'];
 			//$this->set(compact('user'));
 
 
@@ -138,9 +138,11 @@ class WorkShopController extends AppController
 	//検索画面
 	public function index()
 	{
+		$user = $this->userinfo->getuser();
 		$query = $this->Users->find()
 			->select(['id','facility_classes_id'])
-			->where(['id' => $_SESSION['Auth']['User']['id']]);
+			->where(['id' => $user['id']]);
+
 
 		$user_faci = $query->all()->ToArray();
 		$this->set(compact('user_faci'));
@@ -167,9 +169,10 @@ class WorkShopController extends AppController
 	//詳細画面
 	public function detail()
 	{
+		$user = $this->userinfo->getuser();
 		$query = $this->Users->find()
 			->select(['id','facility_classes_id'])
-			->where(['id' => $_SESSION['Auth']['User']['id']]);
+			->where(['id' => $user['id']]);
 
 		$user_faci = $query->all()->ToArray();
 		$this->set(compact('user_faci'));
@@ -182,10 +185,11 @@ class WorkShopController extends AppController
 	//編集選択
 	public function select()
 	{
+		$user = $this->userinfo->getuser();
 		$_SESSION['edit_flg'] = 0;
 
 		$query = $this->Products->find('all',array(
-			'conditions' =>array('user_id'=>$_SESSION['Auth']['User']['id'],
+			'conditions' =>array('user_id'=>$user['id'],
 				'and' => array(['Del_flg' => 0])
 			)
 		));

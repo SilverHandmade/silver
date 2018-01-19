@@ -48,9 +48,10 @@ class RequestController extends AppController
 
 
 	public function index(){
+		$user = $this->userinfo->getuser();
 		$query = $this->Users->find()
 		->select(['id','facility_classes_id'])
-		->where(['id' => $_SESSION['Auth']['User']['id']]);
+		->where(['id' => $user['id']]);
 
 		$user_faci = $query->all()->ToArray();
 		$this->set(compact('user_faci'));
@@ -203,7 +204,7 @@ class RequestController extends AppController
 
 		$query = $this->Users->find()
 		->select(['id','facilities_id','facility_classes_id'])
-		->where(['id' => $_SESSION['Auth']['User']['id']]);
+		->where(['id' => $user['id']]);
 
 		$user_faci = $query->all()->ToArray();
 		$this->set(compact('user_faci'));
@@ -311,7 +312,7 @@ class RequestController extends AppController
 		$this->set(compact('req_info'));
 
 		//施設情報の取得
-		if ($_SESSION['Auth']['User']['facility_classes_id'] == 2) {
+		if ($user['facility_classes_id'] == 2) {
 			$query = $this->Facilities->find()
 			->where(['id ='=>$req_info[0]['F_moto_id']]);
 			$faci_moto_info = $query->all()->ToArray();
@@ -333,12 +334,12 @@ class RequestController extends AppController
 
 
 	public function select(){
-
+		$user = $this->userinfo->getuser();
 		$_SESSION['edit_flg'] = 0;
 		unset($_SESSION['req_edit']);
 		$query = $this->Users->find()
 		->select(['id','facilities_id'])
-		->where(['id'=>$_SESSION['Auth']['User']['id']]);
+		->where(['id'=>$user['id']]);
 		$loginuser = $query->all()->ToArray();
 		$this->set(compact('loginuser'));
 

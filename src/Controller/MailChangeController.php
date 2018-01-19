@@ -37,8 +37,8 @@ class MailchangeController extends AppController
 				$this->Flash->error(__('リンクの消費期限が切れています'));
 			}
 		}
-		$session = $this->request->session();
-		$Uid = $session->read('Auth.User.id');
+		$user = $this->userinfo->getuser();
+		$Uid = $user['id'];
 		$Tb = TableRegistry::get('users');
 		$query = $Tb->find();
 		$ret = $query->select(['id','email'])
@@ -58,9 +58,8 @@ class MailchangeController extends AppController
 			$link = 'https://sh-ml.mybluemix.net/change';
 			$target = 'form1';
 
-
-			$session = $this->request->session();
-			$Uid = $session->read('Auth.User.id');
+			$user = $this->userinfo->getuser();
+			$Uid = $user['id'];
 			$Tb = TableRegistry::get('users');
 			$query = $Tb->find();
 			$ret = $query->select(['id','cnt' => $query->func()->count('*'),'email'])
