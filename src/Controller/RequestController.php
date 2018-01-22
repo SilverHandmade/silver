@@ -48,7 +48,7 @@ class RequestController extends AppController
 
 
 	public function index(){
-		$user = $this->userinfo->getuser();
+		$user = $this->Userinfo->getuser();
 		$query = $this->Users->find()
 		->select(['id','facility_classes_id'])
 		->where(['id' => $user['id']]);
@@ -334,7 +334,7 @@ class RequestController extends AppController
 
 
 	public function select(){
-		$user = $this->userinfo->getuser();
+		$user = $this->Userinfo->getuser();
 		$_SESSION['edit_flg'] = 0;
 		unset($_SESSION['req_edit']);
 		$query = $this->Users->find()
