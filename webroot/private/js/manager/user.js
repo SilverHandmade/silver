@@ -35,7 +35,7 @@ $(function(){
 		// HTMLでの送信をキャンセル
 		event.preventDefault();
 		var $UserChange = $(this);
-		var $loading = $(".icon");
+		var $icon = $(".icon");
 
 		$UserChange.find('#updateFlg').attr('value', 1);
 		$.ajax({
@@ -44,11 +44,11 @@ $(function(){
 			url: $UserChange.attr('action'),
 			data: $UserChange.serialize(),
 			beforeSend: function(xhr) {
-				$loading.removeClass('none');
+				$icon.children('span').addClass('loading');
 			}
 		})
 		.done(function (response) {
-			loadinig($loading, response);
+			loadinig($icon, response);
 		}).fail(function () {
 			alert("failed");
 		});
@@ -57,27 +57,27 @@ $(function(){
 });
 
 
-function loadinig($loading, response){
+function loadinig($icon, response){
 	$.when(
 		$.when(
-			$loading.fadeToggle('fast', function() {
-				$loading.children('span').removeClass('loading');
+			$icon.fadeToggle('fast', function() {
+				$icon.children('span').removeClass('loading');
 			})
 		).done(function(){
-			if (response == 'true') {
-				$loading.children('span').addClass("ok");
+			if (response == 'True') {
+				$icon.children('span').addClass("ok");
 			} else {
-				$loading.children('span').addClass("denied");
+				$icon.children('span').addClass("denied");
 			}
 		})
 	).done(function(){
-		$loading.fadeToggle('fast');
+		$icon.fadeToggle('fast');
 		setTimeout(function(){
 			$.when(
-				$loading.fadeToggle('fast')
+				$icon.fadeToggle('fast')
 			).done(function(){
-				$loading.toggle('fast')
-				$loading.children('span').removeClass()
+				$icon.toggle('fast')
+				$icon.children('span').removeClass()
 			})
 		},1000);
 	});
